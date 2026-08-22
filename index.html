@@ -3,28 +3,475 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Qiskit Fall Fest 2025 - IIT Guwahati</title>
-    <meta name="description" content="Join us for the first ever edition of the Qiskit Fall Fest 2025 at IIT Guwahati - A celebration of 100 years of quantum mechanics and innovation">
+    <title>Qiskit Fall Fest 2026 - Universidad Distrital Francisco José de Caldas</title>
+    <meta name="description" content="Qiskit Fall Fest 2026 at Universidad Distrital Francisco José de Caldas. In-person quantum computing event in Bogotá.">
 
     <!-- Favicon -->
-   <link rel="icon" type="image/png" sizes="32x32" href="favicon.PNG">
-   <link rel="icon" type="image/png" sizes="192x192" href="favicon.PNG">
-   <link rel="apple-touch-icon" href="favicon.PNG">
-   <link rel="shortcut icon" href="favicon.PNG">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.PNG">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon.PNG">
+    <link rel="apple-touch-icon" href="favicon.PNG">
+    <link rel="shortcut icon" href="favicon.PNG">
 
-    <!-- All CSS files now in root -->
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="navbar.css">
     <link rel="stylesheet" href="hero.css">
     <link rel="stylesheet" href="sections.css">
     <link rel="stylesheet" href="footer.css">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+      :root {
+        --ibm-purple: #6929c4;
+        --ibm-light-purple: #8a3ffc;
+        --ibm-soft-purple: #be95ff;
+        --ibm-dark-bg: #0b0f19;
+        --ibm-section-alt: #121826;
+        --ibm-card-bg: #171e2e;
+        --ibm-border: #273146;
+        --text-primary: #f4f4f6;
+        --text-secondary: #c1c7d0;
+        --text-muted: #8d96a0;
+      }
+
+      body {
+        background-color: var(--ibm-dark-bg);
+        color: var(--text-primary);
+        font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        line-height: 1.6;
+        background-image: 
+          radial-gradient(circle at 50% 0%, rgba(105, 41, 196, 0.18) 0%, transparent 60%),
+          linear-gradient(rgba(39, 49, 70, 0.15) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(39, 49, 70, 0.15) 1px, transparent 1px);
+        background-size: 100% 100%, 40px 40px, 40px 40px;
+        background-attachment: fixed;
+      }
+
+      .container {
+        width: 92% !important;
+        max-width: 1380px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+      }
+
+      h1, h2, h3, h4, .hero-title, .section-title {
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+      }
+
+      code, pre {
+        font-family: 'IBM Plex Mono', monospace;
+      }
+
+      .section-header {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 30px auto;
+      }
+
+      .section-title {
+        font-size: 2.2rem;
+        color: #ffffff;
+        margin-bottom: 8px;
+        text-align: center;
+      }
+
+      .section-subtitle {
+        font-size: 1.05rem;
+        color: var(--text-secondary);
+        font-weight: 400;
+        text-align: center;
+      }
+
+      .two-col-grid {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 40px;
+        align-items: center;
+      }
+
+      @media (max-width: 992px) {
+        .container {
+          width: 96% !important;
+        }
+        .two-col-grid {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+      }
+
+      .event-card, .speaker-card, .impact-card, .event-detail-card {
+        background: var(--ibm-card-bg);
+        border: 1px solid var(--ibm-border);
+        border-radius: 8px;
+        transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .event-card:hover, .speaker-card:hover, .impact-card:hover {
+        border-color: var(--ibm-light-purple);
+        transform: translateY(-4px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      /* HERO & COLLAB COMPACT WRAPPER CON MARGEN SUPERIOR AMPLIADO */
+      .hero-section-wrapper {
+        padding: 110px 0 25px 0;
+        background: var(--ibm-dark-bg);
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.25fr 0.75fr;
+        gap: 50px;
+        align-items: center;
+        margin-bottom: 35px;
+      }
+
+      @media (max-width: 992px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+          gap: 25px;
+          text-align: center;
+        }
+        .hero-grid .hero-buttons {
+          justify-content: center !important;
+        }
+        .hero-grid .call-badge {
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+
+      .hero-countdown-card {
+        background: var(--ibm-card-bg);
+        border: 1px solid var(--ibm-border);
+        border-top: 3px solid var(--ibm-light-purple);
+        border-radius: 8px;
+        padding: 30px 24px;
+        text-align: center;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+      }
+
+      .hero-countdown-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-top: 15px;
+      }
+
+      .time-box {
+        background: rgba(11, 15, 25, 0.8);
+        border: 1px solid var(--ibm-border);
+        padding: 12px 10px;
+        border-radius: 6px;
+        text-align: center;
+      }
+
+      .time-box span {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--ibm-soft-purple);
+        font-family: 'IBM Plex Mono', monospace;
+      }
+
+      .time-box p {
+        font-size: 0.75rem;
+        margin: 2px 0 0 0;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .impact-mini-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .impact-card {
+        padding: 28px 15px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-top: 3px solid var(--ibm-purple);
+      }
+
+      .impact-icon {
+        font-size: 2rem;
+        color: var(--ibm-soft-purple);
+        margin-bottom: 8px;
+      }
+
+      .impact-number {
+        font-size: 2.4rem;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 2px;
+      }
+
+      .impact-label {
+        font-size: 0.88rem;
+        color: var(--text-muted);
+      }
+
+      .call-section {
+        background: linear-gradient(135deg, rgba(105, 41, 196, 0.12) 0%, rgba(18, 24, 38, 0.95) 100%);
+        border: 1px solid var(--ibm-border);
+        border-left: 5px solid var(--ibm-light-purple);
+        padding: 40px;
+        border-radius: 8px;
+      }
+
+      .call-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(105, 41, 196, 0.25);
+        color: #d4bbff;
+        padding: 5px 14px;
+        border-radius: 4px;
+        font-size: 0.82rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        border: 1px solid rgba(138, 63, 252, 0.3);
+      }
+
+      /* AGENDA TIMELINE STYLES */
+      .timeline-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+        padding: 16px 18px;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--ibm-border);
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .timeline-item.cat-keynote { border-left: 4px solid var(--ibm-light-purple); }
+      .timeline-item.cat-workshop { border-left: 4px solid #38bdf8; }
+      .timeline-item.cat-hackathon { border-left: 4px solid #f1c21b; }
+
+      .timeline-item:hover, .timeline-item.active-event {
+        background: rgba(105, 41, 196, 0.18);
+        border-color: var(--ibm-light-purple);
+      }
+
+      .timeline-time {
+        width: 95px;
+        font-weight: 600;
+        font-size: 0.88rem;
+        color: #d4bbff;
+        text-align: right;
+        padding-right: 18px;
+        flex-shrink: 0;
+      }
+
+      .timeline-content-summary { flex-grow: 1; }
+
+      .timeline-title-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 4px;
+      }
+
+      .timeline-content-summary h4 {
+        margin: 0;
+        font-size: 1.02rem;
+        color: #ffffff;
+      }
+
+      .event-inline-tag {
+        font-size: 0.7rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        padding: 2px 8px;
+        border-radius: 4px;
+        letter-spacing: 0.5px;
+        flex-shrink: 0;
+      }
+      .cat-keynote .event-inline-tag { background: rgba(138, 63, 252, 0.2); color: #d4bbff; border: 1px solid rgba(138, 63, 252, 0.4); }
+      .cat-workshop .event-inline-tag { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+      .cat-hackathon .event-inline-tag { background: rgba(241, 194, 27, 0.15); color: #f1c21b; border: 1px solid rgba(241, 194, 27, 0.3); }
+
+      .timeline-content-summary p { margin: 0; font-size: 0.85rem; color: var(--text-muted); }
+
+      .event-detail-card {
+        padding: 32px;
+        position: sticky;
+        top: 90px;
+        border-top: 3px solid var(--ibm-light-purple);
+      }
+
+      .speaker-detail-box {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin: 22px 0;
+        padding: 16px;
+        background: rgba(0, 0, 0, 0.25);
+        border: 1px solid var(--ibm-border);
+        border-radius: 6px;
+      }
+
+      .speaker-detail-avatar {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 1px solid var(--ibm-border);
+      }
+
+      .tab-btn {
+        background: var(--ibm-card-bg);
+        color: var(--text-secondary);
+        border: 1px solid var(--ibm-border);
+        padding: 12px 28px;
+        border-radius: 4px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .tab-btn.active, .tab-btn:hover {
+        background: var(--ibm-purple);
+        color: #ffffff;
+        border-color: var(--ibm-purple);
+      }
+
+      /* DROPDOWNS & MOBILE MENU */
+      .nav-item-dropdown { position: relative; display: inline-block; }
+      .dropdown-toggle { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: var(--ibm-card-bg);
+        min-width: 200px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        border: 1px solid var(--ibm-border);
+        border-radius: 6px;
+        padding: 8px 0;
+        z-index: 1000;
+      }
+      .nav-item-dropdown:hover .dropdown-menu { display: block; }
+      .dropdown-item {
+        color: var(--text-secondary);
+        padding: 10px 18px;
+        text-decoration: none;
+        display: block;
+        font-size: 0.9rem;
+        transition: background 0.2s ease, color 0.2s ease;
+      }
+      .dropdown-item:hover { background-color: rgba(105, 41, 196, 0.2); color: #ffffff; }
+
+      @media (max-width: 768px) {
+        .nav-item-dropdown .dropdown-menu { position: static; box-shadow: none; background: rgba(0, 0, 0, 0.25); border: none; padding-left: 15px; }
+      }
+
+      /* LANG SWITCHER */
+      .lang-switcher {
+        display: inline-flex;
+        align-items: center;
+        background: var(--ibm-card-bg);
+        border: 1px solid var(--ibm-border);
+        border-radius: 20px;
+        padding: 2px;
+        margin-left: 10px;
+      }
+      .lang-btn {
+        background: transparent;
+        border: none;
+        color: var(--text-muted);
+        padding: 4px 10px;
+        border-radius: 16px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+      .lang-btn.active { background: var(--ibm-purple); color: #ffffff; }
+
+      /* CONTINUOUS MARQUEE SLIDER */
+      .marquee-container {
+        overflow: hidden;
+        user-select: none;
+        display: flex;
+        gap: 30px;
+        position: relative;
+        padding: 5px 0;
+      }
+      .marquee-container::before, .marquee-container::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 80px;
+        height: 100%;
+        z-index: 2;
+        pointer-events: none;
+      }
+      .marquee-container::before { left: 0; background: linear-gradient(to right, var(--ibm-dark-bg), transparent); }
+      .marquee-container::after { right: 0; background: linear-gradient(to left, var(--ibm-dark-bg), transparent); }
+
+      .marquee-track {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        gap: 30px;
+        min-width: 100%;
+        animation: scrollMarquee 25s linear infinite;
+      }
+      .marquee-container:hover .marquee-track { animation-play-state: paused; }
+
+      .collab-card {
+        background: var(--ibm-card-bg);
+        border: 1px solid var(--ibm-border);
+        border-radius: 6px;
+        padding: 12px 22px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 200px;
+        justify-content: center;
+        transition: border-color 0.2s ease;
+      }
+      .collab-card:hover { border-color: var(--ibm-light-purple); }
+      .collab-card img {
+        height: 32px;
+        width: auto;
+        object-fit: contain;
+        filter: grayscale(80%);
+        opacity: 0.85;
+        transition: all 0.3s ease;
+      }
+      .collab-card:hover img { filter: grayscale(0%); opacity: 1; }
+      .collab-name { font-size: 0.88rem; font-weight: 500; color: var(--text-secondary); white-space: nowrap; }
+
+      @keyframes scrollMarquee {
+        from { transform: translateX(0); }
+        to { transform: translateX(calc(-100% - 30px)); }
+      }
+    </style>
 </head>
 <body>
+
 <!-- Navigation -->
  <nav class="navbar" id="navbar">
     <div class="nav-container">
@@ -36,12 +483,44 @@
       </div>
 
       <div class="nav-menu" id="nav-menu">
-        <a href="#home" class="nav-link">Home</a>
-        <a href="#about" class="nav-link">About</a>
-        <a href="#events" class="nav-link">Events</a>
-        <a href="#speakers" class="nav-link">Speakers</a>
-        <a href="#schedule" class="nav-link">Schedule</a>
-        <a href="#contact" class="nav-link">Contact Us</a> <!-- Now scrolls to section -->
+        <a href="#home" class="nav-link" data-i18n="nav-home">Home</a>
+        
+        <!-- Dropdown 1: Event -->
+        <div class="nav-item-dropdown">
+            <span class="nav-link dropdown-toggle"><span data-i18n="menu-event">Event</span> <i class="fas fa-chevron-down" style="font-size: 0.75rem;"></i></span>
+            <div class="dropdown-menu">
+                <a href="#about" class="dropdown-item" data-i18n="nav-about">About Us</a>
+                <a href="#collaborators" class="dropdown-item" data-i18n="nav-collaborators">Sponsors & Collaborators</a>
+                <a href="#location" class="dropdown-item" data-i18n="nav-location">Location</a>
+                <a href="#faq" class="dropdown-item" data-i18n="nav-faq">FAQ</a>
+            </div>
+        </div>
+
+        <!-- Dropdown 2: Program -->
+        <div class="nav-item-dropdown">
+            <span class="nav-link dropdown-toggle"><span data-i18n="menu-program">Program & Calls</span> <i class="fas fa-chevron-down" style="font-size: 0.75rem;"></i></span>
+            <div class="dropdown-menu">
+                <a href="#program" class="dropdown-item" data-i18n="nav-program">Academic Program</a>
+                <a href="#cfp" class="dropdown-item" data-i18n="nav-cfp">Short Talks & Posters</a>
+            </div>
+        </div>
+
+        <!-- Dropdown 3: People -->
+        <div class="nav-item-dropdown">
+            <span class="nav-link dropdown-toggle"><span data-i18n="menu-people">People</span> <i class="fas fa-chevron-down" style="font-size: 0.75rem;"></i></span>
+            <div class="dropdown-menu">
+                <a href="#speakers" class="dropdown-item" data-i18n="nav-speakers">Speakers & Mentors</a>
+                <a href="#organizers" class="dropdown-item" data-i18n="nav-organizers">Organizing Committee</a>
+            </div>
+        </div>
+
+        <a href="TU_ENLACE_DE_FORMULARIO" target="_blank" class="btn btn-primary" style="padding: 6px 16px; font-size: 0.85rem; margin-left: 10px;"><i class="fas fa-paper-plane"></i> <span data-i18n="btn-register-nav">Register</span></a>
+        
+        <!-- Language Switcher -->
+        <div class="lang-switcher">
+            <button class="lang-btn active" id="btn-en" onclick="setLanguage('en')">EN</button>
+            <button class="lang-btn" id="btn-es" onclick="setLanguage('es')">ES</button>
+        </div>
       </div>
       <div class="nav-toggle" id="nav-toggle">
         <span class="bar"></span>
@@ -51,422 +530,945 @@
     </div>
   </nav>
 
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title">Qiskit Fall Fest 2025</h1>
-                <h2 class="hero-subtitle">IIT Guwahati</h2>
-                <h2 class="hero-date">31 Oct – 2 Nov'2025</h2>
-                <p class="hero-description">
-                    Join us for the first-ever edition of the IBM Qiskit Fall Fest - IIT Guwahati, as we celebrate 100 years of Quantum Mechanics.
-                </p>
-                <div class="hero-buttons">
-                    <a href="https://forms.gle/jp25xTBf2LrYW3sQ6" class="btn btn-primary">Register Now</a>
-                    <a href="#events" class="btn btn-secondary">View Events</a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <img src="quantum-computing-hero.png" alt="Quantum Computing" class="hero-img">
-            </div>
-        </div>
-        <div class="hero-scroll">
-            <a href="#about" class="scroll-down">
-                <i class="fas fa-chevron-down"></i>
-            </a>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
+    <!-- 1 & 2. HERO + SPONSORS WRAPPER (Bloque principal con margen superior amplio) -->
+    <section id="home" class="hero-section-wrapper">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">About Qiskit Fall Fest</h2>
-                <p class="section-subtitle">Experience the Quantum Era with Qiskit</p>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>
-                        Qiskit Fall Fest 2025 is a celebration of curiosity and discovery in the world of quantum computing.
-                        Organized with support from IBM Quantum and powered by Qiskit, IBM’s open source framework for quantum programming,
-                        it brings together students, researchers and innovators to learn, collaborate and imagine what is possible with this
-                        emerging technology. The fest will highlight one hundred years of progress in quantum science while opening doors to
-                        the future through workshops, coding sessions and inspiring talks from leading voices in the field.
+            <!-- Hero Grid -->
+            <div class="hero-grid">
+                <div>
+                    <span class="call-badge"><i class="fas fa-map-marker-alt"></i> <span data-i18n="hero-node">Bogota Node, Colombia</span></span>
+                    <h1 class="hero-title" style="font-size: 3.4rem; margin-top: 12px; margin-bottom: 12px;">Qiskit Fall Fest 2026</h1>
+                    <h2 class="hero-subtitle" style="font-size: 1.6rem; color: #d4bbff; font-weight: 400; margin-bottom: 12px;">Universidad Distrital Francisco José de Caldas</h2>
+                    <h2 class="hero-date" style="font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 22px;"><i class="fas fa-calendar-alt"></i> <span data-i18n="hero-date">October 2026 | In-Person Mode</span></h2>
+                    
+                    <p class="hero-description" style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 28px; line-height: 1.75;" data-i18n="hero-desc">
+                        Academic and research gathering in quantum computing and information. Two weeks of keynote lectures, hands-on workshops with Qiskit SDK, poster sessions, and an in-person challenge at Universidad Distrital.
                     </p>
-                    <p>
-                        IIT Guwahati is proud to host this historic edition of the fest. Whether you are taking your first steps
-                        in quantum computing or looking to deepen your skills, you will find opportunities to explore, connect and grow.
-                        Join us to experience hands on learning, meaningful discussions and a community that believes quantum technology
-                        will shape the future of science and society.
+
+                    <div class="hero-buttons" style="display: flex; gap: 15px; align-items: center;">
+                        <a href="TU_ENLACE_DE_FORMULARIO" class="btn btn-primary" style="padding: 13px 30px; font-size: 1.05rem;"><i class="fas fa-paper-plane"></i> <span data-i18n="btn-register">Register for Free</span></a>
+                        <a href="#program" class="btn btn-secondary" style="padding: 13px 30px; font-size: 1.05rem;" data-i18n="btn-program">View Academic Program</a>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="hero-countdown-card">
+                        <h3 style="color: #ffffff; font-size: 1.15rem; margin: 0 0 4px 0;"><i class="fas fa-hourglass-half" style="color: var(--ibm-light-purple); margin-right: 6px;"></i> <span data-i18n="cd-title">Countdown to Event</span></h3>
+                        <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;" data-i18n="cd-subtitle">Get ready for October 2026</p>
+                        
+                        <div class="hero-countdown-grid">
+                            <div class="time-box"><span id="cd-days">00</span><p data-i18n="cd-days">Days</p></div>
+                            <div class="time-box"><span id="cd-hours">00</span><p data-i18n="cd-hours">Hours</p></div>
+                            <div class="time-box"><span id="cd-minutes">00</span><p data-i18n="cd-minutes">Minutes</p></div>
+                            <div class="time-box"><span id="cd-seconds">00</span><p data-i18n="cd-seconds">Seconds</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sponsors & Collaborators Integrados -->
+            <div id="collaborators" style="margin-top: 30px; padding-top: 25px; border-top: 1px solid rgba(39, 49, 70, 0.4);">
+                <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 20px;">
+                    <div class="collab-card" style="border-color: var(--ibm-light-purple); background: rgba(105, 41, 196, 0.12); padding: 14px 22px;">
+                        <img src="Qiskit_logo.png" alt="IBM Quantum">
+                        <div>
+                            <div class="collab-name" style="color: #ffffff; font-weight: 600;">IBM Quantum</div>
+                            <span style="font-size: 0.75rem; color: #d4bbff;">Global Event Sponsor</span>
+                        </div>
+                    </div>
+
+                    <div class="collab-card" style="border-color: var(--ibm-light-purple); background: rgba(105, 41, 196, 0.12); padding: 14px 22px;">
+                        <img src="qbraid-logo.png" alt="qBraid">
+                        <div>
+                            <div class="collab-name" style="color: #ffffff; font-weight: 600;">qBraid</div>
+                            <span style="font-size: 0.75rem; color: #d4bbff;">Quantum Cloud & Compute Partner</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="marquee-container">
+                    <div class="marquee-track">
+                        <div class="collab-card"><img src="qiskit-logo-bottom.PNG" alt="SPSUMM"><span class="collab-name">Semillero SPSUMM</span></div>
+                        <div class="collab-card"><img src="100-year-logo.png" alt="Universidad Distrital"><span class="collab-name">Universidad Distrital</span></div>
+                        <div class="collab-card"><img src="favicon.PNG" alt="Línea Cuántica UD"><span class="collab-name">Línea Cuántica UD</span></div>
+                        <div class="collab-card"><img src="qiskit-logo-top1.png" alt="Qiskit Community"><span class="collab-name">Qiskit Community</span></div>
+                    </div>
+
+                    <div class="marquee-track" aria-hidden="true">
+                        <div class="collab-card"><img src="qiskit-logo-bottom.PNG" alt="SPSUMM"><span class="collab-name">Semillero SPSUMM</span></div>
+                        <div class="collab-card"><img src="100-year-logo.png" alt="Universidad Distrital"><span class="collab-name">Universidad Distrital</span></div>
+                        <div class="collab-card"><img src="favicon.PNG" alt="Línea Cuántica UD"><span class="collab-name">Línea Cuántica UD</span></div>
+                        <div class="collab-card"><img src="qiskit-logo-top1.png" alt="Qiskit Community"><span class="collab-name">Qiskit Community</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. ABOUT & IMPACT -->
+    <section id="about" class="about" style="padding: 60px 0; background: var(--ibm-section-alt);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-i18n="about-title">About the Festival & Scope</h2>
+                <p class="section-subtitle" data-i18n="about-subtitle">Fostering education and research in quantum technologies in Colombia</p>
+            </div>
+
+            <div class="two-col-grid" style="align-items: center;">
+                <div class="event-card" style="padding: 35px; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center;">
+                    <h3 style="color: #ffffff; margin-bottom: 15px; font-size: 1.35rem;"><i class="fas fa-university" style="color: var(--ibm-light-purple); margin-right: 8px;"></i> <span data-i18n="about-framework-head">Academic Framework</span></h3>
+                    <p style="margin-bottom: 14px; color: var(--text-secondary); font-size: 0.98rem;" data-i18n="about-p1">
+                        The <strong>Qiskit Fall Fest 2026</strong> at Universidad Distrital Francisco José de Caldas is part of the global network of events supported by <strong>IBM Quantum</strong> to strengthen scientific and technological capabilities in quantum information.
+                    </p>
+                    <p style="color: var(--text-secondary); font-size: 0.98rem; margin: 0;" data-i18n="about-p2">
+                        Co-organized by the team of co-organizers and the <strong>SPSUMM</strong> research group (Simulation of Physical Systems Using Multiscale Methods), this in-person event brings together physics, mathematics, and engineering students.
                     </p>
                 </div>
-                <div class="about-image">
-                    <img src="qiskit-description.png" alt="Quantum Illustration">
+
+                <div>
+                    <div class="impact-mini-grid">
+                        <div class="event-card impact-card">
+                            <div class="impact-icon"><i class="fas fa-users"></i></div>
+                            <div class="impact-number">100+</div>
+                            <div class="impact-label" data-i18n="impact-attendees">Expected Attendees</div>
+                        </div>
+
+                        <div class="event-card impact-card">
+                            <div class="impact-icon"><i class="fas fa-calendar-check"></i></div>
+                            <div class="impact-number">2 <span data-i18n="impact-weeks-unit">Weeks</span></div>
+                            <div class="impact-label" data-i18n="impact-training">Academic Training</div>
+                        </div>
+
+                        <div class="event-card impact-card">
+                            <div class="impact-icon"><i class="fas fa-code-branch"></i></div>
+                            <div class="impact-number">1 Hackathon</div>
+                            <div class="impact-label" data-i18n="impact-challenge">Qiskit Challenge</div>
+                        </div>
+
+                        <div class="event-card impact-card">
+                            <div class="impact-icon"><i class="fas fa-certificate"></i></div>
+                            <div class="impact-number">100% Free</div>
+                            <div class="impact-label" data-i18n="impact-cert">Official Certification</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-   <!-- Events Section -->
-    <section id="events" class="events">
+    <!-- 4. ACADEMIC PROGRAM -->
+    <section id="program" class="events" style="padding: 60px 0; background: var(--ibm-dark-bg);">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Featured Events</h2>
-                <p class="section-subtitle">Explore our exciting lineup of activities</p>
+                <h2 class="section-title" data-i18n="program-title">Academic Program</h2>
+                <p class="section-subtitle" data-i18n="program-subtitle">Select any schedule activity to view the summary and speaker details on the right</p>
             </div>
-            <div class="events-grid">
-                <div class="event-card">
-                    <div class="event-icon">
-                        <i class="fas fa-users"></i>
+
+            <div class="schedule-tabs" style="display: flex; justify-content: center; gap: 15px; margin-bottom: 25px;">
+                <button class="tab-btn active" id="tabWeek1Btn" onclick="switchWeek('week1')" data-i18n="tab-week1">Week 1: Outreach & Workshops</button>
+                <button class="tab-btn" id="tabWeek2Btn" onclick="switchWeek('week2')" data-i18n="tab-week2">Week 2: Advanced Topics & Hackathon</button>
+            </div>
+
+            <div class="two-col-grid" style="align-items: start;">
+                
+                <!-- Left: Schedule List -->
+                <div>
+                    <div id="week1-list">
+                        <div class="timeline-item active-event cat-keynote" onclick="showEventDetail('evt1', this)">
+                            <div class="timeline-time" data-i18n="evt1-time">Day 1 | 09:00</div>
+                            <div class="timeline-content-summary">
+                                <div class="timeline-title-row">
+                                    <h4 data-i18n="evt1-title">Opening & Keynote Speech</h4>
+                                    <span class="event-inline-tag" data-i18n="tag-keynote">Keynote</span>
+                                </div>
+                                <p><i class="fas fa-map-marker-alt" style="color: #d4bbff;"></i> <span data-i18n="auditorium-main">Main Auditorium</span></p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item cat-keynote" onclick="showEventDetail('evt2', this)">
+                            <div class="timeline-time" data-i18n="evt2-time">Day 1 | 11:00</div>
+                            <div class="timeline-content-summary">
+                                <div class="timeline-title-row">
+                                    <h4 data-i18n="evt2-title">Quantum Mechanics 101</h4>
+                                    <span class="event-inline-tag" data-i18n="tag-course">Course</span>
+                                </div>
+                                <p><i class="fas fa-map-marker-alt" style="color: #d4bbff;"></i> <span data-i18n="conference-hall">Conference Hall</span></p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item cat-workshop" onclick="showEventDetail('evt3', this)">
+                            <div class="timeline-time" data-i18n="evt3-time">Day 2 | 14:00</div>
+                            <div class="timeline-content-summary">
+                                <div class="timeline-title-row">
+                                    <h4 data-i18n="evt3-title">Workshop: Qiskit SDK 101</h4>
+                                    <span class="event-inline-tag" data-i18n="tag-workshop">Workshop</span>
+                                </div>
+                                <p><i class="fas fa-laptop" style="color: #38bdf8;"></i> <span data-i18n="computer-lab">Computer Lab</span></p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item cat-workshop" onclick="showEventDetail('evt4', this)">
+                            <div class="timeline-time" data-i18n="evt4-time">Day 3 | 14:00</div>
+                            <div class="timeline-content-summary">
+                                <div class="timeline-title-row">
+                                    <h4 data-i18n="evt4-title">Bloch Sphere & Quantum Gates</h4>
+                                    <span class="event-inline-tag" data-i18n="tag-workshop">Workshop</span>
+                                </div>
+                                <p><i class="fas fa-laptop" style="color: #38bdf8;"></i> <span data-i18n="computer-lab">Computer Lab</span></p>
+                            </div>
+                        </div>
                     </div>
-                    <h3>Event Name</h3>
-                    <p>Coming Soon.</p>
-                    <div class="event-meta">
-                        <span class="event-date">Evenings</span>
-                        <span class="event-duration">2 hours</span>
+
+                    <div id="week2-list" style="display: none;">
+                        <div class="timeline-item cat-keynote" onclick="showEventDetail('evt5', this)">
+                            <div class="timeline-time" data-i18n="evt5-time">Day 1 | 10:00</div>
+                            <div class="timeline-content-summary">
+                                <div class="timeline-title-row">
+                                    <h4 data-i18n="evt5-title">Grover's Algorithm & BKW</h4>
+                                    <span class="event-inline-tag" data-i18n="tag-talk">Tech Talk</span>
+                                </div>
+                                <p><i class="fas fa-map-marker-alt" style="color: #d4bbff;"></i> <span data-i18n="auditorium-main">Main Auditorium</span></p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item cat-hackathon" onclick="showEventDetail('evt6', this)">
+                            <div class="timeline-time" data-i18n="evt6-time">Day 2 | 09:00</div>
+                            <div class="timeline-content-summary">
+                                <div class="timeline-title-row">
+                                    <h4 data-i18n="evt6-title">Quantum Hackathon (Kickoff)</h4>
+                                    <span class="event-inline-tag" data-i18n="tag-hackathon">Hackathon</span>
+                                </div>
+                                <p><i class="fas fa-laptop" style="color: #f1c21b;"></i> <span data-i18n="computer-lab">Computer Lab</span></p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item cat-hackathon" onclick="showEventDetail('evt7', this)">
+                            <div class="timeline-time" data-i18n="evt7-time">Day 3 | 16:00</div>
+                            <div class="timeline-content-summary">
+                                <div class="timeline-title-row">
+                                    <h4 data-i18n="evt7-title">Closing & Awards Ceremony</h4>
+                                    <span class="event-inline-tag" data-i18n="tag-ceremony">Ceremony</span>
+                                </div>
+                                <p><i class="fas fa-trophy" style="color: #f1c21b;"></i> <span data-i18n="auditorium-main">Main Auditorium</span></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="event-card">
-                    <div class="event-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Event Name</h3>
-                    <p>Coming Soon.</p>
-                    <div class="event-meta">
-                        <span class="event-date">Evenings</span>
-                        <span class="event-duration">2 hours</span>
-                    </div>
-                </div>
-                <div class="event-card">
-                    <div class="event-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Event Name</h3>
-                    <p>Coming Soon.</p>
-                    <div class="event-meta">
-                        <span class="event-date">Evenings</span>
-                        <span class="event-duration">2 hours</span>
-                    </div>
-                </div>
-                <div class="event-card">
-                    <div class="event-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Event Name</h3>
-                    <p>Coming Soon.</p>
-                    <div class="event-meta">
-                        <span class="event-date">Evenings</span>
-                        <span class="event-duration">2 hours</span>
+
+                <!-- Right: Dynamic Detail -->
+                <div>
+                    <div class="event-detail-card" id="detailCard">
+                        <span id="detailBadge" class="call-badge">Keynote</span>
+                        <h3 id="detailTitle" style="margin: 10px 0 6px 0; font-size: 1.35rem; color: #ffffff;">Opening & Keynote Speech</h3>
+                        <p id="detailLocation" style="color: #d4bbff; font-size: 0.9rem; margin-bottom: 14px;"><i class="fas fa-map-marker-alt"></i> Main Auditorium | Day 1 - 09:00 AM</p>
+                        
+                        <p id="detailDescription" style="font-size: 0.95rem; line-height: 1.6; color: var(--text-secondary);">
+                            Official opening of Qiskit Fall Fest 2026. Keynote lecture on global advances in IBM Quantum processors, scientific roadmap, and research opportunities for Latin America.
+                        </p>
+
+                        <div class="speaker-detail-box">
+                            <img src="Qiskit_logo.png" id="detailSpeakerImg" class="speaker-detail-avatar" alt="Speaker Photo">
+                            <div>
+                                <h4 id="detailSpeakerName" style="margin: 0; font-size: 0.98rem; color: #ffffff;">Guest Speaker</h4>
+                                <p id="detailSpeakerRole" style="margin: 2px 0 0 0; font-size: 0.82rem; color: var(--text-muted);">Quantum Information Researcher</p>
+                            </div>
+                        </div>
+
+                        <div id="detailLinks" style="display: flex; gap: 12px; margin-top: 20px; justify-content: center;">
+                            <a href="#" id="detailLinkSlides" target="_blank" class="btn btn-secondary" style="font-size: 0.85rem; padding: 10px 16px;"><i class="fas fa-file-pdf"></i> <span data-i18n="btn-slides">Slides / Materials</span></a>
+                            <a href="TU_ENLACE_DE_FORMULARIO" class="btn btn-primary" style="font-size: 0.85rem; padding: 10px 16px;"><i class="fas fa-check-circle"></i> <span data-i18n="btn-reserve">Reserve Seat</span></a>
+                        </div>
                     </div>
                 </div>
-                <div class="event-card">
-                    <div class="event-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Event Name</h3>
-                    <p>Coming Soon.</p>
-                    <div class="event-meta">
-                        <span class="event-date">Evenings</span>
-                        <span class="event-duration">2 hours</span>
-                    </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. CALL FOR PAPERS -->
+    <section id="cfp" style="padding: 60px 0; background: var(--ibm-section-alt);">
+        <div class="container">
+            <div class="call-section">
+                <div class="section-header" style="margin-bottom: 30px;">
+                    <span class="call-badge"><i class="fas fa-microphone-alt"></i> Call for Proposals</span>
+                    <h2 class="section-title" data-i18n="cfp-title">Short Talks & Poster Session</h2>
+                    <p class="section-subtitle" data-i18n="cfp-subtitle">Scientific outreach space for students, semilleros, and early-career researchers</p>
                 </div>
-                <div class="event-card">
-                    <div class="event-icon">
-                        <i class="fas fa-users"></i>
+
+                <div class="two-col-grid" style="align-items: center;">
+                    <div>
+                        <p style="font-size: 0.98rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 18px;" data-i18n="cfp-desc">
+                            We invite undergraduate, graduate students, and research group members to submit proposals in two modalities: <strong>Short Talks (25 min)</strong> or <strong>Poster Session</strong> during networking franjas.
+                        </p>
+                        <ul style="list-style: none; padding: 0; margin: 0; color: var(--text-secondary); font-size: 0.92rem;">
+                            <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--ibm-light-purple); margin-right: 10px;"></i> <span data-i18n="cfp-t1">Quantum Computing & Information</span></li>
+                            <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--ibm-light-purple); margin-right: 10px;"></i> <span data-i18n="cfp-t2">Algorithms & Practical Development with Qiskit</span></li>
+                            <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--ibm-light-purple); margin-right: 10px;"></i> <span data-i18n="cfp-t3">Computational Physics, Simulation & Quantum Cryptography</span></li>
+                        </ul>
                     </div>
-                    <h3>Event Name</h3>
-                    <p>Coming Soon.</p>
-                    <div class="event-meta">
-                        <span class="event-date">Evenings</span>
-                        <span class="event-duration">2 hours</span>
+
+                    <div style="text-align: center; background: rgba(0, 0, 0, 0.35); padding: 30px; border-radius: 6px; border: 1px solid var(--ibm-border); display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <i class="fas fa-chalkboard-teacher" style="font-size: 2.6rem; color: #d4bbff; margin-bottom: 12px; display: block;"></i>
+                        <h3 style="font-size: 1.2rem; color: #ffffff; margin-bottom: 6px;" data-i18n="cfp-box-head">Submit Your Proposal</h3>
+                        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 20px;" data-i18n="cfp-box-sub">
+                            Present your research project or work in progress to the community.
+                        </p>
+                        <a href="TU_FORMULARIO_DE_CHARLAS_CORTAS" target="_blank" class="btn btn-primary" style="display: inline-block; width: 100%; text-align: center; box-sizing: border-box; padding: 12px;">
+                            <i class="fas fa-paper-plane"></i> <span data-i18n="cfp-btn">Submission Form (Talk / Poster)</span>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Speakers Section -->
-    <!-- Guests Section -->
-<!-- Speakers Section --> <section id="speakers" class="speakers"> 
-    <div class="container"> <div class="section-header"> 
-        <h2 class="section-title">Featured Speakers</h2> 
-        <p class="section-subtitle">Meet our distinguished speakers and experts</p>
-    </div> <div class="speakers-grid"> <div class="speaker-card">
-        <div class="speaker-image"> 
-            <img src="Qiskit_logo.png" alt="Speaker 1">
-        </div>
-        <div class="speaker-info">
-            <h3>Speaker 1</h3>
-            <p class="speaker-title">Speaker Details</p>
-            <p class="speaker-bio">Coming Soon</p>
-            <div class="speaker-social">
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-            </div>
-        </div>
-    </div>
-        <div class="speaker-card">
-            <div class="speaker-image">
-                <img src="Qiskit_logo.png" alt="Speaker 2">
-            </div> <div class="speaker-info">
-                <h3>Speaker 2</h3>
-                <p class="speaker-title">Speaker Details</p>
-                <p class="speaker-bio">Coming Soon</p>
-                <div class="speaker-social">
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="speaker-card"> <div class="speaker-image">
-            <img src="Qiskit_logo.png" alt="Speaker 3">
-        </div> <div class="speaker-info">
-            <h3>Speaker 3</h3>
-            <p class="speaker-title">Speaker Details</p>
-            <p class="speaker-bio">Coming Soon</p>
-            <div class="speaker-social">
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-            </div>
-        </div>
-        </div>
-    </div>
-    </div>
-</section>
+    <!-- 6. SPEAKERS -->
+    <section id="speakers" class="speakers" style="padding: 60px 0; background: var(--ibm-dark-bg);"> 
+        <div class="container"> 
+            <div class="section-header"> 
+                <h2 class="section-title" data-i18n="speakers-title">Speakers & Special Guests</h2> 
+                <p class="section-subtitle" data-i18n="speakers-subtitle">Researchers, professors, and specialists in quantum science</p>
+            </div> 
 
-    
-    <!-- Schedule Section -->
-    <section id="schedule" class="schedule">
+            <div class="carousel-wrapper" style="position: relative; display: flex; align-items: center;">
+              
+              <button class="carousel-btn" id="speakerPrevBtn" style="position: absolute; left: -15px; z-index: 10; background: var(--ibm-purple); color: white; border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer;">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+
+              <div class="carousel-track-container" style="overflow: hidden; width: 100%; margin: 0 30px;">
+                <div class="speakers-grid carousel-track" id="speakerTrack" style="display: flex; transition: transform 0.4s ease-in-out; gap: 20px;">
+                  
+                  <div class="speaker-card speaker-item" style="flex: 0 0 calc(50% - 10px); min-width: 260px; box-sizing: border-box; padding: 25px;">
+                    <div class="speaker-image" style="display: flex; justify-content: center;"> 
+                        <img src="Qiskit_logo.png" alt="Guest Speaker">
+                    </div>
+                    <div class="speaker-info" style="text-align: center;">
+                        <h3 data-i18n="spk1-name">Confirmed Speaker 1</h3>
+                        <p class="speaker-title" data-i18n="spk1-role">Quantum Information Researcher</p>
+                        <p class="speaker-bio" data-i18n="spk-bio-placeholder">Details on talk and research lines coming soon.</p>
+                    </div>
+                  </div>
+
+                  <div class="speaker-card speaker-item" style="flex: 0 0 calc(50% - 10px); min-width: 260px; box-sizing: border-box; padding: 25px;">
+                    <div class="speaker-image" style="display: flex; justify-content: center;">
+                        <img src="Qiskit_logo.png" alt="Guest Speaker">
+                    </div> 
+                    <div class="speaker-info" style="text-align: center;">
+                        <h3 data-i18n="spk2-name">Confirmed Speaker 2</h3>
+                        <p class="speaker-title" data-i18n="spk2-role">Quantum Computing Specialist</p>
+                        <p class="speaker-bio" data-i18n="spk-bio-placeholder">Details on talk and research lines coming soon.</p>
+                    </div>
+                  </div>
+
+                  <div class="speaker-card speaker-item" style="flex: 0 0 calc(50% - 10px); min-width: 260px; box-sizing: border-box; padding: 25px;">
+                    <div class="speaker-image" style="display: flex; justify-content: center;">
+                        <img src="Qiskit_logo.png" alt="Guest Speaker">
+                    </div> 
+                    <div class="speaker-info" style="text-align: center;">
+                        <h3 data-i18n="spk3-name">Guest Professor / Researcher 3</h3>
+                        <p class="speaker-title" data-i18n="spk3-role">Computational Physics & Algorithms</p>
+                        <p class="speaker-bio" data-i18n="spk-bio-placeholder">Details on talk and research lines coming soon.</p>
+                    </div>
+                  </div>
+
+                  <div class="speaker-card speaker-item" style="flex: 0 0 calc(50% - 10px); min-width: 260px; box-sizing: border-box; padding: 25px;">
+                    <div class="speaker-image" style="display: flex; justify-content: center;">
+                        <img src="Qiskit_logo.png" alt="Guest Speaker">
+                    </div> 
+                    <div class="speaker-info" style="text-align: center;">
+                        <h3 data-i18n="spk4-name">Quantum Hackathon Mentor 4</h3>
+                        <p class="speaker-title" data-i18n="spk4-role">Qiskit SDK Specialist</p>
+                        <p class="speaker-bio" data-i18n="spk4-bio">Direct mentoring to teams during the in-person challenge.</p>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <button class="carousel-btn next-btn" id="speakerNextBtn" style="position: absolute; right: -15px; z-index: 10; background: var(--ibm-purple); color: white; border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer;">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. ORGANIZING COMMITTEE -->
+    <section id="organizers" class="speakers" style="padding: 60px 0; background: var(--ibm-section-alt);">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title" data-i18n="org-title">Organizing Committee</h2>
+          <p class="section-subtitle">Node Universidad Distrital Francisco José de Caldas</p>
+        </div>
+
+        <div class="carousel-wrapper" style="position: relative; display: flex; align-items: center;">
+          <button class="carousel-btn prev-btn" id="prevBtn" aria-label="Previous" style="position: absolute; left: -15px; z-index: 10; background: var(--ibm-purple); color: white; border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer;">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+
+          <div class="carousel-track-container" style="overflow: hidden; width: 100%; margin: 0 30px;">
+            <div class="speakers-grid carousel-track" id="teamTrack" style="display: flex; transition: transform 0.4s ease-in-out; gap: 20px;">
+              
+              <div class="speaker-card team-card" style="flex: 0 0 calc(33.333% - 14px); min-width: 250px; box-sizing: border-box; padding: 25px;">
+                <div class="speaker-image" style="display: flex; justify-content: center;">
+                  <img src="qiskit-logo-bottom.PNG" alt="Juan David de los Ríos Mahecha">
+                </div>
+                <div class="speaker-info" style="text-align: center;">
+                  <h3>Juan David de los Ríos Mahecha</h3>
+                  <p class="speaker-title">Lead Organizer & Qiskit Advocate</p>
+                  <div class="speaker-social">
+                    <a href="mailto:juandelosriosquantum@gmail.com"><i class="fas fa-envelope"></i></a>
+                    <a href="https://github.com/juandaviddelosriosmahecha" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/juan-david-de-los-rios-mahecha-60a427347/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="speaker-card team-card" style="flex: 0 0 calc(33.333% - 14px); min-width: 250px; box-sizing: border-box; padding: 25px;"><div class="speaker-image" style="display: flex; justify-content: center;"><img src="qiskit-logo-bottom.PNG" alt="Co-organizer"></div><div class="speaker-info" style="text-align: center;"><h3>Co-organizer 2</h3><p class="speaker-title" data-i18n="coorg-role">Official Co-organizer</p></div></div>
+              <div class="speaker-card team-card" style="flex: 0 0 calc(33.333% - 14px); min-width: 250px; box-sizing: border-box; padding: 25px;"><div class="speaker-image" style="display: flex; justify-content: center;"><img src="qiskit-logo-bottom.PNG" alt="Co-organizer"></div><div class="speaker-info" style="text-align: center;"><h3>Co-organizer 3</h3><p class="speaker-title" data-i18n="coorg-role">Official Co-organizer</p></div></div>
+              <div class="speaker-card team-card" style="flex: 0 0 calc(33.333% - 14px); min-width: 250px; box-sizing: border-box; padding: 25px;"><div class="speaker-image" style="display: flex; justify-content: center;"><img src="qiskit-logo-bottom.PNG" alt="Co-organizer"></div><div class="speaker-info" style="text-align: center;"><h3>Co-organizer 4</h3><p class="speaker-title" data-i18n="coorg-role">Official Co-organizer</p></div></div>
+              <div class="speaker-card team-card" style="flex: 0 0 calc(33.333% - 14px); min-width: 250px; box-sizing: border-box; padding: 25px;"><div class="speaker-image" style="display: flex; justify-content: center;"><img src="qiskit-logo-bottom.PNG" alt="Co-organizer"></div><div class="speaker-info" style="text-align: center;"><h3>Co-organizer 5</h3><p class="speaker-title" data-i18n="coorg-role">Official Co-organizer</p></div></div>
+              <div class="speaker-card team-card" style="flex: 0 0 calc(33.333% - 14px); min-width: 250px; box-sizing: border-box; padding: 25px;"><div class="speaker-image" style="display: flex; justify-content: center;"><img src="qiskit-logo-bottom.PNG" alt="Co-organizer"></div><div class="speaker-info" style="text-align: center;"><h3>Co-organizer 6</h3><p class="speaker-title" data-i18n="coorg-role">Official Co-organizer</p></div></div>
+              <div class="speaker-card team-card" style="flex: 0 0 calc(33.333% - 14px); min-width: 250px; box-sizing: border-box; padding: 25px;"><div class="speaker-image" style="display: flex; justify-content: center;"><img src="qiskit-logo-bottom.PNG" alt="Co-organizer"></div><div class="speaker-info" style="text-align: center;"><h3>Co-organizer 7</h3><p class="speaker-title" data-i18n="coorg-role">Official Co-organizer</p></div></div>
+              <div class="speaker-card team-card" style="flex: 0 0 calc(33.333% - 14px); min-width: 250px; box-sizing: border-box; padding: 25px;"><div class="speaker-image" style="display: flex; justify-content: center;"><img src="qiskit-logo-bottom.PNG" alt="Co-organizer"></div><div class="speaker-info" style="text-align: center;"><h3>Co-organizer 8</h3><p class="speaker-title" data-i18n="coorg-role">Official Co-organizer</p></div></div>
+
+            </div>
+          </div>
+
+          <button class="carousel-btn next-btn" id="nextBtn" aria-label="Next" style="position: absolute; right: -15px; z-index: 10; background: var(--ibm-purple); color: white; border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer;">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. LOCATION SECTION -->
+    <section id="location" class="about" style="padding: 60px 0; background: var(--ibm-dark-bg);">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Event Schedule</h2>
-                <p class="section-subtitle">Plan your Qiskit Fall Fest experience</p>
-            </div>
-            <div class="schedule-tabs">
-                <button class="tab-btn active" data-day="day1">Day 01</button>
-                <button class="tab-btn" data-day="day2">Day 02</button>
-                <button class="tab-btn" data-day="day3">Day 03</button>
+                <h2 class="section-title" data-i18n="loc-title">Event Location</h2>
+                <p class="section-subtitle">Faculty of Mathematical and Natural Sciences – Universidad Distrital Francisco José de Caldas</p>
             </div>
 
-            <div class="schedule-content">
-                <div class="schedule-day active" id="day1">
-                    <div class="schedule-item">
-                        <div class="schedule-time">18:30 - 19:00</div>
-                        <div class="schedule-event">
-                            <h4>Opening Ceremony</h4>
-                            <p>To be updated</p>
-                        </div>
-                    </div>
-                    <div class="schedule-item">
-                        <div class="schedule-time">19:00 - 20:30</div>
-                        <div class="schedule-event">
-                            <h4>Keynote Session</h4>
-                            <p>To be updated</p>
-                        </div>
-                    </div>
+            <div class="two-col-grid" style="align-items: center;">
+                <div class="event-card" style="padding: 30px; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; text-align: center;">
+                    <h3 style="color: #ffffff; margin-bottom: 14px; font-size: 1.3rem;"><i class="fas fa-map-marked-alt" style="color: var(--ibm-light-purple); margin-right: 8px;"></i> <span data-i18n="loc-venue-head">Venue</span></h3>
+                    <p style="margin-bottom: 12px; font-size: 1.05rem; color: #ffffff;">
+                        <strong>Sede Fundadores – Universidad Autónoma de Colombia</strong>
+                    </p>
+                    <p style="margin-bottom: 12px; color: var(--text-secondary);" data-i18n="loc-venue-desc">
+                        <i class="fas fa-compass" style="color: var(--ibm-light-purple);"></i> Central location near <strong>Plaza de Bolívar</strong>, Historic Center of Bogotá.
+                    </p>
+                    <p style="margin-bottom: 20px; color: var(--text-muted); font-size: 0.9rem;" data-i18n="loc-transit">
+                        <i class="fas fa-bus" style="color: var(--ibm-light-purple);"></i> Easy access via TransMilenio stations (Museo del Oro, Las Aguas, San Victorino).
+                    </p>
+                    <a href="https://maps.google.com/?q=Universidad+Autonoma+de+Colombia+Sede+Fundadores+Bogota" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="display: inline-block; text-align: center; padding: 12px;">
+                        <i class="fas fa-directions"></i> <span data-i18n="btn-maps">Open Location in Google Maps</span>
+                    </a>
                 </div>
-                <div class="schedule-day" id="day2">
-                    <div class="schedule-item">
-                        <div class="schedule-time">9:00 - 10:30</div>
-                        <div class="schedule-event">
-                            <h4>Quantum Computing 101</h4>
-                            <p>Basics of Quantum Computing along with Quiz</p>
-                        </div>
-                    </div>
-                    <div class="schedule-item">
-                        <div class="schedule-time">10:30 - 12:00</div>
-                        <div class="schedule-event">
-                            <h4>Qiskit 101</h4>
-                            <p>Fundamentals of Qiskit using Hands-on Notebook</p>
-                        </div>
-                    </div>
-                    <div class="schedule-item">
-                        <div class="schedule-time">14:00 - 15:30</div>
-                        <div class="schedule-event">
-                            <h4>Hands-On Session</h4>
-                            <p>To be updated</p>
-                        </div>
-                    </div>
-                    <div class="schedule-item">
-                        <div class="schedule-time">16:00 - 16:45</div>
-                        <div class="schedule-event">
-                            <h4>Workshop</h4>
-                            <p>Topics related to Hackathon 1</p>
-                        </div>
-                    </div>
-                    <div class="schedule-item">
-                        <div class="schedule-time">16:45 - 17:30</div>
-                        <div class="schedule-event">
-                            <h4>Keynote Session 2</h4>
-                            <p>Virtual Session by our Esteemed Speaker</p>
-                        </div>
-                    </div>
-                    <div class="schedule-item">
-                        <div class="schedule-time">23:59 (EOD)</div>
-                        <div class="schedule-event">
-                            <h4>Hackathon 1 Submission</h4>
-                            <p>To be updated</p>
-                        </div>
-                    </div>
+
+                <div style="border-radius: 8px; overflow: hidden; border: 1px solid var(--ibm-border); height: 340px;">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.9188049103253!2d-74.07548232418386!3d4.599602395375086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f99a0f020bb29%3A0x6b7495d4d33eb0c9!2sUniversidad%20Aut%C3%B3noma%20de%20Colombia%20-%20Sede%20Fundadores!5e0!3m2!1ses!2sco!4v1710000000000!5m2!1ses!2sco" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
                 </div>
-                <div class="schedule-day" id="day3">
-                    <div class="schedule-item">
-                        <div class="schedule-time">9:00 - 10:30</div>
-                        <div class="schedule-event">
-                            <h4>Notebook 3</h4>
-                            <p>To be updated</p>
-                        </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. TECHNICAL REQUIREMENTS & FAQ -->
+    <section id="faq" class="events" style="padding: 60px 0; background: var(--ibm-section-alt);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-i18n="faq-title">Technical Requirements & FAQ</h2>
+                <p class="section-subtitle" data-i18n="faq-subtitle">Key information for festival attendees</p>
+            </div>
+            
+            <div class="two-col-grid" style="align-items: center;">
+                <div class="event-card" style="padding: 30px; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center;">
+                    <h3 style="font-size: 1.2rem; color: #ffffff;"><i class="fas fa-laptop-code" style="color: var(--ibm-light-purple); margin-right: 8px;"></i> <span data-i18n="faq-python-head">Recommended Python Environment</span></h3>
+                    <p style="font-size: 0.9rem; margin-top: 10px; color: var(--text-secondary);" data-i18n="faq-python-desc">We recommend bringing your laptop for practical workshops. You can prepare your environment by running:</p>
+                    <pre style="background: #06080c; color: #38bdf8; padding: 14px; border-radius: 4px; margin-top: 14px; border: 1px solid var(--ibm-border); overflow-x: auto; font-size: 0.85rem;">pip install qiskit qiskit-ibm-runtime matplotlib</pre>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 14px;">
+                    <div class="event-card" style="padding: 18px 22px;">
+                        <h4 style="margin: 0 0 4px 0; color: #ffffff;" data-i18n="faq-q1">Is registration free?</h4>
+                        <p style="margin: 0; font-size: 0.88rem; color: var(--text-secondary);" data-i18n="faq-a1">Yes, participation is 100% free with prior registration.</p>
                     </div>
-                    <div class="schedule-item">
-                        <div class="schedule-time">10:30 - 12:00</div>
-                        <div class="schedule-event">
-                            <h4>Notebook 4</h4>
-                            <p>To be updated</p>
-                        </div>
+
+                    <div class="event-card" style="padding: 18px 22px;">
+                        <h4 style="margin: 0 0 4px 0; color: #ffffff;" data-i18n="faq-q2">Are academic certificates provided?</h4>
+                        <p style="margin: 0; font-size: 0.88rem; color: var(--text-secondary);" data-i18n="faq-a2">Yes, a formal attendance certificate will be issued after the event.</p>
                     </div>
-                    <div class="schedule-item">
-                        <div class="schedule-time">14:00 - 15:00</div>
-                        <div class="schedule-event">
-                            <h4>Workshop</h4>
-                            <p>Topics related to Hackathon 2</p>
-                        </div>
-                    </div>
-                    <div class="schedule-item">
-                        <div class="schedule-time">15:00 - 17:30</div>
-                        <div class="schedule-event">
-                            <h4>Hackathon 2</h4>
-                            <p>To be updated</p>
-                        </div>
-                    </div>
-                    <div class="schedule-item">
-                        <div class="schedule-time">17:30 - 18:00</div>
-                        <div class="schedule-event">
-                            <h4>Closing Ceremony</h4>
-                            <p>To be updated</p>
-                        </div>
+
+                    <div class="event-card" style="padding: 18px 22px;">
+                        <h4 style="margin: 0 0 4px 0; color: #ffffff;" data-i18n="faq-q3">Is advanced prior knowledge required?</h4>
+                        <p style="margin: 0; font-size: 0.88rem; color: var(--text-secondary);" data-i18n="faq-a3">Not mandatory. Week 1 covers introductory topics from scratch.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
-<!-- Contact Us Section -->
-<section id="contact" class="speakers">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Contact Us</h2>
-      <p class="section-subtitle">QT IITG</p>
-    </div>
-    <div class="speakers-grid">
-      
-      <!-- Team Member 1 -->
-      <div class="speaker-card">
-        <div class="speaker-image">
-          <img src="qiskit-logo-bottom.PNG" alt="Venkat Sai Teja Kalluri">
-        </div>
-        <div class="speaker-info">
-          <h3>Venkat Sai Teja Kalluri</h3>
-          <p class="speaker-title">Lead Organizer</p>
-          <div class="speaker-social">
-            <a href="tel:+91 93819 75696"><i class="fas fa-phone"></i></a>
-            <a href="mailto:t.kalluri@iitg.ac.in"><i class="fas fa-envelope"></i></a>
-          </div>
-        </div>
-      </div>
 
-      <!-- Team Member 2 -->
-      <div class="speaker-card">
-        <div class="speaker-image">
-          <img src="qiskit-logo-bottom.PNG" alt="Bhavesh Chamaria">
-        </div>
-        <div class="speaker-info">
-          <h3>Bhavesh Chamaria</h3>
-          <p class="speaker-title">Organizer</p>
-          <div class="speaker-social">
-            <a href="tel:+91 93651 59554"><i class="fas fa-phone"></i></a>
-            <a href="mailto:c.bhavesh@iitg.ac.in"><i class="fas fa-envelope"></i></a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Team Member 3 -->
-      <div class="speaker-card">
-        <div class="speaker-image">
-          <img src="qiskit-logo-bottom.PNG" alt="Daksh Kumar Sambhare">
-        </div>
-        <div class="speaker-info">
-          <h3>Daksh Kumar Sambhare</h3>
-          <p class="speaker-title">Organizer</p>
-          <div class="speaker-social">
-            <a href="tel:+91 93011 62391"><i class="fas fa-phone"></i></a>
-            <a href="mailto:d.sambhare@iitg.ac.in"><i class="fas fa-envelope"></i></a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-    <!-- Footer -->
+    <!-- 10. FOOTER -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="footer-logo">
                         <div class="footer-logos">
-                            <img src="qiskit-logo-bottom.PNG" alt="QT IITG Logo" class="footer-logo-img qt-logo">
+                            <img src="qiskit-logo-bottom.PNG" alt="SPSUMM / UD Logo" class="footer-logo-img qt-logo">
                             <img src="Qiskit_logo.png" alt="Qiskit Logo" class="footer-logo-img ibm-logo">
-
-                            <div class="footer-logo">
- 
-
-<!--                             <div class="footer-logo">
-                       <div class="footer-logos">
-                            <img src="qiskit-logo-bottom.PNG" alt="QT IITG Logo" class="footer-logo-img">
-                            <img src="Qiskit_logo.png" alt="IBM Qiskit Logo" class="footer-logo-img">
-                      </div> -->
-<!--                       <h3>Qiskit Fall Fest 2025</h3> -->
-                      </div>
-
                         </div>
                     </div>
-                    <h3 class="footer-heading">Qiskit Fall Fest 2025 – IIT Guwahati</h3>
-                    <p>Celebrating quantum computing innovation at IIT Guwahati.</p>
+                    <h3 class="footer-heading">Qiskit Fall Fest 2026 – Universidad Distrital</h3>
+                    <p data-i18n="footer-tagline">Promoting education and research in quantum science and information in Colombia.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-discord"></i></a>
-                        <a href="https://github.com/qt-iitg"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/company/qt-iitg/"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://www.instagram.com/qt_iitg/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://github.com/juandaviddelosriosmahecha" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/juan-david-de-los-rios-mahecha-60a427347/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
                 <div class="footer-section">
-                    <h4>Quick Links</h4>
+                    <h4 data-i18n="footer-links-head">Quick Links</h4>
                     <ul>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#events">Events</a></li>
-                        <li><a href="#speakers">Speakers</a></li>
-                        <li><a href="#schedule">Schedule</a></li>
-                        <li><a href="https://forms.gle/jp25xTBf2LrYW3sQ6">Register</a></li>
+                        <li><a href="#about" data-i18n="nav-about">About Us</a></li>
+                        <li><a href="#collaborators" data-i18n="nav-collaborators">Sponsors & Collaborators</a></li>
+                        <li><a href="#program" data-i18n="nav-program">Program</a></li>
+                        <li><a href="#cfp" data-i18n="nav-cfp">Short Talks & Posters</a></li>
+                        <li><a href="#speakers" data-i18n="nav-speakers">Speakers</a></li>
+                        <li><a href="#organizers" data-i18n="nav-organizers">Organizers</a></li>
+                        <li><a href="#location" data-i18n="nav-location">Location</a></li>
+                        <li><a href="#faq" data-i18n="nav-faq">FAQ</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Contact Info</h4>
-                    <p><i class="fas fa-map-marker-alt"></i> IIT Guwahati</p>
-                    <p><i class="fas fa-envelope"></i> qt.iitg@gmail.com</p>
+                    <h4 data-i18n="footer-contact-head">Location & Contact</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Faculty of Mathematical and Natural Sciences, UD</p>
+                    <p><i class="fas fa-building"></i> Sede Fundadores - Univ. Autónoma, Bogotá</p>
+                    <p><i class="fas fa-envelope"></i> juandelosriosquantum@gmail.com</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; QT IITG. All rights reserved.</p>
+                <p>&copy; 2026 Qiskit Fall Fest Node Universidad Distrital. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Script now in root --> 
+    <!-- Scripts --> 
     <script src="main.js"></script>
     <script>
-// Smooth scroll for all internal links
+// Diccionario de Traducciones (i18n)
+const translations = {
+  en: {
+    "nav-home": "Home",
+    "menu-event": "Event",
+    "menu-program": "Program & Calls",
+    "menu-people": "People",
+    "nav-about": "About Us",
+    "nav-collaborators": "Sponsors & Collaborators",
+    "nav-program": "Academic Program",
+    "nav-cfp": "Short Talks & Posters",
+    "nav-speakers": "Speakers & Mentors",
+    "nav-organizers": "Organizing Committee",
+    "nav-location": "Location",
+    "nav-faq": "FAQ",
+    "btn-register-nav": "Register",
+    "hero-node": "Bogota Node, Colombia",
+    "hero-date": "October 2026 | In-Person Mode",
+    "hero-desc": "Academic and research gathering in quantum computing and information. Two weeks of keynote lectures, hands-on workshops with Qiskit SDK, poster sessions, and an in-person challenge at Universidad Distrital.",
+    "btn-register": "Register for Free",
+    "btn-program": "View Academic Program",
+    "cd-title": "Countdown to Event",
+    "cd-subtitle": "Get ready for October 2026",
+    "cd-days": "Days",
+    "cd-hours": "Hours",
+    "cd-minutes": "Minutes",
+    "cd-seconds": "Seconds",
+    "about-title": "About the Festival & Scope",
+    "about-subtitle": "Fostering education and research in quantum technologies in Colombia",
+    "about-framework-head": "Academic Framework",
+    "about-p1": "The <strong>Qiskit Fall Fest 2026</strong> at Universidad Distrital Francisco José de Caldas is part of the global network of events supported by <strong>IBM Quantum</strong> to strengthen scientific and technological capabilities in quantum information.",
+    "about-p2": "Co-organized by the team of co-organizers and the <strong>SPSUMM</strong> research group (Simulation of Physical Systems Using Multiscale Methods), this in-person event brings together physics, mathematics, and engineering students.",
+    "impact-attendees": "Expected Attendees",
+    "impact-weeks-unit": "Weeks",
+    "impact-training": "Academic Training",
+    "impact-challenge": "Qiskit Challenge",
+    "impact-cert": "Official Certification",
+    "collab-title": "Sponsors & Collaborators",
+    "collab-subtitle": "Organizations, cloud platforms, and communities supporting our quantum node",
+    "program-title": "Academic Program",
+    "program-subtitle": "Select any schedule activity to view the summary and speaker details on the right",
+    "tab-week1": "Week 1: Outreach & Workshops",
+    "tab-week2": "Week 2: Advanced Topics & Hackathon",
+    "auditorium-main": "Main Auditorium",
+    "conference-hall": "Conference Hall",
+    "computer-lab": "Computer Lab",
+    "tag-keynote": "Keynote",
+    "tag-course": "Course",
+    "tag-workshop": "Workshop",
+    "tag-talk": "Tech Talk",
+    "tag-hackathon": "Hackathon",
+    "tag-ceremony": "Ceremony",
+    "evt1-time": "Day 1 | 09:00",
+    "evt1-title": "Opening & Keynote Speech",
+    "evt2-time": "Day 1 | 11:00",
+    "evt2-title": "Quantum Mechanics 101",
+    "evt3-time": "Day 2 | 14:00",
+    "evt3-title": "Workshop: Qiskit SDK 101",
+    "evt4-time": "Day 3 | 14:00",
+    "evt4-title": "Bloch Sphere & Quantum Gates",
+    "evt5-time": "Day 1 | 10:00",
+    "evt5-title": "Grover's Algorithm & BKW",
+    "evt6-time": "Day 2 | 09:00",
+    "evt6-title": "Quantum Hackathon (Kickoff)",
+    "evt7-time": "Day 3 | 16:00",
+    "evt7-title": "Closing & Awards Ceremony",
+    "btn-slides": "Slides / Materials",
+    "btn-reserve": "Reserve Seat",
+    "cfp-title": "Short Talks & Poster Session",
+    "cfp-subtitle": "Scientific outreach space for students, semilleros, and early-career researchers",
+    "cfp-desc": "We invite undergraduate, graduate students, and research group members to submit proposals in two modalities: <strong>Short Talks (25 min)</strong> or <strong>Poster Session</strong> during networking franjas.",
+    "cfp-t1": "Quantum Computing & Information",
+    "cfp-t2": "Algorithms & Practical Development with Qiskit",
+    "cfp-t3": "Computational Physics, Simulation & Quantum Cryptography",
+    "cfp-box-head": "Submit Your Proposal",
+    "cfp-box-sub": "Present your research project or work in progress to the community.",
+    "cfp-btn": "Submission Form (Talk / Poster)",
+    "speakers-title": "Speakers & Special Guests",
+    "speakers-subtitle": "Researchers, professors, and specialists in quantum science",
+    "spk1-name": "Confirmed Speaker 1",
+    "spk1-role": "Quantum Information Researcher",
+    "spk2-name": "Confirmed Speaker 2",
+    "spk2-role": "Quantum Computing Specialist",
+    "spk3-name": "Guest Professor / Researcher 3",
+    "spk3-role": "Computational Physics & Algorithms",
+    "spk4-name": "Quantum Hackathon Mentor 4",
+    "spk4-role": "Qiskit SDK Specialist",
+    "spk-bio-placeholder": "Details on talk and research lines coming soon.",
+    "spk4-bio": "Direct mentoring to teams during the in-person challenge.",
+    "loc-title": "Event Location",
+    "loc-venue-head": "Venue",
+    "loc-venue-desc": "<i class=\"fas fa-compass\" style=\"color: var(--ibm-light-purple);\"></i> Central location near <strong>Plaza de Bolívar</strong>, Historic Center of Bogotá.",
+    "loc-transit": "<i class=\"fas fa-bus\" style=\"color: var(--ibm-light-purple);\"></i> Easy access via TransMilenio stations (Museo del Oro, Las Aguas, San Victorino).",
+    "btn-maps": "Open Location in Google Maps",
+    "faq-title": "Technical Requirements & FAQ",
+    "faq-subtitle": "Key information for festival attendees",
+    "faq-python-head": "Recommended Python Environment",
+    "faq-python-desc": "We recommend bringing your laptop for practical workshops. You can prepare your environment by running:",
+    "faq-q1": "Is registration free?",
+    "faq-a1": "Yes, participation is 100% free with prior registration.",
+    "faq-q2": "Are academic certificates provided?",
+    "faq-a2": "Yes, a formal attendance certificate will be issued after the event.",
+    "faq-q3": "Is advanced prior knowledge required?",
+    "faq-a3": "Not mandatory. Week 1 covers introductory topics from scratch.",
+    "org-title": "Organizing Committee",
+    "coorg-role": "Official Co-organizer",
+    "footer-tagline": "Promoting education and research in quantum science and information in Colombia.",
+    "footer-links-head": "Quick Links",
+    "footer-contact-head": "Location & Contact"
+  },
+  es: {
+    "nav-home": "Inicio",
+    "menu-event": "Evento",
+    "menu-program": "Programa & Convocatoria",
+    "menu-people": "Personas",
+    "nav-about": "Nosotros",
+    "nav-collaborators": "Patrocinadores & Colaboradores",
+    "nav-program": "Programa Académico",
+    "nav-cfp": "Charlas Cortas & Pósteres",
+    "nav-speakers": "Ponentes & Mentores",
+    "nav-organizers": "Comité Organizador",
+    "nav-location": "Ubicación",
+    "nav-faq": "FAQ",
+    "btn-register-nav": "Inscribirse",
+    "hero-node": "Nodo Bogotá, Colombia",
+    "hero-date": "Octubre 2026 | Modalidad Presencial",
+    "hero-desc": "Encuentro académico e investigación en computación e información cuántica. Dos semanas de conferencias magistrales, talleres prácticos con Qiskit SDK, sesión de pósteres y reto presencial en la Universidad Distrital.",
+    "btn-register": "Inscríbete Gratis",
+    "btn-program": "Ver Programa Académico",
+    "cd-title": "Cuenta Regresiva",
+    "cd-subtitle": "Prepárate para Octubre 2026",
+    "cd-days": "Días",
+    "cd-hours": "Horas",
+    "cd-minutes": "Minutos",
+    "cd-seconds": "Segundos",
+    "about-title": "Sobre el Festival & Alcance",
+    "about-subtitle": "Promoviendo la educación e investigación en tecnologías cuánticas en Colombia",
+    "about-framework-head": "Marco Académico",
+    "about-p1": "El <strong>Qiskit Fall Fest 2026</strong> en la Universidad Distrital Francisco José de Caldas forma parte de la red global de eventos impulsados por <strong>IBM Quantum</strong> para fortalecer capacidades científicas e industriales en información cuántica.",
+    "about-p2": "Organizado por el equipo de coorganizadores y el semillero de investigación <strong>SPSUMM</strong> (Simulación de Sistemas Físicos con Métodos Multiescala), este encuentro presencial reúne a estudiantes de física, matemáticas e ingenierías.",
+    "impact-attendees": "Asistentes Esperados",
+    "impact-weeks-unit": "Semanas",
+    "impact-training": "Formación Académica",
+    "impact-challenge": "Reto Práctico en Qiskit",
+    "impact-cert": "Certificación Oficial",
+    "collab-title": "Patrocinadores & Colaboradores",
+    "collab-subtitle": "Organizaciones, plataformas en la nube y comunidades que respaldan el nodo",
+    "program-title": "Programa Académico",
+    "program-subtitle": "Selecciona cualquier actividad del cronograma para desplegar el resumen y ponente a la derecha",
+    "tab-week1": "Semana 1: Divulgación & Workshops",
+    "tab-week2": "Semana 2: Temas Avanzados & Hackathon",
+    "auditorium-main": "Auditorio Principal",
+    "conference-hall": "Salón de Conferencias",
+    "computer-lab": "Sala de Cómputo",
+    "tag-keynote": "Keynote",
+    "tag-course": "Curso",
+    "tag-workshop": "Workshop",
+    "tag-talk": "Charla",
+    "tag-hackathon": "Hackathon",
+    "tag-ceremony": "Ceremonia",
+    "evt1-time": "Día 1 | 09:00",
+    "evt1-title": "Inauguración & Keynote de Apertura",
+    "evt2-time": "Día 1 | 11:00",
+    "evt2-title": "Mecánica Cuántica 101",
+    "evt3-time": "Día 2 | 14:00",
+    "evt3-title": "Workshop: Qiskit SDK 101",
+    "evt4-time": "Día 3 | 14:00",
+    "evt4-title": "Esfera de Bloch y Puertas Lógicas",
+    "evt5-time": "Día 1 | 10:00",
+    "evt5-title": "Algoritmo de Grover & BKW",
+    "evt6-time": "Día 2 | 09:00",
+    "evt6-title": "Quantum Hackathon (Apertura)",
+    "evt7-time": "Día 3 | 16:00",
+    "evt7-title": "Clausura & Premiación",
+    "btn-slides": "Material / Diapositivas",
+    "btn-reserve": "Reservar Cupo",
+    "cfp-title": "Charlas Cortas & Sesión de Pósteres",
+    "cfp-subtitle": "Espacio de divulgación científica para estudiantes, semilleros e investigadores en formación",
+    "cfp-desc": "Invitamos a estudiantes de pregrado, posgrado e integrantes de semilleros a postular propuestas en dos modalidades: <strong>Charlas Cortas (25 min)</strong> o <strong>Sesión de Pósteres</strong> durante las franjas de networking.",
+    "cfp-t1": "Computación e Información Cuántica",
+    "cfp-t2": "Algoritmos y Desarrollo Práctico con Qiskit",
+    "cfp-t3": "Física Computacional, Simulación y Criptografía Cuántica",
+    "cfp-box-head": "Postula tu Trabajo",
+    "cfp-box-sub": "Presenta tu proyecto de investigación o avances ante la comunidad.",
+    "cfp-btn": "Formulario de Postulación (Charla / Póster)",
+    "speakers-title": "Ponentes e Invitados Especiales",
+    "speakers-subtitle": "Investigadores, docentes y especialistas del área cuántica",
+    "spk1-name": "Conferencista Confirmado 1",
+    "spk1-role": "Investigador en Información Cuántica",
+    "spk2-name": "Conferencista Confirmado 2",
+    "spk2-role": "Especialista en Computación Cuántica",
+    "spk3-name": "Docente / Investigador Invitado 3",
+    "spk3-role": "Física Computacional & Algoritmos",
+    "spk4-name": "Mentor Quantum Hackathon 4",
+    "spk4-role": "Especialista en Qiskit SDK",
+    "spk-bio-placeholder": "Detalles sobre la ponencia y líneas de investigación próximamente.",
+    "spk4-bio": "Mentoría directa a equipos durante el desarrollo del reto presencial.",
+    "loc-title": "Ubicación del Evento",
+    "loc-venue-head": "Sede del Encuentro",
+    "loc-venue-desc": "<i class=\"fas fa-compass\" style=\"color: var(--ibm-light-purple);\"></i> Ubicación céntrica cerca a la <strong>Plaza de Bolívar</strong>, Centro Histórico de Bogotá.",
+    "loc-transit": "<i class=\"fas fa-bus\" style=\"color: var(--ibm-light-purple);\"></i> Fácil acceso por TransMilenio (Estaciones Museo del Oro, Las Aguas y San Victorino).",
+    "btn-maps": "Abrir Ubicación en Google Maps",
+    "faq-title": "Requisitos Técnicos & Preguntas Frecuentes",
+    "faq-subtitle": "Información clave para los asistentes al festival",
+    "faq-python-head": "Entorno de Desarrollo Python",
+    "faq-python-desc": "Se recomienda asistir con ordenador portátil para los talleres prácticos. Puedes preparar tu entorno ejecutando:",
+    "faq-q1": "¿Tiene costo la participación?",
+    "faq-a1": "No, el evento es totalmente gratuito mediante registro previo.",
+    "faq-q2": "¿Se otorgan certificados académicos?",
+    "faq-a2": "Sí, se entregará certificación formal de asistencia tras finalizar el evento.",
+    "faq-q3": "¿Se requieren conocimientos previos avanzados?",
+    "faq-a3": "No indispensables. La primera semana aborda contenidos introductorios.",
+    "org-title": "Comité Organizador",
+    "coorg-role": "Coorganizador Oficial",
+    "footer-tagline": "Fomentando la educación e investigación en ciencias e información cuántica en Colombia.",
+    "footer-links-head": "Enlaces Rápidos",
+    "footer-contact-head": "Ubicación & Contacto"
+  }
+};
+
+let currentLang = 'en';
+
+function setLanguage(lang) {
+  currentLang = lang;
+  
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+  document.documentElement.lang = lang;
+
+  document.querySelectorAll('[data-i18n]').forEach(element => {
+    const key = element.getAttribute('data-i18n');
+    if (translations[lang] && translations[lang][key]) {
+      element.innerHTML = translations[lang][key];
+    }
+  });
+
+  const activeEvt = document.querySelector('.timeline-item.active-event:not([style*="display: none"])');
+  if (activeEvt) {
+    const activeEvtId = activeEvt.getAttribute('onclick').match(/'([^']+)'/)[1];
+    showEventDetail(activeEvtId, activeEvt);
+  }
+}
+
+// Countdown Logic
+function startCountdown() {
+  const targetDate = new Date("October 15, 2026 09:00:00").getTime();
+
+  setInterval(() => {
+    const now = new Date().getTime();
+    const difference = targetDate - now;
+
+    if (difference > 0) {
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+      document.getElementById("cd-days").innerText = days < 10 ? '0' + days : days;
+      document.getElementById("cd-hours").innerText = hours < 10 ? '0' + hours : hours;
+      document.getElementById("cd-minutes").innerText = minutes < 10 ? '0' + minutes : minutes;
+      document.getElementById("cd-seconds").innerText = seconds < 10 ? '0' + seconds : seconds;
+    }
+  }, 1000);
+}
+
+// Agenda Data Store
+const eventData = {
+  evt1: {
+    badge: { en: "Keynote", es: "Conferencia" },
+    title: { en: "Opening & Keynote Speech", es: "Inauguración & Keynote de Apertura" },
+    location: { en: "Main Auditorium | Day 1 - 09:00 AM", es: "Auditorio Principal | Día 1 - 09:00 AM" },
+    description: {
+      en: "Official opening of Qiskit Fall Fest 2026. Keynote lecture on global advances in IBM Quantum processors, scientific roadmap, and research opportunities for Latin America.",
+      es: "Apertura oficial del Qiskit Fall Fest 2026. Conferencia magistral sobre los avances globales en procesadores cuánticos de IBM Quantum, la hoja de ruta científica y las oportunidades de investigación para Latinoamérica."
+    },
+    speakerName: { en: "Guest Speaker", es: "Conferencista Invitado" },
+    speakerRole: { en: "Quantum Information Researcher", es: "Investigador en Información Cuántica" },
+    speakerImg: "Qiskit_logo.png",
+    slidesUrl: "#"
+  },
+  evt2: {
+    badge: { en: "Theory Module", es: "Módulo Teórico" },
+    title: { en: "Quantum Mechanics 101", es: "Mecánica Cuántica 101" },
+    location: { en: "Conference Hall | Day 1 - 11:00 AM", es: "Salón de Conferencias | Día 1 - 11:00 AM" },
+    description: {
+      en: "Accessible conceptual introduction to quantum mechanics without advanced prerequisites. Fundamentals of superposition, entanglement, measurement, and qubit formalism.",
+      es: "Introducción conceptual accesible a la mecánica cuántica sin prerrequisitos avanzados. Fundamentos de superposición, entrelazamiento, medición y el formalismo matemático de qubits."
+    },
+    speakerName: { en: "Guest Professor UD", es: "Docente Invitado UD" },
+    speakerRole: { en: "Faculty of Mathematical & Natural Sciences", es: "Facultad de Ciencias Matemáticas y Naturales" },
+    speakerImg: "Qiskit_logo.png",
+    slidesUrl: "#"
+  },
+  evt3: {
+    badge: { en: "Hands-on Workshop", es: "Taller Práctico" },
+    title: { en: "Workshop: Qiskit SDK 101", es: "Workshop: Qiskit SDK 101" },
+    location: { en: "Computer Lab | Day 2 - 02:00 PM", es: "Sala de Cómputo | Día 2 - 02:00 PM" },
+    description: {
+      en: "Hands-on session in Jupyter Notebooks. Learn to install Qiskit SDK, build your first quantum circuit, apply quantum gates (Hadamard, CNOT), and run simulations.",
+      es: "Taller hands-on in Jupyter Notebooks. Aprenderás a instalar el SDK de Qiskit, crear tu primer circuito cuántico, aplicar puertas lógicas (Hadamard, CNOT) y simular resultados."
+    },
+    speakerName: { en: "Qiskit Advocate / Mentor", es: "Qiskit Advocate / Mentor" },
+    speakerRole: { en: "Organizing Committee", es: "Comité Organizador" },
+    speakerImg: "Qiskit_logo.png",
+    slidesUrl: "#"
+  },
+  evt4: {
+    badge: { en: "Hands-on Workshop", es: "Taller Práctico" },
+    title: { en: "Bloch Sphere & Quantum Gates", es: "Esfera de Bloch y Puertas Lógicas" },
+    location: { en: "Computer Lab | Day 3 - 02:00 PM", es: "Sala de Cómputo | Día 3 - 02:00 PM" },
+    description: {
+      en: "Session focused on the geometric representation of qubits via the Bloch Sphere. Graphical visualization of unitary transformations and state vectors in Python.",
+      es: "Sesión enfocada en la representación geométrica de qubits mediante la Esfera de Bloch. Visualización gráfica de transformaciones unitarias y vectores de estado en Python."
+    },
+    speakerName: { en: "Workshop Mentor", es: "Mentor de Taller" },
+    speakerRole: { en: "Quantum Programming Specialist", es: "Especialista en Programación Cuántica" },
+    speakerImg: "Qiskit_logo.png",
+    slidesUrl: "#"
+  },
+  evt5: {
+    badge: { en: "Advanced Algorithms", es: "Algoritmos Avanzados" },
+    title: { en: "Grover's Algorithm & BKW", es: "Algoritmo de Grover & BKW" },
+    location: { en: "Main Auditorium | Day 1 - 10:00 AM", es: "Auditorio Principal | Día 1 - 10:00 AM" },
+    description: {
+      en: "Rigorous analysis of unstructured search algorithms (Grover) and amplitude amplification. Practical demonstration and step-by-step oracle implementation in Qiskit.",
+      es: "Análisis riguroso de algoritmos de búsqueda no estructurada (Grover) y ampliación de amplitud. Demostración práctica e implementación del oráculo paso a paso en Qiskit."
+    },
+    speakerName: { en: "International Speaker", es: "Conferencista Internacional" },
+    speakerRole: { en: "Quantum Algorithm Expert", es: "Experto en Algoritmos Cuánticos" },
+    speakerImg: "Qiskit_logo.png",
+    slidesUrl: "#"
+  },
+  evt6: {
+    badge: { en: "In-Person Hackathon", es: "Hackathon Presencial" },
+    title: { en: "Quantum Hackathon (Kickoff)", es: "Quantum Hackathon (Apertura)" },
+    location: { en: "Computer Lab | Day 2 - 09:00 AM", es: "Laboratorio de Cómputo | Día 2 - 09:00 AM" },
+    description: {
+      en: "Official launch of Hackathon challenges. Team formation, mentor assignment, and practical project development on IBM Quantum hardware and instances.",
+      es: "Lanzamiento oficial de los retos del Hackathon. Conformación de equipos, asignación de mentores y desarrollo de proyectos prácticos con hardware e instancias de IBM Quantum."
+    },
+    speakerName: { en: "Evaluation Committee", es: "Comité Evaluador" },
+    speakerRole: { en: "Hackathon Staff & Mentors", es: "Hackathon Staff & Mentores" },
+    speakerImg: "Qiskit_logo.png",
+    slidesUrl: "#"
+  },
+  evt7: {
+    badge: { en: "Ceremony", es: "Ceremonia" },
+    title: { en: "Closing & Awards Ceremony", es: "Clausura & Premiación" },
+    location: { en: "Main Auditorium | Day 3 - 04:00 PM", es: "Auditorio Principal | Día 3 - 04:00 PM" },
+    description: {
+      en: "Final presentation of solutions developed during the Hackathon, jury evaluation, awards presentation, and distribution of official attendance certificates.",
+      es: "Presentación final de las soluciones desarrolladas durante el Hackathon, evaluación por parte del jurado, entrega de premios y otorgamiento de certificados de asistencia respaldados."
+    },
+    speakerName: { en: "SPSUMM Organizing Team", es: "Comité Organizador SPSUMM" },
+    speakerRole: { en: "Universidad Distrital", es: "Universidad Distrital" },
+    speakerImg: "Qiskit_logo.png",
+    slidesUrl: "#"
+  }
+};
+
+function showEventDetail(eventId, element) {
+  const data = eventData[eventId];
+  if (!data) return;
+
+  document.querySelectorAll('.timeline-item').forEach(item => item.classList.remove('active-event'));
+  if (element) element.classList.add('active-event');
+
+  document.getElementById('detailBadge').innerText = data.badge[currentLang];
+  document.getElementById('detailTitle').innerText = data.title[currentLang];
+  document.getElementById('detailLocation').innerHTML = `<i class="fas fa-map-marker-alt"></i> ${data.location[currentLang]}`;
+  document.getElementById('detailDescription').innerText = data.description[currentLang];
+  document.getElementById('detailSpeakerName').innerText = data.speakerName[currentLang];
+  document.getElementById('detailSpeakerRole').innerText = data.speakerRole[currentLang];
+  document.getElementById('detailSpeakerImg').src = data.speakerImg;
+  document.getElementById('detailLinkSlides').href = data.slidesUrl;
+}
+
+function switchWeek(weekId) {
+  const week1List = document.getElementById('week1-list');
+  const week2List = document.getElementById('week2-list');
+  const btn1 = document.getElementById('tabWeek1Btn');
+  const btn2 = document.getElementById('tabWeek2Btn');
+
+  if (weekId === 'week1') {
+    week1List.style.display = 'block';
+    week2List.style.display = 'none';
+    btn1.classList.add('active');
+    btn2.classList.remove('active');
+  } else {
+    week1List.style.display = 'none';
+    week2List.style.display = 'block';
+    btn2.classList.add('active');
+    btn1.classList.remove('active');
+  }
+
+  const activeWeekList = document.getElementById(weekId + '-list');
+  const firstItem = activeWeekList.querySelector('.timeline-item');
+  if (firstItem) {
+    const evtId = firstItem.getAttribute('onclick').match(/'([^']+)'/)[1];
+    showEventDetail(evtId, firstItem);
+  }
+}
+
+// Smooth Scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener("click", function (e) {
     e.preventDefault();
@@ -478,6 +1480,144 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       });
     }
   });
+});
+
+// Carousel Ponentes
+document.addEventListener("DOMContentLoaded", function () {
+  startCountdown();
+
+  const track = document.getElementById("speakerTrack");
+  const prevBtn = document.getElementById("speakerPrevBtn");
+  const nextBtn = document.getElementById("speakerNextBtn");
+  const items = document.querySelectorAll(".speaker-item");
+
+  let currentIndex = 0;
+  let autoSlideInterval;
+
+  function getVisibleItems() {
+    return window.innerWidth <= 768 ? 1 : 2;
+  }
+
+  function updateSpeakerCarousel() {
+    const visibleItems = getVisibleItems();
+    const maxIndex = items.length - visibleItems;
+    
+    if (currentIndex < 0) currentIndex = 0;
+    if (currentIndex > maxIndex) currentIndex = 0;
+
+    const itemWidth = items[0].getBoundingClientRect().width + 20;
+    track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+  }
+
+  function startAutoSlide() {
+    autoSlideInterval = setInterval(() => {
+      const visibleItems = getVisibleItems();
+      if (currentIndex < items.length - visibleItems) {
+        currentIndex++;
+      } else {
+        currentIndex = 0;
+      }
+      updateSpeakerCarousel();
+    }, 6000);
+  }
+
+  function stopAutoSlide() {
+    clearInterval(autoSlideInterval);
+  }
+
+  nextBtn.addEventListener("click", () => {
+    stopAutoSlide();
+    currentIndex++;
+    updateSpeakerCarousel();
+    startAutoSlide();
+  });
+
+  prevBtn.addEventListener("click", () => {
+    stopAutoSlide();
+    currentIndex--;
+    updateSpeakerCarousel();
+    startAutoSlide();
+  });
+
+  track.addEventListener("mouseenter", stopAutoSlide);
+  track.addEventListener("mouseleave", startAutoSlide);
+
+  window.addEventListener("resize", updateSpeakerCarousel);
+  updateSpeakerCarousel();
+  startAutoSlide();
+});
+
+// Carousel Organizadores (Con Auto-slide)
+document.addEventListener("DOMContentLoaded", function () {
+  const track = document.getElementById("teamTrack");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const cards = document.querySelectorAll(".team-card");
+
+  let currentIndex = 0;
+  let autoSlideInterval;
+
+  function getCardsPerPage() {
+    return window.innerWidth <= 768 ? 1 : 3;
+  }
+
+  function updateCarousel() {
+    const cardsPerPage = getCardsPerPage();
+    const maxIndex = cards.length - cardsPerPage;
+    
+    if (currentIndex < 0) currentIndex = 0;
+    if (currentIndex > maxIndex) currentIndex = maxIndex;
+
+    const cardWidth = cards[0].getBoundingClientRect().width + 20;
+    track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+
+    prevBtn.style.opacity = currentIndex === 0 ? "0.4" : "1";
+    nextBtn.style.opacity = currentIndex >= maxIndex ? "0.4" : "1";
+  }
+
+  function startAutoSlide() {
+    autoSlideInterval = setInterval(() => {
+      const cardsPerPage = getCardsPerPage();
+      const maxIndex = cards.length - cardsPerPage;
+      if (currentIndex < maxIndex) {
+        currentIndex++;
+      } else {
+        currentIndex = 0;
+      }
+      updateCarousel();
+    }, 6000);
+  }
+
+  function stopAutoSlide() {
+    clearInterval(autoSlideInterval);
+  }
+
+  nextBtn.addEventListener("click", () => {
+    stopAutoSlide();
+    const cardsPerPage = getCardsPerPage();
+    const maxIndex = cards.length - cardsPerPage;
+    if (currentIndex < maxIndex) {
+      currentIndex++;
+      updateCarousel();
+    }
+    startAutoSlide();
+  });
+
+  prevBtn.addEventListener("click", () => {
+    stopAutoSlide();
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateCarousel();
+    }
+    startAutoSlide();
+  });
+
+  track.addEventListener("mouseenter", stopAutoSlide);
+  track.addEventListener("mouseleave", startAutoSlide);
+
+  window.addEventListener("resize", updateCarousel);
+  updateCarousel();
+  startAutoSlide();
 });
 </script>
 
