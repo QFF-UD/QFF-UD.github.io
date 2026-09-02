@@ -18,13 +18,6 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="navbar.css">
-    <link rel="stylesheet" href="hero.css">
-    <link rel="stylesheet" href="sections.css">
-    <link rel="stylesheet" href="footer.css">
-
     <style>
       /* MODO OSCURO (Predeterminado) */
       :root {
@@ -111,9 +104,9 @@
 
       .two-col-grid {
         display: grid;
-        grid-template-columns: 1.15fr 0.85fr;
-        gap: 40px;
-        align-items: center;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 30px;
+        align-items: start;
       }
 
       @media (max-width: 992px) {
@@ -122,22 +115,16 @@
         }
         .two-col-grid {
           grid-template-columns: 1fr;
-          gap: 28px;
+          gap: 25px;
         }
       }
 
-      .event-card, .speaker-card, .impact-card, .event-detail-card {
+      .event-card, .speaker-card, .impact-card {
         background: var(--ibm-card-bg);
         border: 1px solid var(--ibm-border);
         border-radius: 8px;
         box-shadow: var(--card-shadow);
         transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-      }
-
-      .event-card:hover, .speaker-card:hover, .impact-card:hover {
-        border-color: var(--ibm-light-purple);
-        transform: translateY(-4px);
-        box-shadow: 0 12px 30px rgba(105, 41, 196, 0.12);
       }
 
       .hero-section-wrapper {
@@ -267,92 +254,80 @@
         border: 1px solid rgba(138, 63, 252, 0.25);
       }
 
-      .timeline-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 12px;
-        padding: 16px 18px;
-        border-radius: 6px;
+      .program-layout {
+        display: grid;
+        grid-template-columns: 1fr 360px;
+        gap: 30px;
+        align-items: start;
+      }
+
+      @media (max-width: 992px) {
+        .program-layout {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .schedule-table {
+        width: 100%;
+        border-collapse: collapse;
         background: var(--ibm-card-bg);
         border: 1px solid var(--ibm-border);
-        cursor: pointer;
-        transition: all 0.2s ease;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: var(--card-shadow);
       }
 
-      .timeline-item.cat-keynote { border-left: 4px solid var(--ibm-light-purple); }
-      .timeline-item.cat-workshop { border-left: 4px solid #0284c7; }
-      .timeline-item.cat-talk { border-left: 4px solid #d97706; }
-
-      .timeline-item:hover, .timeline-item.active-event {
-        background: rgba(105, 41, 196, 0.08);
-        border-color: var(--ibm-light-purple);
-      }
-
-      .timeline-time {
-        width: 110px;
-        font-weight: 600;
-        font-size: 0.85rem;
-        color: var(--ibm-soft-purple);
-        text-align: right;
-        padding-right: 18px;
-        flex-shrink: 0;
-      }
-
-      .timeline-content-summary { flex-grow: 1; }
-
-      .timeline-title-row {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-        margin-bottom: 4px;
-      }
-
-      .timeline-content-summary h4 {
-        margin: 0;
-        font-size: 1.02rem;
+      .schedule-table th {
+        background: var(--ibm-section-alt);
         color: var(--text-primary);
+        padding: 14px 16px;
+        text-align: left;
+        font-size: 0.9rem;
+        font-weight: 600;
+        border-bottom: 1px solid var(--ibm-border);
       }
 
-      .event-inline-tag {
+      .schedule-table td {
+        padding: 14px 16px;
+        border-bottom: 1px solid var(--ibm-border);
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        vertical-align: middle;
+      }
+
+      .schedule-row {
+        cursor: pointer;
+        transition: background-color 0.2s ease, border-left 0.2s ease;
+      }
+
+      .schedule-row:hover {
+        background-color: rgba(105, 41, 196, 0.12);
+        color: var(--text-primary);
+        border-left: 4px solid var(--ibm-light-purple);
+      }
+
+      .event-tag {
         font-size: 0.7rem;
         font-weight: 600;
         text-transform: uppercase;
-        padding: 2px 8px;
+        padding: 3px 8px;
         border-radius: 4px;
         letter-spacing: 0.5px;
-        flex-shrink: 0;
+        display: inline-block;
       }
-      .cat-keynote .event-inline-tag { background: rgba(138, 63, 252, 0.12); color: var(--ibm-soft-purple); border: 1px solid rgba(138, 63, 252, 0.25); }
-      .cat-workshop .event-inline-tag { background: rgba(2, 132, 199, 0.12); color: #0284c7; border: 1px solid rgba(2, 132, 199, 0.25); }
-      .cat-talk .event-inline-tag { background: rgba(217, 119, 6, 0.12); color: #d97706; border: 1px solid rgba(217, 119, 6, 0.25); }
+      .tag-keynote { background: rgba(138, 63, 252, 0.12); color: var(--ibm-soft-purple); border: 1px solid rgba(138, 63, 252, 0.25); }
+      .tag-workshop { background: rgba(2, 132, 199, 0.12); color: #0284c7; border: 1px solid rgba(2, 132, 199, 0.25); }
+      .tag-talk { background: rgba(217, 119, 6, 0.12); color: #d97706; border: 1px solid rgba(217, 119, 6, 0.25); }
+      .tag-break { background: rgba(100, 116, 139, 0.12); color: var(--text-muted); border: 1px solid rgba(100, 116, 139, 0.25); }
 
-      .timeline-content-summary p { margin: 0; font-size: 0.85rem; color: var(--text-muted); }
-
-      .event-detail-card {
-        padding: 32px;
+      .side-detail-panel {
+        background: var(--ibm-card-bg);
+        border: 1px solid var(--ibm-light-purple);
+        border-radius: 10px;
+        padding: 24px;
+        box-shadow: var(--card-shadow);
         position: sticky;
-        top: 90px;
-        border-top: 3px solid var(--ibm-light-purple);
-      }
-
-      .speaker-detail-box {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        margin: 22px 0;
-        padding: 16px;
-        background: var(--ibm-section-alt);
-        border: 1px solid var(--ibm-border);
-        border-radius: 6px;
-      }
-
-      .speaker-detail-avatar {
-        width: 56px;
-        height: 56px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 1px solid var(--ibm-border);
+        top: 95px;
       }
 
       .tab-btn {
@@ -404,7 +379,6 @@
         .nav-item-dropdown .dropdown-menu { position: static; box-shadow: none; background: var(--ibm-section-alt); border: none; padding-left: 15px; }
       }
 
-      /* CONTROLES NAVBAR */
       .nav-controls {
         display: inline-flex;
         align-items: center;
@@ -448,15 +422,23 @@
       }
       .theme-btn:hover { color: var(--ibm-light-purple); background: rgba(105, 41, 196, 0.08); }
 
-      .marquee-container {
+      .nav-dynamic-logo {
+        height: 38px;
+        width: auto;
+        object-fit: contain;
+      }
+
+      /* Marquesinas (Patrocinadores, Ponentes y Organizadores) */
+      .marquee-container, .speakers-marquee-container {
         overflow: hidden;
         user-select: none;
         display: flex;
         gap: 30px;
         position: relative;
-        padding: 5px 0;
+        padding: 10px 0;
       }
-      .marquee-container::before, .marquee-container::after {
+      .marquee-container::before, .marquee-container::after,
+      .speakers-marquee-container::before, .speakers-marquee-container::after {
         content: "";
         position: absolute;
         top: 0;
@@ -465,19 +447,22 @@
         z-index: 2;
         pointer-events: none;
       }
-      .marquee-container::before { left: 0; background: linear-gradient(to right, var(--ibm-dark-bg), transparent); }
-      .marquee-container::after { right: 0; background: linear-gradient(to left, var(--ibm-dark-bg), transparent); }
+      .marquee-container::before, .speakers-marquee-container::before { left: 0; background: linear-gradient(to right, var(--ibm-dark-bg), transparent); }
+      .marquee-container::after, .speakers-marquee-container::after { right: 0; background: linear-gradient(to left, var(--ibm-dark-bg), transparent); }
 
-      .marquee-track {
+      .marquee-track, .speakers-marquee-track {
         flex-shrink: 0;
         display: flex;
         align-items: center;
         justify-content: space-around;
         gap: 30px;
         min-width: 100%;
-        animation: scrollMarquee 25s linear infinite;
+        animation: scrollMarquee 28s linear infinite;
       }
-      .marquee-container:hover .marquee-track { animation-play-state: paused; }
+      .marquee-container:hover .marquee-track,
+      .speakers-marquee-container:hover .speakers-marquee-track { 
+        animation-play-state: paused; 
+      }
 
       .collab-card {
         background: var(--ibm-card-bg);
@@ -493,15 +478,6 @@
         box-shadow: var(--card-shadow);
       }
       .collab-card:hover { border-color: var(--ibm-light-purple); }
-      .collab-card img {
-        height: 32px;
-        width: auto;
-        object-fit: contain;
-        filter: grayscale(80%);
-        opacity: 0.85;
-        transition: all 0.3s ease;
-      }
-      .collab-card:hover img { filter: grayscale(0%); opacity: 1; }
       .collab-name { font-size: 0.88rem; font-weight: 500; color: var(--text-secondary); white-space: nowrap; }
 
       @keyframes scrollMarquee {
@@ -512,74 +488,66 @@
 </head>
 <body>
 
-<!-- Navigation -->
- <nav class="navbar" id="navbar" style="background-color: var(--ibm-card-bg); border-bottom: 1px solid var(--ibm-border);">
-    <div class="nav-container">
-      <div class="nav-logo">
-          <a href="#home" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text-primary);">
-              <div style="width: 38px; height: 38px; background: var(--ibm-purple); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
-                  <i class="fas fa-atom"></i>
-              </div>
-              <div style="display: flex; flex-direction: column; line-height: 1.1;">
-                  <span style="font-weight: 700; font-size: 0.95rem; letter-spacing: 0.5px;">QFF 2026</span>
-                  <span style="font-size: 0.7rem; color: var(--text-muted);">Universidad Distrital</span>
-              </div>
-          </a>
-      </div>
+    <!-- ========================================== -->
+    <!-- 1. BARRA DE NAVEGACIÓN -->
+    <!-- ========================================== -->
+    <nav class="navbar" id="navbar" style="background-color: var(--ibm-card-bg); border-bottom: 1px solid var(--ibm-border); position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; height: 70px;">
+            <div class="nav-logo">
+                <a href="#home" style="display: flex; align-items: center; text-decoration: none;">
+                    <img id="dynamicNavLogo" src="Org_team/ejemplo.jpg" alt="QFF Logo" class="nav-dynamic-logo">
+                </a>
+            </div>
 
-      <div class="nav-menu" id="nav-menu">
-        <a href="#home" class="nav-link" data-i18n="nav-home" style="color: var(--text-secondary);">Home</a>
-        
-        <div class="nav-item-dropdown">
-            <span class="nav-link dropdown-toggle"><span data-i18n="menu-event">Event</span> <i class="fas fa-chevron-down" style="font-size: 0.75rem;"></i></span>
-            <div class="dropdown-menu">
-                <a href="#about" class="dropdown-item" data-i18n="nav-about">About Us</a>
-                <a href="#collaborators" class="dropdown-item" data-i18n="nav-collaborators">Sponsors & Collaborators</a>
-                <a href="#location" class="dropdown-item" data-i18n="nav-location">Location</a>
-                <a href="#faq" class="dropdown-item" data-i18n="nav-faq">FAQ</a>
+            <div class="nav-menu" style="display: flex; align-items: center; gap: 15px;" id="nav-menu">
+                <a href="#home" class="nav-link" data-i18n="nav-home" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem;">Home</a>
+                
+                <div class="nav-item-dropdown">
+                    <span class="nav-link dropdown-toggle"><span data-i18n="menu-event">Event</span> <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></span>
+                    <div class="dropdown-menu">
+                        <a href="#about" class="dropdown-item" data-i18n="nav-about">About Us</a>
+                        <a href="#collaborators" class="dropdown-item" data-i18n="nav-collaborators">Sponsors & Collaborators</a>
+                        <a href="#location" class="dropdown-item" data-i18n="nav-location">Location</a>
+                        <a href="#faq" class="dropdown-item" data-i18n="nav-faq">FAQ</a>
+                    </div>
+                </div>
+
+                <div class="nav-item-dropdown">
+                    <span class="nav-link dropdown-toggle"><span data-i18n="menu-program">Program & Calls</span> <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></span>
+                    <div class="dropdown-menu">
+                        <a href="#program" class="dropdown-item" data-i18n="nav-program">Academic Program</a>
+                        <a href="#cfp" class="dropdown-item" data-i18n="nav-cfp">Short Talks</a>
+                    </div>
+                </div>
+
+                <div class="nav-item-dropdown">
+                    <span class="nav-link dropdown-toggle"><span data-i18n="menu-people">People</span> <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></span>
+                    <div class="dropdown-menu">
+                        <a href="#speakers" class="dropdown-item" data-i18n="nav-speakers">Speakers & Mentors</a>
+                        <a href="#organizers" class="dropdown-item" data-i18n="nav-organizers">Organizing Committee</a>
+                    </div>
+                </div>
+
+                <a href="TU_ENLACE_DE_FORMULARIO" target="_blank" class="btn btn-primary" style="padding: 6px 16px; font-size: 0.85rem; background-color: var(--ibm-purple); color: white; text-decoration: none; border-radius: 4px;"><i class="fas fa-paper-plane"></i> <span data-i18n="btn-register-nav">Register</span></a>
+                
+                <div class="nav-controls">
+                    <div class="lang-switcher">
+                        <button class="lang-btn active" id="btn-en" onclick="setLanguage('en')">EN</button>
+                        <button class="lang-btn" id="btn-es" onclick="setLanguage('es')">ES</button>
+                    </div>
+                    <div class="theme-switcher">
+                        <button class="theme-btn" id="themeToggleBtn" onclick="toggleTheme()" aria-label="Toggle theme">
+                            <i class="fas fa-moon" id="themeIcon"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
+    </nav>
 
-        <div class="nav-item-dropdown">
-            <span class="nav-link dropdown-toggle"><span data-i18n="menu-program">Program & Calls</span> <i class="fas fa-chevron-down" style="font-size: 0.75rem;"></i></span>
-            <div class="dropdown-menu">
-                <a href="#program" class="dropdown-item" data-i18n="nav-program">Academic Program</a>
-                <a href="#cfp" class="dropdown-item" data-i18n="nav-cfp">Short Talks</a>
-            </div>
-        </div>
-
-        <div class="nav-item-dropdown">
-            <span class="nav-link dropdown-toggle"><span data-i18n="menu-people">People</span> <i class="fas fa-chevron-down" style="font-size: 0.75rem;"></i></span>
-            <div class="dropdown-menu">
-                <a href="#speakers" class="dropdown-item" data-i18n="nav-speakers">Speakers & Mentors</a>
-                <a href="#organizers" class="dropdown-item" data-i18n="nav-organizers">Organizing Committee</a>
-            </div>
-        </div>
-
-        <a href="TU_ENLACE_DE_FORMULARIO" target="_blank" class="btn btn-primary" style="padding: 6px 16px; font-size: 0.85rem; margin-left: 10px; background-color: var(--ibm-purple); color: white; text-decoration: none; border-radius: 4px;"><i class="fas fa-paper-plane"></i> <span data-i18n="btn-register-nav">Register</span></a>
-        
-        <!-- Controles: Idioma y Modo Claro/Oscuro -->
-        <div class="nav-controls">
-            <div class="lang-switcher">
-                <button class="lang-btn active" id="btn-en" onclick="setLanguage('en')">EN</button>
-                <button class="lang-btn" id="btn-es" onclick="setLanguage('es')">ES</button>
-            </div>
-            <div class="theme-switcher">
-                <button class="theme-btn" id="themeToggleBtn" onclick="toggleTheme()" aria-label="Toggle theme">
-                    <i class="fas fa-moon" id="themeIcon"></i>
-                </button>
-            </div>
-        </div>
-      </div>
-      <div class="nav-toggle" id="nav-toggle">
-        <span class="bar" style="background: var(--text-primary);"></span>
-        <span class="bar" style="background: var(--text-primary);"></span>
-        <span class="bar" style="background: var(--text-primary);"></span>
-      </div>
-    </div>
-  </nav>
-
-    <!-- HERO + SPONSORS WRAPPER -->
+    <!-- ========================================== -->
+    <!-- 2. SECCIÓN HERO Y PATROCINADORES -->
+    <!-- ========================================== -->
     <section id="home" class="hero-section-wrapper">
         <div class="container">
             <div class="hero-grid">
@@ -614,46 +582,48 @@
                 </div>
             </div>
 
-            <!-- Sponsors & Collaborators -->
+            <!-- Patrocinadores & Colaboradores -->
             <div id="collaborators" style="margin-top: 30px; padding-top: 25px; border-top: 1px solid var(--ibm-border);">
                 <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 20px;">
                     <div class="collab-card" style="border-color: var(--ibm-light-purple); background: var(--ibm-card-bg); padding: 14px 22px;">
-                        <img src="Qiskit_logo.png" alt="IBM Quantum">
+                        <i class="fas fa-shield-alt" style="font-size: 1.4rem; color: var(--ibm-light-purple);"></i>
                         <div>
-                            <div class="collab-name" style="color: var(--text-primary); font-weight: 600;">IBM Quantum</div>
-                            <span style="font-size: 0.75rem; color: var(--ibm-soft-purple);">Global Event Sponsor</span>
+                            <div class="collab-name" style="color: var(--text-primary); font-weight: 600;">Sponsor 1</div>
+                            <span style="font-size: 0.75rem; color: var(--ibm-soft-purple);" data-i18n="spon-1">Global Event Sponsor</span>
                         </div>
                     </div>
 
                     <div class="collab-card" style="border-color: var(--ibm-light-purple); background: var(--ibm-card-bg); padding: 14px 22px;">
-                        <img src="qbraid-logo.png" alt="qBraid">
+                        <i class="fas fa-cloud" style="font-size: 1.4rem; color: var(--ibm-light-purple);"></i>
                         <div>
-                            <div class="collab-name" style="color: var(--text-primary); font-weight: 600;">qBraid</div>
-                            <span style="font-size: 0.75rem; color: var(--ibm-soft-purple);">Quantum Cloud & Compute Partner</span>
+                            <div class="collab-name" style="color: var(--text-primary); font-weight: 600;">Sponsor 2</div>
+                            <span style="font-size: 0.75rem; color: var(--ibm-soft-purple);" data-i18n="spon-2">Cloud Partner</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="marquee-container">
                     <div class="marquee-track">
-                        <div class="collab-card"><img src="qiskit-logo-bottom.PNG" alt="SPSUMM"><span class="collab-name">Semillero SPSUMM</span></div>
-                        <div class="collab-card"><img src="100-year-logo.png" alt="Universidad Distrital"><span class="collab-name">Universidad Distrital</span></div>
-                        <div class="collab-card"><img src="favicon.PNG" alt="Línea Cuántica UD"><span class="collab-name">Línea Cuántica UD</span></div>
-                        <div class="collab-card"><img src="qiskit-logo-top1.png" alt="Qiskit Community"><span class="collab-name">Qiskit Community</span></div>
+                        <div class="collab-card"><i class="fas fa-cube" style="color: var(--ibm-soft-purple);"></i><span class="collab-name">Sponsor 3</span></div>
+                        <div class="collab-card"><i class="fas fa-university" style="color: var(--ibm-soft-purple);"></i><span class="collab-name">Sponsor 4</span></div>
+                        <div class="collab-card"><i class="fas fa-atom" style="color: var(--ibm-soft-purple);"></i><span class="collab-name">Sponsor 5</span></div>
+                        <div class="collab-card"><i class="fas fa-star" style="color: var(--ibm-soft-purple);"></i><span class="collab-name">Sponsor 6</span></div>
                     </div>
 
                     <div class="marquee-track" aria-hidden="true">
-                        <div class="collab-card"><img src="qiskit-logo-bottom.PNG" alt="SPSUMM"><span class="collab-name">Semillero SPSUMM</span></div>
-                        <div class="collab-card"><img src="100-year-logo.png" alt="Universidad Distrital"><span class="collab-name">Universidad Distrital</span></div>
-                        <div class="collab-card"><img src="favicon.PNG" alt="Línea Cuántica UD"><span class="collab-name">Línea Cuántica UD</span></div>
-                        <div class="collab-card"><img src="qiskit-logo-top1.png" alt="Qiskit Community"><span class="collab-name">Qiskit Community</span></div>
+                        <div class="collab-card"><i class="fas fa-cube" style="color: var(--ibm-soft-purple);"></i><span class="collab-name">Sponsor 3</span></div>
+                        <div class="collab-card"><i class="fas fa-university" style="color: var(--ibm-soft-purple);"></i><span class="collab-name">Sponsor 4</span></div>
+                        <div class="collab-card"><i class="fas fa-atom" style="color: var(--ibm-soft-purple);"></i><span class="collab-name">Sponsor 5</span></div>
+                        <div class="collab-card"><i class="fas fa-star" style="color: var(--ibm-soft-purple);"></i><span class="collab-name">Sponsor 6</span></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ABOUT & IMPACT -->
+    <!-- ========================================== -->
+    <!-- 3. SOBRE EL EVENTO E IMPACTO -->
+    <!-- ========================================== -->
     <section id="about" class="about" style="padding: 60px 0; background: var(--ibm-section-alt);">
         <div class="container">
             <div class="section-header">
@@ -663,12 +633,12 @@
 
             <div class="two-col-grid" style="align-items: center;">
                 <div class="event-card" style="padding: 35px; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center;">
-                    <h3 style="color: var(--text-primary); margin-bottom: 15px; font-size: 1.35rem;"><i class="fas fa-university" style="color: var(--ibm-light-purple); margin-right: 8px;"></i> <span data-i18n="about-framework-head">Academic Framework</span></h3>
+                    <h3 style="color: var(--text-primary); margin-bottom: 15px; font-size: 1.35rem;"><i class="fas fa-atom" style="color: var(--ibm-light-purple); margin-right: 8px;"></i> <span data-i18n="about-framework-head">The Quantum Experience</span></h3>
                     <p style="margin-bottom: 14px; color: var(--text-secondary); font-size: 0.98rem;" data-i18n="about-p1">
-                        The <strong>Qiskit Fall Fest 2026</strong> at Universidad Distrital Francisco José de Caldas is part of the global network of events supported by <strong>IBM Quantum</strong> to strengthen scientific and technological capabilities in quantum information.
+                        <strong>Qiskit Fall Fest 2026</strong> is part of the global movement powered by <strong>IBM Quantum</strong>. Selected as an official local node, our university becomes a vibrant hub where students, researchers, and tech enthusiasts dive deep into the foundations and real-world applications of quantum computing.
                     </p>
                     <p style="color: var(--text-secondary); font-size: 0.98rem; margin: 0;" data-i18n="about-p2">
-                        Co-organized by the team of organizers and the <strong>SPSUMM</strong> research group (Simulation of Physical Systems Using Multiscale Methods), this in-person event brings together physics, mathematics, and engineering students, professors, and researchers.
+                        Join us for four days of inspiring keynotes, interactive coding labs with Qiskit, and collaborative spaces designed to spark the next generation of quantum innovators in Colombia.
                     </p>
                 </div>
 
@@ -676,7 +646,7 @@
                     <div class="impact-mini-grid">
                         <div class="event-card impact-card">
                             <div class="impact-icon"><i class="fas fa-users"></i></div>
-                            <div class="impact-number">40+</div>
+                            <div class="impact-number">+70</div>
                             <div class="impact-label" data-i18n="impact-attendees">Expected Attendees</div>
                         </div>
 
@@ -703,137 +673,281 @@
         </div>
     </section>
 
-    <!-- ACADEMIC PROGRAM -->
+    <!-- ========================================== -->
+    <!-- 4. PROGRAMA ACADÉMICO -->
+    <!-- ========================================== -->
     <section id="program" class="events" style="padding: 60px 0; background: var(--ibm-dark-bg);">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title" data-i18n="program-title">Academic Program</h2>
-                <p class="section-subtitle" data-i18n="program-subtitle">Select any schedule activity to view the summary and speaker details on the right</p>
+            <div style="margin-bottom: 30px;">
+                <h2 class="section-title" style="text-align: left;" data-i18n="program-title">Academic Program</h2>
+                <p class="section-subtitle" style="text-align: left;" data-i18n="program-subtitle">Hover over any talk to check full details in the side panel</p>
             </div>
 
-            <div class="schedule-tabs" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 25px; flex-wrap: wrap;">
-                <button class="tab-btn active" id="tabDay1Btn" onclick="switchDay('day1')" data-i18n="tab-day1">Day 1: Oct 27</button>
-                <button class="tab-btn" id="tabDay2Btn" onclick="switchDay('day2')" data-i18n="tab-day2">Day 2: Oct 28</button>
-                <button class="tab-btn" id="tabDay3Btn" onclick="switchDay('day3')" data-i18n="tab-day3">Day 3: Oct 29</button>
-                <button class="tab-btn" id="tabDay4Btn" onclick="switchDay('day4')" data-i18n="tab-day4">Day 4: Oct 30</button>
+            <!-- Botones de Días (Pestañas) -->
+            <div class="schedule-tabs" style="display: flex; justify-content: flex-start; gap: 10px; margin-bottom: 25px; flex-wrap: wrap;">
+                <button class="tab-btn active" id="btnDay1" onclick="switchDayTable('day1', this)" data-i18n="day-1">Tuesday, Oct 27</button>
+                <button class="tab-btn" id="btnDay2" onclick="switchDayTable('day2', this)" data-i18n="day-2">Wednesday, Oct 28</button>
+                <button class="tab-btn" id="btnDay3" onclick="switchDayTable('day3', this)" data-i18n="day-3">Thursday, Oct 29</button>
+                <button class="tab-btn" id="btnDay4" onclick="switchDayTable('day4', this)" data-i18n="day-4">Friday, Oct 30</button>
             </div>
 
-            <div class="two-col-grid" style="align-items: start;">
-                
-                <!-- Left: Schedule List -->
+            <div class="program-layout">
                 <div>
-                    <!-- Día 1 -->
-                    <div id="day1-list">
-                        <div class="timeline-item active-event cat-keynote" onclick="showEventDetail('evt1', this)">
-                            <div class="timeline-time">Oct 27 | 09:00</div>
-                            <div class="timeline-content-summary">
-                                <div class="timeline-title-row">
-                                    <h4 data-i18n="evt1-title">Opening & Keynote Speech</h4>
-                                    <span class="event-inline-tag" data-i18n="tag-keynote">Keynote</span>
-                                </div>
-                                <p><i class="fas fa-map-marker-alt" style="color: var(--ibm-soft-purple);"></i> <span data-i18n="auditorium-main">Main Auditorium</span></p>
-                            </div>
-                        </div>
-
-                        <div class="timeline-item cat-workshop" onclick="showEventDetail('evt2', this)">
-                            <div class="timeline-time">Oct 27 | 11:00</div>
-                            <div class="timeline-content-summary">
-                                <div class="timeline-title-row">
-                                    <h4 data-i18n="evt2-title">Quantum Mechanics 101</h4>
-                                    <span class="event-inline-tag" data-i18n="tag-course">Course</span>
-                                </div>
-                                <p><i class="fas fa-map-marker-alt" style="color: var(--ibm-soft-purple);"></i> <span data-i18n="conference-hall">Conference Hall</span></p>
-                            </div>
-                        </div>
+                    <!-- TABLA DÍA 1 -->
+                    <div id="table-day1" class="day-table-container">
+                        <table class="schedule-table">
+                            <thead>
+                                <tr>
+                                    <th data-i18n="th-time">Time</th>
+                                    <th data-i18n="th-activity">Activity / Talk</th>
+                                    <th data-i18n="th-type">Type</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="schedule-row" onmouseenter="showSideDetails('desc-example', 'tag-reg', '9:00 - 9:45', 'loc-aud', 'Comité QFF', 'Org_team/ejemplo.jpg')">
+                                    <td>9:00 - 9:45</td>
+                                    <td><strong data-i18n="act-reg">Registro</strong></td>
+                                    <td><span class="event-tag tag-talk" data-i18n="tag-reg">Registro</span></td>
+                                </tr>
+                                <tr class="schedule-row" onmouseenter="showSideDetails('desc-example', 'tag-open', '9:45 - 10:05', 'loc-aud', 'Comité QFF', 'Org_team/ejemplo.jpg')">
+                                    <td>9:45 - 10:05</td>
+                                    <td><strong data-i18n="act-welcome">Bienvenida</strong></td>
+                                    <td><span class="event-tag tag-keynote" data-i18n="tag-open">Apertura</span></td>
+                                </tr>
+                                <tr class="schedule-row" onmouseenter="showSideDetails('desc-example', 'tag-keynote', '10:10 - 11:30', 'loc-aud', 'Comité QFF', 'Org_team/ejemplo.jpg')">
+                                    <td>10:10 - 11:30</td>
+                                    <td><strong data-i18n="act-pon1">Ponencia 1</strong></td>
+                                    <td><span class="event-tag tag-keynote" data-i18n="tag-key">Keynote</span></td>
+                                </tr>
+                                <tr class="schedule-row" onmouseenter="showSideDetails('desc-example', 'tag-talk', '11:30 - 12:00', 'loc-aud', 'Comité QFF', 'Org_team/ejemplo.jpg')">
+                                    <td>11:30 - 12:00</td>
+                                    <td><strong data-i18n="act-talk1">Charla corta 1</strong></td>
+                                    <td><span class="event-tag tag-talk" data-i18n="tag-short">Short Talk</span></td>
+                                </tr>
+                                <tr class="schedule-row" onmouseenter="showSideDetails('desc-example', 'tag-break', '12:00 - 1:10', 'loc-caf', 'Comité QFF', 'Org_team/ejemplo.jpg')">
+                                    <td>12:00 - 1:10</td>
+                                    <td><strong data-i18n="act-lunch">Lunch</strong></td>
+                                    <td><span class="event-tag tag-break" data-i18n="tag-break">Break</span></td>
+                                </tr>
+                                <tr class="schedule-row" onmouseenter="showSideDetails('desc-example', 'tag-work', '1:15 - 2:15', 'loc-lab', 'Comité QFF', 'Org_team/ejemplo.jpg')">
+                                    <td>1:15 - 2:15</td>
+                                    <td><strong data-i18n="act-curso1">Curso 1</strong></td>
+                                    <td><span class="event-tag tag-workshop" data-i18n="tag-work">Workshop</span></td>
+                                </tr>
+                                <tr class="schedule-row" onmouseenter="showSideDetails('desc-example', 'tag-talk', '3:10 - 3:40', 'loc-aud', 'Comité QFF', 'Org_team/ejemplo.jpg')">
+                                    <td>3:10 - 3:40</td>
+                                    <td><strong data-i18n="act-cyber">Cyber Colombia</strong></td>
+                                    <td><span class="event-tag tag-talk" data-i18n="tag-short">Short Talk</span></td>
+                                </tr>
+                                <tr class="schedule-row" onmouseenter="showSideDetails('desc-example', 'tag-talk', '3:20 - 3:50', 'loc-aud', 'Comité QFF', 'Org_team/ejemplo.jpg')">
+                                    <td>3:20 - 3:50</td>
+                                    <td><strong data-i18n="act-talk2">Charla corta 2</strong></td>
+                                    <td><span class="event-tag tag-talk" data-i18n="tag-short">Short Talk</span></td>
+                                </tr>
+                                <tr class="schedule-row" onmouseenter="showSideDetails('desc-example', 'tag-break', '3:40 - 3:55', 'loc-lobby', 'Comité QFF', 'Org_team/ejemplo.jpg')">
+                                    <td>3:40 - 3:55</td>
+                                    <td><strong data-i18n="act-break">Break</strong></td>
+                                    <td><span class="event-tag tag-break" data-i18n="tag-break">Break</span></td>
+                                </tr>
+                                <tr class="schedule-row" onmouseenter="showSideDetails('desc-example', 'tag-work', '3:05 - 4:05', 'loc-lab', 'Comité QFF', 'Org_team/ejemplo.jpg')">
+                                    <td>3:05 - 4:05</td>
+                                    <td><strong data-i18n="act-curso2">Curso 2</strong></td>
+                                    <td><span class="event-tag tag-workshop" data-i18n="tag-work">Workshop</span></td>
+                                </tr>
+                                <tr class="schedule-row" onmouseenter="showSideDetails('desc-example', 'tag-talk', '4:05 - 4:35', 'loc-aud', 'Comité QFF', 'Org_team/ejemplo.jpg')">
+                                    <td>4:05 - 4:35</td>
+                                    <td><strong data-i18n="act-talk3">Charla corta 3</strong></td>
+                                    <td><span class="event-tag tag-talk" data-i18n="tag-short">Short Talk</span></td>
+                                </tr>
+                                <tr class="schedule-row" onmouseenter="showSideDetails('desc-example', 'tag-talk', '4:40 - 5:10', 'loc-aud', 'Comité QFF', 'Org_team/ejemplo.jpg')">
+                                    <td>4:40 - 5:10</td>
+                                    <td><strong data-i18n="act-talk4">Charla corta 4</strong></td>
+                                    <td><span class="event-tag tag-talk" data-i18n="tag-short">Short Talk</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
 
-                    <!-- Día 2 -->
-                    <div id="day2-list" style="display: none;">
-                        <div class="timeline-item cat-workshop" onclick="showEventDetail('evt3', this)">
-                            <div class="timeline-time">Oct 28 | 09:00</div>
-                            <div class="timeline-content-summary">
-                                <div class="timeline-title-row">
-                                    <h4 data-i18n="evt3-title">Workshop: Qiskit SDK 101</h4>
-                                    <span class="event-inline-tag" data-i18n="tag-workshop">Workshop</span>
-                                </div>
-                                <p><i class="fas fa-laptop" style="color: #0284c7;"></i> <span data-i18n="computer-lab">Computer Lab</span></p>
-                            </div>
-                        </div>
-
-                        <div class="timeline-item cat-talk" onclick="showEventDetail('evt4', this)">
-                            <div class="timeline-time">Oct 28 | 14:00</div>
-                            <div class="timeline-content-summary">
-                                <div class="timeline-title-row">
-                                    <h4 data-i18n="evt4-title">Short Talks Session I</h4>
-                                    <span class="event-inline-tag" data-i18n="tag-talk">Short Talks</span>
-                                </div>
-                                <p><i class="fas fa-microphone-alt" style="color: #d97706;"></i> <span data-i18n="conference-hall">Conference Hall</span></p>
-                            </div>
-                        </div>
+                    <!-- TABLA DÍA 2 -->
+                    <div id="table-day2" class="day-table-container" style="display: none;">
+                        <table class="schedule-table">
+                            <thead>
+                                <tr>
+                                    <th data-i18n="th-time">Time</th>
+                                    <th data-i18n="th-activity">Activity / Talk</th>
+                                    <th data-i18n="th-type">Type</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="schedule-row" onmouseenter="showSideDetails('desc-example', 'tag-reg', '9:30 - 10:00', 'loc-aud', 'Comité QFF', 'Org_team/ejemplo.jpg')">
+                                    <td>9:30 - 10:00</td>
+                                    <td><strong data-i18n="act-reg">Registro</strong></td>
+                                    <td><span class="event-tag tag-talk" data-i18n="tag-reg">Registro</span></td>
+                                </tr>
+                                <tr class="schedule-row" onmouseenter="showSideDetails('desc-example', 'tag-keynote', '10:00 - 11:20', 'loc-aud', 'Comité QFF', 'Org_team/ejemplo.jpg')">
+                                    <td>10:00 - 11:20</td>
+                                    <td><strong data-i18n="act-pon2">Ponencia 2</strong></td>
+                                    <td><span class="event-tag tag-keynote" data-i18n="tag-key">Keynote</span></td>
+                                </tr>
+                                <tr class="schedule-row" onmouseenter="showSideDetails('desc-example', 'tag-talk', '11:25 - 11:55', 'loc-aud', 'Comité QFF', 'Org_team/ejemplo.jpg')">
+                                    <td>11:25 - 11:55</td>
+                                    <td><strong data-i18n="act-talk5">Charla corta 5</strong></td>
+                                    <td><span class="event-tag tag-talk" data-i18n="tag-short">Short Talk</span></td>
+                                </tr>
+                                <tr class="schedule-row" onmouseenter="showSideDetails('desc-example', 'tag-break', '12:45 - 2:05', 'loc-caf', 'Comité QFF', 'Org_team/ejemplo.jpg')">
+                                    <td>12:45 - 2:05</td>
+                                    <td><strong data-i18n="act-lunch">Lunch</strong></td>
+                                    <td><span class="event-tag tag-break" data-i18n="tag-break">Break</span></td>
+                                </tr>
+                                <tr class="schedule-row" onmouseenter="showSideDetails('desc-example', 'tag-work', '2:05 - 3:05', 'loc-lab', 'Comité QFF', 'Org_team/ejemplo.jpg')">
+                                    <td>2:05 - 3:05</td>
+                                    <td><strong data-i18n="act-curso2">Curso 2</strong></td>
+                                    <td><span class="event-tag tag-workshop" data-i18n="tag-work">Workshop</span></td>
+                                </tr>
+                                <tr class="schedule-row" onmouseenter="showSideDetails('desc-example', 'tag-keynote', '2:40 - 3:20', 'loc-aud', 'Comité QFF', 'Org_team/ejemplo.jpg')">
+                                    <td>2:40 - 3:20</td>
+                                    <td><strong data-i18n="act-paredon">Paredón</strong></td>
+                                    <td><span class="event-tag tag-keynote" data-i18n="tag-key">Keynote</span></td>
+                                </tr>
+                                <tr class="schedule-row" onmouseenter="showSideDetails('desc-example', 'tag-break', '2:50 - 3:05', 'loc-lobby', 'Comité QFF', 'Org_team/ejemplo.jpg')">
+                                    <td>2:50 - 3:05</td>
+                                    <td><strong data-i18n="act-break">Break</strong></td>
+                                    <td><span class="event-tag tag-break" data-i18n="tag-break">Break</span></td>
+                                </tr>
+                                <tr class="schedule-row" onmouseenter="showSideDetails('desc-example', 'tag-keynote', '3:55 - 5:15', 'loc-aud', 'Comité QFF', 'Org_team/ejemplo.jpg')">
+                                    <td>3:55 - 5:15</td>
+                                    <td><strong data-i18n="act-pon5">Ponencia 5</strong></td>
+                                    <td><span class="event-tag tag-keynote" data-i18n="tag-key">Keynote</span></td>
+                                </tr>
+                                <tr class="schedule-row" onmouseenter="showSideDetails('desc-example', 'tag-keynote', '4:10 - 5:10', 'loc-aud', 'Comité QFF', 'Org_team/ejemplo.jpg')">
+                                    <td>4:10 - 5:10</td>
+                                    <td><strong data-i18n="act-pon3">Ponencia 3</strong></td>
+                                    <td><span class="event-tag tag-keynote" data-i18n="tag-key">Keynote</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
 
-                    <!-- Día 3 -->
-                    <div id="day3-list" style="display: none;">
-                        <div class="timeline-item cat-workshop" onclick="showEventDetail('evt5', this)">
-                            <div class="timeline-time">Oct 29 | 09:00</div>
-                            <div class="timeline-content-summary">
-                                <div class="timeline-title-row">
-                                    <h4 data-i18n="evt5-title">Bloch Sphere & Quantum Gates</h4>
-                                    <span class="event-inline-tag" data-i18n="tag-workshop">Workshop</span>
-                                </div>
-                                <p><i class="fas fa-laptop" style="color: #0284c7;"></i> <span data-i18n="computer-lab">Computer Lab</span></p>
-                            </div>
-                        </div>
-
-                        <div class="timeline-item cat-talk" onclick="showEventDetail('evt6', this)">
-                            <div class="timeline-time">Oct 29 | 14:00</div>
-                            <div class="timeline-content-summary">
-                                <div class="timeline-title-row">
-                                    <h4 data-i18n="evt6-title">Short Talks Session II</h4>
-                                    <span class="event-inline-tag" data-i18n="tag-talk">Short Talks</span>
-                                </div>
-                                <p><i class="fas fa-microphone-alt" style="color: #d97706;"></i> <span data-i18n="conference-hall">Conference Hall</span></p>
-                            </div>
-                        </div>
+                    <!-- TABLA DÍA 3 -->
+                    <div id="table-day3" class="day-table-container" style="display: none;">
+                        <table class="schedule-table">
+                            <thead>
+                                <tr>
+                                    <th data-i18n="th-time">Time</th>
+                                    <th data-i18n="th-activity">Activity / Talk</th>
+                                    <th data-i18n="th-type">Type</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="schedule-row" onmouseenter="showSideDetails('desc-example', 'tag-reg', '9:30 - 10:00', 'loc-aud', 'Comité QFF', 'Org_team/ejemplo.jpg')">
+                                    <td>9:30 - 10:00</td>
+                                    <td><strong data-i18n="act-reg">Registro</strong></td>
+                                    <td><span class="event-tag tag-talk" data-i18n="tag-reg">Registro</span></td>
+                                </tr>
+                                <tr class="schedule-row" onmouseenter="showSideDetails('desc-example', 'tag-keynote', '10:00 - 11:20', 'loc-aud', 'Comité QFF', 'Org_team/ejemplo.jpg')">
+                                    <td>10:00 - 11:20</td>
+                                    <td><strong data-i18n="act-pon3">Ponencia 3</strong></td>
+                                    <td><span class="event-tag tag-keynote" data-i18n="tag-key">Keynote</span></td>
+                                </tr>
+                                <tr class="schedule-row" onmouseenter="showSideDetails('desc-example', 'tag-keynote', '11:25 - 12:45', 'loc-aud', 'Comité QFF', 'Org_team/ejemplo.jpg')">
+                                    <td>11:25 - 12:45</td>
+                                    <td><strong data-i18n="act-pon4">Ponencia 4</strong></td>
+                                    <td><span class="event-tag tag-keynote" data-i18n="tag-key">Keynote</span></td>
+                                </tr>
+                                <tr class="schedule-row" onmouseenter="showSideDetails('desc-example', 'tag-break', '12:00 - 1:20', 'loc-caf', 'Comité QFF', 'Org_team/ejemplo.jpg')">
+                                    <td>12:00 - 1:20</td>
+                                    <td><strong data-i18n="act-lunch">Lunch</strong></td>
+                                    <td><span class="event-tag tag-break" data-i18n="tag-break">Break</span></td>
+                                </tr>
+                                <tr class="schedule-row" onmouseenter="showSideDetails('desc-example', 'tag-panel', '1:25 - 2:40', 'loc-aud', 'Comité QFF', 'Org_team/ejemplo.jpg')">
+                                    <td>1:25 - 2:40</td>
+                                    <td><strong data-i18n="act-conv">Conversatorio</strong></td>
+                                    <td><span class="event-tag tag-keynote" data-i18n="tag-panel">Panel</span></td>
+                                </tr>
+                                <tr class="schedule-row" onmouseenter="showSideDetails('desc-example', 'tag-talk', '2:20 - 2:50', 'loc-aud', 'Comité QFF', 'Org_team/ejemplo.jpg')">
+                                    <td>2:20 - 2:50</td>
+                                    <td><strong data-i18n="act-talk6">Charla corta 6</strong></td>
+                                    <td><span class="event-tag tag-talk" data-i18n="tag-short">Short Talk</span></td>
+                                </tr>
+                                <tr class="schedule-row" onmouseenter="showSideDetails('desc-example', 'tag-break', '3:20 - 3:45', 'loc-lobby', 'Comité QFF', 'Org_team/ejemplo.jpg')">
+                                    <td>3:20 - 3:45</td>
+                                    <td><strong data-i18n="act-break">Break</strong></td>
+                                    <td><span class="event-tag tag-break" data-i18n="tag-break">Break</span></td>
+                                </tr>
+                                <tr class="schedule-row" onmouseenter="showSideDetails('desc-example', 'tag-closing', '3:45 - 4:10', 'loc-aud', 'Comité QFF', 'Org_team/ejemplo.jpg')">
+                                    <td>3:45 - 4:10</td>
+                                    <td><strong data-i18n="act-clausura">Clausura - Premiación</strong></td>
+                                    <td><span class="event-tag tag-keynote" data-i18n="tag-closing">Closing</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
 
-                    <!-- Día 4 -->
-                    <div id="day4-list" style="display: none;">
-                        <div class="timeline-item cat-keynote" onclick="showEventDetail('evt7', this)">
-                            <div class="timeline-time">Oct 30 | 10:00</div>
-                            <div class="timeline-content-summary">
-                                <div class="timeline-title-row">
-                                    <h4 data-i18n="evt7-title">Panel & Closing Ceremony</h4>
-                                    <span class="event-inline-tag" data-i18n="tag-ceremony">Ceremony</span>
-                                </div>
-                                <p><i class="fas fa-trophy" style="color: #d97706;"></i> <span data-i18n="auditorium-main">Main Auditorium</span></p>
-                            </div>
-                        </div>
+                    <!-- TABLA DÍA 4 -->
+                    <div id="table-day4" class="day-table-container" style="display: none;">
+                        <table class="schedule-table">
+                            <thead>
+                                <tr>
+                                    <th data-i18n="th-time">Time</th>
+                                    <th data-i18n="th-activity">Activity / Talk</th>
+                                    <th data-i18n="th-type">Type</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="schedule-row" onmouseenter="showSideDetails('desc-example', 'tag-reg', '9:30 - 10:00', 'loc-aud', 'Comité QFF', 'Org_team/ejemplo.jpg')">
+                                    <td>9:30 - 10:00</td>
+                                    <td><strong data-i18n="act-reg">Registro</strong></td>
+                                    <td><span class="event-tag tag-talk" data-i18n="tag-reg">Registro</span></td>
+                                </tr>
+                                <tr class="schedule-row" onmouseenter="showSideDetails('desc-example', 'tag-keynote', '10:00 - 11:20', 'loc-aud', 'Comité QFF', 'Org_team/ejemplo.jpg')">
+                                    <td>10:00 - 11:20</td>
+                                    <td><strong data-i18n="act-pon6">Ponencia 6</strong></td>
+                                    <td><span class="event-tag tag-keynote" data-i18n="tag-key">Keynote</span></td>
+                                </tr>
+                                <tr class="schedule-row" onmouseenter="showSideDetails('desc-example', 'tag-talk', '11:25 - 11:55', 'loc-aud', 'Comité QFF', 'Org_team/ejemplo.jpg')">
+                                    <td>11:25 - 11:55</td>
+                                    <td><strong data-i18n="act-talk7">Charla corta 7</strong></td>
+                                    <td><span class="event-tag tag-talk" data-i18n="tag-short">Short Talk</span></td>
+                                </tr>
+                                <tr class="schedule-row" onmouseenter="showSideDetails('desc-example', 'tag-break', '12:00 - 1:20', 'loc-caf', 'Comité QFF', 'Org_team/ejemplo.jpg')">
+                                    <td>12:00 - 1:20</td>
+                                    <td><strong data-i18n="act-lunch">Lunch</strong></td>
+                                    <td><span class="event-tag tag-break" data-i18n="tag-break">Break</span></td>
+                                </tr>
+                                <tr class="schedule-row" onmouseenter="showSideDetails('desc-example', 'tag-work', '1:20 - 3:20', 'loc-lab', 'Comité QFF', 'Org_team/ejemplo.jpg')">
+                                    <td>1:20 - 3:20</td>
+                                    <td><strong data-i18n="act-curso1">Curso 1</strong></td>
+                                    <td><span class="event-tag tag-workshop" data-i18n="tag-work">Workshop</span></td>
+                                </tr>
+                                <tr class="schedule-row" onmouseenter="showSideDetails('desc-example', 'tag-break', '3:40 - 3:55', 'loc-lobby', 'Comité QFF', 'Org_team/ejemplo.jpg')">
+                                    <td>3:40 - 3:55</td>
+                                    <td><strong data-i18n="act-break">Break</strong></td>
+                                    <td><span class="event-tag tag-break" data-i18n="tag-break">Break</span></td>
+                                </tr>
+                                <tr class="schedule-row" onmouseenter="showSideDetails('desc-example', 'tag-break', '4:10 - 5:30', 'loc-plaza', 'Comité QFF', 'Org_team/ejemplo.jpg')">
+                                    <td>4:10 - 5:30</td>
+                                    <td><strong data-i18n="act-integ">Integración</strong></td>
+                                    <td><span class="event-tag tag-break" data-i18n="tag-social">Social</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 
-                <!-- Right: Dynamic Detail -->
+                <!-- PANEL LATERAL DERECHO -->
                 <div>
-                    <div class="event-detail-card" id="detailCard">
-                        <span id="detailBadge" class="call-badge">Keynote</span>
-                        <h3 id="detailTitle" style="margin: 10px 0 6px 0; font-size: 1.35rem; color: var(--text-primary);">Opening & Keynote Speech</h3>
-                        <p id="detailLocation" style="color: var(--ibm-soft-purple); font-size: 0.9rem; margin-bottom: 14px;"><i class="fas fa-map-marker-alt"></i> Main Auditorium | Oct 27 - 09:00 AM</p>
+                    <div class="side-detail-panel">
+                        <span id="sideBadge" class="call-badge" style="margin-bottom: 10px;" data-i18n="tag-key">Keynote</span>
+                        <h3 id="sideTitle" style="margin: 0 0 8px 0; font-size: 1.15rem; color: var(--text-primary);" data-i18n="side-title">Activity Details</h3>
+                        <p id="sideLocation" style="color: var(--ibm-soft-purple); font-size: 0.85rem; margin-bottom: 14px;"><i class="fas fa-map-marker-alt"></i> <span data-i18n="side-hover-hint">Hover over a talk</span></p>
+                        <p id="sideDescription" style="font-size: 0.92rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 20px;" data-i18n="desc-example">Sample description of the selected activity.</p>
                         
-                        <p id="detailDescription" style="font-size: 0.95rem; line-height: 1.6; color: var(--text-secondary);">
-                            Official opening of Qiskit Fall Fest 2026. Keynote lecture on global advances in IBM Quantum processors, scientific roadmap, and research opportunities for Latin America.
-                        </p>
-
-                        <div class="speaker-detail-box">
-                            <div style="width: 56px; height: 56px; background: var(--ibm-purple); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.4rem; flex-shrink: 0;"><i class="fas fa-user-tie"></i></div>
+                        <div style="display: flex; align-items: center; gap: 14px; background: var(--ibm-section-alt); padding: 12px 14px; border-radius: 8px; border: 1px solid var(--ibm-border);">
+                            <img id="sideSpeakerImg" src="Org_team/ejemplo.jpg" alt="Speaker" style="width: 55px; height: 55px; border-radius: 50%; object-fit: cover; border: 2px solid var(--ibm-light-purple); flex-shrink: 0;">
                             <div>
-                                <h4 id="detailSpeakerName" style="margin: 0; font-size: 0.98rem; color: var(--text-primary);">Guest Speaker</h4>
-                                <p id="detailSpeakerRole" style="margin: 2px 0 0 0; font-size: 0.82rem; color: var(--text-muted);">Quantum Information Researcher</p>
+                                <h4 id="sideSpeakerName" style="margin: 0; font-size: 0.92rem; color: var(--text-primary);">Comité QFF</h4>
+                                <p id="sideSpeakerRole" style="margin: 3px 0 0 0; font-size: 0.78rem; color: var(--text-muted);" data-i18n="side-role">Speaker / Moderator</p>
                             </div>
-                        </div>
-
-                        <div id="detailLinks" style="display: flex; gap: 12px; margin-top: 20px; justify-content: center;">
-                            <a href="#" id="detailLinkSlides" target="_blank" class="btn btn-secondary" style="font-size: 0.85rem; padding: 10px 16px; background: var(--ibm-section-alt); color: var(--text-primary); border: 1px solid var(--ibm-border); text-decoration: none; border-radius: 4px;"><i class="fas fa-file-pdf"></i> <span data-i18n="btn-slides">Slides / Materials</span></a>
-                            <a href="TU_ENLACE_DE_FORMULARIO" class="btn btn-primary" style="font-size: 0.85rem; padding: 10px 16px; background: var(--ibm-purple); color: white; text-decoration: none; border-radius: 4px;"><i class="fas fa-check-circle"></i> <span data-i18n="btn-reserve">Reserve Seat</span></a>
                         </div>
                     </div>
                 </div>
@@ -842,7 +956,9 @@
         </div>
     </section>
 
-    <!-- CALL FOR PAPERS -->
+    <!-- ========================================== -->
+    <!-- 5. CALL FOR PAPERS (CHARLAS CORTAS) -->
+    <!-- ========================================== -->
     <section id="cfp" style="padding: 60px 0; background: var(--ibm-section-alt);">
         <div class="container">
             <div class="call-section">
@@ -879,91 +995,88 @@
         </div>
     </section>
 
-    <!-- SPEAKERS -->
-    <section id="speakers" class="speakers" style="padding: 60px 0; background: var(--ibm-dark-bg);"> 
-        <div class="container"> 
-            <div class="section-header"> 
-                <h2 class="section-title" data-i18n="speakers-title">Speakers & Special Guests</h2> 
+    <!-- ========================================== -->
+    <!-- 6. PONENTES E INVITADOS -->
+    <!-- ========================================== -->
+    <section id="speakers" class="speakers" style="padding: 60px 0; background: var(--ibm-dark-bg);">  
+        <div class="container">  
+            <div class="section-header">  
+                <h2 class="section-title" data-i18n="speakers-title">Speakers & Special Guests</h2>  
                 <p class="section-subtitle" data-i18n="speakers-subtitle">Researchers, professors, and specialists in quantum science</p>
-            </div> 
+            </div>  
 
-            <div class="carousel-wrapper" style="position: relative; display: flex; align-items: center;">
-              
-              <button class="carousel-btn" id="speakerPrevBtn" style="position: absolute; left: -15px; z-index: 10; background: var(--ibm-purple); color: white; border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer;">
-                <i class="fas fa-chevron-left"></i>
-              </button>
-
-              <div class="carousel-track-container" style="overflow: hidden; width: 100%; margin: 0 30px;">
-                <div class="speakers-grid carousel-track" id="speakerTrack" style="display: flex; transition: transform 0.4s ease-in-out; gap: 20px;">
-                  
-                  <div class="speaker-card speaker-item" style="flex: 0 0 calc(50% - 10px); min-width: 260px; box-sizing: border-box; padding: 25px;">
-                    <div class="speaker-image" style="display: flex; justify-content: center; margin-bottom: 15px;"> 
-                        <div style="width: 70px; height: 70px; background: rgba(105,41,196,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--ibm-light-purple); font-size: 1.8rem;"><i class="fas fa-user"></i></div>
+            <div class="speakers-marquee-container">
+                <div class="speakers-marquee-track">
+                    <div class="speaker-card" style="padding: 25px; text-align: center; min-width: 280px;">
+                        <div style="display: flex; justify-content: center; margin-bottom: 15px;">  
+                            <img src="Org_team/ejemplo.jpg" alt="Speaker" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid var(--ibm-light-purple);">
+                        </div>
+                        <div>
+                            <h3 style="color: var(--text-primary); font-size: 1.1rem;" data-i18n="sp-1-name">Dr. Quantum Guest</h3>
+                            <p style="color: var(--ibm-soft-purple); font-size: 0.85rem;" data-i18n="sp-1-role">Quantum Information Researcher</p>
+                            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 8px;" data-i18n="sp-1-desc">Specialist in information theory and advanced quantum algorithms.</p>
+                        </div>
                     </div>
-                    <div class="speaker-info" style="text-align: center;">
-                        <h3 data-i18n="spk1-name" style="color: var(--text-primary);">Confirmed Speaker 1</h3>
-                        <p class="speaker-title" data-i18n="spk1-role" style="color: var(--ibm-soft-purple);">Quantum Information Researcher</p>
-                        <p class="speaker-bio" data-i18n="spk-bio-placeholder" style="color: var(--text-muted);">Details on talk and research lines coming soon.</p>
-                    </div>
-                  </div>
 
-                  <div class="speaker-card speaker-item" style="flex: 0 0 calc(50% - 10px); min-width: 260px; box-sizing: border-box; padding: 25px;">
-                    <div class="speaker-image" style="display: flex; justify-content: center; margin-bottom: 15px;">
-                        <div style="width: 70px; height: 70px; background: rgba(105,41,196,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--ibm-light-purple); font-size: 1.8rem;"><i class="fas fa-user"></i></div>
-                    </div> 
-                    <div class="speaker-info" style="text-align: center;">
-                        <h3 data-i18n="spk2-name" style="color: var(--text-primary);">Confirmed Speaker 2</h3>
-                        <p class="speaker-title" data-i18n="spk2-role" style="color: var(--ibm-soft-purple);">Quantum Computing Specialist</p>
-                        <p class="speaker-bio" data-i18n="spk-bio-placeholder" style="color: var(--text-muted);">Details on talk and research lines coming soon.</p>
+                    <div class="speaker-card" style="padding: 25px; text-align: center; min-width: 280px;">
+                        <div style="display: flex; justify-content: center; margin-bottom: 15px;">  
+                            <img src="Org_team/ejemplo.jpg" alt="Speaker" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid var(--ibm-light-purple);">
+                        </div>
+                        <div>
+                            <h3 style="color: var(--text-primary); font-size: 1.1rem;" data-i18n="sp-2-name">Sponsor 1 Specialist</h3>
+                            <p style="color: var(--ibm-soft-purple); font-size: 0.85rem;" data-i18n="sp-2-role">Quantum Computing Specialist</p>
+                            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 8px;" data-i18n="sp-2-desc">Developer and maintainer of tools within the computing ecosystem.</p>
+                        </div>
                     </div>
-                  </div>
-
-                  <div class="speaker-card speaker-item" style="flex: 0 0 calc(50% - 10px); min-width: 260px; box-sizing: border-box; padding: 25px;">
-                    <div class="speaker-image" style="display: flex; justify-content: center; margin-bottom: 15px;">
-                        <div style="width: 70px; height: 70px; background: rgba(105,41,196,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--ibm-light-purple); font-size: 1.8rem;"><i class="fas fa-user"></i></div>
-                    </div> 
-                    <div class="speaker-info" style="text-align: center;">
-                        <h3 data-i18n="spk3-name" style="color: var(--text-primary);">Guest Professor / Researcher 3</h3>
-                        <p class="speaker-title" data-i18n="spk3-role" style="color: var(--ibm-soft-purple);">Computational Physics & Algorithms</p>
-                        <p class="speaker-bio" data-i18n="spk-bio-placeholder" style="color: var(--text-muted);">Details on talk and research lines coming soon.</p>
-                    </div>
-                  </div>
-
                 </div>
-              </div>
 
-              <button class="carousel-btn next-btn" id="speakerNextBtn" style="position: absolute; right: -15px; z-index: 10; background: var(--ibm-purple); color: white; border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer;">
-                <i class="fas fa-chevron-right"></i>
-              </button>
+                <div class="speakers-marquee-track" aria-hidden="true">
+                    <div class="speaker-card" style="padding: 25px; text-align: center; min-width: 280px;">
+                        <div style="display: flex; justify-content: center; margin-bottom: 15px;">  
+                            <img src="Org_team/ejemplo.jpg" alt="Speaker" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid var(--ibm-light-purple);">
+                        </div>
+                        <div>
+                            <h3 style="color: var(--text-primary); font-size: 1.1rem;" data-i18n="sp-1-name">Dr. Quantum Guest</h3>
+                            <p style="color: var(--ibm-soft-purple); font-size: 0.85rem;" data-i18n="sp-1-role">Quantum Information Researcher</p>
+                            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 8px;" data-i18n="sp-1-desc">Specialist in information theory and advanced quantum algorithms.</p>
+                        </div>
+                    </div>
 
+                    <div class="speaker-card" style="padding: 25px; text-align: center; min-width: 280px;">
+                        <div style="display: flex; justify-content: center; margin-bottom: 15px;">  
+                            <img src="Org_team/ejemplo.jpg" alt="Speaker" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid var(--ibm-light-purple);">
+                        </div>
+                        <div>
+                            <h3 style="color: var(--text-primary); font-size: 1.1rem;" data-i18n="sp-2-name">Sponsor 1 Specialist</h3>
+                            <p style="color: var(--ibm-soft-purple); font-size: 0.85rem;" data-i18n="sp-2-role">Quantum Computing Specialist</p>
+                            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 8px;" data-i18n="sp-2-desc">Developer and maintainer of tools within the computing ecosystem.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- ORGANIZING COMMITTEE -->
+    <!-- ========================================== -->
+    <!-- 7. COMITÉ ORGANIZADOR -->
+    <!-- ========================================== -->
     <section id="organizers" class="speakers" style="padding: 60px 0; background: var(--ibm-section-alt);">
       <div class="container">
         <div class="section-header">
           <h2 class="section-title" data-i18n="org-title">Organizing Committee</h2>
-          <p class="section-subtitle">Node Universidad Distrital Francisco José de Caldas</p>
+          <p class="section-subtitle" data-i18n="org-subtitle">Node Universidad Distrital Francisco José de Caldas</p>
         </div>
 
-        <div class="carousel-wrapper" style="position: relative; display: flex; align-items: center;">
-          <button class="carousel-btn prev-btn" id="prevBtn" aria-label="Previous" style="position: absolute; left: -15px; z-index: 10; background: var(--ibm-purple); color: white; border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer;">
-            <i class="fas fa-chevron-left"></i>
-          </button>
-
-          <div class="carousel-track-container" style="overflow: hidden; width: 100%; margin: 0 30px;">
-            <div class="speakers-grid carousel-track" id="teamTrack" style="display: flex; transition: transform 0.4s ease-in-out; gap: 20px;">
-              
-              <div class="speaker-card team-card" style="flex: 0 0 calc(33.333% - 14px); min-width: 250px; box-sizing: border-box; padding: 25px;">
-                <div class="speaker-image" style="display: flex; justify-content: center; margin-bottom: 15px;">
-                  <div style="width: 70px; height: 70px; background: rgba(105,41,196,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--ibm-light-purple); font-size: 1.8rem;"><i class="fas fa-user-graduate"></i></div>
+        <div class="speakers-marquee-container">
+          <div class="speakers-marquee-track">
+              <div class="speaker-card team-card" style="padding: 25px; text-align: center; min-width: 260px;">
+                <div style="display: flex; justify-content: center; margin-bottom: 15px;">
+                  <img src="Org_team/ejemplo.jpg" alt="Juan David" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid var(--ibm-light-purple);">
                 </div>
-                <div class="speaker-info" style="text-align: center;">
-                  <h3 style="color: var(--text-primary);">Juan David de los Ríos Mahecha</h3>
-                  <p class="speaker-title" style="color: var(--ibm-soft-purple);">Lead Organizer & Qiskit Advocate</p>
-                  <div class="speaker-social" style="margin-top: 10px;">
+                <div>
+                  <h3 style="color: var(--text-primary); font-size: 1.05rem;">Juan David de los Ríos</h3>
+                  <p style="color: var(--ibm-soft-purple); font-size: 0.85rem;" data-i18n="role-lead">Lead Organizer & Qiskit Advocate</p>
+                  <div style="margin-top: 10px;">
                     <a href="mailto:juandelosriosquantum@gmail.com" style="color: var(--text-secondary); margin: 0 5px;"><i class="fas fa-envelope"></i></a>
                     <a href="https://github.com/juandaviddelosriosmahecha" target="_blank" rel="noopener noreferrer" style="color: var(--text-secondary); margin: 0 5px;"><i class="fab fa-github"></i></a>
                     <a href="https://www.linkedin.com/in/juan-david-de-los-rios-mahecha-60a427347/" target="_blank" rel="noopener noreferrer" style="color: var(--text-secondary); margin: 0 5px;"><i class="fab fa-linkedin"></i></a>
@@ -971,63 +1084,125 @@
                 </div>
               </div>
 
-              <div class="speaker-card team-card" style="flex: 0 0 calc(33.333% - 14px); min-width: 250px; box-sizing: border-box; padding: 25px;"><div class="speaker-image" style="display: flex; justify-content: center; margin-bottom: 15px;"><div style="width: 70px; height: 70px; background: rgba(105,41,196,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--ibm-light-purple); font-size: 1.8rem;"><i class="fas fa-user"></i></div></div><div class="speaker-info" style="text-align: center;"><h3 style="color: var(--text-primary);">Co-organizer 2</h3><p class="speaker-title" data-i18n="coorg-role" style="color: var(--ibm-soft-purple);">Official Co-organizer</p></div></div>
-              <div class="speaker-card team-card" style="flex: 0 0 calc(33.333% - 14px); min-width: 250px; box-sizing: border-box; padding: 25px;"><div class="speaker-image" style="display: flex; justify-content: center; margin-bottom: 15px;"><div style="width: 70px; height: 70px; background: rgba(105,41,196,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--ibm-light-purple); font-size: 1.8rem;"><i class="fas fa-user"></i></div></div><div class="speaker-info" style="text-align: center;"><h3 style="color: var(--text-primary);">Co-organizer 3</h3><p class="speaker-title" data-i18n="coorg-role" style="color: var(--ibm-soft-purple);">Official Co-organizer</p></div></div>
-              <div class="speaker-card team-card" style="flex: 0 0 calc(33.333% - 14px); min-width: 250px; box-sizing: border-box; padding: 25px;"><div class="speaker-image" style="display: flex; justify-content: center; margin-bottom: 15px;"><div style="width: 70px; height: 70px; background: rgba(105,41,196,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--ibm-light-purple); font-size: 1.8rem;"><i class="fas fa-user"></i></div></div><div class="speaker-info" style="text-align: center;"><h3 style="color: var(--text-primary);">Co-organizer 4</h3><p class="speaker-title" data-i18n="coorg-role" style="color: var(--ibm-soft-purple);">Official Co-organizer</p></div></div>
+              <div class="speaker-card team-card" style="padding: 25px; text-align: center; min-width: 260px;">
+                <div style="display: flex; justify-content: center; margin-bottom: 15px;">
+                  <img src="Org_team/JOHN.png" alt="John" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid var(--ibm-light-purple);">
+                </div>
+                <div>
+                  <h3 style="color: var(--text-primary); font-size: 1.05rem;">John Hernán Díaz Forero</h3>
+                  <p style="color: var(--ibm-soft-purple); font-size: 0.85rem;" data-i18n="role-co">Official Co-organizer</p>
+                </div>
+              </div>
 
-            </div>
+              <div class="speaker-card team-card" style="padding: 25px; text-align: center; min-width: 260px;">
+                <div style="display: flex; justify-content: center; margin-bottom: 15px;">
+                  <img src="Org_team/Luciana.jpeg" alt="Luciana" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid var(--ibm-light-purple);">
+                </div>
+                <div>
+                  <h3 style="color: var(--text-primary); font-size: 1.05rem;">Luciana Rengifo Estupiñan</h3>
+                  <p style="color: var(--ibm-soft-purple); font-size: 0.85rem;" data-i18n="role-co">Official Co-organizer</p>
+                </div>
+              </div>
+
+              <div class="speaker-card team-card" style="padding: 25px; text-align: center; min-width: 260px;">
+                <div style="display: flex; justify-content: center; margin-bottom: 15px;">
+                  <img src="Org_team/ejemplo.jpg" alt="Luna" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid var(--ibm-light-purple);">
+                </div>
+                <div>
+                  <h3 style="color: var(--text-primary); font-size: 1.05rem;">Luna María Corredor</h3>
+                  <p style="color: var(--ibm-soft-purple); font-size: 0.85rem;" data-i18n="role-co">Official Co-organizer</p>
+                </div>
+              </div>
           </div>
 
-          <button class="carousel-btn next-btn" id="nextBtn" aria-label="Next" style="position: absolute; right: -15px; z-index: 10; background: var(--ibm-purple); color: white; border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer;">
-            <i class="fas fa-chevron-right"></i>
-          </button>
+          <div class="speakers-marquee-track" aria-hidden="true">
+              <div class="speaker-card team-card" style="padding: 25px; text-align: center; min-width: 260px;">
+                <div style="display: flex; justify-content: center; margin-bottom: 15px;">
+                  <img src="Org_team/ejemplo.jpg" alt="Juan David" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid var(--ibm-light-purple);">
+                </div>
+                <div>
+                  <h3 style="color: var(--text-primary); font-size: 1.05rem;">Juan David de los Ríos</h3>
+                  <p style="color: var(--ibm-soft-purple); font-size: 0.85rem;" data-i18n="role-lead">Lead Organizer & Qiskit Advocate</p>
+                  <div style="margin-top: 10px;">
+                    <a href="mailto:juandelosriosquantum@gmail.com" style="color: var(--text-secondary); margin: 0 5px;"><i class="fas fa-envelope"></i></a>
+                    <a href="https://github.com/juandaviddelosriosmahecha" target="_blank" rel="noopener noreferrer" style="color: var(--text-secondary); margin: 0 5px;"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/juan-david-de-los-rios-mahecha-60a427347/" target="_blank" rel="noopener noreferrer" style="color: var(--text-secondary); margin: 0 5px;"><i class="fab fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
 
+              <div class="speaker-card team-card" style="padding: 25px; text-align: center; min-width: 260px;">
+                <div style="display: flex; justify-content: center; margin-bottom: 15px;">
+                  <img src="Org_team/JOHN.png" alt="John" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid var(--ibm-light-purple);">
+                </div>
+                <div>
+                  <h3 style="color: var(--text-primary); font-size: 1.05rem;">John Hernán Díaz Forero</h3>
+                  <p style="color: var(--ibm-soft-purple); font-size: 0.85rem;" data-i18n="role-co">Official Co-organizer</p>
+                </div>
+              </div>
+
+              <div class="speaker-card team-card" style="padding: 25px; text-align: center; min-width: 260px;">
+                <div style="display: flex; justify-content: center; margin-bottom: 15px;">
+                  <img src="Org_team/Luciana.jpeg" alt="Luciana" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid var(--ibm-light-purple);">
+                </div>
+                <div>
+                  <h3 style="color: var(--text-primary); font-size: 1.05rem;">Luciana Rengifo Estupiñan</h3>
+                  <p style="color: var(--ibm-soft-purple); font-size: 0.85rem;" data-i18n="role-co">Official Co-organizer</p>
+                </div>
+              </div>
+
+              <div class="speaker-card team-card" style="padding: 25px; text-align: center; min-width: 260px;">
+                <div style="display: flex; justify-content: center; margin-bottom: 15px;">
+                  <img src="Org_team/ejemplo.jpg" alt="Luna" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid var(--ibm-light-purple);">
+                </div>
+                <div>
+                  <h3 style="color: var(--text-primary); font-size: 1.05rem;">Luna María Corredor</h3>
+                  <p style="color: var(--ibm-soft-purple); font-size: 0.85rem;" data-i18n="role-co">Official Co-organizer</p>
+                </div>
+              </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- LOCATION SECTION -->
-    <section id="location" class="about" style="padding: 60px 0; background: var(--ibm-dark-bg);">
+    <!-- ========================================== -->
+    <!-- 8. UBICACIÓN -->
+    <!-- ========================================== -->
+    <section id="location" style="padding: 60px 0; background: var(--ibm-dark-bg);">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title" data-i18n="loc-title">Event Location</h2>
-                <p class="section-subtitle">Faculty of Mathematical and Natural Sciences – Universidad Distrital Francisco José de Caldas</p>
+                <p class="section-subtitle" data-i18n="loc-subtitle">Faculty of Mathematical and Natural Sciences – Universidad Distrital Francisco José de Caldas</p>
             </div>
 
             <div class="two-col-grid" style="align-items: center;">
-                <div class="event-card" style="padding: 30px; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; text-align: center;">
-                    <h3 style="color: var(--text-primary); margin-bottom: 14px; font-size: 1.3rem;"><i class="fas fa-map-marked-alt" style="color: var(--ibm-light-purple); margin-right: 8px;"></i> <span data-i18n="loc-venue-head">Venue</span></h3>
-                    <p style="margin-bottom: 12px; font-size: 1.05rem; color: var(--text-primary);">
-                        <strong>Sede Fundadores – Universidad Autónoma de Colombia</strong>
-                    </p>
-                    <p style="margin-bottom: 12px; color: var(--text-secondary);" data-i18n="loc-venue-desc">
-                        <i class="fas fa-compass" style="color: var(--ibm-light-purple);"></i> Central location near <strong>Plaza de Bolívar</strong>, Historic Center of Bogotá.
-                    </p>
-                    <p style="margin-bottom: 20px; color: var(--text-muted); font-size: 0.9rem;" data-i18n="loc-transit">
-                        <i class="fas fa-bus" style="color: var(--ibm-light-purple);"></i> Easy access via TransMilenio stations (Museo del Oro, Las Aguas, San Victorino).
-                    </p>
-                    <a href="https://maps.google.com/?q=Universidad+Autonoma+de+Colombia+Sede+Fundadores+Bogota" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="display: inline-block; text-align: center; padding: 12px; background: var(--ibm-purple); color: white; text-decoration: none; border-radius: 4px;">
-                        <i class="fas fa-directions"></i> <span data-i18n="btn-maps">Open Location in Google Maps</span>
+                <div class="event-card" style="padding: 30px; text-align: center;">
+                    <h3 style="color: var(--text-primary); margin-bottom: 14px; font-size: 1.3rem;"><i class="fas fa-map-marked-alt" style="color: var(--ibm-light-purple);"></i> Sede Fundadores</h3>
+                    <p style="margin-bottom: 12px; color: var(--text-secondary);" data-i18n="loc-uni">Universidad Autónoma de Colombia, Bogotá</p>
+                    <p style="margin-bottom: 20px; color: var(--text-muted); font-size: 0.9rem;"><i class="fas fa-bus"></i> <span data-i18n="loc-bus">Near Plaza de Bolívar and TransMilenio stations.</span></p>
+                    <a href="https://maps.google.com/?q=Universidad+Autonoma+de+Colombia+Sede+Fundadores+Bogota" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="display: inline-block; padding: 12px; background: var(--ibm-purple); color: white; text-decoration: none; border-radius: 4px;">
+                        <i class="fas fa-directions"></i> <span data-i18n="loc-btn">Open in Google Maps</span>
                     </a>
                 </div>
 
-                <div style="border-radius: 8px; overflow: hidden; border: 1px solid var(--ibm-border); height: 340px; box-shadow: var(--card-shadow);">
+                <div style="border-radius: 8px; overflow: hidden; border: 1px solid var(--ibm-border); height: 320px; box-shadow: var(--card-shadow);">
                     <iframe 
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.9188049103253!2d-74.07548232418386!3d4.599602395375086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f99a0f020bb29%3A0x6b7495d4d33eb0c9!2sUniversidad%20Aut%C3%B3noma%20de%20Colombia%20-%20Sede%20Fundadores!5e0!3m2!1ses!2sco!4v1710000000000!5m2!1ses!2sco" 
                         width="100%" 
                         height="100%" 
                         style="border:0;" 
                         allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade">
+                        loading="lazy">
                     </iframe>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- TECHNICAL REQUIREMENTS & FAQ -->
-    <section id="faq" class="events" style="padding: 60px 0; background: var(--ibm-section-alt);">
+    <!-- ========================================== -->
+    <!-- 9. REQUISITOS TÉCNICOS Y FAQ -->
+    <!-- ========================================== -->
+    <section id="faq" style="padding: 60px 0; background: var(--ibm-section-alt);">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title" data-i18n="faq-title">Technical Requirements & FAQ</h2>
@@ -1035,618 +1210,417 @@
             </div>
             
             <div class="two-col-grid" style="align-items: center;">
-                <div class="event-card" style="padding: 30px; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center;">
-                    <h3 style="font-size: 1.2rem; color: var(--text-primary);"><i class="fas fa-laptop-code" style="color: var(--ibm-light-purple); margin-right: 8px;"></i> <span data-i18n="faq-python-head">Recommended Python Environment</span></h3>
-                    <p style="font-size: 0.9rem; margin-top: 10px; color: var(--text-secondary);" data-i18n="faq-python-desc">We recommend bringing your laptop for practical workshops. You can prepare your environment by running:</p>
-                    <pre style="background: var(--ibm-section-alt); color: var(--ibm-light-purple); padding: 14px; border-radius: 4px; margin-top: 14px; border: 1px solid var(--ibm-border); overflow-x: auto; font-size: 0.85rem;">pip install qiskit qiskit-ibm-runtime matplotlib</pre>
+                <div class="event-card" style="padding: 30px;">
+                    <h3 style="font-size: 1.2rem; color: var(--text-primary);"><i class="fas fa-laptop-code" style="color: var(--ibm-light-purple);"></i> Python Environment</h3>
+                    <p style="font-size: 0.9rem; margin-top: 10px; color: var(--text-secondary);" data-i18n="faq-python-desc">We recommend installing the basic environment for the workshops:</p>
+                    <pre style="background: var(--ibm-section-alt); color: var(--ibm-light-purple); padding: 14px; border-radius: 4px; margin-top: 14px; border: 1px solid var(--ibm-border); font-size: 0.85rem;">pip install qiskit qiskit-ibm-runtime matplotlib</pre>
                 </div>
 
                 <div style="display: flex; flex-direction: column; gap: 14px;">
                     <div class="event-card" style="padding: 18px 22px;">
-                        <h4 style="margin: 0 0 4px 0; color: var(--text-primary);" data-i18n="faq-q1">Is registration free?</h4>
-                        <p style="margin: 0; font-size: 0.88rem; color: var(--text-secondary);" data-i18n="faq-a1">Yes, participation is 100% free with prior registration.</p>
+                        <h4 style="margin: 0 0 4px 0; color: var(--text-primary);" data-i18n="faq-q1">Is participation free?</h4>
+                        <p style="margin: 0; font-size: 0.88rem; color: var(--text-secondary);" data-i18n="faq-a1">Yes, 100% free with prior registration.</p>
                     </div>
-
                     <div class="event-card" style="padding: 18px 22px;">
-                        <h4 style="margin: 0 0 4px 0; color: var(--text-primary);" data-i18n="faq-q2">Are academic certificates provided?</h4>
-                        <p style="margin: 0; font-size: 0.88rem; color: var(--text-secondary);" data-i18n="faq-a2">Yes, a formal attendance certificate will be issued after the event.</p>
-                    </div>
-
-                    <div class="event-card" style="padding: 18px 22px;">
-                        <h4 style="margin: 0 0 4px 0; color: var(--text-primary);" data-i18n="faq-q3">Is advanced prior knowledge required?</h4>
-                        <p style="margin: 0; font-size: 0.88rem; color: var(--text-secondary);" data-i18n="faq-a3">Not mandatory. Day 1 covers introductory topics from scratch.</p>
+                        <h4 style="margin: 0 0 4px 0; color: var(--text-primary);" data-i18n="faq-q2">Is a certificate provided?</h4>
+                        <p style="margin: 0; font-size: 0.88rem; color: var(--text-secondary);" data-i18n="faq-a2">Yes, an official attendance certificate upon completion.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="footer" style="background-color: var(--ibm-card-bg); border-top: 1px solid var(--ibm-border); padding: 50px 0 20px 0;">
+    <!-- ========================================== -->
+    <!-- 10. FOOTER -->
+    <!-- ========================================== -->
+    <footer style="background-color: var(--ibm-card-bg); border-top: 1px solid var(--ibm-border); padding: 40px 0 20px 0; text-align: center;">
         <div class="container">
-            <div class="footer-content" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 30px;">
-                <div class="footer-section">
-                    <div class="footer-logo">
-                        <div style="width: 45px; height: 45px; background: var(--ibm-purple); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.4rem; margin-bottom: 12px;">
-                            <i class="fas fa-atom"></i>
-                        </div>
-                    </div>
-                    <h3 class="footer-heading" style="color: var(--text-primary); font-size: 1.1rem; margin-bottom: 10px;">Qiskit Fall Fest 2026 – Universidad Distrital</h3>
-                    <p data-i18n="footer-tagline" style="color: var(--text-secondary); font-size: 0.9rem;">Promoting education and research in quantum science and information in Colombia.</p>
-                    <div class="social-links" style="margin-top: 15px;">
-                        <a href="https://github.com/juandaviddelosriosmahecha" target="_blank" rel="noopener noreferrer" style="color: var(--text-secondary); margin-right: 15px; font-size: 1.2rem;"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/juan-david-de-los-rios-mahecha-60a427347/" target="_blank" rel="noopener noreferrer" style="color: var(--text-secondary); font-size: 1.2rem;"><i class="fab fa-linkedin"></i></a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h4 data-i18n="footer-links-head" style="color: var(--text-primary); font-size: 1rem; margin-bottom: 15px;">Quick Links</h4>
-                    <ul style="list-style: none; padding: 0; margin: 0;">
-                        <li style="margin-bottom: 8px;"><a href="#about" data-i18n="nav-about" style="color: var(--text-secondary); text-decoration: none;">About Us</a></li>
-                        <li style="margin-bottom: 8px;"><a href="#collaborators" data-i18n="nav-collaborators" style="color: var(--text-secondary); text-decoration: none;">Sponsors & Collaborators</a></li>
-                        <li style="margin-bottom: 8px;"><a href="#program" data-i18n="nav-program" style="color: var(--text-secondary); text-decoration: none;">Program</a></li>
-                        <li style="margin-bottom: 8px;"><a href="#cfp" data-i18n="nav-cfp" style="color: var(--text-secondary); text-decoration: none;">Short Talks</a></li>
-                        <li style="margin-bottom: 8px;"><a href="#speakers" data-i18n="nav-speakers" style="color: var(--text-secondary); text-decoration: none;">Speakers</a></li>
-                        <li style="margin-bottom: 8px;"><a href="#organizers" data-i18n="nav-organizers" style="color: var(--text-secondary); text-decoration: none;">Organizers</a></li>
-                        <li style="margin-bottom: 8px;"><a href="#location" data-i18n="nav-location" style="color: var(--text-secondary); text-decoration: none;">Location</a></li>
-                        <li><a href="#faq" data-i18n="nav-faq" style="color: var(--text-secondary); text-decoration: none;">FAQ</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4 data-i18n="footer-contact-head" style="color: var(--text-primary); font-size: 1rem; margin-bottom: 15px;">Location & Contact</h4>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 8px;"><i class="fas fa-map-marker-alt"></i> Faculty of Mathematical and Natural Sciences, UD</p>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 8px;"><i class="fas fa-building"></i> Sede Fundadores - Univ. Autónoma, Bogotá</p>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem;"><i class="fas fa-envelope"></i> juandelosriosquantum@gmail.com</p>
-                </div>
-            </div>
-            <div class="footer-bottom" style="text-align: center; border-top: 1px solid var(--ibm-border); padding-top: 20px; color: var(--text-muted); font-size: 0.85rem;">
-                <p>&copy; 2026 Qiskit Fall Fest Node Universidad Distrital. All rights reserved.</p>
-            </div>
+            <p style="color: var(--text-muted); font-size: 0.85rem;" data-i18n="footer-text">&copy; 2026 Qiskit Fall Fest Node Universidad Distrital. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Scripts --> 
-    <script src="main.js"></script>
+    <!-- ========================================== -->
+    <!-- JAVASCRIPT FUNCIONAL -->
+    <!-- ========================================== -->
     <script>
-// Diccionario de Traducciones (i18n)
-const translations = {
-  en: {
-    "nav-home": "Home",
-    "menu-event": "Event",
-    "menu-program": "Program & Calls",
-    "menu-people": "People",
-    "nav-about": "About Us",
-    "nav-collaborators": "Sponsors & Collaborators",
-    "nav-program": "Academic Program",
-    "nav-cfp": "Short Talks",
-    "nav-speakers": "Speakers & Mentors",
-    "nav-organizers": "Organizing Committee",
-    "nav-location": "Location",
-    "nav-faq": "FAQ",
-    "btn-register-nav": "Register",
-    "hero-node": "Bogota Node, Colombia",
-    "hero-date": "October 27 - 30, 2026 | In-Person Mode",
-    "hero-desc": "Academic and research gathering in quantum computing and information. Four days of keynote lectures, hands-on workshops with Qiskit SDK, short talk sessions, and an in-person meeting at Universidad Distrital.",
-    "btn-register": "Register for Free",
-    "btn-program": "View Academic Program",
-    "cd-title": "Countdown to Event",
-    "cd-subtitle": "Get ready for October 27, 2026",
-    "cd-days": "Days",
-    "cd-hours": "Hours",
-    "cd-minutes": "Minutes",
-    "cd-seconds": "Seconds",
-    "about-title": "About the Festival & Scope",
-    "about-subtitle": "Fostering education and research in quantum technologies in Colombia",
-    "about-framework-head": "Academic Framework",
-    "about-p1": "The <strong>Qiskit Fall Fest 2026</strong> at Universidad Distrital Francisco José de Caldas is part of the global network of events supported by <strong>IBM Quantum</strong> to strengthen scientific and technological capabilities in quantum information.",
-    "about-p2": "Co-organized by the team of co-organizers and the <strong>SPSUMM</strong> research group (Simulation of Physical Systems Using Multiscale Methods), this in-person event brings together physics, mathematics, and engineering students.",
-    "impact-attendees": "Expected Attendees",
-    "impact-days-unit": "Days",
-    "impact-training": "Academic Training",
-    "impact-challenge": "Research & Community",
-    "impact-cert": "Official Certification",
-    "program-title": "Academic Program",
-    "program-subtitle": "Select any schedule activity to view the summary and speaker details on the right",
-    "tab-day1": "Day 1: Oct 27",
-    "tab-day2": "Day 2: Oct 28",
-    "tab-day3": "Day 3: Oct 29",
-    "tab-day4": "Day 4: Oct 30",
-    "auditorium-main": "Main Auditorium",
-    "conference-hall": "Conference Hall",
-    "computer-lab": "Computer Lab",
-    "tag-keynote": "Keynote",
-    "tag-course": "Course",
-    "tag-workshop": "Workshop",
-    "tag-talk": "Short Talks",
-    "tag-ceremony": "Ceremony",
-    "evt1-title": "Opening & Keynote Speech",
-    "evt2-title": "Quantum Mechanics 101",
-    "evt3-title": "Workshop: Qiskit SDK 101",
-    "evt4-title": "Short Talks Session I",
-    "evt5-title": "Bloch Sphere & Quantum Gates",
-    "evt6-title": "Short Talks Session II",
-    "evt7-title": "Panel & Closing Ceremony",
-    "btn-slides": "Slides / Materials",
-    "btn-reserve": "Reserve Seat",
-    "cfp-title": "Short Talks Session",
-    "cfp-subtitle": "Scientific outreach space for students, semilleros, and early-career researchers",
-    "cfp-desc": "We invite undergraduate, graduate students, and research group members to submit proposals for <strong>Short Talks (25 min)</strong> during the event sessions.",
-    "cfp-t1": "Quantum Computing & Information",
-    "cfp-t2": "Algorithms & Practical Development with Qiskit",
-    "cfp-t3": "Computational Physics, Simulation & Quantum Cryptography",
-    "cfp-box-head": "Submit Your Proposal",
-    "cfp-box-sub": "Present your research project or work in progress to the community.",
-    "cfp-btn": "Submission Form (Short Talk)",
-    "speakers-title": "Speakers & Special Guests",
-    "speakers-subtitle": "Researchers, professors, and specialists in quantum science",
-    "spk1-name": "Confirmed Speaker 1",
-    "spk1-role": "Quantum Information Researcher",
-    "spk2-name": "Confirmed Speaker 2",
-    "spk2-role": "Quantum Computing Specialist",
-    "spk3-name": "Guest Professor / Researcher 3",
-    "spk3-role": "Computational Physics & Algorithms",
-    "spk-bio-placeholder": "Details on talk and research lines coming soon.",
-    "loc-title": "Event Location",
-    "loc-venue-head": "Venue",
-    "loc-venue-desc": "<i class=\"fas fa-compass\" style=\"color: var(--ibm-light-purple);\"></i> Central location near <strong>Plaza de Bolívar</strong>, Historic Center of Bogotá.",
-    "loc-transit": "<i class=\"fas fa-bus\" style=\"color: var(--ibm-light-purple);\"></i> Easy access via TransMilenio stations (Museo del Oro, Las Aguas, San Victorino).",
-    "btn-maps": "Open Location in Google Maps",
-    "faq-title": "Technical Requirements & FAQ",
-    "faq-subtitle": "Key information for festival attendees",
-    "faq-python-head": "Recommended Python Environment",
-    "faq-python-desc": "We recommend bringing your laptop for practical workshops. You can prepare your environment by running:",
-    "faq-q1": "Is registration free?",
-    "faq-a1": "Yes, participation is 100% free with prior registration.",
-    "faq-q2": "Are academic certificates provided?",
-    "faq-a2": "Yes, a formal attendance certificate will be issued after the event.",
-    "faq-q3": "Is advanced prior knowledge required?",
-    "faq-a3": "Not mandatory. Day 1 covers introductory topics from scratch.",
-    "org-title": "Organizing Committee",
-    "coorg-role": "Official Co-organizer",
-    "footer-tagline": "Promoting education and research in quantum science and information in Colombia.",
-    "footer-links-head": "Quick Links",
-    "footer-contact-head": "Location & Contact"
-  },
-  es: {
-    "nav-home": "Inicio",
-    "menu-event": "Evento",
-    "menu-program": "Programa & Convocatoria",
-    "menu-people": "Personas",
-    "nav-about": "Nosotros",
-    "nav-collaborators": "Patrocinadores & Colaboradores",
-    "nav-program": "Programa Académico",
-    "nav-cfp": "Charlas Cortas",
-    "nav-speakers": "Ponentes & Mentores",
-    "nav-organizers": "Comité Organizador",
-    "nav-location": "Ubicación",
-    "nav-faq": "FAQ",
-    "btn-register-nav": "Inscribirse",
-    "hero-node": "Nodo Bogotá, Colombia",
-    "hero-date": "27 - 30 de Octubre, 2026 | Modalidad Presencial",
-    "hero-desc": "Encuentro académico e investigación en computación e información cuántica. Cuatro días de conferencias magistrales, talleres prácticos con Qiskit SDK, sesiones de charlas cortas y encuentro presencial en la Universidad Distrital.",
-    "btn-register": "Inscríbete Gratis",
-    "btn-program": "Ver Programa Académico",
-    "cd-title": "Cuenta Regresiva",
-    "cd-subtitle": "Prepárate para el 27 de Octubre, 2026",
-    "cd-days": "Días",
-    "cd-hours": "Horas",
-    "cd-minutes": "Minutos",
-    "cd-seconds": "Segundos",
-    "about-title": "Sobre el Festival & Alcance",
-    "about-subtitle": "Promoviendo la educación e investigación en tecnologías cuánticas en Colombia",
-    "about-framework-head": "Marco Académico",
-    "about-p1": "El <strong>Qiskit Fall Fest 2026</strong> en la Universidad Distrital Francisco José de Caldas forma parte de la red global de eventos impulsados por <strong>IBM Quantum</strong> para fortalecer capacidades científicas e industriales en información cuántica.",
-    "about-p2": "Organizado por el equipo de coorganizadores y el semillero de investigación <strong>SPSUMM</strong> (Simulación de Sistemas Físicos con Métodos Multiescala), este encuentro presencial reúne a estudiantes de física, matemáticas e ingenierías.",
-    "impact-attendees": "Asistentes Esperados",
-    "impact-days-unit": "Días",
-    "impact-training": "Formación Académica",
-    "impact-challenge": "Investigación & Comunidad",
-    "impact-cert": "Certificación Oficial",
-    "program-title": "Programa Académico",
-    "program-subtitle": "Selecciona cualquier actividad del cronograma para desplegar el resumen y ponente a la derecha",
-    "tab-day1": "Día 1: Oct 27",
-    "tab-day2": "Día 2: Oct 28",
-    "tab-day3": "Día 3: Oct 29",
-    "tab-day4": "Día 4: Oct 30",
-    "auditorium-main": "Auditorio Principal",
-    "conference-hall": "Salón de Conferencias",
-    "computer-lab": "Sala de Cómputo",
-    "tag-keynote": "Keynote",
-    "tag-course": "Curso",
-    "tag-workshop": "Workshop",
-    "tag-talk": "Charlas Cortas",
-    "tag-ceremony": "Ceremonia",
-    "evt1-title": "Inauguración & Keynote de Apertura",
-    "evt2-title": "Mecánica Cuántica 101",
-    "evt3-title": "Workshop: Qiskit SDK 101",
-    "evt4-title": "Sesión de Charlas Cortas I",
-    "evt5-title": "Esfera de Bloch y Puertas Lógicas",
-    "evt6-title": "Sesión de Charlas Cortas II",
-    "evt7-title": "Panel & Ceremonia de Clausura",
-    "btn-slides": "Material / Diapositivas",
-    "btn-reserve": "Reservar Cupo",
-    "cfp-title": "Sesión de Charlas Cortas",
-    "cfp-subtitle": "Espacio de divulgación científica para estudiantes, semilleros e investigadores en formación",
-    "cfp-desc": "Invitamos a estudiantes de pregrado, posgrado e integrantes de semilleros a postular propuestas para <strong>Charlas Cortas (25 min)</strong> durante las sesiones del evento.",
-    "cfp-t1": "Computación e Información Cuántica",
-    "cfp-t2": "Algoritmos y Desarrollo Práctico con Qiskit",
-    "cfp-t3": "Física Computacional, Simulación y Criptografía Cuántica",
-    "cfp-box-head": "Postula tu Trabajo",
-    "cfp-box-sub": "Presenta tu proyecto de investigación o avances ante la comunidad.",
-    "cfp-btn": "Formulario de Postulación (Charla Corta)",
-    "speakers-title": "Ponentes e Invitados Especiales",
-    "speakers-subtitle": "Investigadores, docentes y especialistas del área cuántica",
-    "spk1-name": "Conferencista Confirmado 1",
-    "spk1-role": "Investigador en Información Cuántica",
-    "spk2-name": "Conferencista Confirmado 2",
-    "spk2-role": "Especialista en Computación Cuántica",
-    "spk3-name": "Docente / Investigador Invitado 3",
-    "spk3-role": "Física Computacional & Algoritmos",
-    "spk-bio-placeholder": "Detalles sobre la ponencia y líneas de investigación próximamente.",
-    "loc-title": "Ubicación del Evento",
-    "loc-venue-head": "Sede del Encuentro",
-    "loc-venue-desc": "<i class=\"fas fa-compass\" style=\"color: var(--ibm-light-purple);\"></i> Ubicación céntrica cerca a la <strong>Plaza de Bolívar</strong>, Centro Histórico de Bogotá.",
-    "loc-transit": "<i class=\"fas fa-bus\" style=\"color: var(--ibm-light-purple);\"></i> Fácil acceso por TransMilenio (Estaciones Museo del Oro, Las Aguas y San Victorino).",
-    "btn-maps": "Abrir Ubicación en Google Maps",
-    "faq-title": "Requisitos Técnicos & Preguntas Frecuentes",
-    "faq-subtitle": "Información clave para los asistentes al festival",
-    "faq-python-head": "Entorno de Desarrollo Python",
-    "faq-python-desc": "Se recomienda asistir con ordenador portátil para los talleres prácticos. Puedes preparar tu entorno ejecutando:",
-    "faq-q1": "¿Tiene costo la participación?",
-    "faq-a1": "No, el evento es totalmente gratuito mediante registro previo.",
-    "faq-q2": "¿Se otorgan certificados académicos?",
-    "faq-a2": "Sí, se entregará certificación formal de asistencia tras finalizar el evento.",
-    "faq-q3": "¿Se requieren conocimientos previos avanzados?",
-    "faq-a3": "No indispensables. El Día 1 aborda contenidos introductorios.",
-    "org-title": "Comité Organizador",
-    "coorg-role": "Coorganizador Oficial",
-    "footer-tagline": "Fomentando la educación e investigación en ciencias e información cuántica en Colombia.",
-    "footer-links-head": "Enlaces Rápidos",
-    "footer-contact-head": "Ubicación & Contacto"
-  }
-};
+    const translations = {
+        "en": {
+            "nav-home": "Home",
+            "menu-event": "Event",
+            "nav-about": "About Us",
+            "nav-collaborators": "Sponsors & Collaborators",
+            "nav-location": "Location",
+            "nav-faq": "FAQ",
+            "menu-program": "Program & Calls",
+            "nav-program": "Academic Program",
+            "nav-cfp": "Short Talks",
+            "menu-people": "People",
+            "nav-speakers": "Speakers & Mentors",
+            "nav-organizers": "Organizing Committee",
+            "btn-register-nav": "Register",
+            "hero-node": "Bogota Node, Colombia",
+            "hero-date": "October 27 - 30, 2026 | In-Person Mode",
+            "hero-desc": "Academic and research gathering in quantum computing and information. Four days of keynote lectures, hands-on workshops with Qiskit SDK, short talk sessions, and an in-person meeting at Universidad Distrital.",
+            "btn-register": "Register for Free",
+            "btn-program": "View Academic Program",
+            "cd-title": "Countdown to Event",
+            "cd-subtitle": "Get ready for October 27, 2026",
+            "cd-days": "Days",
+            "cd-hours": "Hours",
+            "cd-minutes": "Minutes",
+            "cd-seconds": "Seconds",
+            "spon-1": "Global Event Sponsor",
+            "spon-2": "Cloud Partner",
+            "about-title": "About the Festival & Scope",
+            "about-subtitle": "Fostering education and research in quantum technologies in Colombia",
+            "about-framework-head": "The Quantum Experience",
+            "about-p1": "<strong>Qiskit Fall Fest 2026</strong> is part of the global movement powered by <strong>IBM Quantum</strong>. Selected as an official local node, our university becomes a vibrant hub where students, researchers, and tech enthusiasts dive deep into the foundations and real-world applications of quantum computing.",
+            "about-p2": "Join us for four days of inspiring keynotes, interactive coding labs with Qiskit, and collaborative spaces designed to spark the next generation of quantum innovators in Colombia.",
+            "impact-attendees": "Expected Attendees (+70)",
+            "impact-days-unit": "Days",
+            "impact-training": "Academic Training",
+            "impact-challenge": "Research & Community",
+            "impact-cert": "Official Certification",
+            "program-title": "Academic Program",
+            "program-subtitle": "Hover over any talk to check full details in the side panel",
+            "day-1": "Tuesday, Oct 27",
+            "day-2": "Wednesday, Oct 28",
+            "day-3": "Thursday, Oct 29",
+            "day-4": "Friday, Oct 30",
+            "th-time": "Time",
+            "th-activity": "Activity / Talk",
+            "th-type": "Type",
 
-let currentLang = 'en';
+            /* Actividades del Programa */
+            "act-reg": "Registration",
+            "act-welcome": "Welcome",
+            "act-pon1": "Keynote Lecture 1",
+            "act-pon2": "Keynote Lecture 2",
+            "act-pon3": "Keynote Lecture 3",
+            "act-pon4": "Keynote Lecture 4",
+            "act-pon5": "Keynote Lecture 5",
+            "act-pon6": "Keynote Lecture 6",
+            "act-talk1": "Short Talk 1",
+            "act-talk2": "Short Talk 2",
+            "act-talk3": "Short Talk 3",
+            "act-talk4": "Short Talk 4",
+            "act-talk5": "Short Talk 5",
+            "act-talk6": "Short Talk 6",
+            "act-talk7": "Short Talk 7",
+            "act-lunch": "Lunch",
+            "act-curso1": "Workshop 1",
+            "act-curso2": "Workshop 2",
+            "act-cyber": "Cyber Colombia",
+            "act-break": "Break",
+            "act-paredon": "Paredón",
+            "act-conv": "Panel Discussion",
+            "act-clausura": "Closing & Awards",
+            "act-integ": "Social & Networking",
 
-function setLanguage(lang) {
-  currentLang = lang;
-  
-  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-  document.getElementById('btn-es').classList.toggle('active', lang === 'es');
-  document.documentElement.lang = lang;
+            /* Etiquetas y Ubicaciones */
+            "tag-reg": "Registration",
+            "tag-open": "Opening",
+            "tag-short": "Short Talk",
+            "tag-break": "Break",
+            "tag-work": "Workshop",
+            "tag-panel": "Panel",
+            "tag-closing": "Closing",
+            "tag-social": "Social",
+            "tag-key": "Keynote",
 
-  document.querySelectorAll('[data-i18n]').forEach(element => {
-    const key = element.getAttribute('data-i18n');
-    if (translations[lang] && translations[lang][key]) {
-      element.innerHTML = translations[lang][key];
+            "loc-aud": "Main Auditorium",
+            "loc-caf": "Cafeteria",
+            "loc-lab": "Computer Laboratory",
+            "loc-lobby": "Lobby",
+            "loc-plaza": "Plaza / Auditorium",
+
+            "side-title": "Activity Details",
+            "side-hover-hint": "Hover over a talk",
+            "side-role": "Speaker / Moderator",
+            "desc-example": "Sample description of the selected activity.",
+
+            /* Call for papers */
+            "cfp-title": "Short Talks Session",
+            "cfp-subtitle": "Scientific outreach space for students, semilleros, and early-career researchers",
+            "cfp-desc": "We invite undergraduate, graduate students, and research group members to submit proposals for <strong>Short Talks (25 min)</strong> during the event sessions.",
+            "cfp-t1": "Quantum Computing & Information",
+            "cfp-t2": "Algorithms & Practical Development with Qiskit",
+            "cfp-t3": "Computational Physics, Simulation & Quantum Cryptography",
+            "cfp-box-head": "Submit Your Proposal",
+            "cfp-box-sub": "Present your research project or work in progress to the community.",
+            "cfp-btn": "Submission Form (Short Talk)",
+
+            /* Ponentes / Comité */
+            "speakers-title": "Speakers & Special Guests",
+            "speakers-subtitle": "Researchers, professors, and specialists in quantum science",
+            "org-title": "Organizing Committee",
+            "org-subtitle": "Node Universidad Distrital Francisco José de Caldas",
+            "role-lead": "Lead Organizer & Qiskit Advocate",
+            "role-co": "Official Co-organizer",
+            "sp-1-name": "Dr. Quantum Guest",
+            "sp-1-role": "Quantum Information Researcher",
+            "sp-1-desc": "Specialist in information theory and advanced quantum algorithms.",
+            "sp-2-name": "Sponsor 1 Specialist",
+            "sp-2-role": "Quantum Computing Specialist",
+            "sp-2-desc": "Developer and maintainer of tools within the computing ecosystem.",
+
+            /* Ubicación y FAQ */
+            "loc-title": "Event Location",
+            "loc-subtitle": "Faculty of Mathematical and Natural Sciences – Universidad Distrital Francisco José de Caldas",
+            "loc-uni": "Universidad Autónoma de Colombia, Bogotá",
+            "loc-bus": "Near Plaza de Bolívar and TransMilenio stations.",
+            "loc-btn": "Open in Google Maps",
+            "faq-title": "Technical Requirements & FAQ",
+            "faq-subtitle": "Key information for festival attendees",
+            "faq-python-desc": "We recommend installing the basic environment for the workshops:",
+            "faq-q1": "Is participation free?",
+            "faq-a1": "Yes, 100% free with prior registration.",
+            "faq-q2": "Is a certificate provided?",
+            "faq-a2": "Yes, an official attendance certificate upon completion.",
+            "footer-text": "&copy; 2026 Qiskit Fall Fest Node Universidad Distrital. All rights reserved."
+        },
+        "es": {
+            "nav-home": "Inicio",
+            "menu-event": "Evento",
+            "nav-about": "Acerca de",
+            "nav-collaborators": "Patrocinadores y Colaboradores",
+            "nav-location": "Ubicación",
+            "nav-faq": "Preguntas Frecuentes",
+            "menu-program": "Programa y Convocatorias",
+            "nav-program": "Programa Académico",
+            "nav-cfp": "Charlas Cortas",
+            "menu-people": "Personas",
+            "nav-speakers": "Ponentes y Mentores",
+            "nav-organizers": "Comité Organizador",
+            "btn-register-nav": "Registrarse",
+            "hero-node": "Nodo Bogotá, Colombia",
+            "hero-date": "27 - 30 de Octubre, 2026 | Modalidad Presencial",
+            "hero-desc": "Encuentro académico y de investigación en computación e información cuántica. Cuatro días de conferencias magistrales, talleres prácticos con Qiskit SDK y sesiones de charlas cortas en la Universidad Distrital.",
+            "btn-register": "Regístrate Gratis",
+            "btn-program": "Ver Programa Académico",
+            "cd-title": "Cuenta Regresiva",
+            "cd-subtitle": "Prepárate para el 27 de Octubre, 2026",
+            "cd-days": "Días",
+            "cd-hours": "Horas",
+            "cd-minutes": "Minutos",
+            "cd-seconds": "Segundos",
+            "spon-1": "Patrocinador Global del Evento",
+            "spon-2": "Socio Cloud",
+            "about-title": "Sobre el Festival y Alcance",
+            "about-subtitle": "Fomentando la educación e investigación en tecnologías cuánticas en Colombia",
+            "about-framework-head": "La Experiencia Cuántica",
+            "about-p1": "El <strong>Qiskit Fall Fest 2026</strong> forma parte del movimiento global impulsado por <strong>IBM Quantum</strong>. Seleccionados como sede oficial, nuestra universidad se convierte en un punto de encuentro donde estudiantes, investigadores y entusiastas de la tecnología exploran los fundamentos y aplicaciones reales de la computación cuántica.",
+            "about-p2": "Te invitamos a vivir cuatro días de conferencias magistrales, talleres prácticos de programación con Qiskit y espacios de colaboración diseñados para inspirar a la próxima generación de innovadores cuánticos en Colombia.",
+            "impact-attendees": "Asistentes Esperados (+70)",
+            "impact-days-unit": "Días",
+            "impact-training": "Entrenamiento Académico",
+            "impact-challenge": "Investigación y Comunidad",
+            "impact-cert": "Certificación Oficial",
+            "program-title": "Programa Académico",
+            "program-subtitle": "Pasa el cursor sobre cualquier charla para consultar los detalles completos en el panel lateral",
+            "day-1": "Martes 27 Oct",
+            "day-2": "Miércoles 28 Oct",
+            "day-3": "Jueves 29 Oct",
+            "day-4": "Viernes 30 Oct",
+            "th-time": "Hora",
+            "th-activity": "Actividad / Charla",
+            "th-type": "Tipo",
+
+            /* Actividades del Programa */
+            "act-reg": "Registro",
+            "act-welcome": "Bienvenida",
+            "act-pon1": "Ponencia 1",
+            "act-pon2": "Ponencia 2",
+            "act-pon3": "Ponencia 3",
+            "act-pon4": "Ponencia 4",
+            "act-pon5": "Ponencia 5",
+            "act-pon6": "Ponencia 6",
+            "act-talk1": "Charla corta 1",
+            "act-talk2": "Charla corta 2",
+            "act-talk3": "Charla corta 3",
+            "act-talk4": "Charla corta 4",
+            "act-talk5": "Charla corta 5",
+            "act-talk6": "Charla corta 6",
+            "act-talk7": "Charla corta 7",
+            "act-lunch": "Lunch",
+            "act-curso1": "Curso 1",
+            "act-curso2": "Curso 2",
+            "act-cyber": "Cyber Colombia",
+            "act-break": "Break",
+            "act-paredon": "Paredón",
+            "act-conv": "Conversatorio",
+            "act-clausura": "Clausura - Premiación",
+            "act-integ": "Integración",
+
+            /* Etiquetas y Ubicaciones */
+            "tag-reg": "Registro",
+            "tag-open": "Apertura",
+            "tag-short": "Short Talk",
+            "tag-break": "Break",
+            "tag-work": "Workshop",
+            "tag-panel": "Panel",
+            "tag-closing": "Closing",
+            "tag-social": "Social",
+            "tag-key": "Keynote",
+
+            "loc-aud": "Auditorio Principal",
+            "loc-caf": "Cafetería",
+            "loc-lab": "Laboratorio de Cómputo",
+            "loc-lobby": "Lobby",
+            "loc-plaza": "Plazoleta",
+
+            "side-title": "Detalles de la Actividad",
+            "side-hover-hint": "Pasa el cursor sobre una charla",
+            "side-role": "Ponente / Moderador",
+            "desc-example": "Descripción de ejemplo de la actividad seleccionada.",
+
+            /* Call for papers */
+            "cfp-title": "Sesión de Charlas Cortas",
+            "cfp-subtitle": "Espacio de divulgación científica para estudiantes, semilleros e investigadores",
+            "cfp-desc": "Invitamos a estudiantes de pregrado, posgrado y miembros de grupos de investigación a enviar propuestas para <strong>Charlas Cortas (25 min)</strong> durante las sesiones del evento.",
+            "cfp-t1": "Computación e Información Cuántica",
+            "cfp-t2": "Algoritmos y Desarrollo Práctico con Qiskit",
+            "cfp-t3": "Física Computacional, Simulación y Criptografía Cuántica",
+            "cfp-box-head": "Envía tu Propuesta",
+            "cfp-box-sub": "Presenta tu proyecto de investigación a la comunidad.",
+            "cfp-btn": "Formulario de Envío (Charla Corta)",
+
+            /* Ponentes / Comité */
+            "speakers-title": "Ponentes e Invitados Especiales",
+            "speakers-subtitle": "Investigadores, profesores y especialistas en ciencia cuántica",
+            "org-title": "Comité Organizador",
+            "org-subtitle": "Nodo Universidad Distrital Francisco José de Caldas",
+            "role-lead": "Organizador Principal y Qiskit Advocate",
+            "role-co": "Co-organizador Oficial",
+            "sp-1-name": "Dr. Invitado Quantum",
+            "sp-1-role": "Quantum Information Researcher",
+            "sp-1-desc": "Especialista en teoría de información y algoritmos cuánticos avanzados.",
+            "sp-2-name": "Especialista Sponsor 1",
+            "sp-2-role": "Quantum Computing Specialist",
+            "sp-2-desc": "Desarrollador y mantenedor de herramientas en el ecosistema de cómputo.",
+
+            /* Ubicación y FAQ */
+            "loc-title": "Ubicación del Evento",
+            "loc-subtitle": "Facultad de Ciencias Matemáticas y Naturales – Universidad Distrital Francisco José de Caldas",
+            "loc-uni": "Universidad Autónoma de Colombia, Bogotá",
+            "loc-bus": "Cerca a la Plaza de Bolívar y estaciones de TransMilenio.",
+            "loc-btn": "Abrir en Google Maps",
+            "faq-title": "Requisitos Técnicos y FAQ",
+            "faq-subtitle": "Información clave para los asistentes al festival",
+            "faq-python-desc": "Recomendamos instalar el entorno básico para los talleres:",
+            "faq-q1": "¿Es gratuita la participación?",
+            "faq-a1": "Sí, 100% gratuito con registro previo.",
+            "faq-q2": "¿Se entrega certificado?",
+            "faq-a2": "Sí, certificado de asistencia oficial al finalizar el evento.",
+            "footer-text": "&copy; 2026 Qiskit Fall Fest Node Universidad Distrital. All rights reserved."
+        }
+    };
+
+    // Cambio dinámico de tablas por día (Pestañas)
+    function switchDayTable(dayId, btn) {
+        document.querySelectorAll('.day-table-container').forEach(container => {
+            container.style.display = 'none';
+        });
+        document.getElementById('table-' + dayId).style.display = 'block';
+
+        document.querySelectorAll('.schedule-tabs .tab-btn').forEach(b => {
+            b.classList.remove('active');
+        });
+        btn.classList.add('active');
     }
-  });
 
-  const activeEvt = document.querySelector('.timeline-item.active-event:not([style*="display: none"])');
-  if (activeEvt) {
-    const activeEvtId = activeEvt.getAttribute('onclick').match(/'([^']+)'/)[1];
-    showEventDetail(activeEvtId, activeEvt);
-  }
-}
+    // Actualizar Panel Lateral Derecho al pasar el mouse por encima de una charla
+    function showSideDetails(descKey, badgeKey, time, locationKey, speakerName, speakerImg) {
+        const lang = localStorage.getItem('lang') || 'en';
+        const t = translations[lang] || translations['en'];
 
-// Lógica de Modo Claro / Oscuro
-function toggleTheme() {
-  const currentTheme = document.documentElement.getAttribute('data-theme');
-  const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-  
-  if (newTheme === 'light') {
-    document.documentElement.setAttribute('data-theme', 'light');
-    localStorage.setItem('theme', 'light');
-    document.getElementById('themeIcon').className = 'fas fa-sun';
-  } else {
-    document.documentElement.removeAttribute('data-theme');
-    localStorage.setItem('theme', 'dark');
-    document.getElementById('themeIcon').className = 'fas fa-moon';
-  }
-}
+        const descText = t[descKey] || descKey;
+        const badgeText = t[badgeKey] || badgeKey;
+        const locationText = t[locationKey] || locationKey;
 
-// Inicializar tema guardado
-document.addEventListener("DOMContentLoaded", function () {
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme === 'light') {
-    document.documentElement.setAttribute('data-theme', 'light');
-    document.getElementById('themeIcon').className = 'fas fa-sun';
-  } else {
-    document.getElementById('themeIcon').className = 'fas fa-moon';
-  }
-  
-  startCountdown();
-});
-
-// Countdown Logic
-function startCountdown() {
-  const targetDate = new Date("October 27, 2026 09:00:00").getTime();
-
-  setInterval(() => {
-    const now = new Date().getTime();
-    const difference = targetDate - now;
-
-    if (difference > 0) {
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-      document.getElementById("cd-days").innerText = days < 10 ? '0' + days : days;
-      document.getElementById("cd-hours").innerText = hours < 10 ? '0' + hours : hours;
-      document.getElementById("cd-minutes").innerText = minutes < 10 ? '0' + minutes : minutes;
-      document.getElementById("cd-seconds").innerText = seconds < 10 ? '0' + seconds : seconds;
+        document.getElementById('sideDescription').innerText = descText;
+        document.getElementById('sideBadge').innerText = badgeText;
+        document.getElementById('sideLocation').innerHTML = `<i class="fas fa-map-marker-alt"></i> ${locationText} | ${time}`;
+        document.getElementById('sideSpeakerName').innerText = speakerName;
+        document.getElementById('sideSpeakerImg').src = speakerImg;
     }
-  }, 1000);
-}
 
-// Agenda Data Store
-const eventData = {
-  evt1: {
-    badge: { en: "Keynote", es: "Conferencia" },
-    title: { en: "Opening & Keynote Speech", es: "Inauguración & Keynote de Apertura" },
-    location: { en: "Main Auditorium | Oct 27 - 09:00 AM", es: "Auditorio Principal | 27 Oct - 09:00 AM" },
-    description: {
-      en: "Official opening of Qiskit Fall Fest 2026. Keynote lecture on global advances in IBM Quantum processors, scientific roadmap, and research opportunities for Latin America.",
-      es: "Apertura oficial del Qiskit Fall Fest 2026. Conferencia magistral sobre los avances globales en procesadores cuánticos de IBM Quantum, la hoja de ruta científica y las oportunidades de investigación para Latinoamérica."
-    },
-    speakerName: { en: "Guest Speaker", es: "Conferencista Invitado" },
-    speakerRole: { en: "Quantum Information Researcher", es: "Investigador en Información Cuántica" },
-    slidesUrl: "#"
-  },
-  evt2: {
-    badge: { en: "Theory Module", es: "Módulo Teórico" },
-    title: { en: "Quantum Mechanics 101", es: "Mecánica Cuántica 101" },
-    location: { en: "Conference Hall | Oct 27 - 11:00 AM", es: "Salón de Conferencias | 27 Oct - 11:00 AM" },
-    description: {
-      en: "Accessible conceptual introduction to quantum mechanics without advanced prerequisites. Fundamentals of superposition, entanglement, measurement, and qubit formalism.",
-      es: "Introducción conceptual accesible a la mecánica cuántica sin prerrequisitos avanzados. Fundamentos de superposición, entrelazamiento, medición y el formalismo matemático de qubits."
-    },
-    speakerName: { en: "Guest Professor UD", es: "Docente Invitado UD" },
-    speakerRole: { en: "Faculty of Mathematical & Natural Sciences", es: "Facultad de Ciencias Matemáticas y Naturales" },
-    slidesUrl: "#"
-  },
-  evt3: {
-    badge: { en: "Hands-on Workshop", es: "Taller Práctico" },
-    title: { en: "Workshop: Qiskit SDK 101", es: "Workshop: Qiskit SDK 101" },
-    location: { en: "Computer Lab | Oct 28 - 09:00 AM", es: "Sala de Cómputo | 28 Oct - 09:00 AM" },
-    description: {
-      en: "Hands-on session in Jupyter Notebooks. Learn to install Qiskit SDK, build your first quantum circuit, apply quantum gates (Hadamard, CNOT), and run simulations.",
-      es: "Taller hands-on in Jupyter Notebooks. Aprenderás a instalar el SDK de Qiskit, crear tu primer circuito cuántico, aplicar puertas lógicas (Hadamard, CNOT) y simular resultados."
-    },
-    speakerName: { en: "Qiskit Advocate / Mentor", es: "Qiskit Advocate / Mentor" },
-    speakerRole: { en: "Organizing Committee", es: "Comité Organizador" },
-    slidesUrl: "#"
-  },
-  evt4: {
-    badge: { en: "Short Talks", es: "Charlas Cortas" },
-    title: { en: "Short Talks Session I", es: "Sesión de Charlas Cortas I" },
-    location: { en: "Conference Hall | Oct 28 - 02:00 PM", es: "Salón de Conferencias | 28 Oct - 02:00 PM" },
-    description: {
-      en: "Presentations by students and researchers showcasing work in progress, applications of quantum algorithms, and computational modeling.",
-      es: "Presentaciones a cargo de estudiantes e investigadores mostrando trabajos en curso, aplicaciones de algoritmos cuánticos y modelado computacional."
-    },
-    speakerName: { en: "Selected Speakers", es: "Ponentes Seleccionados" },
-    speakerRole: { en: "Student Researchers & Semilleros", es: "Estudiantes Investigadores y Semilleros" },
-    slidesUrl: "#"
-  },
-  evt5: {
-    badge: { en: "Hands-on Workshop", es: "Taller Práctico" },
-    title: { en: "Bloch Sphere & Quantum Gates", es: "Esfera de Bloch y Puertas Lógicas" },
-    location: { en: "Computer Lab | Oct 29 - 09:00 AM", es: "Sala de Cómputo | 29 Oct - 09:00 AM" },
-    description: {
-      en: "Session focused on the geometric representation of qubits via the Bloch Sphere. Graphical visualization of unitary transformations and state vectors in Python.",
-      es: "Sesión enfocada en la representación geométrica de qubits mediante la Esfera de Bloch. Visualización gráfica de transformaciones unitarias y vectores de estado en Python."
-    },
-    speakerName: { en: "Workshop Mentor", es: "Mentor de Taller" },
-    speakerRole: { en: "Quantum Programming Specialist", es: "Especialista en Programación Cuántica" },
-    slidesUrl: "#"
-  },
-  evt6: {
-    badge: { en: "Short Talks", es: "Charlas Cortas" },
-    title: { en: "Short Talks Session II", es: "Sesión de Charlas Cortas II" },
-    location: { en: "Conference Hall | Oct 29 - 02:00 PM", es: "Salón de Conferencias | 29 Oct - 02:00 PM" },
-    description: {
-      en: "Continuation of scientific outreach talks featuring topics on quantum cryptography, hybrid classical-quantum approaches, and hardware simulations.",
-      es: "Continuación de charlas de divulgación científica con temáticas sobre criptografía cuántica, enfoques híbridos clásico-cuánticos y simulaciones de hardware."
-    },
-    speakerName: { en: "Selected Speakers", es: "Ponentes Seleccionados" },
-    speakerRole: { en: "Student Researchers & Semilleros", es: "Estudiantes Investigadores y Semilleros" },
-    slidesUrl: "#"
-  },
-  evt7: {
-    badge: { en: "Ceremony", es: "Ceremonia" },
-    title: { en: "Panel & Closing Ceremony", es: "Panel & Ceremonia de Clausura" },
-    location: { en: "Main Auditorium | Oct 30 - 10:00 AM", es: "Auditorio Principal | 30 Oct - 10:00 AM" },
-    description: {
-      en: "Panel discussion with guest experts on the future of quantum tech in Colombia, concluding remarks, and distribution of official attendance certificates.",
-      es: "Conversatorio panel con expertos invitados sobre el futuro de las tecnologías cuánticas en Colombia, conclusiones del evento y entrega de certificados oficiales de asistencia."
-    },
-    speakerName: { en: "SPSUMM Organizing Team", es: "Comité Organizador SPSUMM" },
-    speakerRole: { en: "Universidad Distrital", es: "Universidad Distrital" },
-    slidesUrl: "#"
-  }
-};
+    // Selector de Idioma
+    function setLanguage(lang) {
+        document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+        document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+        document.documentElement.lang = lang;
 
-function showEventDetail(eventId, element) {
-  const data = eventData[eventId];
-  if (!data) return;
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) {
+                element.innerHTML = translations[lang][key]; 
+            }
+        });
 
-  document.querySelectorAll('.timeline-item').forEach(item => item.classList.remove('active-event'));
-  if (element) element.classList.add('active-event');
-
-  document.getElementById('detailBadge').innerText = data.badge[currentLang];
-  document.getElementById('detailTitle').innerText = data.title[currentLang];
-  document.getElementById('detailLocation').innerHTML = `<i class="fas fa-map-marker-alt"></i> ${data.location[currentLang]}`;
-  document.getElementById('detailDescription').innerText = data.description[currentLang];
-  document.getElementById('detailSpeakerName').innerText = data.speakerName[currentLang];
-  document.getElementById('detailSpeakerRole').innerText = data.speakerRole[currentLang];
-  document.getElementById('detailLinkSlides').href = data.slidesUrl;
-}
-
-function switchDay(dayId) {
-  ['day1', 'day2', 'day3', 'day4'].forEach(d => {
-    document.getElementById(d + '-list').style.display = (d === dayId) ? 'block' : 'none';
-    document.getElementById('tab' + d.charAt(0).toUpperCase() + d.slice(1) + 'Btn').classList.toggle('active', d === dayId);
-  });
-
-  const activeDayList = document.getElementById(dayId + '-list');
-  const firstItem = activeDayList.querySelector('.timeline-item');
-  if (firstItem) {
-    const evtId = firstItem.getAttribute('onclick').match(/'([^']+)'/)[1];
-    showEventDetail(evtId, firstItem);
-  }
-}
-
-// Smooth Scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute("href"));
-    if (target) {
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
+        localStorage.setItem('lang', lang);
     }
-  });
-});
 
-// Carousel Ponentes
-document.addEventListener("DOMContentLoaded", function () {
-  const track = document.getElementById("speakerTrack");
-  const prevBtn = document.getElementById("speakerPrevBtn");
-  const nextBtn = document.getElementById("speakerNextBtn");
-  const items = document.querySelectorAll(".speaker-item");
-
-  let currentIndex = 0;
-  let autoSlideInterval;
-
-  function getVisibleItems() {
-    return window.innerWidth <= 768 ? 1 : 2;
-  }
-
-  function updateSpeakerCarousel() {
-    const visibleItems = getVisibleItems();
-    const maxIndex = items.length - visibleItems;
-    
-    if (currentIndex < 0) currentIndex = 0;
-    if (currentIndex > maxIndex) currentIndex = 0;
-
-    const itemWidth = items[0].getBoundingClientRect().width + 20;
-    track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
-  }
-
-  function startAutoSlide() {
-    autoSlideInterval = setInterval(() => {
-      const visibleItems = getVisibleItems();
-      if (currentIndex < items.length - visibleItems) {
-        currentIndex++;
-      } else {
-        currentIndex = 0;
-      }
-      updateSpeakerCarousel();
-    }, 6000);
-  }
-
-  function stopAutoSlide() {
-    clearInterval(autoSlideInterval);
-  }
-
-  nextBtn.addEventListener("click", () => {
-    stopAutoSlide();
-    currentIndex++;
-    updateSpeakerCarousel();
-    startAutoSlide();
-  });
-
-  prevBtn.addEventListener("click", () => {
-    stopAutoSlide();
-    currentIndex--;
-    updateSpeakerCarousel();
-    startAutoSlide();
-  });
-
-  track.addEventListener("mouseenter", stopAutoSlide);
-  track.addEventListener("mouseleave", startAutoSlide);
-
-  window.addEventListener("resize", updateSpeakerCarousel);
-  updateSpeakerCarousel();
-  startAutoSlide();
-});
-
-// Carousel Organizadores
-document.addEventListener("DOMContentLoaded", function () {
-  const track = document.getElementById("teamTrack");
-  const prevBtn = document.getElementById("prevBtn");
-  const nextBtn = document.getElementById("nextBtn");
-  const cards = document.querySelectorAll(".team-card");
-
-  let currentIndex = 0;
-  let autoSlideInterval;
-
-  function getCardsPerPage() {
-    return window.innerWidth <= 768 ? 1 : 3;
-  }
-
-  function updateCarousel() {
-    const cardsPerPage = getCardsPerPage();
-    const maxIndex = cards.length - cardsPerPage;
-    
-    if (currentIndex < 0) currentIndex = 0;
-    if (currentIndex > maxIndex) currentIndex = maxIndex;
-
-    const cardWidth = cards[0].getBoundingClientRect().width + 20;
-    track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-
-    prevBtn.style.opacity = currentIndex === 0 ? "0.4" : "1";
-    nextBtn.style.opacity = currentIndex >= maxIndex ? "0.4" : "1";
-  }
-
-  function startAutoSlide() {
-    autoSlideInterval = setInterval(() => {
-      const cardsPerPage = getCardsPerPage();
-      const maxIndex = cards.length - cardsPerPage;
-      if (currentIndex < maxIndex) {
-        currentIndex++;
-      } else {
-        currentIndex = 0;
-      }
-      updateCarousel();
-    }, 6000);
-  }
-
-  function stopAutoSlide() {
-    clearInterval(autoSlideInterval);
-  }
-
-  nextBtn.addEventListener("click", () => {
-    stopAutoSlide();
-    const cardsPerPage = getCardsPerPage();
-    const maxIndex = cards.length - cardsPerPage;
-    if (currentIndex < maxIndex) {
-      currentIndex++;
-      updateCarousel();
+    // Selector de Tema Claro / Oscuro
+    function toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const logoImg = document.getElementById('dynamicNavLogo');
+        
+        if (currentTheme === 'light') {
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'dark');
+            document.getElementById('themeIcon').className = 'fas fa-moon';
+            if(logoImg) logoImg.src = 'Logos/logo_oscuro.png';
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+            document.getElementById('themeIcon').className = 'fas fa-sun';
+            if(logoImg) logoImg.src = 'Logos/logo_claro.png';
+        }
     }
-    startAutoSlide();
-  });
 
-  prevBtn.addEventListener("click", () => {
-    stopAutoSlide();
-    if (currentIndex > 0) {
-      currentIndex--;
-      updateCarousel();
+    // Inicialización
+    document.addEventListener("DOMContentLoaded", function () {
+        const savedTheme = localStorage.getItem('theme');
+        const logoImg = document.getElementById('dynamicNavLogo');
+
+        if (savedTheme === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+            document.getElementById('themeIcon').className = 'fas fa-sun';
+        }
+        if(logoImg) logoImg.src = 'Logos/logo_oscuro.png';
+        
+        const savedLang = localStorage.getItem('lang') || 'en';
+        setLanguage(savedLang);
+
+        startCountdown();
+    });
+
+    // Cuenta Regresiva al 27 de Octubre de 2026
+    function startCountdown() {
+        const targetDate = new Date("October 27, 2026 09:00:00").getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                const d = document.getElementById("cd-days");
+                const h = document.getElementById("cd-hours");
+                const m = document.getElementById("cd-minutes");
+                const s = document.getElementById("cd-seconds");
+
+                if (d) d.innerText = days < 10 ? '0' + days : days;
+                if (h) h.innerText = hours < 10 ? '0' + hours : hours;
+                if (m) m.innerText = minutes < 10 ? '0' + minutes : minutes;
+                if (s) s.innerText = seconds < 10 ? '0' + seconds : seconds;
+            }
+        }, 1000);
     }
-    startAutoSlide();
-  });
-
-  track.addEventListener("mouseenter", stopAutoSlide);
-  track.addEventListener("mouseleave", startAutoSlide);
-
-  window.addEventListener("resize", updateCarousel);
-  updateCarousel();
-  startAutoSlide();
-});
-</script>
-
+    </script>
 </body>
 </html>
