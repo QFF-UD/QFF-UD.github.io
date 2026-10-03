@@ -87,6 +87,10 @@
                             Location
                         </a>
 
+                        <a href="#certificate" class="dropdown-item" data-i18n="nav-certificate">
+                            Certificate
+                        </a>
+
                         <a href="#faq" class="dropdown-item" data-i18n="nav-faq">
                             FAQ
                         </a>
@@ -661,6 +665,38 @@
                 </button>
 
             </div>
+
+            <!--
+                ====================================================================
+                CÓMO EDITAR EL CRONOGRAMA
+                ====================================================================
+                Hay 4 días: #table-day1 ... #table-day4. Solo el día activo se
+                muestra; los botones de arriba (switchDayTable) alternan entre ellos.
+
+                Cada fila de la tabla sigue SIEMPRE este patrón:
+
+                  <tr class="schedule-row"
+                      onmouseenter="showSideDetails('DESC', 'TAG', 'HORA', 'LUGAR', 'PONENTE', 'FOTO')">
+                      <td>HORA</td>
+                      <td><strong data-i18n="CLAVE-ACTIVIDAD">Actividad</strong></td>
+                      <td><span class="event-tag TAG-CLASE" data-i18n="CLAVE-TAG">Tipo</span></td>
+                  </tr>
+
+                - HORA .............. texto libre, p. ej. "10:10 - 11:30"
+                - CLAVE-ACTIVIDAD ... clave de traducción en assets/js/i18n.js (act-*)
+                - TAG-CLASE ......... color del tag: tag-keynote | tag-workshop | tag-talk | tag-break
+                - CLAVE-TAG ........ clave de traducción del tipo (tag-*)
+                - showSideDetails(...) rellena el panel lateral al pasar el cursor:
+                    DESC    -> clave de descripción (i18n)
+                    TAG     -> clave del badge (i18n)
+                    LUGAR   -> clave de ubicación (i18n), p. ej. loc-aud
+                    PONENTE -> nombre (texto libre)
+                    FOTO    -> ruta de la foto, p. ej. 'speakers/nombre.jpg'
+
+                Para añadir texto nuevo, agrega la clave en AMBOS idiomas (en/es)
+                dentro de assets/js/i18n.js.
+                ====================================================================
+            -->
 
             <div class="program-layout">
 
@@ -1296,7 +1332,7 @@
                         <div style="display: flex; justify-content: center; margin-bottom: 15px;">
 
                             <img
-                                src="Org_team/ejemplo.jpg"
+                                src="speakers/ejemplo.jpg"
                                 alt="Speaker"
                                 style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid var(--ibm-light-purple);"
                             >
@@ -1337,7 +1373,7 @@
                         <div style="display: flex; justify-content: center; margin-bottom: 15px;">
 
                             <img
-                                src="Org_team/ejemplo.jpg"
+                                src="speakers/ejemplo.jpg"
                                 alt="Speaker"
                                 style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid var(--ibm-light-purple);"
                             >
@@ -1385,7 +1421,7 @@
                         <div style="display: flex; justify-content: center; margin-bottom: 15px;">
 
                             <img
-                                src="Org_team/ejemplo.jpg"
+                                src="speakers/ejemplo.jpg"
                                 alt="Speaker"
                                 style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid var(--ibm-light-purple);"
                             >
@@ -1426,7 +1462,7 @@
                         <div style="display: flex; justify-content: center; margin-bottom: 15px;">
 
                             <img
-                                src="Org_team/ejemplo.jpg"
+                                src="speakers/ejemplo.jpg"
                                 alt="Speaker"
                                 style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid var(--ibm-light-purple);"
                             >
@@ -1479,559 +1515,289 @@
 
         <div class="section-header">
 
-            <h2
-                class="section-title"
-                data-i18n="org-title"
-            >
+            <h2 class="section-title" data-i18n="org-title">
                 Organizing Committee
             </h2>
 
-            <p
-                class="section-subtitle"
-                data-i18n="org-subtitle"
-            >
+            <p class="section-subtitle" data-i18n="org-subtitle">
                 Node Universidad Distrital Francisco José de Caldas
             </p>
 
         </div>
 
+        <!-- Marquee: the second track is an aria-hidden clone of the first,
+             required for the seamless infinite-scroll effect. To add or edit
+             a member, update BOTH tracks (or regenerate from the data list). -->
         <div class="speakers-marquee-container">
-
-            <!-- ========================================== -->
-            <!-- PRIMER TRACK -->
-            <!-- ========================================== -->
 
             <div class="speakers-marquee-track">
 
-                <!-- JUAN -->
-
-                <div
-                    class="speaker-card team-card"
-                    style="padding: 25px; text-align: center; min-width: 260px;"
-                >
-
-                    <div
-                        style="display: flex; justify-content: center; margin-bottom: 15px;"
-                    >
-
-                        <img
-                            src="Org_team/Juan.png"
-                            alt="Juan David de los Ríos"
-                            style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid var(--ibm-light-purple);"
-                        >
-
+                <div class="speaker-card team-card">
+                    <div class="member-avatar-wrap">
+                        <img src="Org_team/Juan.png" alt="Juan David de los Ríos" class="member-avatar">
                     </div>
-
                     <div>
-
-                        <h3
-                            style="color: var(--text-primary); font-size: 1.05rem;"
-                        >
-                            Juan David de los Ríos
-                        </h3>
-
-                        <p
-                            style="color: var(--ibm-soft-purple); font-size: 0.85rem;"
-                            data-i18n="role-lead"
-                        >
-                            Lead Organizer
-                        </p>
-
-                        <div style="margin-top: 10px;">
-
-                            <a
-                                href="https://www.linkedin.com/in/juan-david-de-los-rios-mahecha-60a427347/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="LinkedIn - Juan David de los Ríos"
-                                style="color: var(--text-secondary); margin: 0 5px;"
-                            >
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-
+                        <h3 class="member-name">Juan David de los Ríos</h3>
+                        <p class="member-role" data-i18n="role-lead">Lead Organizer & Qiskit Advocate</p>
+                        <div class="member-social">
+                            <a href="https://www.linkedin.com/in/juan-david-de-los-rios-mahecha-60a427347/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn - Juan David de los Ríos"><i class="fab fa-linkedin"></i></a>
                         </div>
-
                     </div>
                 </div>
 
-
-                <!-- JOHN -->
-
-                <div
-                    class="speaker-card team-card"
-                    style="padding: 25px; text-align: center; min-width: 260px;"
-                >
-
-                    <div
-                        style="display: flex; justify-content: center; margin-bottom: 15px;"
-                    >
-
-                        <img
-                            src="Org_team/JOHN.png"
-                            alt="John Hernán Díaz Forero"
-                            style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid var(--ibm-light-purple);"
-                        >
-
+                <div class="speaker-card team-card">
+                    <div class="member-avatar-wrap">
+                        <img src="Org_team/JOHN.png" alt="John Hernán Díaz Forero" class="member-avatar">
                     </div>
-
                     <div>
-
-                        <h3
-                            style="color: var(--text-primary); font-size: 1.05rem;"
-                        >
-                            John Hernán Díaz Forero
-                        </h3>
-
-                        <p
-                            style="color: var(--ibm-soft-purple); font-size: 0.85rem;"
-                            data-i18n="role-co"
-                        >
-                            Official Co-organizer
-                        </p>
-
-                        <div style="margin-top: 10px;">
-
-                            <a
-                                href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001338162&lang=null"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="CVLAC - John Hernán Díaz Forero"
-                                style="color: var(--text-secondary); margin: 0 5px;"
-                            >
-                                <i class="fas fa-graduation-cap"></i>
-                            </a>
-
+                        <h3 class="member-name">John Hernán Díaz Forero</h3>
+                        <p class="member-role" data-i18n="role-co">Official Co-organizer</p>
+                        <div class="member-social">
+                            <a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001338162&lang=null" target="_blank" rel="noopener noreferrer" aria-label="CVLAC - John Hernán Díaz Forero"><i class="fas fa-graduation-cap"></i></a>
                         </div>
-
                     </div>
                 </div>
 
-
-                <!-- LUCIANA -->
-
-                <div
-                    class="speaker-card team-card"
-                    style="padding: 25px; text-align: center; min-width: 260px;"
-                >
-
-                    <div
-                        style="display: flex; justify-content: center; margin-bottom: 15px;"
-                    >
-
-                        <img
-                            src="Org_team/Luciana.jpeg"
-                            alt="Luciana Rengifo Estupiñan"
-                            style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid var(--ibm-light-purple);"
-                        >
-
+                <div class="speaker-card team-card">
+                    <div class="member-avatar-wrap">
+                        <img src="Org_team/Luciana.jpeg" alt="Luciana Rengifo Estupiñan" class="member-avatar">
                     </div>
-
                     <div>
-
-                        <h3
-                            style="color: var(--text-primary); font-size: 1.05rem;"
-                        >
-                            Luciana Rengifo Estupiñan
-                        </h3>
-
-                        <p
-                            style="color: var(--ibm-soft-purple); font-size: 0.85rem;"
-                            data-i18n="role-co"
-                        >
-                            Official Co-organizer
-                        </p>
-
-                        <div style="margin-top: 10px;">
-
-                            <a
-                                href="https://www.linkedin.com/in/luciana-rengifo-estupi%C3%B1an-19702a373/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="LinkedIn - Luciana Rengifo Estupiñan"
-                                style="color: var(--text-secondary); margin: 0 5px;"
-                            >
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-
+                        <h3 class="member-name">Luciana Rengifo Estupiñan</h3>
+                        <p class="member-role" data-i18n="role-co">Official Co-organizer</p>
+                        <div class="member-social">
+                            <a href="https://www.linkedin.com/in/luciana-rengifo-estupi%C3%B1an-19702a373/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn - Luciana Rengifo Estupiñan"><i class="fab fa-linkedin"></i></a>
                         </div>
-
                     </div>
                 </div>
 
-
-                <!-- LUNA -->
-
-                <div
-                    class="speaker-card team-card"
-                    style="padding: 25px; text-align: center; min-width: 260px;"
-                >
-
-                    <div
-                        style="display: flex; justify-content: center; margin-bottom: 15px;"
-                    >
-
-                        <img
-                            src="Org_team/Luna.jpeg"
-                            alt="Luna María Corredor"
-                            style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid var(--ibm-light-purple);"
-                        >
-
+                <div class="speaker-card team-card">
+                    <div class="member-avatar-wrap">
+                        <img src="Org_team/Luna.jpeg" alt="Luna María Corredor" class="member-avatar">
                     </div>
-
                     <div>
-
-                        <h3
-                            style="color: var(--text-primary); font-size: 1.05rem;"
-                        >
-                            Luna María Corredor
-                        </h3>
-
-                        <p
-                            style="color: var(--ibm-soft-purple); font-size: 0.85rem;"
-                            data-i18n="role-co"
-                        >
-                            Official Co-organizer
-                        </p>
-
-                        <div style="margin-top: 10px;">
-
-                            <a
-                                href="https://www.linkedin.com/in/luna-corredor-c%C3%A1rdenas-11798b40a/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="LinkedIn - Luna María Corredor"
-                                style="color: var(--text-secondary); margin: 0 5px;"
-                            >
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-
+                        <h3 class="member-name">Luna María Corredor</h3>
+                        <p class="member-role" data-i18n="role-co">Official Co-organizer</p>
+                        <div class="member-social">
+                            <a href="https://www.linkedin.com/in/luna-corredor-c%C3%A1rdenas-11798b40a/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn - Luna María Corredor"><i class="fab fa-linkedin"></i></a>
                         </div>
-
                     </div>
                 </div>
 
-
-                <!-- NICOLÁS -->
-
-                <div
-                    class="speaker-card team-card"
-                    style="padding: 25px; text-align: center; min-width: 260px;"
-                >
-
-                    <div
-                        style="display: flex; justify-content: center; margin-bottom: 15px;"
-                    >
-
-                        <img
-                            src="Org_team/Nicolas.jpeg"
-                            alt="Nicolas Sandoval"
-                            style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid var(--ibm-light-purple);"
-                        >
-
+                <div class="speaker-card team-card">
+                    <div class="member-avatar-wrap">
+                        <img src="Org_team/Nicolas.jpeg" alt="Nicolas Sandoval" class="member-avatar">
                     </div>
-
                     <div>
-
-                        <h3
-                            style="color: var(--text-primary); font-size: 1.05rem;"
-                        >
-                            Nicolas Sandoval
-                        </h3>
-
-                        <p
-                            style="color: var(--ibm-soft-purple); font-size: 0.85rem;"
-                            data-i18n="role-co"
-                        >
-                            Official Co-organizer
-                        </p>
-
-                        <div style="margin-top: 10px;">
-
-                            <a
-                                href="https://www.linkedin.com/in/nicolas-david-sandoval-tique-357953261/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="LinkedIn - Nicolas Sandoval"
-                                style="color: var(--text-secondary); margin: 0 5px;"
-                            >
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-
+                        <h3 class="member-name">Nicolas Sandoval</h3>
+                        <p class="member-role" data-i18n="role-co">Official Co-organizer</p>
+                        <div class="member-social">
+                            <a href="https://www.linkedin.com/in/nicolas-david-sandoval-tique-357953261/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn - Nicolas Sandoval"><i class="fab fa-linkedin"></i></a>
                         </div>
+                    </div>
+                </div>
 
+                <div class="speaker-card team-card">
+                    <div class="member-avatar-wrap">
+                        <img src="Org_team/julian.png" alt="Julián Cogua" class="member-avatar">
+                    </div>
+                    <div>
+                        <h3 class="member-name">Julián Cogua</h3>
+                        <p class="member-role" data-i18n="role-co">Official Co-organizer</p>
+                        <div class="member-social">
+                            <a href="https://github.com/JulianCogua13" target="_blank" rel="noopener noreferrer" aria-label="GitHub - Julián Cogua"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="speaker-card team-card">
+                    <div class="member-avatar-wrap">
+                        <img src="Org_team/mateo.png" alt="Mateo" class="member-avatar">
+                    </div>
+                    <div>
+                        <h3 class="member-name">Mateo</h3>
+                        <p class="member-role" data-i18n="role-co">Official Co-organizer</p>
+                        <div class="member-social">
+                            <a href="https://github.com/mateomm356-prog" target="_blank" rel="noopener noreferrer" aria-label="GitHub - Mateo"><i class="fab fa-github"></i></a>
+                        </div>
                     </div>
                 </div>
 
             </div>
 
 
-            <!-- ========================================== -->
-            <!-- SEGUNDO TRACK - DUPLICADO PARA MARQUEE -->
-            <!-- ========================================== -->
+            <div class="speakers-marquee-track" aria-hidden="true">
 
-            <div
-                class="speakers-marquee-track"
-                aria-hidden="true"
-            >
-
-                <!-- JUAN -->
-
-                <div
-                    class="speaker-card team-card"
-                    style="padding: 25px; text-align: center; min-width: 260px;"
-                >
-
-                    <div
-                        style="display: flex; justify-content: center; margin-bottom: 15px;"
-                    >
-
-                        <img
-                            src="Org_team/Juan.png"
-                            alt=""
-                            style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid var(--ibm-light-purple);"
-                        >
-
+                <div class="speaker-card team-card">
+                    <div class="member-avatar-wrap">
+                        <img src="Org_team/Juan.png" alt="" class="member-avatar">
                     </div>
-
                     <div>
-
-                        <h3
-                            style="color: var(--text-primary); font-size: 1.05rem;"
-                        >
-                            Juan David de los Ríos
-                        </h3>
-
-                        <p
-                            style="color: var(--ibm-soft-purple); font-size: 0.85rem;"
-                        >
-                            Lead Organizer
-                        </p>
-
-                        <div style="margin-top: 10px;">
-
-                            <a
-                                href="https://www.linkedin.com/in/juan-david-de-los-rios-mahecha-60a427347/"
-                                tabindex="-1"
-                                aria-hidden="true"
-                                style="color: var(--text-secondary); margin: 0 5px;"
-                            >
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-
+                        <h3 class="member-name">Juan David de los Ríos</h3>
+                        <p class="member-role">Lead Organizer & Qiskit Advocate</p>
+                        <div class="member-social">
+                            <a href="https://www.linkedin.com/in/juan-david-de-los-rios-mahecha-60a427347/" tabindex="-1" aria-hidden="true"><i class="fab fa-linkedin"></i></a>
                         </div>
-
                     </div>
                 </div>
 
-
-                <!-- JOHN -->
-
-                <div
-                    class="speaker-card team-card"
-                    style="padding: 25px; text-align: center; min-width: 260px;"
-                >
-
-                    <div
-                        style="display: flex; justify-content: center; margin-bottom: 15px;"
-                    >
-
-                        <img
-                            src="Org_team/JOHN.png"
-                            alt=""
-                            style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid var(--ibm-light-purple);"
-                        >
-
+                <div class="speaker-card team-card">
+                    <div class="member-avatar-wrap">
+                        <img src="Org_team/JOHN.png" alt="" class="member-avatar">
                     </div>
-
                     <div>
-
-                        <h3
-                            style="color: var(--text-primary); font-size: 1.05rem;"
-                        >
-                            John Hernán Díaz Forero
-                        </h3>
-
-                        <p
-                            style="color: var(--ibm-soft-purple); font-size: 0.85rem;"
-                        >
-                            Official Co-organizer
-                        </p>
-
-                        <div style="margin-top: 10px;">
-
-                            <a
-                                href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001338162&lang=null"
-                                tabindex="-1"
-                                aria-hidden="true"
-                                style="color: var(--text-secondary); margin: 0 5px;"
-                            >
-                                <i class="fas fa-graduation-cap"></i>
-                            </a>
-
+                        <h3 class="member-name">John Hernán Díaz Forero</h3>
+                        <p class="member-role">Official Co-organizer</p>
+                        <div class="member-social">
+                            <a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001338162&lang=null" tabindex="-1" aria-hidden="true"><i class="fas fa-graduation-cap"></i></a>
                         </div>
-
                     </div>
                 </div>
 
-
-                <!-- LUCIANA -->
-
-                <div
-                    class="speaker-card team-card"
-                    style="padding: 25px; text-align: center; min-width: 260px;"
-                >
-
-                    <div
-                        style="display: flex; justify-content: center; margin-bottom: 15px;"
-                    >
-
-                        <img
-                            src="Org_team/Luciana.jpeg"
-                            alt=""
-                            style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid var(--ibm-light-purple);"
-                        >
-
+                <div class="speaker-card team-card">
+                    <div class="member-avatar-wrap">
+                        <img src="Org_team/Luciana.jpeg" alt="" class="member-avatar">
                     </div>
-
                     <div>
-
-                        <h3
-                            style="color: var(--text-primary); font-size: 1.05rem;"
-                        >
-                            Luciana Rengifo Estupiñan
-                        </h3>
-
-                        <p
-                            style="color: var(--ibm-soft-purple); font-size: 0.85rem;"
-                        >
-                            Official Co-organizer
-                        </p>
-
-                        <div style="margin-top: 10px;">
-
-                            <a
-                                href="https://www.linkedin.com/in/luciana-rengifo-estupi%C3%B1an-19702a373/"
-                                tabindex="-1"
-                                aria-hidden="true"
-                                style="color: var(--text-secondary); margin: 0 5px;"
-                            >
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-
+                        <h3 class="member-name">Luciana Rengifo Estupiñan</h3>
+                        <p class="member-role">Official Co-organizer</p>
+                        <div class="member-social">
+                            <a href="https://www.linkedin.com/in/luciana-rengifo-estupi%C3%B1an-19702a373/" tabindex="-1" aria-hidden="true"><i class="fab fa-linkedin"></i></a>
                         </div>
-
                     </div>
                 </div>
 
-
-                <!-- LUNA -->
-
-                <div
-                    class="speaker-card team-card"
-                    style="padding: 25px; text-align: center; min-width: 260px;"
-                >
-
-                    <div
-                        style="display: flex; justify-content: center; margin-bottom: 15px;"
-                    >
-
-                        <img
-                            src="Org_team/Luna.jpeg"
-                            alt=""
-                            style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid var(--ibm-light-purple);"
-                        >
-
+                <div class="speaker-card team-card">
+                    <div class="member-avatar-wrap">
+                        <img src="Org_team/Luna.jpeg" alt="" class="member-avatar">
                     </div>
-
                     <div>
-
-                        <h3
-                            style="color: var(--text-primary); font-size: 1.05rem;"
-                        >
-                            Luna María Corredor
-                        </h3>
-
-                        <p
-                            style="color: var(--ibm-soft-purple); font-size: 0.85rem;"
-                        >
-                            Official Co-organizer
-                        </p>
-
-                        <div style="margin-top: 10px;">
-
-                            <a
-                                href="https://www.linkedin.com/in/luna-corredor-c%C3%A1rdenas-11798b40a/"
-                                tabindex="-1"
-                                aria-hidden="true"
-                                style="color: var(--text-secondary); margin: 0 5px;"
-                            >
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-
+                        <h3 class="member-name">Luna María Corredor</h3>
+                        <p class="member-role">Official Co-organizer</p>
+                        <div class="member-social">
+                            <a href="https://www.linkedin.com/in/luna-corredor-c%C3%A1rdenas-11798b40a/" tabindex="-1" aria-hidden="true"><i class="fab fa-linkedin"></i></a>
                         </div>
-
                     </div>
                 </div>
 
-
-                <!-- NICOLÁS -->
-
-                <div
-                    class="speaker-card team-card"
-                    style="padding: 25px; text-align: center; min-width: 260px;"
-                >
-
-                    <div
-                        style="display: flex; justify-content: center; margin-bottom: 15px;"
-                    >
-
-                        <img
-                            src="Org_team/Nicolas.jpeg"
-                            alt=""
-                            style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid var(--ibm-light-purple);"
-                        >
-
+                <div class="speaker-card team-card">
+                    <div class="member-avatar-wrap">
+                        <img src="Org_team/Nicolas.jpeg" alt="" class="member-avatar">
                     </div>
-
                     <div>
-
-                        <h3
-                            style="color: var(--text-primary); font-size: 1.05rem;"
-                        >
-                            Nicolas Sandoval
-                        </h3>
-
-                        <p
-                            style="color: var(--ibm-soft-purple); font-size: 0.85rem;"
-                        >
-                            Official Co-organizer
-                        </p>
-
-                        <div style="margin-top: 10px;">
-
-                            <a
-                                href="https://www.linkedin.com/in/nicolas-david-sandoval-tique-357953261/"
-                                tabindex="-1"
-                                aria-hidden="true"
-                                style="color: var(--text-secondary); margin: 0 5px;"
-                            >
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-
+                        <h3 class="member-name">Nicolas Sandoval</h3>
+                        <p class="member-role">Official Co-organizer</p>
+                        <div class="member-social">
+                            <a href="https://www.linkedin.com/in/nicolas-david-sandoval-tique-357953261/" tabindex="-1" aria-hidden="true"><i class="fab fa-linkedin"></i></a>
                         </div>
+                    </div>
+                </div>
 
+                <div class="speaker-card team-card">
+                    <div class="member-avatar-wrap">
+                        <img src="Org_team/julian.png" alt="" class="member-avatar">
+                    </div>
+                    <div>
+                        <h3 class="member-name">Julián Cogua</h3>
+                        <p class="member-role">Official Co-organizer</p>
+                        <div class="member-social">
+                            <a href="https://github.com/JulianCogua13" tabindex="-1" aria-hidden="true"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="speaker-card team-card">
+                    <div class="member-avatar-wrap">
+                        <img src="Org_team/mateo.png" alt="" class="member-avatar">
+                    </div>
+                    <div>
+                        <h3 class="member-name">Mateo</h3>
+                        <p class="member-role">Official Co-organizer</p>
+                        <div class="member-social">
+                            <a href="https://github.com/mateomm356-prog" tabindex="-1" aria-hidden="true"><i class="fab fa-github"></i></a>
+                        </div>
                     </div>
                 </div>
 
             </div>
 
         </div>
+
     </div>
 </section>
 
 
     <!-- ========================================== -->
-    <!-- 8. UBICACIÓN Y CONTACTO -->
+    <!-- 8. CERTIFICADO -->
+    <!-- ========================================== -->
+
+    <section
+        id="certificate"
+        style="padding: 60px 0; background: var(--ibm-dark-bg);"
+    >
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <h2 class="section-title" data-i18n="cert-title">
+                    Attendance Certificate
+                </h2>
+
+                <p class="section-subtitle" data-i18n="cert-subtitle">
+                    Every participant who completes the event receives an official certificate
+                </p>
+
+            </div>
+
+            <div class="certificate-grid">
+
+                <!-- Left column: description -->
+                <div class="certificate-info">
+
+                    <p style="color: var(--text-secondary); font-size: 1rem; line-height: 1.7;" data-i18n="cert-desc">
+                        At the end of Qiskit Fall Fest 2026 we issue an official digital
+                        certificate of participation, endorsed by the organizing node at
+                        Universidad Distrital Francisco José de Caldas.
+                    </p>
+
+                    <div class="certificate-feature">
+                        <i class="fas fa-award"></i>
+                        <span data-i18n="cert-feat-1">Officially endorsed by the organizing node.</span>
+                    </div>
+
+                    <div class="certificate-feature">
+                        <i class="fas fa-user-check"></i>
+                        <span data-i18n="cert-feat-2">Includes the attendee's full name and the event dates.</span>
+                    </div>
+
+                    <div class="certificate-feature">
+                        <i class="fas fa-file-pdf"></i>
+                        <span data-i18n="cert-feat-3">Delivered digitally after completing the event.</span>
+                    </div>
+
+                </div>
+
+                <!-- Right column: sample certificate image -->
+                <div class="certificate-preview">
+                    <img
+                        src="certificados/certificadoejemplo.png"
+                        alt="Sample attendance certificate"
+                        loading="lazy"
+                    >
+                    <p class="certificate-caption" data-i18n="cert-caption">
+                        Sample certificate — the final design may vary.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- 9. UBICACIÓN Y CONTACTO -->
     <!-- ========================================== -->
 
     <section
@@ -2155,112 +1921,87 @@
                     </h3>
 
                     <!--
-                        IMPORTANTE:
-                        Este endpoint de Formspree todavía es un placeholder.
-                        Debes reemplazar "tu-form-id" por tu endpoint real.
+                        FORMULARIO DE CONTACTO
+                        Enviado con Formspree. Para activarlo:
+                        1. Crea un formulario gratis en https://formspree.io
+                        2. Reemplaza "tu-form-id" en el atributo action por tu endpoint real,
+                           por ejemplo: https://formspree.io/f/xerabcde
+
+                        Para añadir, quitar o reordenar campos, copia un bloque
+                        <div class="form-field"> ... </div> y ajusta id / name / label.
+                        El estilo vive en assets/css/sections.css (.contact-form, .form-*).
                     -->
 
                     <form
+                        class="contact-form"
                         action="https://formspree.io/f/tu-form-id"
                         method="POST"
-                        style="display: flex; flex-direction: column; gap: 16px;"
                     >
 
-                        <div style="display: flex; flex-direction: column; gap: 6px;">
-
-                            <label
-                                for="name"
-                                style="font-size: 0.85rem; color: var(--text-primary); font-weight: 500;"
-                                data-i18n="contact-name"
-                            >
+                        <!-- Campo: Nombre -->
+                        <div class="form-field">
+                            <label for="name" class="form-label" data-i18n="contact-name">
                                 Full Name
                             </label>
-
                             <input
                                 type="text"
                                 id="name"
                                 name="name"
+                                class="form-input"
                                 required
-                                style="padding: 10px; border-radius: 4px; border: 1px solid var(--ibm-border); background: var(--ibm-dark-bg); color: var(--text-primary); font-size: 0.95rem;"
+                                autocomplete="name"
                                 placeholder="Your name..."
                             >
-
                         </div>
 
-                        <div style="display: flex; flex-direction: column; gap: 6px;">
-
-                            <label
-                                for="email"
-                                style="font-size: 0.85rem; color: var(--text-primary); font-weight: 500;"
-                                data-i18n="contact-email"
-                            >
+                        <!-- Campo: Email -->
+                        <div class="form-field">
+                            <label for="email" class="form-label" data-i18n="contact-email">
                                 Email Address
                             </label>
-
                             <input
                                 type="email"
                                 id="email"
                                 name="email"
+                                class="form-input"
                                 required
-                                style="padding: 10px; border-radius: 4px; border: 1px solid var(--ibm-border); background: var(--ibm-dark-bg); color: var(--text-primary); font-size: 0.95rem;"
+                                autocomplete="email"
                                 placeholder="your.email@example.com"
                             >
-
                         </div>
 
-                        <div style="display: flex; flex-direction: column; gap: 6px;">
-
-                            <label
-                                for="subject"
-                                style="font-size: 0.85rem; color: var(--text-primary); font-weight: 500;"
-                                data-i18n="contact-subject"
-                            >
+                        <!-- Campo: Asunto -->
+                        <div class="form-field">
+                            <label for="subject" class="form-label" data-i18n="contact-subject">
                                 Subject
                             </label>
-
                             <input
                                 type="text"
                                 id="subject"
                                 name="subject"
+                                class="form-input"
                                 required
-                                style="padding: 10px; border-radius: 4px; border: 1px solid var(--ibm-border); background: var(--ibm-dark-bg); color: var(--text-primary); font-size: 0.95rem;"
                                 placeholder="Subject of your message..."
                             >
-
                         </div>
 
-                        <div style="display: flex; flex-direction: column; gap: 6px;">
-
-                            <label
-                                for="message"
-                                style="font-size: 0.85rem; color: var(--text-primary); font-weight: 500;"
-                                data-i18n="contact-message"
-                            >
+                        <!-- Campo: Mensaje -->
+                        <div class="form-field">
+                            <label for="message" class="form-label" data-i18n="contact-message">
                                 Message
                             </label>
-
                             <textarea
                                 id="message"
                                 name="message"
+                                class="form-textarea"
                                 rows="4"
                                 required
-                                style="padding: 10px; border-radius: 4px; border: 1px solid var(--ibm-border); background: var(--ibm-dark-bg); color: var(--text-primary); font-size: 0.95rem; resize: vertical;"
                                 placeholder="Type your message here..."
                             ></textarea>
-
                         </div>
 
-                        <button
-                            type="submit"
-                            class="btn btn-primary"
-                            style="padding: 12px; background: var(--ibm-purple); color: white; border: none; border-radius: 4px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: background 0.3s; margin-top: 5px;"
-                            data-i18n="contact-btn"
-                        >
-                            <i
-                                class="fas fa-paper-plane"
-                                style="margin-right: 8px;"
-                            ></i>
-
+                        <button type="submit" class="form-submit" data-i18n="contact-btn">
+                            <i class="fas fa-paper-plane" style="margin-right: 8px;"></i>
                             Send Message
                         </button>
 

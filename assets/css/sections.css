@@ -306,3 +306,196 @@
     padding: 10px 8px;
   }
 }
+
+/* ==========================================================================
+   TEAM & SPEAKER CARDS
+   Reusable circular-avatar cards used in the Organizing Committee and
+   Speakers marquees. Prefer these classes over repeated inline styles.
+   ========================================================================== */
+
+.team-card,
+.speaker-card {
+  padding: 25px;
+  text-align: center;
+  min-width: 260px;
+}
+
+.member-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--ibm-light-purple);
+}
+
+.member-avatar-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.member-name {
+  color: var(--text-primary);
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+.member-role {
+  color: var(--ibm-soft-purple);
+  font-size: 0.85rem;
+  margin: 4px 0 0 0;
+}
+
+.member-desc {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 8px;
+}
+
+.member-social {
+  margin-top: 10px;
+}
+
+.member-social a {
+  color: var(--text-secondary);
+  margin: 0 5px;
+  transition: color 0.2s ease;
+}
+
+.member-social a:hover {
+  color: var(--ibm-light-purple);
+}
+
+/* ==========================================================================
+   CERTIFICATE SECTION
+   Two-column showcase: description on one side, sample certificate image
+   on the other. Columns stack on narrow screens.
+   ========================================================================== */
+
+.certificate-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.certificate-info {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.certificate-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.certificate-feature i {
+  color: var(--ibm-light-purple);
+  margin-top: 3px;
+}
+
+.certificate-preview {
+  background: var(--ibm-card-bg);
+  border: 1px solid var(--ibm-border);
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: var(--card-shadow);
+}
+
+.certificate-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.certificate-caption {
+  margin: 12px 0 0 0;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+@media (max-width: 992px) {
+  .certificate-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+}
+
+/* ==========================================================================
+   CONTACT FORM
+   Shared styling for the contact form so individual fields no longer need
+   repeated inline styles. Theme-aware and accessible focus states.
+   ========================================================================== */
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.form-input,
+.form-textarea {
+  padding: 10px 12px;
+  border-radius: 4px;
+  border: 1px solid var(--ibm-border);
+  background: var(--ibm-dark-bg);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--ibm-light-purple);
+  box-shadow: 0 0 0 3px rgba(138, 63, 252, 0.15);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.form-submit {
+  padding: 12px;
+  background: var(--ibm-purple);
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s ease;
+  margin-top: 5px;
+}
+
+.form-submit:hover {
+  background: var(--ibm-light-purple);
+}
