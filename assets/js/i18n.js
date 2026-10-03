@@ -23,7 +23,7 @@
       "nav-home": "Home",
       "menu-event": "Event",
       "nav-about": "About Us",
-      "nav-collaborators": "Sponsors & Collaborators",
+      "nav-collaborators": "Collaborators",
       "nav-location": "Location",
       "nav-faq": "FAQ",
 
@@ -54,8 +54,7 @@
       "cd-minutes": "Minutes",
       "cd-seconds": "Seconds",
 
-      "spon-1": "Global Event Sponsor",
-      "spon-2": "Cloud Partner",
+      "collab-heading": "Collaborators",
 
       "about-title": "About the Festival & Scope",
       "about-subtitle":
@@ -209,7 +208,7 @@
       "nav-home": "Inicio",
       "menu-event": "Evento",
       "nav-about": "Acerca de",
-      "nav-collaborators": "Patrocinadores y Colaboradores",
+      "nav-collaborators": "Colaboradores",
       "nav-location": "Ubicación",
       "nav-faq": "Preguntas Frecuentes",
 
@@ -239,8 +238,7 @@
       "cd-minutes": "Minutos",
       "cd-seconds": "Segundos",
 
-      "spon-1": "Patrocinador Global del Evento",
-      "spon-2": "Socio Cloud",
+      "collab-heading": "Colaboradores",
 
       "about-title": "Sobre el Festival y Alcance",
       "about-subtitle":
