@@ -80,12 +80,15 @@
       "cert-feat-1": "Officially endorsed by the organizing node.",
       "cert-feat-2": "Includes the attendee's full name and the event dates.",
       "cert-feat-3": "Delivered digitally after completing the event.",
+      "cert-feat-4": "Also endorsed by IBM Quantum.",
       "cert-caption": "Sample certificate — the final design may vary.",
       "nav-certificate": "Certificate",
 
       "program-title": "Academic Program",
       "program-subtitle":
         "Hover over any talk to check full details in the side panel",
+      "program-notice":
+        "This schedule is subject to change and will be confirmed over the coming days. To stay up to date with talks and speakers, please register for the event and join the WhatsApp channel included in the registration form.",
 
       "day-1": "Tuesday, Oct 27",
       "day-2": "Wednesday, Oct 28",
@@ -150,6 +153,8 @@
       "cfp-t1": "Quantum Computing & Information",
       "cfp-t2": "Algorithms & Practical Development with Qiskit",
       "cfp-t3": "Computational Physics, Simulation & Quantum Cryptography",
+      "cfp-award":
+        "A winner's certificate will be awarded to the best short talk, also endorsed by IBM Quantum.",
       "cfp-box-head": "Submit Your Proposal",
       "cfp-box-sub":
         "Present your research project or work in progress to the community.",
@@ -260,12 +265,15 @@
       "cert-feat-1": "Avalado oficialmente por el nodo organizador.",
       "cert-feat-2": "Incluye el nombre completo del asistente y las fechas del evento.",
       "cert-feat-3": "Se entrega de forma digital tras completar el evento.",
+      "cert-feat-4": "También avalado por IBM Quantum.",
       "cert-caption": "Certificado de ejemplo — el diseño final puede variar.",
       "nav-certificate": "Certificado",
 
       "program-title": "Programa Académico",
       "program-subtitle":
         "Pasa el cursor sobre cualquier charla para consultar los detalles completos en el panel lateral",
+      "program-notice":
+        "Este cronograma está sujeto a cambios y se irá confirmando en los próximos días. Para estar pendiente de las charlas y ponentes, por favor regístrate en el evento y entra al canal de WhatsApp que está dentro del formulario de inscripción.",
 
       "day-1": "Martes 27 Oct",
       "day-2": "Miércoles 28 Oct",
@@ -330,6 +338,8 @@
       "cfp-t1": "Computación e Información Cuántica",
       "cfp-t2": "Algoritmos y Desarrollo Práctico con Qiskit",
       "cfp-t3": "Física Computacional, Simulación y Criptografía Cuántica",
+      "cfp-award":
+        "Se entregará un certificado de ganador a la mejor charla corta, también avalado por IBM Quantum.",
       "cfp-box-head": "Envía tu Propuesta",
       "cfp-box-sub": "Presenta tu proyecto de investigación a la comunidad.",
       "cfp-btn": "Formulario de Envío (Charla Corta)",
