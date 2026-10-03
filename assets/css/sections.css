@@ -1,0 +1,308 @@
+/* ==========================================================================
+   SECTIONS
+   Cards, impact stats, call section, program schedule, tabs and marquees.
+   ========================================================================== */
+
+/* ---- Cards ---- */
+.event-card,
+.speaker-card,
+.impact-card {
+  background: var(--ibm-card-bg);
+  border: 1px solid var(--ibm-border);
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* ---- Impact / stats ---- */
+.impact-mini-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.impact-card {
+  padding: 28px 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top: 3px solid var(--ibm-purple);
+}
+
+.impact-icon {
+  font-size: 2rem;
+  color: var(--ibm-soft-purple);
+  margin-bottom: 8px;
+}
+
+.impact-number {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.impact-label {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+/* ---- Call section ---- */
+.call-section {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(105, 41, 196, 0.08) 0%,
+      var(--ibm-card-bg) 100%
+    );
+
+  border: 1px solid var(--ibm-border);
+  border-left: 5px solid var(--ibm-light-purple);
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+}
+
+/* ---- Program / schedule ---- */
+.program-layout {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 30px;
+  align-items: start;
+}
+
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--ibm-card-bg);
+  border: 1px solid var(--ibm-border);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+
+.schedule-table th {
+  background: var(--ibm-section-alt);
+  color: var(--text-primary);
+  padding: 14px 16px;
+  text-align: left;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-bottom: 1px solid var(--ibm-border);
+}
+
+.schedule-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--ibm-border);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  vertical-align: middle;
+}
+
+.schedule-row {
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-left 0.2s ease;
+}
+
+.schedule-row:hover {
+  background-color: rgba(105, 41, 196, 0.12);
+  color: var(--text-primary);
+  border-left: 4px solid var(--ibm-light-purple);
+}
+
+.event-tag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  display: inline-block;
+}
+
+.tag-keynote {
+  background: rgba(138, 63, 252, 0.12);
+  color: var(--ibm-soft-purple);
+  border: 1px solid rgba(138, 63, 252, 0.25);
+}
+
+.tag-workshop {
+  background: rgba(2, 132, 199, 0.12);
+  color: #0284c7;
+  border: 1px solid rgba(2, 132, 199, 0.25);
+}
+
+.tag-talk {
+  background: rgba(217, 119, 6, 0.12);
+  color: #d97706;
+  border: 1px solid rgba(217, 119, 6, 0.25);
+}
+
+.tag-break {
+  background: rgba(100, 116, 139, 0.12);
+  color: var(--text-muted);
+  border: 1px solid rgba(100, 116, 139, 0.25);
+}
+
+.side-detail-panel {
+  background: var(--ibm-card-bg);
+  border: 1px solid var(--ibm-light-purple);
+  border-radius: 10px;
+  padding: 24px;
+  box-shadow: var(--card-shadow);
+  position: sticky;
+  top: 95px;
+}
+
+/* ---- Tabs ---- */
+.tab-btn {
+  background: var(--ibm-card-bg);
+  color: var(--text-secondary);
+  border: 1px solid var(--ibm-border);
+  padding: 10px 18px;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.tab-btn.active,
+.tab-btn:hover {
+  background: var(--ibm-purple);
+  color: #ffffff;
+  border-color: var(--ibm-purple);
+}
+
+/* ---- Marquee (collaborators & speakers) ---- */
+.marquee-container,
+.speakers-marquee-container {
+  overflow: hidden;
+  user-select: none;
+  display: flex;
+  gap: 30px;
+  position: relative;
+  padding: 10px 0;
+}
+
+.marquee-container::before,
+.marquee-container::after,
+.speakers-marquee-container::before,
+.speakers-marquee-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 80px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.marquee-container::before,
+.speakers-marquee-container::before {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    var(--ibm-dark-bg),
+    transparent
+  );
+}
+
+.marquee-container::after,
+.speakers-marquee-container::after {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    var(--ibm-dark-bg),
+    transparent
+  );
+}
+
+.marquee-track,
+.speakers-marquee-track {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 30px;
+  min-width: 100%;
+  animation: scrollMarquee 28s linear infinite;
+}
+
+.marquee-container:hover .marquee-track,
+.speakers-marquee-container:hover .speakers-marquee-track {
+  animation-play-state: paused;
+}
+
+.collab-card {
+  background: var(--ibm-card-bg);
+  border: 1px solid var(--ibm-border);
+  border-radius: 6px;
+  padding: 12px 22px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 200px;
+  justify-content: center;
+  transition: border-color 0.2s ease;
+  box-shadow: var(--card-shadow);
+}
+
+.collab-card:hover {
+  border-color: var(--ibm-light-purple);
+}
+
+.collab-name {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+@keyframes scrollMarquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-100% - 30px));
+  }
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 992px) {
+  .program-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .side-detail-panel {
+    position: relative !important;
+    top: auto !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .call-section {
+    padding: 25px;
+  }
+
+  .impact-mini-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .schedule-table {
+    font-size: 0.8rem;
+  }
+
+  .schedule-table th,
+  .schedule-table td {
+    padding: 10px 8px;
+  }
+}

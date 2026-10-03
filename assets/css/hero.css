@@ -1,0 +1,102 @@
+/* ==========================================================================
+   HERO & COUNTDOWN
+   Landing hero grid, call-to-action badge and the live countdown card.
+   ========================================================================== */
+
+.hero-section-wrapper {
+  padding: 110px 0 25px 0;
+  background: var(--ibm-dark-bg);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 50px;
+  align-items: center;
+  margin-bottom: 35px;
+}
+
+.hero-countdown-card {
+  background: var(--ibm-card-bg);
+  border: 1px solid var(--ibm-border);
+  border-top: 3px solid var(--ibm-light-purple);
+  border-radius: 8px;
+  padding: 30px 24px;
+  text-align: center;
+  box-shadow: var(--card-shadow);
+}
+
+.hero-countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.time-box {
+  background: var(--ibm-section-alt);
+  border: 1px solid var(--ibm-border);
+  padding: 12px 10px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.time-box span {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--ibm-soft-purple);
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.time-box p {
+  font-size: 0.75rem;
+  margin: 2px 0 0 0;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ---- Call-to-action badge (also used in hero) ---- */
+.call-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(105, 41, 196, 0.12);
+  color: var(--ibm-soft-purple);
+  padding: 5px 14px;
+  border-radius: 4px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  border: 1px solid rgba(138, 63, 252, 0.25);
+}
+
+@media (max-width: 992px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    text-align: center;
+  }
+
+  .hero-grid .hero-buttons {
+    justify-content: center !important;
+    flex-wrap: wrap;
+  }
+
+  .hero-grid .call-badge {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem !important;
+  }
+
+  .hero-subtitle {
+    font-size: 1.3rem !important;
+  }
+}
