@@ -1,0 +1,132 @@
+/* ==========================================================================
+   BASE
+   Global resets, typography, layout containers and shared section helpers.
+   ========================================================================== */
+
+body {
+  margin: 0;
+  background-color: var(--ibm-dark-bg);
+  color: var(--text-primary);
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+
+  background-image:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(105, 41, 196, 0.06) 0%,
+      transparent 60%
+    ),
+    linear-gradient(
+      rgba(39, 49, 70, 0.03) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(39, 49, 70, 0.03) 1px,
+      transparent 1px
+    );
+
+  background-size: 100% 100%, 40px 40px, 40px 40px;
+  background-attachment: fixed;
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 85px;
+}
+
+.container {
+  width: 92% !important;
+  max-width: 1380px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+.hero-title,
+.section-title {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+code,
+pre {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 30px auto;
+}
+
+.section-title {
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+  text-align: center;
+}
+
+.two-col-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 30px;
+  align-items: start;
+}
+
+@media (max-width: 992px) {
+  .container {
+    width: 96% !important;
+  }
+
+  .two-col-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE (shared, small screens)
+   ========================================================================== */
+
+@media (max-width: 600px) {
+  .impact-mini-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-countdown-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .hero-buttons a {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+}

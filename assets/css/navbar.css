@@ -1,0 +1,133 @@
+/* ==========================================================================
+   NAVIGATION
+   Navbar, dropdown menus, language/theme switchers and the dynamic logo.
+   ========================================================================== */
+
+.nav-item-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  color: var(--text-secondary);
+}
+
+.dropdown-toggle:hover {
+  color: var(--text-primary);
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--ibm-card-bg);
+  min-width: 200px;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--ibm-border);
+  border-radius: 6px;
+  padding: 8px 0;
+  z-index: 1000;
+}
+
+.nav-item-dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-item {
+  color: var(--text-secondary);
+  padding: 10px 18px;
+  text-decoration: none;
+  display: block;
+  font-size: 0.9rem;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background-color: rgba(105, 41, 196, 0.08);
+  color: var(--text-primary);
+}
+
+.nav-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 10px;
+}
+
+.lang-switcher,
+.theme-switcher {
+  display: inline-flex;
+  align-items: center;
+  background: var(--ibm-card-bg);
+  border: 1px solid var(--ibm-border);
+  border-radius: 20px;
+  padding: 2px;
+}
+
+.lang-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lang-btn.active {
+  background: var(--ibm-purple);
+  color: #ffffff;
+}
+
+.theme-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.theme-btn:hover {
+  color: var(--ibm-light-purple);
+  background: rgba(105, 41, 196, 0.08);
+}
+
+.nav-dynamic-logo {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .nav-menu {
+    gap: 8px !important;
+  }
+
+  .nav-menu > .nav-link,
+  .nav-item-dropdown {
+    display: none;
+  }
+
+  .nav-controls {
+    margin-left: 0;
+  }
+
+  .nav-dynamic-logo {
+    height: 32px;
+  }
+}

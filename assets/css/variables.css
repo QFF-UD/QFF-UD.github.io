@@ -1,0 +1,35 @@
+/* ==========================================================================
+   VARIABLES / DESIGN TOKENS
+   Theme color palette for the Qiskit Fall Fest 2026 site.
+   Dark mode is the default (:root); light mode overrides via [data-theme].
+   ========================================================================== */
+
+/* ---- Dark mode (default) ---- */
+:root {
+  --ibm-purple: #6929c4;
+  --ibm-light-purple: #8a3ffc;
+  --ibm-soft-purple: #be95ff;
+  --ibm-dark-bg: #0b0f19;
+  --ibm-section-alt: #121826;
+  --ibm-card-bg: #171e2e;
+  --ibm-border: #273146;
+  --text-primary: #f4f4f6;
+  --text-secondary: #c1c7d0;
+  --text-muted: #8d96a0;
+  --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* ---- Light mode ---- */
+[data-theme="light"] {
+  --ibm-purple: #6929c4;
+  --ibm-light-purple: #7c3aed;
+  --ibm-soft-purple: #5b21b6;
+  --ibm-dark-bg: #f8fafc;
+  --ibm-section-alt: #f1f5f9;
+  --ibm-card-bg: #ffffff;
+  --ibm-border: #e2e8f0;
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --card-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+}
