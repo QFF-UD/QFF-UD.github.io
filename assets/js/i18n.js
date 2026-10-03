@@ -72,6 +72,17 @@
       "impact-challenge": "Research & Community",
       "impact-cert": "Official Certification",
 
+      "cert-title": "Attendance Certificate",
+      "cert-subtitle":
+        "Every participant who completes the event receives an official certificate",
+      "cert-desc":
+        "At the end of Qiskit Fall Fest 2026 we issue an official digital certificate of participation, endorsed by the organizing node at Universidad Distrital Francisco José de Caldas.",
+      "cert-feat-1": "Officially endorsed by the organizing node.",
+      "cert-feat-2": "Includes the attendee's full name and the event dates.",
+      "cert-feat-3": "Delivered digitally after completing the event.",
+      "cert-caption": "Sample certificate — the final design may vary.",
+      "nav-certificate": "Certificate",
+
       "program-title": "Academic Program",
       "program-subtitle":
         "Hover over any talk to check full details in the side panel",
@@ -240,6 +251,17 @@
       "impact-training": "Entrenamiento Académico",
       "impact-challenge": "Investigación y Comunidad",
       "impact-cert": "Certificación Oficial",
+
+      "cert-title": "Certificado de Asistencia",
+      "cert-subtitle":
+        "Cada participante que complete el evento recibe un certificado oficial",
+      "cert-desc":
+        "Al finalizar el Qiskit Fall Fest 2026 entregamos un certificado digital oficial de participación, avalado por el nodo organizador de la Universidad Distrital Francisco José de Caldas.",
+      "cert-feat-1": "Avalado oficialmente por el nodo organizador.",
+      "cert-feat-2": "Incluye el nombre completo del asistente y las fechas del evento.",
+      "cert-feat-3": "Se entrega de forma digital tras completar el evento.",
+      "cert-caption": "Certificado de ejemplo — el diseño final puede variar.",
+      "nav-certificate": "Certificado",
 
       "program-title": "Programa Académico",
       "program-subtitle":

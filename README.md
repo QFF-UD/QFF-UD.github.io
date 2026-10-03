@@ -25,8 +25,28 @@ A static, bilingual (EN / ES) site with light & dark themes, hosted on GitHub Pa
 │       ├── schedule.js     # Program table + side panel (window.QFF.schedule)
 │       └── main.js         # Bootstrap — wires everything on DOMContentLoaded
 ├── Logos/                  # Light/dark logos
-└── Org_team/               # Organizing committee photos
+├── Org_team/               # Organizing committee photos
+├── speakers/               # Speaker / guest photos (see speakers/README.md)
+└── certificados/           # Sample attendance certificate image
 ```
+
+## Editing common content
+
+- **Schedule / cronograma** — in `index.html`, section `#program`. A step-by-step
+  guide comment at the top of the program explains the row pattern. Days are
+  `#table-day1` … `#table-day4`; each row uses `showSideDetails(...)` to feed the
+  side panel.
+- **Organizing committee** — section `#organizers`. Cards use the reusable
+  `.team-card` / `.member-*` classes. The marquee has two tracks (the second is an
+  `aria-hidden` clone for the infinite-scroll effect), so edit **both**.
+- **Speakers** — section `#speakers`; put photos in `speakers/` and use
+  `class="member-avatar"`.
+- **Certificate** — section `#certificate`; image lives in `certificados/`.
+- **Contact form** — section `#location-contact`. Replace `tu-form-id` in the form
+  `action` with your real Formspree endpoint. Fields use `.form-field` / `.form-*`
+  classes (styled in `assets/css/sections.css`).
+- **Text / translations** — every translatable element has `data-i18n="key"`; add
+  the key to **both** `en` and `es` in `assets/js/i18n.js`.
 
 ## Architecture notes
 
