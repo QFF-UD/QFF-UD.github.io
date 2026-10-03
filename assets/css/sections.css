@@ -52,6 +52,32 @@
   color: var(--text-muted);
 }
 
+/* ---- Call-for-papers award callout ---- */
+.cfp-award {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 20px;
+  padding: 14px 18px;
+  background: rgba(138, 63, 252, 0.1);
+  border: 1px solid rgba(138, 63, 252, 0.25);
+  border-radius: 6px;
+}
+
+.cfp-award i {
+  color: var(--ibm-soft-purple);
+  font-size: 1.2rem;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.cfp-award p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
 /* ---- Call section ---- */
 .call-section {
   background:
@@ -69,6 +95,32 @@
 }
 
 /* ---- Program / schedule ---- */
+.schedule-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: rgba(105, 41, 196, 0.08);
+  border: 1px solid var(--ibm-border);
+  border-left: 4px solid var(--ibm-light-purple);
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin-bottom: 25px;
+}
+
+.schedule-notice i {
+  color: var(--ibm-light-purple);
+  font-size: 1.1rem;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.schedule-notice p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
 .program-layout {
   display: grid;
   grid-template-columns: 1fr 360px;
