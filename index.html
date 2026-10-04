@@ -24,6 +24,10 @@
 
 <body>
 
+    <!-- Fondo ambiental global tipo constelación cuántica
+         (Canvas fijo detrás de todo, assets/js/quantum-field.js) -->
+    <canvas class="quantum-field" data-quantum-field aria-hidden="true"></canvas>
+
     <!-- ========================================== -->
     <!-- 1. BARRA DE NAVEGACIÓN -->
     <!-- ========================================== -->
@@ -185,6 +189,14 @@
 
     <section id="home" class="hero-section-wrapper">
 
+        <!-- Esfera de Bloch como fondo del hero, detrás del título
+             (Canvas, assets/js/bloch-sphere.js) -->
+        <canvas
+            class="bloch-bg"
+            data-bloch-sphere
+            aria-hidden="true"
+        ></canvas>
+
         <div class="container">
 
             <div class="hero-grid">
@@ -266,20 +278,7 @@
 
                 <div>
 
-                    <!-- Esfera de Bloch animada (Canvas, assets/js/bloch-sphere.js) -->
-                    <div class="bloch-wrap">
-                        <canvas
-                            class="bloch-canvas"
-                            data-bloch-sphere
-                            role="img"
-                            aria-label="Animated Bloch sphere representing a qubit state"
-                        ></canvas>
-                        <span class="bloch-caption" data-i18n="bloch-caption">
-                            Qubit state on the Bloch sphere
-                        </span>
-                    </div>
-
-                    <div class="hero-countdown-card" style="margin-top: 28px;">
+                    <div class="hero-countdown-card">
 
                         <h3
                             style="color: var(--text-primary); font-size: 1.15rem; margin: 0 0 4px 0;"
@@ -432,7 +431,7 @@
             </div>
 
             <div
-                class="two-col-grid"
+                class="two-col-grid reveal"
                 style="align-items: center;"
             >
 
@@ -1167,7 +1166,7 @@
                 </div>
 
                 <div
-                    class="two-col-grid"
+                    class="two-col-grid reveal"
                     style="align-items: center;"
                 >
 
@@ -2035,6 +2034,7 @@
     <script src="assets/js/countdown.js"></script>
     <script src="assets/js/schedule.js"></script>
     <!-- Visuals / animations (Canvas, self-initializing) -->
+    <script src="assets/js/quantum-field.js"></script>
     <script src="assets/js/bloch-sphere.js"></script>
     <script src="assets/js/quantum-circuit.js"></script>
     <script src="assets/js/reveal.js"></script>

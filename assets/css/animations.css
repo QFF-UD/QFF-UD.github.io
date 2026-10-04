@@ -1,36 +1,36 @@
 /* ==========================================================================
    ANIMATIONS & VISUALS
-   Styling for the Bloch-sphere hero canvas, the quantum-circuit band, and
+   Styling for the global quantum field, the Bloch-sphere hero backdrop, the
+   quantum-circuit band, elegant section headers, depth accents and
    scroll-reveal micro-interactions. All motion respects prefers-reduced-motion.
    ========================================================================== */
 
-/* ---- Bloch sphere (hero) ---- */
-.bloch-wrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 24px;
+/* ---- Global ambient field (fixed, behind everything) ---- */
+.quantum-field {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.6;
 }
 
+/* Keep real content above the ambient field. */
+body > nav,
+body > section,
+body > div,
+body > footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- Bloch sphere (hero backdrop) ---- */
 .bloch-canvas {
   width: 100%;
   max-width: 320px;
   aspect-ratio: 1 / 1;
   display: block;
-}
-
-.bloch-caption {
-  position: absolute;
-  bottom: -4px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.5px;
-  color: var(--text-muted);
-  text-align: center;
-  white-space: nowrap;
 }
 
 /* ---- Quantum circuit band ---- */
@@ -71,7 +71,128 @@
   }
 }
 
-/* ---- Scroll reveal ---- */
+/* ==========================================================================
+   ELEGANT SECTION HEADERS
+   A subtle "qubit on a wire" ornament under each section title, giving every
+   section a consistent, intentional academic feel.
+   ========================================================================== */
+
+.section-title {
+  position: relative;
+  display: inline-block;
+}
+
+/* Centered titles: ornament centered below. */
+.section-header .section-title::after {
+  content: "";
+  display: block;
+  width: 68px;
+  height: 2px;
+  margin: 14px auto 0 auto;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--ibm-light-purple),
+    transparent
+  );
+}
+
+/* The qubit "node" sitting on the wire. */
+.section-header .section-title::before {
+  content: "";
+  position: absolute;
+  bottom: -19px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ibm-soft-purple);
+  box-shadow: 0 0 10px 1px rgba(138, 63, 252, 0.6);
+}
+
+/* Left-aligned headers (e.g. the Program section) anchor the ornament left. */
+.section-title[style*="left"]::after {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.section-title[style*="left"]::before {
+  left: 34px;
+}
+
+/* ==========================================================================
+   DEPTH ACCENTS
+   Soft radial glows anchored to alternating sections for a sense of depth,
+   and a gradient top-edge on feature cards.
+   ========================================================================== */
+
+#about,
+#cfp,
+#organizers {
+  position: relative;
+}
+
+#about::before,
+#cfp::before,
+#organizers::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(
+    circle,
+    rgba(138, 63, 252, 0.08) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+#program::after,
+#speakers::after,
+#certificate::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(
+    circle,
+    rgba(105, 41, 196, 0.07) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Keep each section's inner content above its glow. */
+#about > .container,
+#cfp > .container,
+#organizers > .container,
+#program > .container,
+#speakers > .container,
+#certificate > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Gradient top edge on the featured cards. */
+.hero-countdown-card,
+.side-detail-panel {
+  border-top: 2px solid transparent;
+  border-image: linear-gradient(
+      90deg,
+      var(--ibm-purple),
+      var(--ibm-soft-purple)
+    )
+    1;
+}
+
+/* ---- Scroll reveal (with staggered children) ---- */
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -84,6 +205,29 @@
 .reveal.is-visible {
   opacity: 1;
   transform: none;
+}
+
+/* Stagger direct children of a revealed grid so cards cascade in. */
+.reveal.is-visible > * {
+  animation: fadeUpItem 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.reveal.is-visible > *:nth-child(1) { animation-delay: 0.05s; }
+.reveal.is-visible > *:nth-child(2) { animation-delay: 0.12s; }
+.reveal.is-visible > *:nth-child(3) { animation-delay: 0.19s; }
+.reveal.is-visible > *:nth-child(4) { animation-delay: 0.26s; }
+.reveal.is-visible > *:nth-child(5) { animation-delay: 0.33s; }
+.reveal.is-visible > *:nth-child(6) { animation-delay: 0.40s; }
+
+@keyframes fadeUpItem {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* ---- Refined hover micro-interactions ---- */
