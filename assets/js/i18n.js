@@ -87,6 +87,11 @@
       "cert-caption": "Sample certificate — the final design may vary.",
       "nav-certificate": "Certificate",
 
+      "att-banner-title": "Register your attendance",
+      "att-banner-desc":
+        "Sign in and enter the code shown at each session. Attend 75% or more to receive your certificate.",
+      "att-banner-btn": "Go to attendance",
+
       "program-title": "Academic Program",
       "program-subtitle":
         "Hover over any talk to check full details in the side panel",
@@ -274,6 +279,11 @@
       "cert-feat-4": "También avalado por IBM Quantum.",
       "cert-caption": "Certificado de ejemplo — el diseño final puede variar.",
       "nav-certificate": "Certificado",
+
+      "att-banner-title": "Registra tu asistencia",
+      "att-banner-desc":
+        "Inicia sesión y escribe el código que aparece en cada sesión. Asiste al 75% o más para recibir tu certificado.",
+      "att-banner-btn": "Ir a asistencia",
 
       "program-title": "Programa Académico",
       "program-subtitle":
