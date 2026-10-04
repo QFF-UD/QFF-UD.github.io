@@ -1,11 +1,13 @@
 /* ==========================================================================
-   BLOCH SPHERE — Animated hero visual
-   A lightweight, dependency-free Canvas 2D rendering of a Bloch sphere:
-   wireframe meridians/parallels, X/Y/Z axes with |0> / |1> labels, and a
-   state vector that precesses smoothly around the sphere.
+   BLOCH SPHERE — Animated 3D hero backdrop
+   A dependency-free Canvas 2D rendering of a Bloch sphere with REAL 3D
+   rotation (perspective projection + rotation matrices). Shows a dotted
+   wireframe globe (meridians + parallels), the X/Y/Z axes with |0>/|1>
+   labels, and a precessing state vector. The whole sphere slowly rotates
+   in 3D so it reads as a globe, not a flat disc.
 
    - Theme aware: reads CSS custom properties, re-reads on theme toggle.
-   - Accessible: honors prefers-reduced-motion (renders a single static frame).
+   - Accessible: honors prefers-reduced-motion (one static 3D frame).
    - Self-contained: attaches to any <canvas data-bloch-sphere>.
    ========================================================================== */
 
@@ -35,7 +37,6 @@
 
     window.addEventListener("resize", this.resize.bind(this));
 
-    // Re-read palette when the theme changes (data-theme attribute flips).
     var self = this;
     new MutationObserver(function () {
       self.readColors();
@@ -56,81 +57,82 @@
 
   BlochSphere.prototype.resize = function () {
     var dpr = window.devicePixelRatio || 1;
-    var size = this.canvas.clientWidth || 320;
+    // Size from the actual rendered box; fall back gracefully.
+    var rect = this.canvas.getBoundingClientRect();
+    var size = Math.max(rect.width, rect.height) || 400;
     this.canvas.width = size * dpr;
     this.canvas.height = size * dpr;
     this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     this.size = size;
-    this.r = size * 0.34;
+    this.r = size * 0.32;
     this.cx = size / 2;
     this.cy = size / 2;
     if (this.reduced) this.draw();
   };
 
-  /* Project a 3D point (x,y,z in [-1,1]) to 2D using a fixed isometric tilt.
-     Returns {x, y, depth} where depth is used for painter ordering/opacity. */
-  BlochSphere.prototype.project = function (x, y, z) {
-    // Tilt the sphere slightly for a 3/4 view.
-    var tiltX = -0.5; // radians, around X axis
-    var cosT = Math.cos(tiltX);
-    var sinT = Math.sin(tiltX);
-    var y2 = y * cosT - z * sinT;
-    var z2 = y * sinT + z * cosT;
+  /* Rotate a 3D point by the current animation angles, then project to 2D
+     with a simple perspective divide. Returns {x, y, z} (z = camera depth). */
+  BlochSphere.prototype.rotateProject = function (x, y, z) {
+    var ay = this.t * 0.6; // yaw (around Y)
+    var ax = -0.5; // fixed tilt (around X) for a 3/4 view
+
+    // Rotate around Y
+    var cosY = Math.cos(ay);
+    var sinY = Math.sin(ay);
+    var x1 = x * cosY + z * sinY;
+    var z1 = -x * sinY + z * cosY;
+
+    // Rotate around X
+    var cosX = Math.cos(ax);
+    var sinX = Math.sin(ax);
+    var y2 = y * cosX - z1 * sinX;
+    var z2 = y * sinX + z1 * cosX;
+
+    // Perspective projection
+    var distance = 4;
+    var scale = distance / (distance - z2);
+
     return {
-      x: this.cx + x * this.r,
-      y: this.cy - y2 * this.r,
-      depth: z2, // +front, -back
+      x: this.cx + x1 * this.r * scale,
+      y: this.cy - y2 * this.r * scale,
+      z: z2, // +toward camera, -away
+      scale: scale,
     };
   };
 
-  BlochSphere.prototype.ellipsePath = function (axis) {
+  /* Draw one great circle in a given plane as a series of depth-shaded dots. */
+  BlochSphere.prototype.ring = function (plane) {
     var ctx = this.ctx;
-    var pts = [];
-    var steps = 64;
-    for (var i = 0; i <= steps; i++) {
+    var steps = 72;
+    for (var i = 0; i < steps; i++) {
       var a = (i / steps) * Math.PI * 2;
       var ca = Math.cos(a);
       var sa = Math.sin(a);
       var p;
-      if (axis === "equator") p = this.project(ca, 0, sa);
-      else if (axis === "meridian") p = this.project(0, ca, sa);
-      else p = this.project(ca, sa, 0); // vertical
-      pts.push(p);
-    }
-    // Draw as two passes (back dimmer, front brighter) for depth.
-    for (var pass = 0; pass < 2; pass++) {
+      if (plane === "xy") p = this.rotateProject(ca, sa, 0);
+      else if (plane === "xz") p = this.rotateProject(ca, 0, sa);
+      else p = this.rotateProject(0, ca, sa); // yz
+      var front = p.z >= 0;
+      ctx.globalAlpha = front ? 0.75 : 0.18;
+      ctx.fillStyle = this.cWire;
       ctx.beginPath();
-      var started = false;
-      for (var j = 0; j < pts.length; j++) {
-        var front = pts[j].depth >= 0;
-        if ((pass === 0 && front) || (pass === 1 && !front)) {
-          started = false;
-          continue;
-        }
-        if (!started) {
-          ctx.moveTo(pts[j].x, pts[j].y);
-          started = true;
-        } else {
-          ctx.lineTo(pts[j].x, pts[j].y);
-        }
-      }
-      ctx.globalAlpha = pass === 1 ? 0.25 : 0.7;
-      ctx.strokeStyle = this.cWire;
-      ctx.lineWidth = 1;
-      ctx.stroke();
+      ctx.arc(p.x, p.y, front ? 1.3 : 1.0, 0, Math.PI * 2);
+      ctx.fill();
     }
     ctx.globalAlpha = 1;
   };
 
   BlochSphere.prototype.axis = function (x, y, z, label) {
     var ctx = this.ctx;
-    var o = this.project(0, 0, 0);
-    var p = this.project(x, y, z);
+    var o = this.rotateProject(0, 0, 0);
+    var p = this.rotateProject(x, y, z);
+    var front = p.z >= 0;
+
     ctx.beginPath();
     ctx.moveTo(o.x, o.y);
     ctx.lineTo(p.x, p.y);
     ctx.strokeStyle = this.cAxis;
-    ctx.globalAlpha = p.depth >= 0 ? 0.6 : 0.3;
+    ctx.globalAlpha = front ? 0.6 : 0.28;
     ctx.lineWidth = 1;
     ctx.stroke();
     ctx.globalAlpha = 1;
@@ -140,7 +142,7 @@
       ctx.font = "600 13px 'IBM Plex Mono', monospace";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
-      ctx.globalAlpha = p.depth >= 0 ? 0.9 : 0.45;
+      ctx.globalAlpha = front ? 0.95 : 0.4;
       ctx.fillText(label, p.x, p.y - 10);
       ctx.globalAlpha = 1;
     }
@@ -150,46 +152,39 @@
     var ctx = this.ctx;
     ctx.clearRect(0, 0, this.size, this.size);
 
-    // Wireframe
-    this.ellipsePath("equator");
-    this.ellipsePath("meridian");
-    this.ellipsePath("vertical");
+    // Wireframe globe: three great circles.
+    this.ring("xy");
+    this.ring("xz");
+    this.ring("yz");
 
-    // Axes (Z up = |0>/|1>, plus X and Y)
-    this.axis(0, 1.15, 0, "|0\u27E9");
-    this.axis(0, -1.15, 0, "|1\u27E9");
-    this.axis(1.15, 0, 0, "x");
-    this.axis(0, 0, 1.15, "y");
+    // Axes: Y up = |0> / |1>, plus X and Z.
+    this.axis(0, 1.18, 0, "|0\u27E9");
+    this.axis(0, -1.18, 0, "|1\u27E9");
+    this.axis(1.18, 0, 0, "x");
+    this.axis(0, 0, 1.18, "y");
 
-    // State vector: precesses around the sphere.
-    var theta = Math.PI / 2 + Math.sin(this.t * 0.5) * 0.9; // polar
-    var phi = this.t; // azimuth
+    // State vector precessing on the sphere.
+    var theta = Math.PI / 2 + Math.sin(this.t * 0.5) * 0.85; // polar
+    var phi = this.t * 1.3; // azimuth
     var vx = Math.sin(theta) * Math.cos(phi);
     var vz = Math.sin(theta) * Math.sin(phi);
     var vy = Math.cos(theta);
 
-    var o = this.project(0, 0, 0);
-    var tip = this.project(vx, vy, vz);
+    var o = this.rotateProject(0, 0, 0);
+    var tip = this.rotateProject(vx, vy, vz);
 
-    // Glow halo at the tip
-    var grad = ctx.createRadialGradient(
-      tip.x,
-      tip.y,
-      0,
-      tip.x,
-      tip.y,
-      18
-    );
-    grad.addColorStop(0, this.cGlow);
-    grad.addColorStop(1, "rgba(0,0,0,0)");
-    ctx.globalAlpha = 0.5;
-    ctx.fillStyle = grad;
+    // Glow halo at the tip.
+    var halo = ctx.createRadialGradient(tip.x, tip.y, 0, tip.x, tip.y, 20);
+    halo.addColorStop(0, this.cGlow);
+    halo.addColorStop(1, "rgba(0,0,0,0)");
+    ctx.globalAlpha = 0.55;
+    ctx.fillStyle = halo;
     ctx.beginPath();
-    ctx.arc(tip.x, tip.y, 18, 0, Math.PI * 2);
+    ctx.arc(tip.x, tip.y, 20, 0, Math.PI * 2);
     ctx.fill();
     ctx.globalAlpha = 1;
 
-    // Vector line
+    // Vector line.
     ctx.beginPath();
     ctx.moveTo(o.x, o.y);
     ctx.lineTo(tip.x, tip.y);
@@ -198,13 +193,12 @@
     ctx.lineCap = "round";
     ctx.stroke();
 
-    // Tip dot
+    // Tip + origin dots.
     ctx.beginPath();
     ctx.arc(tip.x, tip.y, 4.5, 0, Math.PI * 2);
     ctx.fillStyle = this.cVector;
     ctx.fill();
 
-    // Origin dot
     ctx.beginPath();
     ctx.arc(o.x, o.y, 3, 0, Math.PI * 2);
     ctx.fillStyle = this.cAxis;
@@ -212,14 +206,14 @@
   };
 
   BlochSphere.prototype.loop = function () {
-    this.t += 0.012;
+    this.t += 0.01;
     this.draw();
     this.raf = requestAnimationFrame(this.loop.bind(this));
   };
 
   BlochSphere.prototype.start = function () {
     if (this.reduced) {
-      this.t = 0.6; // a pleasant static angle
+      this.t = 0.8; // a pleasant static angle
       this.draw();
       return;
     }

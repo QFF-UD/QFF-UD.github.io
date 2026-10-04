@@ -5,24 +5,52 @@
    scroll-reveal micro-interactions. All motion respects prefers-reduced-motion.
    ========================================================================== */
 
-/* ---- Global ambient field (fixed, behind everything) ---- */
+/* ==========================================================================
+   GLOBAL AMBIENT FIELD
+   A fixed, full-viewport constellation canvas that stays put while the page
+   scrolls, so it shows through EVERY section. The trick: the canvas is fixed
+   behind all content, and the opaque section backgrounds are made
+   semi-transparent so the field remains visible the whole way down.
+   ========================================================================== */
+
 .quantum-field {
   position: fixed;
   inset: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.6;
+  opacity: 0.9;
 }
 
 /* Keep real content above the ambient field. */
 body > nav,
 body > section,
-body > div,
+body > div.circuit-band,
 body > footer {
   position: relative;
   z-index: 1;
+}
+
+/* Translucent section washes so the fixed field shows through every section
+   while keeping text readable. Alternating tints echo the original
+   dark / section-alt rhythm. The hero stays fully transparent for maximum
+   impact of its Bloch-sphere backdrop. */
+.hero-section-wrapper {
+  background: transparent;
+}
+
+#about,
+#cfp,
+#organizers,
+#location-contact {
+  background: var(--section-wash-alt);
+}
+
+#program,
+#speakers,
+#certificate {
+  background: var(--section-wash);
 }
 
 /* ---- Bloch sphere (hero backdrop) ---- */

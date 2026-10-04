@@ -17,6 +17,11 @@
   --text-secondary: #c1c7d0;
   --text-muted: #8d96a0;
   --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+
+  /* Translucent section washes (let the ambient qubit field glow through
+     while keeping text readable). Dark theme: near-opaque dark tints. */
+  --section-wash: rgba(11, 15, 25, 0.82);
+  --section-wash-alt: rgba(18, 24, 38, 0.82);
 }
 
 /* ---- Light mode ---- */
@@ -32,4 +37,8 @@
   --text-secondary: #334155;
   --text-muted: #64748b;
   --card-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+
+  /* Light theme: near-opaque light tints. */
+  --section-wash: rgba(248, 250, 252, 0.8);
+  --section-wash-alt: rgba(241, 245, 249, 0.8);
 }
