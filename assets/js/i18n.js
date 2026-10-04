@@ -30,6 +30,7 @@
       "menu-program": "Program & Calls",
       "nav-program": "Academic Program",
       "nav-cfp": "Short Talks",
+      "nav-attendance": "Attendance",
 
       "menu-people": "People",
       "nav-speakers": "Speakers & Mentors",
@@ -218,6 +219,7 @@
       "menu-program": "Programa y Convocatorias",
       "nav-program": "Programa Académico",
       "nav-cfp": "Charlas Cortas",
+      "nav-attendance": "Asistencia",
 
       "menu-people": "Personas",
       "nav-speakers": "Ponentes y Mentores",

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Código | Qiskit Fall Fest 2026</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <link rel="icon" type="image/png" href="favicon.PNG">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="assets/css/main.css?v=11">
+</head>
+
+<body>
+
+    <canvas class="quantum-field" data-quantum-field aria-hidden="true"></canvas>
+
+    <main class="panel-wrap">
+
+        <!-- Setup: organizer enters the shared secret (not stored anywhere) -->
+        <div id="panel-setup" class="panel-setup">
+            <i class="fas fa-lock panel-setup-icon"></i>
+            <h1 class="panel-setup-title">Panel del Organizador</h1>
+            <p class="panel-setup-text">
+                Introduce la clave secreta compartida para mostrar el código de
+                asistencia. Esta página se proyecta en el salón del evento.
+            </p>
+            <input
+                id="panel-secret"
+                class="panel-secret-input"
+                type="password"
+                autocomplete="off"
+                placeholder="Clave secreta"
+            >
+            <button id="panel-start" class="panel-start-btn" type="button">
+                <i class="fas fa-display"></i> Mostrar código
+            </button>
+            <p class="panel-setup-hint">
+                El código rota cada <span id="panel-step-label">90s</span>.
+            </p>
+        </div>
+
+        <!-- Display: the big rotating code -->
+        <div id="panel-display" class="panel-display" hidden>
+            <p class="panel-event">Qiskit Fall Fest 2026 · Universidad Distrital</p>
+            <p class="panel-label">Código de asistencia</p>
+
+            <div class="panel-code-box">
+                <span id="panel-code" class="panel-code">— — —</span>
+            </div>
+
+            <div class="panel-timer">
+                <div id="panel-ring" class="panel-ring">
+                    <span id="panel-seconds" class="panel-seconds">90s</span>
+                </div>
+                <p class="panel-timer-text">Escanea con tu sesión en<br><strong>.../asistencia.html</strong></p>
+            </div>
+
+            <p class="panel-warn">
+                <i class="fas fa-triangle-exclamation"></i>
+                El código cambia solo. No sirve si lo compartes fuera del salón.
+            </p>
+        </div>
+
+    </main>
+
+    <script src="assets/js/quantum-field.js?v=11"></script>
+    <script src="assets/js/attendance/attendance-config.js?v=11"></script>
+    <script src="assets/js/attendance/totp.js?v=11"></script>
+    <script src="assets/js/attendance/panel.js?v=11"></script>
+</body>
+</html>

@@ -9,6 +9,8 @@ A static, bilingual (EN / ES) site with light & dark themes, hosted on GitHub Pa
 ```
 .
 ├── index.html              # Markup only (no inline CSS/JS)
+├── asistencia.html         # Attendance check-in (Google Sign-In + rotating code)
+├── panel-codigo.html       # Organizer panel: projected rotating code
 ├── assets/
 │   ├── css/
 │   │   ├── main.css        # Entry point — @imports the modules below in order
@@ -96,3 +98,20 @@ It's a static site — open `index.html` directly, or serve the folder:
 python3 -m http.server 8000
 # then visit http://localhost:8000
 ```
+
+## Attendance system
+
+Lets attendees **sign in with Google** and record attendance by typing a
+**rotating code** projected in the venue. A Google Sheet then computes who
+reached **75%** of the sessions (3 of 4 days) for a certificate.
+
+- `asistencia.html` — student check-in page.
+- `panel-codigo.html` — organizer page, projected on the venue screen; shows a
+  TOTP code that rotates every 90 s so a forwarded code expires almost at once.
+- `assets/js/attendance/` — `totp.js` (shared code generator), `panel.js`,
+  `attendance.js`, `attendance-config.js`, the `code.gs` Apps Script backend,
+  and **`SETUP.md`** with full step-by-step configuration.
+
+Because GitHub Pages is static, the backend is a free **Google Apps Script**
+web app that verifies the Google token + the TOTP code and writes to a Sheet.
+No secrets live in the repo. **See `assets/js/attendance/SETUP.md` to configure.**
