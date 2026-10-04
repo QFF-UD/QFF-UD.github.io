@@ -1,0 +1,434 @@
+/* ==========================================================================
+   ATTENDANCE & ORGANIZER PANEL
+   Styles for asistencia.html (student check-in) and panel-codigo.html
+   (projected rotating code). Theme-aware, matches the quantum look.
+   ========================================================================== */
+
+/* ---- Shared page wrap ---- */
+.att-wrap {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+.att-back {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s ease;
+}
+.att-back:hover {
+  color: var(--ibm-light-purple);
+}
+
+/* ---- Card ---- */
+.att-card {
+  width: 100%;
+  max-width: 480px;
+  background: var(--ibm-card-bg);
+  border: 1px solid var(--ibm-border);
+  border-top: 3px solid var(--ibm-light-purple);
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+  padding: 36px 32px;
+}
+
+.att-head {
+  text-align: center;
+  margin-bottom: 28px;
+}
+.att-head-icon {
+  font-size: 2.2rem;
+  color: var(--ibm-soft-purple);
+  margin-bottom: 12px;
+}
+.att-title {
+  font-size: 1.5rem;
+  margin: 0 0 8px 0;
+  color: var(--text-primary);
+}
+.att-subtitle {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.att-step {
+  margin-top: 20px;
+}
+.att-step-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin: 0 0 10px 0;
+}
+
+.att-google-btn {
+  display: flex;
+  justify-content: center;
+}
+
+/* ---- Signed-in user row ---- */
+.att-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: var(--ibm-section-alt);
+  border: 1px solid var(--ibm-border);
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+.att-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--ibm-border);
+  flex-shrink: 0;
+}
+.att-user-label {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+.att-user strong {
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+.att-signout {
+  margin-left: auto;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 6px;
+  border-radius: 6px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+.att-signout:hover {
+  color: var(--ibm-light-purple);
+  background: rgba(138, 63, 252, 0.1);
+}
+
+/* ---- Progress ---- */
+.att-progress {
+  background: var(--ibm-section-alt);
+  border: 1px solid var(--ibm-border);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 22px;
+}
+.att-progress-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+.att-count {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ibm-soft-purple);
+}
+.att-progress-track {
+  height: 8px;
+  background: var(--ibm-border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.att-progress-fill {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--ibm-purple),
+    var(--ibm-soft-purple)
+  );
+  border-radius: 999px;
+  transition: width 0.5s ease;
+}
+.att-status {
+  font-size: 0.85rem;
+  margin: 12px 0 0 0;
+  line-height: 1.5;
+}
+.att-status.att-ok {
+  color: #10b981;
+  font-weight: 500;
+}
+.att-status.att-pending {
+  color: var(--text-muted);
+}
+
+/* ---- Code entry ---- */
+.att-code-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.att-code-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px;
+  text-align: center;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 1.6rem;
+  letter-spacing: 6px;
+  border: 1px solid var(--ibm-border);
+  border-radius: 8px;
+  background: var(--ibm-dark-bg);
+  color: var(--text-primary);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.att-code-input:focus {
+  outline: none;
+  border-color: var(--ibm-light-purple);
+  box-shadow: 0 0 0 3px rgba(138, 63, 252, 0.15);
+}
+.att-submit {
+  padding: 13px;
+  background: var(--ibm-purple);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.98rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+.att-submit:hover {
+  background: var(--ibm-light-purple);
+  transform: translateY(-2px);
+}
+.att-submit:disabled {
+  opacity: 0.6;
+  cursor: default;
+  transform: none;
+}
+
+/* ---- Messages ---- */
+.att-message {
+  margin-top: 18px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+.att-message.att-info {
+  background: rgba(2, 132, 199, 0.12);
+  color: #38bdf8;
+  border: 1px solid rgba(2, 132, 199, 0.25);
+}
+.att-message.att-ok {
+  background: rgba(16, 185, 129, 0.12);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+.att-message.att-error {
+  background: rgba(239, 68, 68, 0.12);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.att-foot {
+  margin-top: 24px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-align: center;
+  max-width: 420px;
+}
+
+/* ==========================================================================
+   ORGANIZER PANEL (projected)
+   ========================================================================== */
+.panel-wrap {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+/* Setup box */
+.panel-setup {
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  background: var(--ibm-card-bg);
+  border: 1px solid var(--ibm-border);
+  border-radius: 12px;
+  padding: 40px 32px;
+  box-shadow: var(--card-shadow);
+}
+.panel-setup-icon {
+  font-size: 2rem;
+  color: var(--ibm-soft-purple);
+  margin-bottom: 14px;
+}
+.panel-setup-title {
+  font-size: 1.4rem;
+  margin: 0 0 10px 0;
+  color: var(--text-primary);
+}
+.panel-setup-text {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0 0 20px 0;
+}
+.panel-secret-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid var(--ibm-border);
+  border-radius: 8px;
+  background: var(--ibm-dark-bg);
+  color: var(--text-primary);
+  font-size: 1rem;
+  margin-bottom: 14px;
+}
+.panel-secret-input:focus {
+  outline: none;
+  border-color: var(--ibm-light-purple);
+  box-shadow: 0 0 0 3px rgba(138, 63, 252, 0.15);
+}
+.panel-start-btn {
+  width: 100%;
+  padding: 13px;
+  background: var(--ibm-purple);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+.panel-start-btn:hover {
+  background: var(--ibm-light-purple);
+}
+.panel-setup-hint {
+  margin: 16px 0 0 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Big code display */
+.panel-display {
+  text-align: center;
+  width: 100%;
+  max-width: 760px;
+}
+.panel-event {
+  font-size: 1rem;
+  color: var(--ibm-soft-purple);
+  letter-spacing: 1px;
+  margin: 0 0 10px 0;
+}
+.panel-label {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--text-muted);
+  margin: 0 0 20px 0;
+}
+.panel-code-box {
+  background: var(--ibm-card-bg);
+  border: 1px solid var(--ibm-light-purple);
+  border-radius: 20px;
+  padding: 40px 20px;
+  box-shadow: 0 20px 60px rgba(105, 41, 196, 0.25);
+  margin-bottom: 30px;
+}
+.panel-code {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 700;
+  font-size: clamp(3.5rem, 16vw, 9rem);
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
+  line-height: 1;
+}
+.panel-timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.panel-ring {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: conic-gradient(var(--ibm-light-purple) 100%, var(--ibm-border) 0%);
+  position: relative;
+}
+.panel-ring::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  background: var(--ibm-dark-bg);
+  border-radius: 50%;
+}
+.panel-seconds {
+  position: relative;
+  z-index: 1;
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+.panel-timer-text {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  text-align: left;
+  margin: 0;
+}
+.panel-timer-text strong {
+  color: var(--ibm-soft-purple);
+  font-family: "IBM Plex Mono", monospace;
+}
+.panel-warn {
+  margin-top: 28px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.panel-warn i {
+  color: #f59e0b;
+  margin-right: 6px;
+}
+
+@media (max-width: 600px) {
+  .att-card {
+    padding: 28px 20px;
+  }
+  .panel-timer {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .panel-timer-text {
+    text-align: center;
+  }
+}

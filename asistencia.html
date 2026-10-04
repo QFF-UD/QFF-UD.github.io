@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asistencia | Qiskit Fall Fest 2026</title>
+    <meta name="description" content="Registro de asistencia — Qiskit Fall Fest 2026, Universidad Distrital.">
+
+    <link rel="icon" type="image/png" href="favicon.PNG">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="assets/css/main.css?v=11">
+
+    <!-- Google Identity Services -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+
+<body>
+
+    <canvas class="quantum-field" data-quantum-field aria-hidden="true"></canvas>
+
+    <main class="att-wrap">
+
+        <a href="index.html" class="att-back">
+            <i class="fas fa-arrow-left"></i> Qiskit Fall Fest 2026
+        </a>
+
+        <div class="att-card">
+
+            <div class="att-head">
+                <i class="fas fa-clipboard-check att-head-icon"></i>
+                <h1 class="att-title">Registro de Asistencia</h1>
+                <p class="att-subtitle">
+                    Inicia sesión y escribe el código que aparece en la pantalla del evento.
+                    Necesitas asistir al 75% de las sesiones para recibir el certificado.
+                </p>
+            </div>
+
+            <!-- Step 1: sign in -->
+            <div id="att-signin" class="att-step">
+                <p class="att-step-label">Paso 1 — Identifícate</p>
+                <div id="att-google-btn" class="att-google-btn"></div>
+            </div>
+
+            <!-- Step 2: logged-in panel -->
+            <div id="att-panel" class="att-step" hidden>
+
+                <div class="att-user">
+                    <img id="att-avatar" class="att-avatar" alt="" referrerpolicy="no-referrer">
+                    <div>
+                        <span class="att-user-label">Sesión iniciada como</span>
+                        <strong id="att-greeting"></strong>
+                    </div>
+                    <button id="att-signout" class="att-signout" type="button" title="Cerrar sesión">
+                        <i class="fas fa-right-from-bracket"></i>
+                    </button>
+                </div>
+
+                <!-- Progress -->
+                <div class="att-progress">
+                    <div class="att-progress-top">
+                        <span>Tu asistencia</span>
+                        <span id="att-count" class="att-count">0 / 4</span>
+                    </div>
+                    <div class="att-progress-track">
+                        <div id="att-progress-bar" class="att-progress-fill" style="width:0%"></div>
+                    </div>
+                    <p id="att-status" class="att-status att-pending"></p>
+                </div>
+
+                <!-- Code entry -->
+                <div class="att-code-row">
+                    <label for="att-code" class="att-step-label">
+                        Paso 2 — Código del momento
+                    </label>
+                    <input
+                        id="att-code"
+                        class="att-code-input"
+                        type="text"
+                        inputmode="numeric"
+                        autocomplete="off"
+                        maxlength="8"
+                        placeholder="000 000"
+                    >
+                    <button id="att-submit" class="att-submit" type="button">
+                        <i class="fas fa-check"></i> Registrar asistencia
+                    </button>
+                </div>
+
+                <div id="att-message" class="att-message att-info" hidden></div>
+            </div>
+
+        </div>
+
+        <p class="att-foot">
+            El código cambia cada pocos segundos y solo es visible en el salón del evento.
+        </p>
+    </main>
+
+    <script src="assets/js/quantum-field.js?v=11"></script>
+    <script src="assets/js/attendance/attendance-config.js?v=11"></script>
+    <script src="assets/js/attendance/attendance.js?v=11"></script>
+</body>
+</html>
