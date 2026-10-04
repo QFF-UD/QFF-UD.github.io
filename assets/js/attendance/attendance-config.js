@@ -12,13 +12,14 @@
 
   window.QFF.attendanceConfig = {
     /* ---- Google Sign-In ----
-       TODO: paste your OAuth Client ID from Google Cloud Console.
-       Looks like: 1234567890-abc123.apps.googleusercontent.com */
-    googleClientId: "TODO_GOOGLE_CLIENT_ID.apps.googleusercontent.com",
+       OAuth Client ID from Google Cloud Console. */
+    googleClientId:
+      "981790589897-5s28odtlslogq3th2cdeg1343tn0h49a.apps.googleusercontent.com",
 
     /* ---- Backend ----
-       TODO: paste the Apps Script Web App URL (ends with /exec). */
-    backendUrl: "TODO_APPS_SCRIPT_WEB_APP_URL",
+       Apps Script Web App URL (ends with /exec). */
+    backendUrl:
+      "https://script.google.com/macros/s/AKfycbwLhuLIWmgxenpcWndfVLPpOhLJHluyHQpXLTQyXm0TpZSy_b8zcaMA2Vo4wRJSmXtY/exec",
 
     /* ---- Event settings ----
        Total number of attendance sessions (one per day here) and the minimum
