@@ -40,10 +40,10 @@ body > footer {
   background: transparent;
 }
 
-/* Each wash is layered OVER a subtle themed pattern so the section has its own
-   quiet "quantum lab paper" texture (a faint dotted grid) in addition to the
-   translucent wash that lets the global field glow through. The dotted-grid
-   layers are defined per-section below. */
+/* Sections use a light translucent wash so the animated global qubit field
+   (the same one behind the hero) stays visible the whole way down the page,
+   while text remains readable. Alternating tints keep the dark / section-alt
+   rhythm. The hero stays fully transparent for maximum impact. */
 #about,
 #cfp,
 #organizers,
@@ -55,43 +55,6 @@ body > footer {
 #speakers,
 #certificate {
   background-color: var(--section-wash);
-}
-
-/* ==========================================================================
-   SECTION BACKGROUND TEXTURE
-   A faint dotted grid (like quantum lab graph paper) drawn with repeating
-   radial gradients, plus a soft directional tint. Pure CSS, theme-aware via
-   --dot-color. Sits behind the content, above the section wash.
-   ========================================================================== */
-
-#about,
-#program,
-#cfp,
-#speakers,
-#organizers,
-#certificate,
-#location-contact {
-  background-image:
-    radial-gradient(var(--dot-color) 1.6px, transparent 1.7px),
-    radial-gradient(var(--dot-color) 1.6px, transparent 1.7px);
-  background-size: 38px 38px, 38px 38px;
-  background-position: 0 0, 19px 19px;
-}
-
-/* Alternate the corner tint direction so adjacent sections differ. */
-#program::before,
-#speakers::before,
-#location-contact::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse at 85% 15%,
-    rgba(138, 63, 252, 0.12) 0%,
-    transparent 55%
-  );
-  pointer-events: none;
-  z-index: 0;
 }
 
 /* ---- Bloch sphere (hero backdrop) ---- */
