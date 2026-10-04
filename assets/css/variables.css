@@ -20,11 +20,8 @@
 
   /* Translucent section washes (let the ambient qubit field glow through
      while keeping text readable). Dark theme: near-opaque dark tints. */
-  --section-wash: rgba(11, 15, 25, 0.82);
-  --section-wash-alt: rgba(18, 24, 38, 0.82);
-
-  /* Dotted-grid texture color (dark theme). */
-  --dot-color: rgba(190, 149, 255, 0.22);
+  --section-wash: rgba(11, 15, 25, 0.6);
+  --section-wash-alt: rgba(18, 24, 38, 0.6);
 }
 
 /* ---- Light mode ---- */
@@ -42,9 +39,6 @@
   --card-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
 
   /* Light theme: near-opaque light tints. */
-  --section-wash: rgba(248, 250, 252, 0.8);
-  --section-wash-alt: rgba(241, 245, 249, 0.8);
-
-  /* Dotted-grid texture color (light theme). */
-  --dot-color: rgba(105, 41, 196, 0.16);
+  --section-wash: rgba(248, 250, 252, 0.65);
+  --section-wash-alt: rgba(241, 245, 249, 0.65);
 }
