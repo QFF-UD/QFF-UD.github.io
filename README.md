@@ -16,13 +16,17 @@ A static, bilingual (EN / ES) site with light & dark themes, hosted on GitHub Pa
 │   │   ├── base.css        # Reset, typography, layout, containers
 │   │   ├── navbar.css      # Navbar, dropdowns, language/theme switchers
 │   │   ├── hero.css        # Hero section + countdown card
-│   │   └── sections.css    # Cards, stats, program table, tabs, marquees
+│   │   ├── sections.css    # Cards, stats, program table, tabs, marquees
+│   │   └── animations.css  # Bloch/circuit visuals + scroll-reveal + hovers
 │   └── js/
 │       ├── config.js       # URLs & constants (window.QFF.config)
 │       ├── i18n.js         # Translations + setLanguage() (window.QFF.i18n)
 │       ├── theme.js        # Light/dark toggle + logo swap (window.QFF.theme)
 │       ├── countdown.js    # Live event countdown (window.QFF.countdown)
 │       ├── schedule.js     # Program table + side panel (window.QFF.schedule)
+│       ├── bloch-sphere.js # Animated Bloch sphere (hero canvas)
+│       ├── quantum-circuit.js # Animated quantum-circuit band
+│       ├── reveal.js       # Scroll-triggered entrance animations
 │       └── main.js         # Bootstrap — wires everything on DOMContentLoaded
 ├── Logos/                  # Light/dark logos
 ├── Org_team/               # Organizing committee photos
@@ -47,6 +51,20 @@ A static, bilingual (EN / ES) site with light & dark themes, hosted on GitHub Pa
   classes (styled in `assets/css/sections.css`).
 - **Text / translations** — every translatable element has `data-i18n="key"`; add
   the key to **both** `en` and `es` in `assets/js/i18n.js`.
+
+## Animations
+
+All visuals are dependency-free Canvas 2D and respect `prefers-reduced-motion`
+(they render a single static frame when motion is reduced):
+
+- **Bloch sphere** — `assets/js/bloch-sphere.js`, attaches to any
+  `<canvas data-bloch-sphere>`. Shown in the hero.
+- **Quantum circuit band** — `assets/js/quantum-circuit.js`, attaches to any
+  `<canvas data-quantum-circuit>`. Shown as a separator after the hero.
+- **Scroll reveal** — `assets/js/reveal.js`; add the `reveal` class to any element
+  and it fades/slides in when it enters the viewport.
+
+All read their colors from the CSS theme variables and update on theme toggle.
 
 ## Architecture notes
 
