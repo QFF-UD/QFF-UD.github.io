@@ -46,6 +46,9 @@
       "btn-register": "Register for Free",
       "btn-program": "View Academic Program",
 
+      "bloch-caption": "Qubit state on the Bloch sphere",
+      "circuit-label": "Quantum Circuit",
+
       "cd-title": "Countdown to Event",
       "cd-subtitle": "Get ready for October 27, 2026",
 
@@ -229,6 +232,9 @@
 
       "btn-register": "Regístrate Gratis",
       "btn-program": "Ver Programa Académico",
+
+      "bloch-caption": "Estado del qubit en la esfera de Bloch",
+      "circuit-label": "Circuito Cuántico",
 
       "cd-title": "Cuenta Regresiva",
       "cd-subtitle": "Prepárate para el 27 de Octubre, 2026",

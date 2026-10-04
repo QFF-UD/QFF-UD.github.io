@@ -266,7 +266,20 @@
 
                 <div>
 
-                    <div class="hero-countdown-card">
+                    <!-- Esfera de Bloch animada (Canvas, assets/js/bloch-sphere.js) -->
+                    <div class="bloch-wrap">
+                        <canvas
+                            class="bloch-canvas"
+                            data-bloch-sphere
+                            role="img"
+                            aria-label="Animated Bloch sphere representing a qubit state"
+                        ></canvas>
+                        <span class="bloch-caption" data-i18n="bloch-caption">
+                            Qubit state on the Bloch sphere
+                        </span>
+                    </div>
+
+                    <div class="hero-countdown-card" style="margin-top: 28px;">
 
                         <h3
                             style="color: var(--text-primary); font-size: 1.15rem; margin: 0 0 4px 0;"
@@ -380,6 +393,15 @@
     </section>
 
     <!-- ========================================== -->
+    <!-- BANDA: CIRCUITO CUÁNTICO ANIMADO -->
+    <!-- ========================================== -->
+
+    <div class="circuit-band" aria-hidden="true">
+        <span class="circuit-label" data-i18n="circuit-label">Quantum Circuit</span>
+        <canvas class="circuit-canvas" data-quantum-circuit></canvas>
+    </div>
+
+    <!-- ========================================== -->
     <!-- 3. SOBRE EL EVENTO -->
     <!-- ========================================== -->
 
@@ -391,7 +413,7 @@
 
         <div class="container">
 
-            <div class="section-header">
+            <div class="section-header reveal">
 
                 <h2
                     class="section-title"
@@ -456,7 +478,7 @@
 
                 <div>
 
-                    <div class="impact-mini-grid">
+                    <div class="impact-mini-grid reveal">
 
                         <div class="event-card impact-card">
                             <div class="impact-icon">
@@ -1119,7 +1141,7 @@
             <div class="call-section">
 
                 <div
-                    class="section-header"
+                    class="section-header reveal"
                     style="margin-bottom: 30px;"
                 >
 
@@ -1265,7 +1287,7 @@
 
         <div class="container">
 
-            <div class="section-header">
+            <div class="section-header reveal">
 
                 <h2
                     class="section-title"
@@ -1476,7 +1498,7 @@
 
     <div class="container">
 
-        <div class="section-header">
+        <div class="section-header reveal">
 
             <h2 class="section-title" data-i18n="org-title">
                 Organizing Committee
@@ -1701,7 +1723,7 @@
 
         <div class="container">
 
-            <div class="section-header">
+            <div class="section-header reveal">
 
                 <h2 class="section-title" data-i18n="cert-title">
                     Attendance Certificate
@@ -1713,7 +1735,7 @@
 
             </div>
 
-            <div class="certificate-grid">
+            <div class="certificate-grid reveal">
 
                 <!-- Left column: description -->
                 <div class="certificate-info">
@@ -1776,7 +1798,7 @@
         <div class="container">
 
             <div
-                class="section-header"
+                class="section-header reveal"
                 style="text-align: center; margin-bottom: 40px;"
             >
 
@@ -2012,6 +2034,10 @@
     <script src="assets/js/theme.js"></script>
     <script src="assets/js/countdown.js"></script>
     <script src="assets/js/schedule.js"></script>
+    <!-- Visuals / animations (Canvas, self-initializing) -->
+    <script src="assets/js/bloch-sphere.js"></script>
+    <script src="assets/js/quantum-circuit.js"></script>
+    <script src="assets/js/reveal.js"></script>
     <script src="assets/js/main.js"></script>
 
 </body>
