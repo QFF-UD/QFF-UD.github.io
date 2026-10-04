@@ -24,9 +24,10 @@ A static, bilingual (EN / ES) site with light & dark themes, hosted on GitHub Pa
 │       ├── theme.js        # Light/dark toggle + logo swap (window.QFF.theme)
 │       ├── countdown.js    # Live event countdown (window.QFF.countdown)
 │       ├── schedule.js     # Program table + side panel (window.QFF.schedule)
-│       ├── bloch-sphere.js # Animated Bloch sphere (hero canvas)
+│       ├── quantum-field.js # Global ambient constellation background
+│       ├── bloch-sphere.js # Animated Bloch sphere (hero backdrop)
 │       ├── quantum-circuit.js # Animated quantum-circuit band
-│       ├── reveal.js       # Scroll-triggered entrance animations
+│       ├── reveal.js       # Scroll-triggered entrance animations (staggered)
 │       └── main.js         # Bootstrap — wires everything on DOMContentLoaded
 ├── Logos/                  # Light/dark logos
 ├── Org_team/               # Organizing committee photos
@@ -57,14 +58,22 @@ A static, bilingual (EN / ES) site with light & dark themes, hosted on GitHub Pa
 All visuals are dependency-free Canvas 2D and respect `prefers-reduced-motion`
 (they render a single static frame when motion is reduced):
 
+- **Quantum field** — `assets/js/quantum-field.js`, a fixed, low-opacity
+  constellation of drifting qubits behind the whole page (`<canvas
+  data-quantum-field>`). Reacts subtly to the pointer and pauses when the tab is
+  hidden.
 - **Bloch sphere** — `assets/js/bloch-sphere.js`, attaches to any
-  `<canvas data-bloch-sphere>`. Shown in the hero.
+  `<canvas data-bloch-sphere>`. Used as a large faded backdrop behind the hero
+  title.
 - **Quantum circuit band** — `assets/js/quantum-circuit.js`, attaches to any
   `<canvas data-quantum-circuit>`. Shown as a separator after the hero.
 - **Scroll reveal** — `assets/js/reveal.js`; add the `reveal` class to any element
-  and it fades/slides in when it enters the viewport.
+  and it fades/slides in when it enters the viewport. Direct children cascade in
+  with a staggered delay.
 
-All read their colors from the CSS theme variables and update on theme toggle.
+Section polish (elegant title ornaments, per-section radial glows, gradient card
+edges and refined hovers) lives in `assets/css/animations.css`. All visuals read
+their colors from the CSS theme variables and update on theme toggle.
 
 ## Architecture notes
 
