@@ -22,6 +22,9 @@
      while keeping text readable). Dark theme: near-opaque dark tints. */
   --section-wash: rgba(11, 15, 25, 0.82);
   --section-wash-alt: rgba(18, 24, 38, 0.82);
+
+  /* Faint dotted-grid texture color (dark theme). */
+  --dot-color: rgba(190, 149, 255, 0.07);
 }
 
 /* ---- Light mode ---- */
@@ -41,4 +44,7 @@
   /* Light theme: near-opaque light tints. */
   --section-wash: rgba(248, 250, 252, 0.8);
   --section-wash-alt: rgba(241, 245, 249, 0.8);
+
+  /* Faint dotted-grid texture color (light theme). */
+  --dot-color: rgba(105, 41, 196, 0.08);
 }

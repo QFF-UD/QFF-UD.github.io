@@ -40,17 +40,58 @@ body > footer {
   background: transparent;
 }
 
+/* Each wash is layered OVER a subtle themed pattern so the section has its own
+   quiet "quantum lab paper" texture (a faint dotted grid) in addition to the
+   translucent wash that lets the global field glow through. The dotted-grid
+   layers are defined per-section below. */
 #about,
 #cfp,
 #organizers,
 #location-contact {
-  background: var(--section-wash-alt);
+  background-color: var(--section-wash-alt);
 }
 
 #program,
 #speakers,
 #certificate {
-  background: var(--section-wash);
+  background-color: var(--section-wash);
+}
+
+/* ==========================================================================
+   SECTION BACKGROUND TEXTURE
+   A faint dotted grid (like quantum lab graph paper) drawn with repeating
+   radial gradients, plus a soft directional tint. Pure CSS, theme-aware via
+   --dot-color. Sits behind the content, above the section wash.
+   ========================================================================== */
+
+#about,
+#program,
+#cfp,
+#speakers,
+#organizers,
+#certificate,
+#location-contact {
+  background-image:
+    radial-gradient(var(--dot-color) 1px, transparent 1px),
+    radial-gradient(var(--dot-color) 1px, transparent 1px);
+  background-size: 44px 44px, 44px 44px;
+  background-position: 0 0, 22px 22px;
+}
+
+/* Alternate the subtle corner tint direction so adjacent sections differ. */
+#program::before,
+#speakers::before,
+#location-contact::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 85% 15%,
+    rgba(138, 63, 252, 0.06) 0%,
+    transparent 55%
+  );
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* ---- Bloch sphere (hero backdrop) ---- */
@@ -157,7 +198,11 @@ body > footer {
 
 #about,
 #cfp,
-#organizers {
+#organizers,
+#program,
+#speakers,
+#certificate,
+#location-contact {
   position: relative;
 }
 
@@ -197,13 +242,14 @@ body > footer {
   z-index: 0;
 }
 
-/* Keep each section's inner content above its glow. */
+/* Keep each section's inner content above its glow / texture. */
 #about > .container,
 #cfp > .container,
 #organizers > .container,
 #program > .container,
 #speakers > .container,
-#certificate > .container {
+#certificate > .container,
+#location-contact > .container {
   position: relative;
   z-index: 1;
 }
