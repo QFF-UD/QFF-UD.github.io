@@ -178,6 +178,49 @@
   color: var(--text-muted);
 }
 
+/* ---- Identity fields ---- */
+.att-fields {
+  margin-bottom: 22px;
+}
+.att-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 12px;
+}
+.att-field label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+.att-field-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1px solid var(--ibm-border);
+  border-radius: 8px;
+  background: var(--ibm-dark-bg);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.att-field-input:focus {
+  outline: none;
+  border-color: var(--ibm-light-purple);
+  box-shadow: 0 0 0 3px rgba(138, 63, 252, 0.15);
+}
+.att-field-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+@media (max-width: 480px) {
+  .att-field-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ---- Code entry ---- */
 .att-code-row {
   display: flex;
