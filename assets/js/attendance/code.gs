@@ -38,7 +38,13 @@ function doPost(e) {
     }
 
     if (action === "checkin") {
-      return json(handleCheckin(profile, body.code, body.geo));
+      return json(
+        handleCheckin(profile, body.code, body.geo, {
+          name: body.name,
+          docType: body.docType,
+          docNumber: body.docNumber,
+        })
+      );
     }
 
     return json({ ok: false, message: "Unknown action." });
@@ -203,26 +209,38 @@ function getAttendanceSheet() {
   var sheet = ss.getSheetByName("Attendance");
   if (!sheet) sheet = ss.insertSheet("Attendance");
   if (sheet.getLastRow() === 0) {
-    sheet.appendRow(["Timestamp", "Email", "Name", "Day", "Lat", "Lng"]);
+    sheet.appendRow([
+      "Timestamp",
+      "Email",
+      "Name",
+      "DocType",
+      "DocNumber",
+      "Day",
+      "Lat",
+      "Lng",
+    ]);
   }
   return sheet;
 }
 
-/* ---- Record a check-in ---- */
-function handleCheckin(profile, code, geo) {
+/* ---- Record a check-in ----
+   Columns: Timestamp(0) Email(1) Name(2) DocType(3) DocNumber(4) Day(5)
+            Lat(6) Lng(7) */
+function handleCheckin(profile, code, geo, fields) {
   if (!codeIsValid(code)) {
     return { ok: false, message: "Code expired or incorrect. Try the current code." };
   }
 
+  fields = fields || {};
   var sheet = getAttendanceSheet();
 
   var tz = Session.getScriptTimeZone();
   var today = Utilities.formatDate(new Date(), tz, "yyyy-MM-dd");
 
-  // Prevent duplicate for the same email + day.
+  // Prevent duplicate for the same email + day (Day is column index 5).
   var values = sheet.getDataRange().getValues();
   for (var i = 1; i < values.length; i++) {
-    if (values[i][1] === profile.email && values[i][3] === today) {
+    if (values[i][1] === profile.email && values[i][5] === today) {
       var status0 = buildStatus(profile.email);
       status0.duplicate = true;
       return status0;
@@ -232,7 +250,9 @@ function handleCheckin(profile, code, geo) {
   sheet.appendRow([
     new Date(),
     profile.email,
-    profile.name || "",
+    fields.name || profile.name || "",
+    fields.docType || "",
+    fields.docNumber ? "'" + fields.docNumber : "", // leading quote keeps long IDs as text
     today,
     geo ? geo.lat : "",
     geo ? geo.lng : "",
@@ -241,14 +261,15 @@ function handleCheckin(profile, code, geo) {
   return buildStatus(profile.email);
 }
 
-/* ---- Build the status (distinct days attended) ---- */
+/* ---- Build the status (distinct days attended) ----
+   Day is column index 5. */
 function buildStatus(email) {
   var sheet = getAttendanceSheet();
   var days = {};
   if (sheet && sheet.getLastRow() > 1) {
     var values = sheet.getDataRange().getValues();
     for (var i = 1; i < values.length; i++) {
-      if (values[i][1] === email) days[values[i][3]] = true;
+      if (values[i][1] === email) days[values[i][5]] = true;
     }
   }
   var attended = Object.keys(days).length;
@@ -278,6 +299,15 @@ function doGet() {
    exactly what's wrong (permissions, wrong sheet, etc.). ---- */
 function testWrite() {
   var sheet = getAttendanceSheet();
-  sheet.appendRow([new Date(), "test@example.com", "TEST ROW", "DIAGNOSTIC", "", ""]);
+  sheet.appendRow([
+    new Date(),
+    "test@example.com",
+    "TEST ROW",
+    "CC",
+    "'0000000000",
+    "DIAGNOSTIC",
+    "",
+    "",
+  ]);
   Logger.log("Wrote a test row to: " + getSpreadsheet().getName());
 }

@@ -59,12 +59,53 @@
     var avatar = $("att-avatar");
     if (avatar && state.profile.picture) avatar.src = state.profile.picture;
 
+    prefillIdentity(name);
+
     hide($("att-signin"));
     show($("att-panel"));
     setMsg("", "info");
     hide($("att-message"));
 
     loadProgress();
+  }
+
+  /* ---- Identity fields (name + document) ----
+     Google gives us name/email, but not the ID document, so we ask for it.
+     We remember the values per Google account in localStorage so the user
+     only types them once. */
+  function identityKey() {
+    var email = (state.profile && state.profile.email) || "anon";
+    return "qff_identity_" + email;
+  }
+
+  function prefillIdentity(googleName) {
+    var saved = {};
+    try {
+      saved = JSON.parse(localStorage.getItem(identityKey()) || "{}");
+    } catch (e) {
+      saved = {};
+    }
+    var nameEl = $("att-name");
+    var typeEl = $("att-doctype");
+    var numEl = $("att-docnum");
+    if (nameEl) nameEl.value = saved.name || googleName || "";
+    if (typeEl && saved.docType) typeEl.value = saved.docType;
+    if (numEl) numEl.value = saved.docNumber || "";
+  }
+
+  function readIdentity() {
+    var name = ($("att-name") && $("att-name").value || "").trim();
+    var docType = ($("att-doctype") && $("att-doctype").value) || "";
+    var docNumber = ($("att-docnum") && $("att-docnum").value || "").trim();
+    return { name: name, docType: docType, docNumber: docNumber };
+  }
+
+  function saveIdentity(id) {
+    try {
+      localStorage.setItem(identityKey(), JSON.stringify(id));
+    } catch (e) {
+      /* ignore */
+    }
   }
 
   /* ---- Optional geolocation ---- */
@@ -149,38 +190,57 @@
   function submitCode() {
     var input = $("att-code");
     var code = (input && input.value ? input.value : "").trim();
+
+    // Validate identity fields first.
+    var id = readIdentity();
+    if (!id.name) {
+      setMsg("Escribe tu nombre completo.", "error");
+      return;
+    }
+    if (!id.docNumber || !/^[0-9A-Za-z-]{4,20}$/.test(id.docNumber)) {
+      setMsg("Escribe un número de documento válido.", "error");
+      return;
+    }
     if (!/^\d{4,8}$/.test(code)) {
-      setMsg("Enter the numeric code shown on the venue screen.", "error");
+      setMsg("Escribe el código numérico que aparece en la pantalla del evento.", "error");
       return;
     }
 
+    saveIdentity(id);
+
     var btn = $("att-submit");
     if (btn) btn.disabled = true;
-    setMsg("Checking in\u2026", "info");
+    setMsg("Registrando\u2026", "info");
 
     getGeo().then(function (geo) {
-      callBackend("checkin", { code: code, geo: geo })
+      callBackend("checkin", {
+        code: code,
+        geo: geo,
+        name: id.name,
+        docType: id.docType,
+        docNumber: id.docNumber,
+      })
         .then(function (data) {
           if (btn) btn.disabled = false;
           if (!data || !data.ok) {
             setMsg(
               (data && data.message) ||
-                "Check-in failed. Make sure the code is current.",
+                "No se pudo registrar. Verifica que el código sea el actual.",
               "error"
             );
             return;
           }
           if (data.duplicate) {
-            setMsg("You already checked in for this session.", "info");
+            setMsg("Ya registraste tu asistencia de hoy.", "info");
           } else {
-            setMsg("Attendance recorded. Thank you!", "ok");
+            setMsg("\u00A1Asistencia registrada! Gracias.", "ok");
           }
           if (input) input.value = "";
           renderProgress(data);
         })
         .catch(function () {
           if (btn) btn.disabled = false;
-          setMsg("Network error. Please try again.", "error");
+          setMsg("Error de red. Inténtalo de nuevo.", "error");
         });
     });
   }

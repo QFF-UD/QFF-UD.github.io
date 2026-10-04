@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <link rel="stylesheet" href="assets/css/main.css?v=12">
+    <link rel="stylesheet" href="assets/css/main.css?v=13">
 
     <!-- Google Identity Services -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
@@ -72,10 +72,51 @@
                     <p id="att-status" class="att-status att-pending"></p>
                 </div>
 
+                <!-- Identity fields (asked once, then remembered) -->
+                <div class="att-fields">
+                    <p class="att-step-label">Paso 2 — Tus datos</p>
+
+                    <div class="att-field">
+                        <label for="att-name">Nombre completo</label>
+                        <input
+                            id="att-name"
+                            class="att-field-input"
+                            type="text"
+                            autocomplete="name"
+                            placeholder="Nombre y apellidos"
+                        >
+                    </div>
+
+                    <div class="att-field-grid">
+                        <div class="att-field">
+                            <label for="att-doctype">Tipo de documento</label>
+                            <select id="att-doctype" class="att-field-input">
+                                <option value="CC">Cédula de ciudadanía</option>
+                                <option value="TI">Tarjeta de identidad</option>
+                                <option value="CE">Cédula de extranjería</option>
+                                <option value="PAS">Pasaporte</option>
+                                <option value="OTRO">Otro</option>
+                            </select>
+                        </div>
+
+                        <div class="att-field">
+                            <label for="att-docnum">Número de documento</label>
+                            <input
+                                id="att-docnum"
+                                class="att-field-input"
+                                type="text"
+                                inputmode="numeric"
+                                autocomplete="off"
+                                placeholder="Ej. 1012345678"
+                            >
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Code entry -->
                 <div class="att-code-row">
                     <label for="att-code" class="att-step-label">
-                        Paso 2 — Código del momento
+                        Paso 3 — Código del momento
                     </label>
                     <input
                         id="att-code"
@@ -101,8 +142,8 @@
         </p>
     </main>
 
-    <script src="assets/js/quantum-field.js?v=12"></script>
-    <script src="assets/js/attendance/attendance-config.js?v=12"></script>
-    <script src="assets/js/attendance/attendance.js?v=12"></script>
+    <script src="assets/js/quantum-field.js?v=13"></script>
+    <script src="assets/js/attendance/attendance-config.js?v=13"></script>
+    <script src="assets/js/attendance/attendance.js?v=13"></script>
 </body>
 </html>
