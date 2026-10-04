@@ -68,18 +68,102 @@ function verifyGoogleToken(credential) {
   return { email: data.email, name: data.name, picture: data.picture };
 }
 
-/* ---- TOTP (must mirror assets/js/attendance/totp.js) ---- */
+/* ---- TOTP (must mirror assets/js/attendance/totp.js) ----
+   Self-contained HMAC-SHA1 so it works on every Apps Script runtime
+   (Utilities.computeHmacSha1Signature is unavailable in some V8 setups). */
+
+/* --- Pure SHA-1: takes an array of bytes, returns an array of 20 bytes. --- */
+function sha1Bytes(bytes) {
+  function rotl(n, s) { return ((n << s) | (n >>> (32 - s))) & 0xffffffff; }
+
+  var ml = bytes.length * 8;
+  var msg = bytes.slice();
+  msg.push(0x80);
+  while (msg.length % 64 !== 56) msg.push(0);
+  // append 64-bit big-endian length (high 32 bits are 0 for our sizes)
+  for (var i = 7; i >= 0; i--) {
+    msg.push(i < 4 ? (ml >>> (i * 8)) & 0xff : 0);
+  }
+
+  var h0 = 0x67452301, h1 = 0xEFCDAB89, h2 = 0x98BADCFE,
+      h3 = 0x10325476, h4 = 0xC3D2E1F0;
+
+  for (var off = 0; off < msg.length; off += 64) {
+    var w = new Array(80);
+    for (var t = 0; t < 16; t++) {
+      w[t] =
+        ((msg[off + t * 4] & 0xff) << 24) |
+        ((msg[off + t * 4 + 1] & 0xff) << 16) |
+        ((msg[off + t * 4 + 2] & 0xff) << 8) |
+        (msg[off + t * 4 + 3] & 0xff);
+    }
+    for (var t2 = 16; t2 < 80; t2++) {
+      w[t2] = rotl(w[t2 - 3] ^ w[t2 - 8] ^ w[t2 - 14] ^ w[t2 - 16], 1);
+    }
+
+    var a = h0, b = h1, c = h2, d = h3, e = h4;
+    for (var t3 = 0; t3 < 80; t3++) {
+      var f, k;
+      if (t3 < 20) { f = (b & c) | (~b & d); k = 0x5A827999; }
+      else if (t3 < 40) { f = b ^ c ^ d; k = 0x6ED9EBA1; }
+      else if (t3 < 60) { f = (b & c) | (b & d) | (c & d); k = 0x8F1BBCDC; }
+      else { f = b ^ c ^ d; k = 0xCA62C1D6; }
+      var tmp = (rotl(a, 5) + f + e + k + w[t3]) & 0xffffffff;
+      e = d; d = c; c = rotl(b, 30); b = a; a = tmp;
+    }
+    h0 = (h0 + a) & 0xffffffff;
+    h1 = (h1 + b) & 0xffffffff;
+    h2 = (h2 + c) & 0xffffffff;
+    h3 = (h3 + d) & 0xffffffff;
+    h4 = (h4 + e) & 0xffffffff;
+  }
+
+  var out = [];
+  [h0, h1, h2, h3, h4].forEach(function (h) {
+    out.push((h >>> 24) & 0xff, (h >>> 16) & 0xff, (h >>> 8) & 0xff, h & 0xff);
+  });
+  return out;
+}
+
+/* --- HMAC-SHA1(keyBytes, msgBytes) -> array of 20 bytes --- */
+function hmacSha1Bytes(keyBytes, msgBytes) {
+  var block = 64;
+  var key = keyBytes.slice();
+  if (key.length > block) key = sha1Bytes(key);
+  while (key.length < block) key.push(0);
+
+  var oKey = [], iKey = [];
+  for (var i = 0; i < block; i++) {
+    oKey.push(key[i] ^ 0x5c);
+    iKey.push(key[i] ^ 0x36);
+  }
+  var inner = sha1Bytes(iKey.concat(msgBytes));
+  return sha1Bytes(oKey.concat(inner));
+}
+
+function strBytes(str) {
+  var b = [];
+  for (var i = 0; i < str.length; i++) {
+    var c = str.charCodeAt(i);
+    if (c < 128) {
+      b.push(c);
+    } else if (c < 2048) {
+      b.push(192 | (c >> 6), 128 | (c & 63));
+    } else {
+      b.push(224 | (c >> 12), 128 | ((c >> 6) & 63), 128 | (c & 63));
+    }
+  }
+  return b;
+}
+
 function totpAt(secret, counter) {
-  var key = Utilities.newBlob(secret).getBytes();
   var msg = [];
   var c = counter;
   for (var i = 7; i >= 0; i--) {
     msg[i] = c & 0xff;
     c = Math.floor(c / 256);
   }
-  var hmac = Utilities.computeHmacSha1Signature(msg, key);
-  // bytes are signed in Apps Script; mask to unsigned
-  for (var j = 0; j < hmac.length; j++) hmac[j] = hmac[j] & 0xff;
+  var hmac = hmacSha1Bytes(strBytes(secret), msg);
   var offset = hmac[hmac.length - 1] & 0x0f;
   var bin =
     ((hmac[offset] & 0x7f) * 0x1000000) +
