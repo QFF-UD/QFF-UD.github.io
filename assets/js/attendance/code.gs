@@ -188,17 +188,33 @@ function codeIsValid(code) {
   return false;
 }
 
+/* ---- Resolve the target spreadsheet reliably ----
+   In a deployed web app, getActiveSpreadsheet() can be null, so prefer an
+   explicit SHEET_ID script property. Set SHEET_ID to the id in your Sheet URL:
+   https://docs.google.com/spreadsheets/d/THIS_IS_THE_ID/edit  */
+function getSpreadsheet() {
+  var id = PropertiesService.getScriptProperties().getProperty("SHEET_ID");
+  if (id) return SpreadsheetApp.openById(id);
+  return SpreadsheetApp.getActiveSpreadsheet();
+}
+
+function getAttendanceSheet() {
+  var ss = getSpreadsheet();
+  var sheet = ss.getSheetByName("Attendance");
+  if (!sheet) sheet = ss.insertSheet("Attendance");
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(["Timestamp", "Email", "Name", "Day", "Lat", "Lng"]);
+  }
+  return sheet;
+}
+
 /* ---- Record a check-in ---- */
 function handleCheckin(profile, code, geo) {
   if (!codeIsValid(code)) {
     return { ok: false, message: "Code expired or incorrect. Try the current code." };
   }
 
-  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Attendance")
-    || SpreadsheetApp.getActiveSpreadsheet().insertSheet("Attendance");
-  if (sheet.getLastRow() === 0) {
-    sheet.appendRow(["Timestamp", "Email", "Name", "Day", "Lat", "Lng"]);
-  }
+  var sheet = getAttendanceSheet();
 
   var tz = Session.getScriptTimeZone();
   var today = Utilities.formatDate(new Date(), tz, "yyyy-MM-dd");
@@ -227,8 +243,7 @@ function handleCheckin(profile, code, geo) {
 
 /* ---- Build the status (distinct days attended) ---- */
 function buildStatus(email) {
-  var ss = SpreadsheetApp.getActiveSpreadsheet();
-  var sheet = ss.getSheetByName("Attendance");
+  var sheet = getAttendanceSheet();
   var days = {};
   if (sheet && sheet.getLastRow() > 1) {
     var values = sheet.getDataRange().getValues();
@@ -250,4 +265,19 @@ function json(obj) {
   return ContentService.createTextOutput(JSON.stringify(obj)).setMimeType(
     ContentService.MimeType.JSON
   );
+}
+
+/* ---- Health check: open the /exec URL in a browser to confirm it's alive ---- */
+function doGet() {
+  return json({ ok: true, service: "QFF attendance", time: new Date() });
+}
+
+/* ---- Diagnostic: run this directly in the Apps Script editor (Run > testWrite)
+   to confirm the script can write to your sheet. It appends a test row with a
+   fake email; delete that row afterwards. If it throws, the error tells you
+   exactly what's wrong (permissions, wrong sheet, etc.). ---- */
+function testWrite() {
+  var sheet = getAttendanceSheet();
+  sheet.appendRow([new Date(), "test@example.com", "TEST ROW", "DIAGNOSTIC", "", ""]);
+  Logger.log("Wrote a test row to: " + getSpreadsheet().getName());
 }

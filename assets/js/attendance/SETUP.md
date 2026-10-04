@@ -23,6 +23,14 @@ Hay 3 piezas:
 4. En **Configuración del proyecto** (⚙️) → **Propiedades del script**, añade:
    - `TOTP_SECRET` → una frase secreta larga que inventes (ej. `qff-2026-uDistrital-x7k9`). **Guárdala**, la necesitarás en el Paso 3.
    - `GOOGLE_CLIENT_ID` → lo obtendrás en el Paso 2 (puedes volver luego).
+   - `SHEET_ID` → el id de tu Google Sheet. Está en la URL de la hoja:
+     `https://docs.google.com/spreadsheets/d/`**`ESTE_ES_EL_ID`**`/edit`
+     (recomendado para que el backend siempre escriba en la hoja correcta).
+
+   > **Diagnóstico rápido:** en el editor de Apps Script, elige la función
+   > `testWrite` en el menú de arriba y pulsa **Ejecutar**. Debe añadir una fila
+   > de prueba en la pestaña **Attendance**. Si falla, el error dice qué pasa
+   > (permisos, SHEET_ID, etc.). Borra esa fila de prueba después.
 5. **Implementar → Nueva implementación → Aplicación web**:
    - Ejecutar como: **Yo**.
    - Quién tiene acceso: **Cualquier persona**.
