@@ -72,6 +72,15 @@ All visuals are dependency-free Canvas 2D and respect `prefers-reduced-motion`
 - **Scroll reveal** — `assets/js/reveal.js`; add the `reveal` class to any element
   and it fades/slides in when it enters the viewport. Direct children cascade in
   with a staggered delay.
+- **Counters** — `assets/js/counters.js`; any element with `data-count="N"`
+  (optional `data-prefix` / `data-suffix`) counts up from 0 when scrolled into
+  view.
+
+Section polish — pulsing title ornaments, slowly drifting radial glows, a
+diagonal shine sweep on card hover, animated impact icons, a breathing hero
+badge, soft dropdown transitions and a themed scrollbar — lives in
+`assets/css/animations.css`. Everything is disabled under
+`prefers-reduced-motion`.
 
 Section polish (elegant title ornaments, per-section radial glows, gradient card
 edges and refined hovers) lives in `assets/css/animations.css`. All visuals read

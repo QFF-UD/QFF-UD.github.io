@@ -129,7 +129,7 @@ body > footer {
   );
 }
 
-/* The qubit "node" sitting on the wire. */
+/* The qubit "node" sitting on the wire — gently pulses like a live qubit. */
 .section-header .section-title::before {
   content: "";
   position: absolute;
@@ -141,6 +141,18 @@ body > footer {
   border-radius: 50%;
   background: var(--ibm-soft-purple);
   box-shadow: 0 0 10px 1px rgba(138, 63, 252, 0.6);
+  animation: qubitPulse 2.6s ease-in-out infinite;
+}
+
+@keyframes qubitPulse {
+  0%, 100% {
+    box-shadow: 0 0 8px 1px rgba(138, 63, 252, 0.45);
+    opacity: 0.85;
+  }
+  50% {
+    box-shadow: 0 0 16px 3px rgba(138, 63, 252, 0.8);
+    opacity: 1;
+  }
 }
 
 /* Left-aligned headers (e.g. the Program section) anchor the ornament left. */
@@ -185,6 +197,7 @@ body > footer {
   );
   pointer-events: none;
   z-index: 0;
+  animation: glowDriftA 16s ease-in-out infinite;
 }
 
 #program::after,
@@ -203,6 +216,17 @@ body > footer {
   );
   pointer-events: none;
   z-index: 0;
+  animation: glowDriftB 20s ease-in-out infinite;
+}
+
+/* Very slow drift so the ambient glows feel alive without distracting. */
+@keyframes glowDriftA {
+  0%, 100% { transform: translate(0, 0); opacity: 0.9; }
+  50% { transform: translate(-30px, 24px); opacity: 1; }
+}
+@keyframes glowDriftB {
+  0%, 100% { transform: translate(0, 0); opacity: 0.85; }
+  50% { transform: translate(26px, -22px); opacity: 1; }
 }
 
 /* Keep each section's inner content above its glow / texture. */
@@ -311,6 +335,105 @@ body > footer {
   color: var(--ibm-light-purple);
 }
 
+/* ==========================================================================
+   EXTRA POLISH
+   Card shine, animated impact icons, hero badge pulse, custom scrollbar and
+   smooth number styling — small academic/professional touches.
+   ========================================================================== */
+
+/* Impact cards: icon lifts a touch and the number color intensifies on hover. */
+.impact-card {
+  position: relative;
+  overflow: hidden;
+}
+.impact-icon {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.impact-card:hover .impact-icon {
+  transform: translateY(-3px) scale(1.08);
+  color: var(--ibm-light-purple);
+}
+.impact-number {
+  transition: color 0.3s ease;
+}
+
+/* Subtle diagonal "shine" sweep across feature cards on hover. */
+.event-card,
+.speaker-card,
+.impact-card {
+  position: relative;
+}
+.event-card::after,
+.speaker-card::after,
+.impact-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    rgba(190, 149, 255, 0.12),
+    transparent
+  );
+  transform: skewX(-18deg);
+  transition: left 0.6s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+.event-card:hover::after,
+.speaker-card:hover::after,
+.impact-card:hover::after {
+  left: 130%;
+}
+
+/* Hero location badge: a soft breathing pulse. */
+.call-badge {
+  animation: badgePulse 3s ease-in-out infinite;
+}
+@keyframes badgePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(138, 63, 252, 0); }
+  50% { box-shadow: 0 0 0 4px rgba(138, 63, 252, 0.1); }
+}
+
+/* Dropdown menus fade/slide in instead of hard-appearing. */
+.nav-item-dropdown .dropdown-menu {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.nav-item-dropdown:hover .dropdown-menu {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Section-title ornament: let it also animate in with the header. */
+.reveal .section-title::after {
+  transition: width 0.6s ease 0.2s;
+}
+
+/* Custom themed scrollbar (WebKit + Firefox). */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--ibm-purple) transparent;
+}
+::-webkit-scrollbar {
+  width: 11px;
+}
+::-webkit-scrollbar-track {
+  background: var(--ibm-dark-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--ibm-purple), var(--ibm-soft-purple));
+  border-radius: 999px;
+  border: 3px solid var(--ibm-dark-bg);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ibm-light-purple);
+}
+
 /* ---- Accessibility: disable all of the above motion on request ---- */
 @media (prefers-reduced-motion: reduce) {
   .reveal {
@@ -325,5 +448,22 @@ body > footer {
   .btn-primary:hover,
   .btn-secondary:hover {
     transform: none;
+  }
+
+  .section-header .section-title::before,
+  #about::before,
+  #cfp::before,
+  #organizers::before,
+  #program::after,
+  #speakers::after,
+  #certificate::after,
+  .call-badge {
+    animation: none;
+  }
+
+  .event-card::after,
+  .speaker-card::after,
+  .impact-card::after {
+    display: none;
   }
 }
