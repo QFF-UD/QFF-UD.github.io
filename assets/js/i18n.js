@@ -69,7 +69,7 @@
       "about-p2":
         "Join us for four days of inspiring keynotes, interactive coding labs with Qiskit, and collaborative spaces designed to spark the next generation of quantum innovators in Colombia.",
 
-      "impact-attendees": "Expected Attendees (+70)",
+      "impact-attendees": "Expected Attendees (+40)",
       "impact-days-unit": "Days",
       "impact-training": "Academic Training",
       "impact-challenge": "Research & Community",
@@ -275,7 +275,7 @@
       "about-p2":
         "Te invitamos a vivir cuatro días de conferencias magistrales, talleres prácticos de programación con Qiskit y espacios de colaboración diseñados para inspirar a la próxima generación de innovadores cuánticos en Colombia.",
 
-      "impact-attendees": "Asistentes Esperados (+70)",
+      "impact-attendees": "Asistentes Esperados (+40)",
       "impact-days-unit": "Días",
       "impact-training": "Entrenamiento Académico",
       "impact-challenge": "Investigación y Comunidad",
