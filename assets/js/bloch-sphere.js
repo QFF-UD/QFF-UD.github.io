@@ -190,7 +190,7 @@
     }
   };
 
-  BlochSphere.prototype.axis = function (x, y, z, label) {
+  BlochSphere.prototype.axis = function (x, y, z, label, labelDy) {
     var ctx = this.ctx;
     var o = this.rp(0, 0, 0);
     var p = this.rp(x, y, z);
@@ -208,7 +208,11 @@
       ctx.font = "600 13px 'IBM Plex Mono', monospace";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
-      ctx.fillText(label, p.x, p.y - 11);
+      /* Offset the label away from the sphere along the screen-vertical by
+         default (negative = up). Callers pass labelDy so the top pole label
+         sits above its tip and the bottom pole label sits below its tip. */
+      var dy = typeof labelDy === "number" ? labelDy : -11;
+      ctx.fillText(label, p.x, p.y + dy);
     }
   };
 
@@ -301,9 +305,11 @@
     this.body3d();
     this.wireframe();
 
-    // Axes: Y up = |0>/|1>, plus X and Z.
-    this.axis(0, 1.25, 0, "|0\u27E9");
-    this.axis(0, -1.25, 0, "|1\u27E9");
+    // Axes: vertical Z axis carries the computational basis by convention:
+    // |0> at the north pole (top) and |1> at the south pole (bottom).
+    // (In screen space +Y projects upward, so the top pole is drawn at +Y.)
+    this.axis(0, 1.25, 0, "|0\u27E9", -13); // north pole, label above
+    this.axis(0, -1.25, 0, "|1\u27E9", 15); // south pole, label below
     this.axis(1.25, 0, 0, "x");
     this.axis(0, 0, 1.25, "y");
 
