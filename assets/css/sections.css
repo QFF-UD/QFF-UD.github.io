@@ -226,6 +226,21 @@
   top: 95px;
 }
 
+/* Speaker bio inside the side panel description: subtle, differentiated note. */
+.side-detail-panel #sideDescription {
+  max-height: 55vh;
+  overflow-y: auto;
+}
+
+.side-detail-panel #sideDescription em {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  border-left: 3px solid var(--ibm-light-purple);
+  padding-left: 10px;
+  font-style: italic;
+}
+
 /* ---- Tabs ---- */
 .tab-btn {
   background: var(--ibm-card-bg);
