@@ -34,6 +34,7 @@
 
       "menu-people": "People",
       "nav-speakers": "Speakers & Mentors",
+      "nav-shorts": "Short Talk Presenters",
       "nav-organizers": "Organizing Committee",
 
       "btn-register-nav": "Register",
@@ -189,7 +190,27 @@
 
       "speakers-title": "Speakers & Special Guests",
       "speakers-subtitle":
-        "Researchers, professors, and specialists in quantum science",
+        "Researchers and professors leading the courses and keynote talks",
+
+      "sp-nicolas-role": "Professor, Universidad del Rosario · Quantum computing & AI",
+      "sp-daniel-role": "Professor, The Catholic University of America · Qiskit Advocate",
+      "sp-john-role": "Physics professor, Universidad Distrital · GEFEM group",
+      "sp-camilo-role": "Associate Professor, Universidad del Norte",
+      "sp-enrique-role": "Quantum Machine Learning Research Assistant · ICMM-CSIC",
+      "sp-claudia-role": "PhD student in Quantum Information Science · University of Copenhagen",
+      "sp-federico-role": "CONICET researcher (Argentina) · Universidad Nacional de Hurlingham",
+      "sp-juan-role": "Speaker",
+      "sp-jaime-role": "Business administrator, MBA & data scientist · QDSV",
+      "sp-esteban-role": "Speaker · Cybercolombia",
+
+      "shorts-title": "Short Talk Presenters",
+      "shorts-subtitle":
+        "Students and early-career researchers sharing their work",
+
+      "sp-mateo-role": "Undergraduate Physics student",
+      "sp-julian-role": "Final-year Physics student · Universidad Distrital",
+      "sp-diego-role": "Applied Mathematics & Computer Science student · Universidad del Rosario",
+      "sp-samuel-role": "Final-year Physics student · Universidad de los Andes",
 
       "org-title": "Organizing Committee",
       "org-subtitle": "Node Universidad Distrital Francisco José de Caldas",
@@ -247,6 +268,7 @@
 
       "menu-people": "Personas",
       "nav-speakers": "Ponentes y Mentores",
+      "nav-shorts": "Ponentes de Charlas Cortas",
       "nav-organizers": "Comité Organizador",
 
       "btn-register-nav": "Registrarse",
@@ -400,7 +422,27 @@
 
       "speakers-title": "Ponentes e Invitados Especiales",
       "speakers-subtitle":
-        "Investigadores, profesores y especialistas en ciencia cuántica",
+        "Investigadores y profesores a cargo de los cursos y ponencias",
+
+      "sp-nicolas-role": "Profesor, Universidad del Rosario · Computación cuántica e IA",
+      "sp-daniel-role": "Profesor, The Catholic University of America · Qiskit Advocate",
+      "sp-john-role": "Profesor de Física, Universidad Distrital · Grupo GEFEM",
+      "sp-camilo-role": "Profesor asociado, Universidad del Norte",
+      "sp-enrique-role": "Quantum Machine Learning Research Assistant · ICMM-CSIC",
+      "sp-claudia-role": "Estudiante de doctorado en Quantum Information Science · University of Copenhagen",
+      "sp-federico-role": "Investigador del CONICET (Argentina) · Universidad Nacional de Hurlingham",
+      "sp-juan-role": "Ponente",
+      "sp-jaime-role": "Administrador de empresas, MBA y científico de datos · QDSV",
+      "sp-esteban-role": "Ponente · Cybercolombia",
+
+      "shorts-title": "Ponentes de Charlas Cortas",
+      "shorts-subtitle":
+        "Estudiantes e investigadores en formación compartiendo su trabajo",
+
+      "sp-mateo-role": "Estudiante de pregrado en Física",
+      "sp-julian-role": "Estudiante de último semestre de Física · Universidad Distrital",
+      "sp-diego-role": "Estudiante de Matemáticas Aplicadas y Ciencias de la Computación · Universidad del Rosario",
+      "sp-samuel-role": "Estudiante de último semestre de Física · Universidad de los Andes",
 
       "org-title": "Comité Organizador",
       "org-subtitle": "Nodo Universidad Distrital Francisco José de Caldas",

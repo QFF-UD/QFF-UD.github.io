@@ -400,6 +400,22 @@
   min-width: 260px;
 }
 
+/* Responsive grid of people cards (speakers / short-talk presenters). */
+.people-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  align-items: stretch;
+}
+
+.people-grid .team-card,
+.people-grid .speaker-card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .member-avatar {
   width: 100px;
   height: 100px;
