@@ -156,6 +156,19 @@
   vertical-align: middle;
 }
 
+/* Keep the time range on a single line and visually distinct. */
+.schedule-table td:first-child,
+.schedule-table th:first-child {
+  white-space: nowrap;
+  width: 1%;
+  font-variant-numeric: tabular-nums;
+}
+
+.schedule-table td:first-child {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
 .schedule-row {
   cursor: pointer;
   transition:

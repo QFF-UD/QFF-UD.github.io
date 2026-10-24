@@ -112,7 +112,7 @@
       "act-break": "Break",
 
       "act-d1-nicolas": "Getting Started with Qiskit: your first program on a real quantum computer",
-      "act-d1-daniel": "Qiskit 101 — Daniel Sierra (IBM)",
+      "act-d1-daniel": "Introduction to IBM Quantum and Qiskit",
       "act-d1-john": "From the physical system to the qubit: physical and mathematical foundations of quantum computing — 1",
 
       "act-d2-camilo": "From quantum phenomena to quantum information",
@@ -155,7 +155,7 @@
       "desc-lunch": "Lunch break.",
       "desc-break": "Short break.",
       "desc-d1-nicolas": "Getting Started with Qiskit: your first program on a real quantum computer.",
-      "desc-d1-daniel": "Qiskit 101 hands-on session led by Daniel Sierra (IBM).",
+      "desc-d1-daniel": "Introduction to IBM Quantum and Qiskit, led by Daniel Sierra (IBM).",
       "desc-d1-john": "From the physical system to the qubit: physical and mathematical foundations of quantum computing — Part 1.",
       "desc-d2-camilo": "From quantum phenomena to quantum information.",
       "desc-d2-enrique": "Quantum Algorithms for Quantum Chemistry.",
@@ -324,7 +324,7 @@
       "act-break": "Descanso",
 
       "act-d1-nicolas": "Iniciación a Qiskit: tu primer programa en un computador cuántico real",
-      "act-d1-daniel": "Qiskit 101 — Daniel Sierra (IBM)",
+      "act-d1-daniel": "Introduction to IBM Quantum and Qiskit",
       "act-d1-john": "Del sistema físico al qubit: fundamentos físicos y matemáticos de la computación cuántica — 1",
 
       "act-d2-camilo": "De los fenómenos cuánticos a la información cuántica",
@@ -367,7 +367,7 @@
       "desc-lunch": "Pausa para el almuerzo.",
       "desc-break": "Descanso breve.",
       "desc-d1-nicolas": "Iniciación a Qiskit: tu primer programa en un computador cuántico real.",
-      "desc-d1-daniel": "Sesión práctica Qiskit 101 dirigida por Daniel Sierra (IBM).",
+      "desc-d1-daniel": "Introduction to IBM Quantum and Qiskit, a cargo de Daniel Sierra (IBM).",
       "desc-d1-john": "Del sistema físico al qubit: fundamentos físicos y matemáticos de la computación cuántica — Parte 1.",
       "desc-d2-camilo": "De los fenómenos cuánticos a la información cuántica.",
       "desc-d2-enrique": "Quantum Algorithms for Quantum Chemistry.",
