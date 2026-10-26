@@ -217,10 +217,40 @@
     if (!this.raf) this.loop();
   };
 
+  Circuit.prototype.stop = function () {
+    if (this.raf) {
+      cancelAnimationFrame(this.raf);
+      this.raf = null;
+    }
+  };
+
+  /* Only animate while the band is on screen, and pause when the tab is
+     hidden. Keeps the decorative loop from burning CPU off-screen. */
+  Circuit.prototype.observe = function () {
+    if (this.reduced) return;
+    var self = this;
+
+    if ("IntersectionObserver" in window) {
+      this.visible = true;
+      new IntersectionObserver(function (entries) {
+        self.visible = entries[0].isIntersecting;
+        if (self.visible && !document.hidden) self.start();
+        else self.stop();
+      }, { threshold: 0 }).observe(this.canvas);
+    }
+
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) self.stop();
+      else if (self.visible !== false) self.start();
+    });
+  };
+
   function init() {
     var canvases = document.querySelectorAll("canvas[data-quantum-circuit]");
     for (var i = 0; i < canvases.length; i++) {
-      new Circuit(canvases[i]).start();
+      var c = new Circuit(canvases[i]);
+      c.observe();
+      c.start();
     }
   }
 

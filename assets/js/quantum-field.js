@@ -101,8 +101,11 @@
     this.w = w;
     this.h = h;
 
-    // Particle count scales with area, capped for performance.
-    var target = Math.min(90, Math.round((w * h) / 18000));
+    // Particle count scales with area, capped for performance. Mobile and
+    // low-core devices get a lower cap so the O(n^2) link pass stays cheap.
+    var cap = 90;
+    if (w < 768 || (navigator.hardwareConcurrency || 4) <= 4) cap = 45;
+    var target = Math.min(cap, Math.round((w * h) / 18000));
     this.particles = [];
     for (var i = 0; i < target; i++) {
       this.particles.push({
@@ -131,15 +134,17 @@
     }
 
     var LINK = 130; // px distance to draw a link
+    var LINK2 = LINK * LINK; // compare squared distances to avoid sqrt
 
-    // Links first (behind dots).
+    // Links first (behind dots). Uses squared distance so the inner loop
+    // skips a Math.sqrt for every pair that is out of range (the common case).
     for (var i = 0; i < p.length; i++) {
       for (var j = i + 1; j < p.length; j++) {
         var dx = p[i].x - p[j].x;
         var dy = p[i].y - p[j].y;
-        var dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < LINK) {
-          var a = (1 - dist / LINK) * 0.18;
+        var d2 = dx * dx + dy * dy;
+        if (d2 < LINK2) {
+          var a = (1 - Math.sqrt(d2) / LINK) * 0.18;
           ctx.strokeStyle = "rgba(" + rgb + "," + a.toFixed(3) + ")";
           ctx.lineWidth = 1;
           ctx.beginPath();
