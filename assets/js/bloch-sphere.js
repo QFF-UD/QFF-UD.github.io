@@ -332,10 +332,40 @@
     if (!this.raf) this.loop();
   };
 
+  BlochSphere.prototype.stop = function () {
+    if (this.raf) {
+      cancelAnimationFrame(this.raf);
+      this.raf = null;
+    }
+  };
+
+  /* Only animate while the canvas is actually on screen (saves CPU/GPU once
+     the user scrolls past the hero). Also pauses when the tab is hidden. */
+  BlochSphere.prototype.observe = function () {
+    if (this.reduced) return;
+    var self = this;
+
+    if ("IntersectionObserver" in window) {
+      this.visible = true;
+      new IntersectionObserver(function (entries) {
+        self.visible = entries[0].isIntersecting;
+        if (self.visible && !document.hidden) self.start();
+        else self.stop();
+      }, { threshold: 0 }).observe(this.canvas);
+    }
+
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) self.stop();
+      else if (self.visible !== false) self.start();
+    });
+  };
+
   function init() {
     var canvases = document.querySelectorAll("canvas[data-bloch-sphere]");
     for (var i = 0; i < canvases.length; i++) {
-      new BlochSphere(canvases[i]).start();
+      var b = new BlochSphere(canvases[i]);
+      b.observe();
+      b.start();
     }
   }
 
