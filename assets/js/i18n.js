@@ -112,6 +112,7 @@
       "act-welcome": "Welcome",
       "act-lunch": "Lunch",
       "act-break": "Break",
+      "act-inter": "Networking break",
 
       "act-d1-nicolas": "Getting Started with Qiskit: your first program on a real quantum computer",
       "act-d1-daniel": "Introduction to IBM Quantum and Qiskit",
@@ -124,8 +125,9 @@
 
       "act-d3-claudia": "Non-local quantum games to coordinate financial decisions",
       "act-d3-federico": "Benchmarking quantum computers via genuine multipartite nonlocality",
-      "act-d3-juan": "What if knowing more means knowing less? An exploration of the uncertainty principle in quantum mechanics",
+      "act-d3-juan": "Quantum Random Walks as a Model of Quantum Computation",
       "act-d3-julian": "Ground-state energy of the spin-1/2 Heisenberg antiferromagnet on the Kagome lattice via VQE without Hamiltonian calibration",
+      "act-d3-wilmer": "Design and implementation of a sales-prediction model with artificial intelligence and quantum computing",
 
       "act-d4-esteban1": "Keynote",
       "act-d4-esteban2": "Cybercolombia",
@@ -137,6 +139,7 @@
       "tag-open": "Opening",
       "tag-short": "Short Talk",
       "tag-break": "Break",
+      "tag-inter": "Networking",
       "tag-work": "Workshop",
       "tag-closing": "Closing",
       "tag-key": "Keynote",
@@ -156,6 +159,7 @@
       "desc-welcome": "Opening of Qiskit Fall Fest 2026 by the QFF team.",
       "desc-lunch": "Lunch break.",
       "desc-break": "Short break.",
+      "desc-inter": "Short networking and transition break between talks.",
       "desc-d1-nicolas": "A hands-on first step into quantum computing with Qiskit. Starting from the essentials (qubits, superposition, entanglement and measurement) we build a Bell state —the quantum \"hello world\"— and run it both on a simulator and on a real IBM quantum processor to see the effect of noise. We explore transpilation and the Sampler and Estimator primitives, and compute the expectation value of a simple Hamiltonian. No prior quantum experience required, just curiosity and basic Python.<br><br><em>Nicolás Avilán — Physicist (Universidad Nacional) and PhD in Physics (Universidad de los Andes). Professor at Universidad del Rosario, where he leads the Applied Mathematics and Computer Science program. Works on quantum computing and artificial intelligence.</em>",
       "desc-d1-daniel": "An introduction to quantum computing and the IBM Quantum and Qiskit ecosystem. Starting from qubits, superposition, entanglement and quantum circuits, we explain how these systems work and what sets them apart from classical computing. We review possible applications, current limitations and the role of hybrid approaches, and explore the tools in IBM Quantum and Qiskit to learn, develop and run circuits on real quantum computers.<br><br><em>Dr. Daniel Sierra-Sosa — Assistant Professor of Computer Science at The Catholic University of America and lead of RIFT Labs. Qiskit Advocate researching quantum computing, machine learning and their scientific applications.</em>",
       "desc-d1-john": "A pedagogical introduction to the physical and mathematical principles behind quantum computing, going from physical systems to their representation as qubits — Part 1. No prior knowledge of quantum mechanics or computing is required; familiarity with elementary linear algebra, calculus, complex numbers and basic university physics is helpful, though the needed concepts are introduced along the way.<br><br><em>John Hernán Díaz Forero — Physics professor at Universidad Distrital Francisco José de Caldas, specialist and MSc in Physical Sciences (Universidad Nacional de Colombia) with doctoral studies in Engineering. Member of the GEFEM group and leader of the Multiscale Natural Systems Modeling and Simulation research seedbed.</em>",
@@ -165,8 +169,9 @@
       "desc-d2-mateo": "The brachistochrone starts from a classical setting: a point mass goes from A to B under gravity — which path takes the least time? Through the action and variational principles, the answer turns out to be a cycloid. Does a quantum analogue exist? It does: taking a two-state system (A and B) as a qubit, we no longer look for definite trajectories, so the question changes — is there a Hamiltonian that minimizes the transition time between states?<br><br><em>Mateo Maldonado — Undergraduate Physics student with strengths in computational physical modeling and in abstracting physical phenomena into models that describe them. He has worked on chaos and complexity, the classical brachistochrone problem, the three-body problem in a rotating frame and the double pendulum with Stokes-type friction — all sharing a central interest in variational principles, the least-action principle and the study of nonlinear systems.</em>",
       "desc-d3-claudia": "In high-frequency trading, decisions tens of kilometers apart must be made in microseconds, so server-to-server communication can arrive too late. This talk presents a simplified hedging model between correlated positions in two markets and shows how the problem can be cast as a non-local game. We compare classical and quantum strategies, see how entanglement can improve the expected coordination without communication during the decision, and briefly discuss the challenges of bringing such proposals to practical scenarios.<br><br><em>Claudia Zendejas Morales — Physicist and computer engineer, PhD student in Quantum Information Science at the University of Copenhagen. Selected for the IYQ 2025 Quantum 100. Interested in theoretical quantum information, QML and quantum nonlocality.</em>",
       "desc-d3-federico": "How the concept of genuine multipartite nonlocality can be used to evaluate and characterize the performance of quantum processors. We present the theoretical foundations of this approach and discuss practical code examples designed to implement these tests on real devices.<br>[1] A. C. Granda Arango et al., Phys. Rev. A 112, 062427 (2025). [2] F. H. Holik et al., AWS Quantum Technologies Blog (2026).<br><br><em>Federico Holik — CONICET researcher (Argentina), professor of quantum computing at Universidad Nacional de Hurlingham and associate editor of Quantum Information Processing. His research spans the foundations of quantum mechanics and their applications to benchmarking quantum processors.</em>",
-      "desc-d3-juan": "What if knowing more means knowing less? An exploration of the uncertainty principle in quantum mechanics.",
+      "desc-d3-juan": "An introduction to quantum random walks as a model of quantum computation, exploring how they differ from their classical counterparts and their role in building quantum algorithms.<br><br><em>Juan de los Ríos — Lead organizer of Qiskit Fall Fest 2026 at Universidad Distrital and Qiskit Advocate.</em>",
       "desc-d3-julian": "A study of the antiferromagnetic Heisenberg model on the Kagome lattice using VQE, developed during QWorld's QIntern 2026 under Prof. Muhammad Ahsan. SU(2)-symmetry-preserving ansätze achieved a 0.52% energy error over 19 sites with no prior calibration. Using a lattice fragmentation-and-recombination strategy, a 0.938% error was reached over 26 sites, reducing the dependence on quantum hardware calibration.<br><br><em>Julián Armando Aros — Final-year Physics student at Universidad Distrital, with experience in 2D materials for water decontamination. QWorld intern (QIntern 2026) working on ground-state energy estimation of the antiferromagnetic Heisenberg model via hardware-efficient VQE. Interested in condensed matter physics and quantum computing.</em>",
+      "desc-d3-wilmer": "Design and implementation of a sales-prediction model that combines artificial intelligence with quantum computing, exploring how quantum techniques can enhance forecasting tasks.<br><br><em>Wilmer Emiro Castrillón Calderón — Short talk presenter at Qiskit Fall Fest 2026.</em>",
       "desc-d4-esteban1": "Keynote by Esteban Hernández.",
       "desc-d4-esteban2": "Cybercolombia session with Esteban Hernández.",
       "desc-d4-jaime": "This talk presents QDSV, a model that represents problems through states, predicates and queries, and builds quantum-realization plans from that semantics. We show how QDSV Bridge generates verifiable artifacts compatible with Qiskit and OpenQASM, and how QRUBA lets you visually manage execution flows and evidence. The talk includes hands-on demos of both tools, highlighting the link between user intent, quantum implementation and result verification.<br><br><em>Jaime Alexander Jiménez Lozano — Business administrator, MBA and data scientist. He takes part in the research and development of QDSV, with a focus on the semantic representation of problems, quantum computing, artificial intelligence and software tooling.</em>",
@@ -212,6 +217,7 @@
       "sp-julian-role": "Final-year Physics student · Universidad Distrital",
       "sp-diego-role": "Applied Mathematics & Computer Science student · Universidad del Rosario",
       "sp-samuel-role": "Final-year Physics student · Universidad de los Andes",
+      "sp-wilmer-role": "Short talk presenter · AI & quantum computing",
 
       "dl-title": "Download Speakers",
       "dl-subtitle": "Download the speaker images for each day of the event",
@@ -354,6 +360,7 @@
       "act-welcome": "Bienvenida",
       "act-lunch": "Almuerzo",
       "act-break": "Descanso",
+      "act-inter": "Intercambio",
 
       "act-d1-nicolas": "Iniciación a Qiskit: tu primer programa en un computador cuántico real",
       "act-d1-daniel": "Introduction to IBM Quantum and Qiskit",
@@ -366,8 +373,9 @@
 
       "act-d3-claudia": "Juegos cuánticos no locales para coordinar decisiones financieras",
       "act-d3-federico": "Evaluación de computadoras cuánticas mediante no localidad multipartita genuina",
-      "act-d3-juan": "¿Y si conocer más significa saber menos? — Una exploración del principio de incertidumbre en mecánica cuántica",
+      "act-d3-juan": "Caminantes Aleatorios Cuánticos como Modelo de Computación Cuántica",
       "act-d3-julian": "Energía del estado fundamental del antiferromagneto de Heisenberg de espín 1/2 en la red de Kagome mediante VQE sin calibración hamiltoniana",
+      "act-d3-wilmer": "Diseño e implementación de un modelo de predicción de ventas con inteligencia artificial y computación cuántica",
 
       "act-d4-esteban1": "Ponencia",
       "act-d4-esteban2": "Cybercolombia",
@@ -379,6 +387,7 @@
       "tag-open": "Apertura",
       "tag-short": "Charla Corta",
       "tag-break": "Descanso",
+      "tag-inter": "Intercambio",
       "tag-work": "Workshop",
       "tag-closing": "Clausura",
       "tag-key": "Keynote",
@@ -398,6 +407,7 @@
       "desc-welcome": "Apertura del Qiskit Fall Fest 2026 a cargo del equipo QFF.",
       "desc-lunch": "Pausa para el almuerzo.",
       "desc-break": "Descanso breve.",
+      "desc-inter": "Pausa breve de intercambio y transición entre charlas.",
       "desc-d1-nicolas": "Taller práctico para dar los primeros pasos en computación cuántica con Qiskit. Partimos de los conceptos esenciales (qubits, superposición, entrelazamiento y medición) y construimos un estado de Bell, el «hola mundo» cuántico, ejecutándolo en un simulador y luego en un procesador cuántico real de IBM para comparar resultados y entender el efecto del ruido. Exploramos la transpilación y las primitivas Sampler y Estimator, y calculamos el valor esperado de un Hamiltoniano sencillo. No se requiere experiencia previa en física cuántica, solo curiosidad y conocimientos básicos de Python.<br><br><em>Nicolás Avilán — Físico (Universidad Nacional) y doctor en Física (Universidad de los Andes). Profesor de la Universidad del Rosario, donde dirige el programa de Matemáticas Aplicadas y Ciencias de la Computación. Trabaja en computación cuántica e inteligencia artificial.</em>",
       "desc-d1-daniel": "Introducción a la computación cuántica y al ecosistema de IBM Quantum y Qiskit. A partir de los cúbits, la superposición, el entrelazamiento y los circuitos cuánticos, se explica cómo funcionan estos sistemas y qué los diferencia de la computación clásica. Se presentan posibles aplicaciones, limitaciones actuales y el papel de los enfoques híbridos, y se exploran las herramientas de IBM Quantum y Qiskit para aprender, desarrollar y ejecutar circuitos en computadores cuánticos reales.<br><br><em>Dr. Daniel Sierra-Sosa — Profesor asistente de Ciencias de la Computación en The Catholic University of America y líder de RIFT Labs. Qiskit Advocate; investiga en computación cuántica, aprendizaje automático y sus aplicaciones científicas.</em>",
       "desc-d1-john": "Introducción pedagógica a los principios físicos y matemáticos que sustentan la computación cuántica, desde los sistemas físicos hasta su representación mediante qubits — Parte 1. No se requieren conocimientos previos de mecánica ni computación cuántica; se recomienda familiaridad con álgebra lineal elemental, cálculo diferencial e integral, números complejos y física básica universitaria, aunque los conceptos necesarios se introducen durante el cursillo.<br><br><em>John Hernán Díaz Forero — Profesor de Física de la Universidad Distrital Francisco José de Caldas, especialista y magíster en Ciencias Físicas (Universidad Nacional de Colombia) con estudios doctorales en Ingeniería. Integrante del grupo GEFEM y líder del Semillero de Modelamiento y Simulación de Sistemas Naturales Multiescala.</em>",
@@ -407,8 +417,9 @@
       "desc-d2-mateo": "La braquistócrona parte de un marco clásico: una masa puntual va de un punto A a un punto B bajo la acción de un campo gravitacional, ¿cuál es la trayectoria de tiempo mínimo? Mediante el concepto de acción y los principios variacionales se encuentra que la trayectoria es una cicloide. ¿Existe una analogía cuántica? Sí: considerando un sistema de dos estados A y B como un qubit, en un sistema cuántico no buscamos trayectorias definidas, así que la pregunta cambia: ¿existe un hamiltoniano que minimice el tiempo de transición entre estados?<br><br><em>Mateo Maldonado — Estudiante de pregrado en Física, con fortalezas en modelamiento físico computacional y en abstraer fenómenos físicos para hallar un modelo que los describa. Ha trabajado en caos y complejidad, el problema clásico de la braquistócrona, el problema de tres cuerpos con marco rotante y el péndulo doble con fricción de tipo Stokes, trabajos que comparten un interés central por los principios variacionales, el principio de mínima acción y el estudio de sistemas no lineales.</em>",
       "desc-d3-claudia": "En el trading de alta frecuencia, decisiones separadas por decenas de kilómetros deben tomarse en microsegundos, por lo que la comunicación entre servidores puede llegar demasiado tarde. Esta charla presenta un modelo simplificado de cobertura entre posiciones correlacionadas en dos mercados y muestra cómo el problema puede formularse como un juego no local. Comparamos estrategias clásicas y cuánticas, vemos cómo el entrelazamiento puede mejorar la coordinación esperada sin comunicación durante la decisión y discutimos brevemente los retos de llevar estas propuestas a escenarios prácticos.<br><br><em>Claudia Zendejas Morales — Física e ingeniera en computación, estudiante de doctorado en Quantum Information Science en la University of Copenhagen. Seleccionada en el Quantum 100 del IYQ 2025. Sus intereses incluyen información cuántica teórica, QML y no localidad cuántica.</em>",
       "desc-d3-federico": "Cómo el concepto de no localidad multipartita genuina puede emplearse para evaluar y caracterizar el desempeño de procesadores cuánticos. Presentamos los fundamentos teóricos de este enfoque y discutimos ejemplos prácticos de código diseñados para implementar estas pruebas en dispositivos reales.<br>[1] A. C. Granda Arango et al., Phys. Rev. A 112, 062427 (2025). [2] F. H. Holik et al., AWS Quantum Technologies Blog (2026).<br><br><em>Federico Holik — Investigador del CONICET (Argentina), profesor de computación cuántica en la Universidad Nacional de Hurlingham y editor asociado de Quantum Information Processing. Su investigación abarca los fundamentos de la mecánica cuántica y sus aplicaciones al testeo de procesadores cuánticos.</em>",
-      "desc-d3-juan": "¿Y si conocer más significa saber menos? Una exploración del principio de incertidumbre en mecánica cuántica.",
+      "desc-d3-juan": "Una introducción a los caminantes aleatorios cuánticos como modelo de computación cuántica, explorando en qué se diferencian de su contraparte clásica y su papel en la construcción de algoritmos cuánticos.<br><br><em>Juan de los Ríos — Organizador principal del Qiskit Fall Fest 2026 en la Universidad Distrital y Qiskit Advocate.</em>",
       "desc-d3-julian": "Estudio del modelo de Heisenberg antiferromagnético en la red Kagome mediante VQE, desarrollado durante QIntern 2026 de QWorld bajo la tutoría del Prof. Muhammad Ahsan. Se diseñaron ansätze que preservan la simetría SU(2), logrando un error energético del 0,52 % en 19 sitios sin calibración previa. Mediante una estrategia de fragmentación y recombinación de la red, se alcanzó un error del 0,938 % en 26 sitios, reduciendo la dependencia de la calibración del hardware cuántico.<br><br><em>Julián Armando Aros — Estudiante de último semestre de Física en la Universidad Distrital, con experiencia en materiales bidimensionales aplicados a la descontaminación del agua. Pasante de QWorld (QIntern 2026), donde trabajó en la estimación de la energía fundamental del modelo de Heisenberg antiferromagnético mediante VQE eficiente en hardware. Interesado en la física de la materia condensada y la computación cuántica.</em>",
+      "desc-d3-wilmer": "Diseño e implementación de un modelo de predicción de ventas que combina inteligencia artificial con computación cuántica, explorando cómo las técnicas cuánticas pueden potenciar las tareas de pronóstico.<br><br><em>Wilmer Emiro Castrillón Calderón — Ponente de charla corta en el Qiskit Fall Fest 2026.</em>",
       "desc-d4-esteban1": "Ponencia a cargo de Esteban Hernández.",
       "desc-d4-esteban2": "Sesión Cybercolombia con Esteban Hernández.",
       "desc-d4-jaime": "Esta ponencia presenta QDSV, un modelo que representa problemas mediante estados, predicados y consultas, y construye planes de realización cuántica a partir de esa semántica. Mostramos cómo QDSV Bridge genera artefactos verificables compatibles con Qiskit y OpenQASM, y cómo QRUBA permite gestionar visualmente flujos de ejecución y evidencias. La charla incluye demostraciones prácticas de ambas herramientas, destacando la conexión entre la intención del usuario, la implementación cuántica y la verificación de resultados.<br><br><em>Jaime Alexander Jiménez Lozano — Administrador de empresas, MBA y científico de datos. Participa en la investigación y desarrollo de QDSV, con especial interés en representación semántica de problemas, computación cuántica, inteligencia artificial y herramientas de software.</em>",
@@ -453,6 +464,7 @@
       "sp-julian-role": "Estudiante de último semestre de Física · Universidad Distrital",
       "sp-diego-role": "Estudiante de Matemáticas Aplicadas y Ciencias de la Computación · Universidad del Rosario",
       "sp-samuel-role": "Estudiante de último semestre de Física · Universidad de los Andes",
+      "sp-wilmer-role": "Ponente de charla corta · IA y computación cuántica",
 
       "dl-title": "Descargar Ponentes",
       "dl-subtitle": "Descarga las imágenes de los ponentes para cada día del evento",
@@ -524,6 +536,8 @@
     "desc-d4-jaime": true,
     "desc-d4-diego": true,
     "desc-d4-samuel": true,
+    "desc-d3-juan": true,
+    "desc-d3-wilmer": true,
     "dl-empty": true,
   };
 
