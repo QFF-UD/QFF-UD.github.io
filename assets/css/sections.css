@@ -416,6 +416,27 @@
   align-items: center;
 }
 
+/* Fixed 3-columns-per-row grid (speakers / short-talk presenters).
+   Collapses to 2 columns on tablets and 1 on phones. */
+.people-grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 860px) {
+  .people-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .people-grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
 .member-avatar {
   width: 100px;
   height: 100px;

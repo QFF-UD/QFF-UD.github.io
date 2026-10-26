@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Site styles (modular, see assets/css/) -->
-    <link rel="stylesheet" href="assets/css/main.css?v=16">
+    <link rel="stylesheet" href="assets/css/main.css?v=17">
 </head>
 
 <body>
@@ -1241,170 +1241,89 @@
 
             </div>
 
-            <!-- Marquee: el segundo track es un clon aria-hidden necesario para
-                 el scroll infinito. Para añadir/editar un ponente, actualiza
-                 AMBOS tracks. -->
-            <div class="speakers-marquee-container reveal">
+            <!-- Cuadrícula de 3 ponentes por fila. Para añadir/editar un
+                 ponente, copia un bloque <div class="speaker-card ...">. -->
+            <div class="people-grid people-grid-3 reveal">
 
-                <div class="speakers-marquee-track">
-
-                    <!-- Nicolás Avilán -->
-                    <div class="speaker-card event-card">
-                        <div class="member-avatar-wrap">
-                            <img loading="lazy" decoding="async" class="member-avatar" src="img_ponentes/Nicolas.png" alt="Nicolás Avilán">
-                        </div>
-                        <h3 class="member-name">Nicolás Avilán</h3>
-                        <p class="member-role" data-i18n="sp-nicolas-role">Professor, Universidad del Rosario · Quantum computing &amp; AI</p>
+                <!-- Nicolás Avilán -->
+                <div class="speaker-card event-card">
+                    <div class="member-avatar-wrap">
+                        <img loading="lazy" decoding="async" class="member-avatar" src="img_ponentes/Nicolas.png" alt="Nicolás Avilán">
                     </div>
-
-                    <!-- Daniel Sierra-Sosa -->
-                    <div class="speaker-card event-card">
-                        <div class="member-avatar-wrap">
-                            <img loading="lazy" decoding="async" class="member-avatar" src="img_ponentes/daniel_sierra.png" alt="Daniel Sierra-Sosa">
-                        </div>
-                        <h3 class="member-name">Dr. Daniel Sierra-Sosa</h3>
-                        <p class="member-role" data-i18n="sp-daniel-role">Professor, The Catholic University of America · Qiskit Advocate</p>
-                    </div>
-
-                    <!-- John Hernán Díaz Forero -->
-                    <div class="speaker-card event-card">
-                        <div class="member-avatar-wrap">
-                            <img loading="lazy" decoding="async" class="member-avatar" src="img_ponentes/john.png" alt="John Hernán Díaz Forero">
-                        </div>
-                        <h3 class="member-name">John Hernán Díaz Forero</h3>
-                        <p class="member-role" data-i18n="sp-john-role">Physics professor, Universidad Distrital · GEFEM group</p>
-                    </div>
-
-                    <!-- Camilo Andrés Espejo Pabón -->
-                    <div class="speaker-card event-card">
-                        <div class="member-avatar-wrap">
-                            <img loading="lazy" decoding="async" class="member-avatar" src="img_ponentes/camilo.png" alt="Camilo Andrés Espejo Pabón">
-                        </div>
-                        <h3 class="member-name">Camilo Andrés Espejo Pabón</h3>
-                        <p class="member-role" data-i18n="sp-camilo-role">Associate Professor, Universidad del Norte</p>
-                    </div>
-
-                    <!-- Enrique Anguiano Vara -->
-                    <div class="speaker-card event-card">
-                        <div class="member-avatar-wrap">
-                            <img loading="lazy" decoding="async" class="member-avatar" src="speakers/ejemplo.jpg" alt="Enrique Anguiano Vara">
-                        </div>
-                        <h3 class="member-name">Enrique Anguiano Vara</h3>
-                        <p class="member-role" data-i18n="sp-enrique-role">Quantum Machine Learning Research Assistant · ICMM-CSIC</p>
-                    </div>
-
-                    <!-- Claudia Zendejas Morales -->
-                    <div class="speaker-card event-card">
-                        <div class="member-avatar-wrap">
-                            <img loading="lazy" decoding="async" class="member-avatar" src="img_ponentes/claudia.png" alt="Claudia Zendejas Morales">
-                        </div>
-                        <h3 class="member-name">Claudia Zendejas Morales</h3>
-                        <p class="member-role" data-i18n="sp-claudia-role">PhD student in Quantum Information Science · University of Copenhagen</p>
-                    </div>
-
-                    <!-- Federico Holik -->
-                    <div class="speaker-card event-card">
-                        <div class="member-avatar-wrap">
-                            <img loading="lazy" decoding="async" class="member-avatar" src="img_ponentes/federico.png" alt="Federico Holik">
-                        </div>
-                        <h3 class="member-name">Federico Holik</h3>
-                        <p class="member-role" data-i18n="sp-federico-role">CONICET researcher (Argentina) · Universidad Nacional de Hurlingham</p>
-                    </div>
-
-                    <!-- Jaime Alexander Jiménez -->
-                    <div class="speaker-card event-card">
-                        <div class="member-avatar-wrap">
-                            <img loading="lazy" decoding="async" class="member-avatar" src="speakers/ejemplo.jpg" alt="Jaime Alexander Jiménez">
-                        </div>
-                        <h3 class="member-name">Jaime Alexander Jiménez</h3>
-                        <p class="member-role" data-i18n="sp-jaime-role">Business administrator, MBA &amp; data scientist · QDSV</p>
-                    </div>
-
-                    <!-- Esteban Hernández -->
-                    <div class="speaker-card event-card">
-                        <div class="member-avatar-wrap">
-                            <img loading="lazy" decoding="async" class="member-avatar" src="speakers/ejemplo.jpg" alt="Esteban Hernández">
-                        </div>
-                        <h3 class="member-name">Esteban Hernández</h3>
-                        <p class="member-role" data-i18n="sp-esteban-role">Speaker · Cybercolombia</p>
-                    </div>
-
+                    <h3 class="member-name">Nicolás Avilán</h3>
+                    <p class="member-role" data-i18n="sp-nicolas-role">Professor, Universidad del Rosario · Quantum computing &amp; AI</p>
                 </div>
 
-                <div class="speakers-marquee-track" aria-hidden="true">
-
-                    <div class="speaker-card event-card">
-                        <div class="member-avatar-wrap">
-                            <img loading="lazy" decoding="async" class="member-avatar" src="img_ponentes/Nicolas.png" alt="">
-                        </div>
-                        <h3 class="member-name">Nicolás Avilán</h3>
-                        <p class="member-role">Professor, Universidad del Rosario · Quantum computing &amp; AI</p>
+                <!-- Daniel Sierra-Sosa -->
+                <div class="speaker-card event-card">
+                    <div class="member-avatar-wrap">
+                        <img loading="lazy" decoding="async" class="member-avatar" src="img_ponentes/daniel_sierra.png" alt="Daniel Sierra-Sosa">
                     </div>
+                    <h3 class="member-name">Dr. Daniel Sierra-Sosa</h3>
+                    <p class="member-role" data-i18n="sp-daniel-role">Professor, The Catholic University of America · Qiskit Advocate</p>
+                </div>
 
-                    <div class="speaker-card event-card">
-                        <div class="member-avatar-wrap">
-                            <img loading="lazy" decoding="async" class="member-avatar" src="img_ponentes/daniel_sierra.png" alt="">
-                        </div>
-                        <h3 class="member-name">Dr. Daniel Sierra-Sosa</h3>
-                        <p class="member-role">Professor, The Catholic University of America · Qiskit Advocate</p>
+                <!-- John Hernán Díaz Forero -->
+                <div class="speaker-card event-card">
+                    <div class="member-avatar-wrap">
+                        <img loading="lazy" decoding="async" class="member-avatar" src="img_ponentes/john.png" alt="John Hernán Díaz Forero">
                     </div>
+                    <h3 class="member-name">John Hernán Díaz Forero</h3>
+                    <p class="member-role" data-i18n="sp-john-role">Physics professor, Universidad Distrital · GEFEM group</p>
+                </div>
 
-                    <div class="speaker-card event-card">
-                        <div class="member-avatar-wrap">
-                            <img loading="lazy" decoding="async" class="member-avatar" src="img_ponentes/john.png" alt="">
-                        </div>
-                        <h3 class="member-name">John Hernán Díaz Forero</h3>
-                        <p class="member-role">Physics professor, Universidad Distrital · GEFEM group</p>
+                <!-- Camilo Andrés Espejo Pabón -->
+                <div class="speaker-card event-card">
+                    <div class="member-avatar-wrap">
+                        <img loading="lazy" decoding="async" class="member-avatar" src="img_ponentes/camilo.png" alt="Camilo Andrés Espejo Pabón">
                     </div>
+                    <h3 class="member-name">Camilo Andrés Espejo Pabón</h3>
+                    <p class="member-role" data-i18n="sp-camilo-role">Associate Professor, Universidad del Norte</p>
+                </div>
 
-                    <div class="speaker-card event-card">
-                        <div class="member-avatar-wrap">
-                            <img loading="lazy" decoding="async" class="member-avatar" src="img_ponentes/camilo.png" alt="">
-                        </div>
-                        <h3 class="member-name">Camilo Andrés Espejo Pabón</h3>
-                        <p class="member-role">Associate Professor, Universidad del Norte</p>
+                <!-- Enrique Anguiano Vara -->
+                <div class="speaker-card event-card">
+                    <div class="member-avatar-wrap">
+                        <img loading="lazy" decoding="async" class="member-avatar" src="speakers/ejemplo.jpg" alt="Enrique Anguiano Vara">
                     </div>
+                    <h3 class="member-name">Enrique Anguiano Vara</h3>
+                    <p class="member-role" data-i18n="sp-enrique-role">Quantum Machine Learning Research Assistant · ICMM-CSIC</p>
+                </div>
 
-                    <div class="speaker-card event-card">
-                        <div class="member-avatar-wrap">
-                            <img loading="lazy" decoding="async" class="member-avatar" src="speakers/ejemplo.jpg" alt="">
-                        </div>
-                        <h3 class="member-name">Enrique Anguiano Vara</h3>
-                        <p class="member-role">Quantum Machine Learning Research Assistant · ICMM-CSIC</p>
+                <!-- Claudia Zendejas Morales -->
+                <div class="speaker-card event-card">
+                    <div class="member-avatar-wrap">
+                        <img loading="lazy" decoding="async" class="member-avatar" src="img_ponentes/claudia.png" alt="Claudia Zendejas Morales">
                     </div>
+                    <h3 class="member-name">Claudia Zendejas Morales</h3>
+                    <p class="member-role" data-i18n="sp-claudia-role">PhD student in Quantum Information Science · University of Copenhagen</p>
+                </div>
 
-                    <div class="speaker-card event-card">
-                        <div class="member-avatar-wrap">
-                            <img loading="lazy" decoding="async" class="member-avatar" src="img_ponentes/claudia.png" alt="">
-                        </div>
-                        <h3 class="member-name">Claudia Zendejas Morales</h3>
-                        <p class="member-role">PhD student in Quantum Information Science · University of Copenhagen</p>
+                <!-- Federico Holik -->
+                <div class="speaker-card event-card">
+                    <div class="member-avatar-wrap">
+                        <img loading="lazy" decoding="async" class="member-avatar" src="img_ponentes/federico.png" alt="Federico Holik">
                     </div>
+                    <h3 class="member-name">Federico Holik</h3>
+                    <p class="member-role" data-i18n="sp-federico-role">CONICET researcher (Argentina) · Universidad Nacional de Hurlingham</p>
+                </div>
 
-                    <div class="speaker-card event-card">
-                        <div class="member-avatar-wrap">
-                            <img loading="lazy" decoding="async" class="member-avatar" src="img_ponentes/federico.png" alt="">
-                        </div>
-                        <h3 class="member-name">Federico Holik</h3>
-                        <p class="member-role">CONICET researcher (Argentina) · Universidad Nacional de Hurlingham</p>
+                <!-- Jaime Alexander Jiménez -->
+                <div class="speaker-card event-card">
+                    <div class="member-avatar-wrap">
+                        <img loading="lazy" decoding="async" class="member-avatar" src="speakers/ejemplo.jpg" alt="Jaime Alexander Jiménez">
                     </div>
+                    <h3 class="member-name">Jaime Alexander Jiménez</h3>
+                    <p class="member-role" data-i18n="sp-jaime-role">Business administrator, MBA &amp; data scientist · QDSV</p>
+                </div>
 
-                    <div class="speaker-card event-card">
-                        <div class="member-avatar-wrap">
-                            <img loading="lazy" decoding="async" class="member-avatar" src="speakers/ejemplo.jpg" alt="">
-                        </div>
-                        <h3 class="member-name">Jaime Alexander Jiménez</h3>
-                        <p class="member-role">Business administrator, MBA &amp; data scientist · QDSV</p>
+                <!-- Esteban Hernández -->
+                <div class="speaker-card event-card">
+                    <div class="member-avatar-wrap">
+                        <img loading="lazy" decoding="async" class="member-avatar" src="speakers/ejemplo.jpg" alt="Esteban Hernández">
                     </div>
-
-                    <div class="speaker-card event-card">
-                        <div class="member-avatar-wrap">
-                            <img loading="lazy" decoding="async" class="member-avatar" src="speakers/ejemplo.jpg" alt="">
-                        </div>
-                        <h3 class="member-name">Esteban Hernández</h3>
-                        <p class="member-role">Speaker · Cybercolombia</p>
-                    </div>
-
+                    <h3 class="member-name">Esteban Hernández</h3>
+                    <p class="member-role" data-i18n="sp-esteban-role">Speaker · Cybercolombia</p>
                 </div>
 
             </div>
@@ -1441,102 +1360,53 @@
 
             </div>
 
-            <!-- Marquee: el segundo track es un clon aria-hidden necesario para
-                 el scroll infinito. Para añadir/editar un ponente, actualiza
-                 AMBOS tracks. -->
-            <div class="speakers-marquee-container reveal">
+            <!-- Cuadrícula de 3 ponentes por fila. Para añadir/editar un
+                 ponente, copia un bloque <div class="speaker-card ...">. -->
+            <div class="people-grid people-grid-3 reveal">
 
-                <div class="speakers-marquee-track">
-
-                    <!-- Mateo Maldonado -->
-                    <div class="speaker-card event-card">
-                        <div class="member-avatar-wrap">
-                            <img loading="lazy" decoding="async" class="member-avatar" src="speakers/ejemplo.jpg" alt="Mateo Maldonado">
-                        </div>
-                        <h3 class="member-name">Mateo Maldonado</h3>
-                        <p class="member-role" data-i18n="sp-mateo-role">Undergraduate Physics student</p>
+                <!-- Mateo Maldonado -->
+                <div class="speaker-card event-card">
+                    <div class="member-avatar-wrap">
+                        <img loading="lazy" decoding="async" class="member-avatar" src="speakers/ejemplo.jpg" alt="Mateo Maldonado">
                     </div>
-
-                    <!-- Julián Aros -->
-                    <div class="speaker-card event-card">
-                        <div class="member-avatar-wrap">
-                            <img loading="lazy" decoding="async" class="member-avatar" src="img_ponentes/julian_aros.png" alt="Julián Aros">
-                        </div>
-                        <h3 class="member-name">Julián Armando Aros</h3>
-                        <p class="member-role" data-i18n="sp-julian-role">Final-year Physics student · Universidad Distrital</p>
-                    </div>
-
-                    <!-- Diego Felipe Yate Díaz -->
-                    <div class="speaker-card event-card">
-                        <div class="member-avatar-wrap">
-                            <img loading="lazy" decoding="async" class="member-avatar" src="speakers/ejemplo.jpg" alt="Diego Felipe Yate Díaz">
-                        </div>
-                        <h3 class="member-name">Diego Felipe Yate Díaz</h3>
-                        <p class="member-role" data-i18n="sp-diego-role">Applied Mathematics &amp; Computer Science student · Universidad del Rosario</p>
-                    </div>
-
-                    <!-- Samuel Murillo Herrera -->
-                    <div class="speaker-card event-card">
-                        <div class="member-avatar-wrap">
-                            <img loading="lazy" decoding="async" class="member-avatar" src="speakers/ejemplo.jpg" alt="Samuel Murillo Herrera">
-                        </div>
-                        <h3 class="member-name">Samuel Murillo Herrera</h3>
-                        <p class="member-role" data-i18n="sp-samuel-role">Final-year Physics student · Universidad de los Andes</p>
-                    </div>
-
-                    <!-- Juan de los Ríos -->
-                    <div class="speaker-card event-card">
-                        <div class="member-avatar-wrap">
-                            <img loading="lazy" decoding="async" class="member-avatar" src="Org_team/Juan.png" alt="Juan de los Ríos">
-                        </div>
-                        <h3 class="member-name">Juan de los Ríos</h3>
-                        <p class="member-role" data-i18n="sp-juan-role">Speaker</p>
-                    </div>
-
+                    <h3 class="member-name">Mateo Maldonado</h3>
+                    <p class="member-role" data-i18n="sp-mateo-role">Undergraduate Physics student</p>
                 </div>
 
-                <div class="speakers-marquee-track" aria-hidden="true">
-
-                    <div class="speaker-card event-card">
-                        <div class="member-avatar-wrap">
-                            <img loading="lazy" decoding="async" class="member-avatar" src="speakers/ejemplo.jpg" alt="">
-                        </div>
-                        <h3 class="member-name">Mateo Maldonado</h3>
-                        <p class="member-role">Undergraduate Physics student</p>
+                <!-- Julián Aros -->
+                <div class="speaker-card event-card">
+                    <div class="member-avatar-wrap">
+                        <img loading="lazy" decoding="async" class="member-avatar" src="img_ponentes/julian_aros.png" alt="Julián Aros">
                     </div>
+                    <h3 class="member-name">Julián Armando Aros</h3>
+                    <p class="member-role" data-i18n="sp-julian-role">Final-year Physics student · Universidad Distrital</p>
+                </div>
 
-                    <div class="speaker-card event-card">
-                        <div class="member-avatar-wrap">
-                            <img loading="lazy" decoding="async" class="member-avatar" src="img_ponentes/julian_aros.png" alt="">
-                        </div>
-                        <h3 class="member-name">Julián Armando Aros</h3>
-                        <p class="member-role">Final-year Physics student · Universidad Distrital</p>
+                <!-- Diego Felipe Yate Díaz -->
+                <div class="speaker-card event-card">
+                    <div class="member-avatar-wrap">
+                        <img loading="lazy" decoding="async" class="member-avatar" src="speakers/ejemplo.jpg" alt="Diego Felipe Yate Díaz">
                     </div>
+                    <h3 class="member-name">Diego Felipe Yate Díaz</h3>
+                    <p class="member-role" data-i18n="sp-diego-role">Applied Mathematics &amp; Computer Science student · Universidad del Rosario</p>
+                </div>
 
-                    <div class="speaker-card event-card">
-                        <div class="member-avatar-wrap">
-                            <img loading="lazy" decoding="async" class="member-avatar" src="speakers/ejemplo.jpg" alt="">
-                        </div>
-                        <h3 class="member-name">Diego Felipe Yate Díaz</h3>
-                        <p class="member-role">Applied Mathematics &amp; Computer Science student · Universidad del Rosario</p>
+                <!-- Samuel Murillo Herrera -->
+                <div class="speaker-card event-card">
+                    <div class="member-avatar-wrap">
+                        <img loading="lazy" decoding="async" class="member-avatar" src="speakers/ejemplo.jpg" alt="Samuel Murillo Herrera">
                     </div>
+                    <h3 class="member-name">Samuel Murillo Herrera</h3>
+                    <p class="member-role" data-i18n="sp-samuel-role">Final-year Physics student · Universidad de los Andes</p>
+                </div>
 
-                    <div class="speaker-card event-card">
-                        <div class="member-avatar-wrap">
-                            <img loading="lazy" decoding="async" class="member-avatar" src="speakers/ejemplo.jpg" alt="">
-                        </div>
-                        <h3 class="member-name">Samuel Murillo Herrera</h3>
-                        <p class="member-role">Final-year Physics student · Universidad de los Andes</p>
+                <!-- Juan de los Ríos -->
+                <div class="speaker-card event-card">
+                    <div class="member-avatar-wrap">
+                        <img loading="lazy" decoding="async" class="member-avatar" src="Org_team/Juan.png" alt="Juan de los Ríos">
                     </div>
-
-                    <div class="speaker-card event-card">
-                        <div class="member-avatar-wrap">
-                            <img loading="lazy" decoding="async" class="member-avatar" src="Org_team/Juan.png" alt="">
-                        </div>
-                        <h3 class="member-name">Juan de los Ríos</h3>
-                        <p class="member-role">Speaker</p>
-                    </div>
-
+                    <h3 class="member-name">Juan de los Ríos</h3>
+                    <p class="member-role" data-i18n="sp-juan-role">Speaker</p>
                 </div>
 
             </div>
@@ -2170,18 +2040,18 @@
 
     <!-- Site scripts (modular, see assets/js/). Order matters:
          config -> feature modules -> main (bootstrap). -->
-    <script src="assets/js/config.js?v=16"></script>
-    <script src="assets/js/i18n.js?v=16"></script>
-    <script src="assets/js/theme.js?v=16"></script>
-    <script src="assets/js/countdown.js?v=16"></script>
-    <script src="assets/js/schedule.js?v=16"></script>
+    <script src="assets/js/config.js?v=17"></script>
+    <script src="assets/js/i18n.js?v=17"></script>
+    <script src="assets/js/theme.js?v=17"></script>
+    <script src="assets/js/countdown.js?v=17"></script>
+    <script src="assets/js/schedule.js?v=17"></script>
     <!-- Visuals / animations (Canvas, self-initializing) -->
-    <script src="assets/js/quantum-field.js?v=16"></script>
-    <script src="assets/js/bloch-sphere.js?v=16"></script>
-    <script src="assets/js/quantum-circuit.js?v=16"></script>
-    <script src="assets/js/reveal.js?v=16"></script>
-    <script src="assets/js/counters.js?v=16"></script>
-    <script src="assets/js/main.js?v=16"></script>
+    <script src="assets/js/quantum-field.js?v=17"></script>
+    <script src="assets/js/bloch-sphere.js?v=17"></script>
+    <script src="assets/js/quantum-circuit.js?v=17"></script>
+    <script src="assets/js/reveal.js?v=17"></script>
+    <script src="assets/js/counters.js?v=17"></script>
+    <script src="assets/js/main.js?v=17"></script>
 
 </body>
 </html>
