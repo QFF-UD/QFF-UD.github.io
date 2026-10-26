@@ -62,12 +62,34 @@
     if (speakerImage) speakerImage.src = speakerImg;
   }
 
+  /* Speaker-downloads section: show one day's download panel, highlight tab.
+     Scoped to #speaker-downloads so it never touches the program schedule. */
+  function switchDownloadDay(dayId, btn) {
+    var section = document.getElementById("speaker-downloads");
+    if (!section) return;
+
+    section.querySelectorAll(".download-day").forEach(function (d) {
+      d.style.display = "none";
+    });
+
+    var selected = document.getElementById(dayId);
+    if (selected) selected.style.display = "block";
+
+    section.querySelectorAll(".download-tabs .tab-btn").forEach(function (b) {
+      b.classList.remove("active");
+    });
+
+    if (btn) btn.classList.add("active");
+  }
+
   window.QFF.schedule = {
     switchDayTable: switchDayTable,
     showSideDetails: showSideDetails,
+    switchDownloadDay: switchDownloadDay,
   };
 
   /* Backwards-compatible globals for inline handlers in the markup. */
   window.switchDayTable = switchDayTable;
   window.showSideDetails = showSideDetails;
+  window.switchDownloadDay = switchDownloadDay;
 })();
