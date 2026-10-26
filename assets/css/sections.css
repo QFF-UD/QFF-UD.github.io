@@ -400,12 +400,16 @@
   min-width: 260px;
 }
 
-/* Responsive grid of people cards (speakers / short-talk presenters). */
+/* Responsive grid of people cards (speakers / short-talk presenters).
+   The number of cards per row adapts automatically to the available width.
+   Cards keep a sensible max width and the row stays centered so a short last
+   row (or few cards) doesn't stretch awkwardly. */
 .people-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 300px));
   gap: 24px;
   align-items: stretch;
+  justify-content: center;
 }
 
 .people-grid .team-card,
@@ -414,27 +418,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-/* Fixed 3-columns-per-row grid (speakers / short-talk presenters).
-   Collapses to 2 columns on tablets and 1 on phones. */
-.people-grid-3 {
-  grid-template-columns: repeat(3, 1fr);
-  max-width: 980px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-@media (max-width: 860px) {
-  .people-grid-3 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 560px) {
-  .people-grid-3 {
-    grid-template-columns: 1fr;
-  }
 }
 
 .member-avatar {
