@@ -35,6 +35,7 @@
       "menu-people": "People",
       "nav-speakers": "Speakers & Mentors",
       "nav-shorts": "Short Talk Presenters",
+      "nav-downloads": "Download Speakers",
       "nav-organizers": "Organizing Committee",
 
       "btn-register-nav": "Register",
@@ -212,6 +213,14 @@
       "sp-diego-role": "Applied Mathematics & Computer Science student · Universidad del Rosario",
       "sp-samuel-role": "Final-year Physics student · Universidad de los Andes",
 
+      "dl-title": "Download Speakers",
+      "dl-subtitle": "Download the speaker images for each day of the event",
+      "dl-day-1": "Day 1 · Oct 27",
+      "dl-day-2": "Day 2 · Oct 28",
+      "dl-day-3": "Day 3 · Oct 29",
+      "dl-empty":
+        "No images uploaded yet. Add them to the matching day folder under <code>descargas_ponentes/</code>.",
+
       "org-title": "Organizing Committee",
       "org-subtitle": "Node Universidad Distrital Francisco José de Caldas",
       "role-lead": "Lead Organizer & Qiskit Advocate",
@@ -269,6 +278,7 @@
       "menu-people": "Personas",
       "nav-speakers": "Ponentes y Mentores",
       "nav-shorts": "Ponentes de Charlas Cortas",
+      "nav-downloads": "Descargar Ponentes",
       "nav-organizers": "Comité Organizador",
 
       "btn-register-nav": "Registrarse",
@@ -444,6 +454,14 @@
       "sp-diego-role": "Estudiante de Matemáticas Aplicadas y Ciencias de la Computación · Universidad del Rosario",
       "sp-samuel-role": "Estudiante de último semestre de Física · Universidad de los Andes",
 
+      "dl-title": "Descargar Ponentes",
+      "dl-subtitle": "Descarga las imágenes de los ponentes para cada día del evento",
+      "dl-day-1": "Día 1 · 27 Oct",
+      "dl-day-2": "Día 2 · 28 Oct",
+      "dl-day-3": "Día 3 · 29 Oct",
+      "dl-empty":
+        "Aún no se han subido imágenes. Agrégalas a la carpeta del día correspondiente dentro de <code>descargas_ponentes/</code>.",
+
       "org-title": "Comité Organizador",
       "org-subtitle": "Nodo Universidad Distrital Francisco José de Caldas",
       "role-lead": "Organizador Principal y Qiskit Advocate",
@@ -506,6 +524,7 @@
     "desc-d4-jaime": true,
     "desc-d4-diego": true,
     "desc-d4-samuel": true,
+    "dl-empty": true,
   };
 
   var currentLang = DEFAULT_LANG;
